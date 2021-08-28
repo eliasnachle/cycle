@@ -1,0 +1,47 @@
+// Import palette
+@import '../root/root';
+
+// Content
+.menu{
+    position: fixed;
+    width: 100%;
+    background: $black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 85px;
+    padding: 0 3em;
+    &__burger{
+        display: none;
+        @media screen and(max-width: 890px){
+            display: block;
+        }
+    }
+    nav{
+        ul{
+            display: flex;
+            gap: 2vw;
+            list-style: none;
+            li{
+                a{
+                    font-size: 16px;
+                    letter-spacing: 0.25px;
+                    font-weight: 600;
+                    text-decoration: none;
+                    color: $white;
+                }
+            }
+        }
+        @media screen and(max-width: 890px){
+            display: none;
+        }
+    }
+    &__btn{
+        a{
+            padding: .6rem 1.5em;            
+        }
+        @media screen and(max-width: 890px){
+            display: none;
+        }
+    }
+}
