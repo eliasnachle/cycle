@@ -8,6 +8,30 @@ Imports-----
 /*---------
 Config CSS
 ---------*/
+html, body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 100%;
+}
+
+main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -544,5 +568,98 @@ Components
   white-space: pre-line;
   font-size: 16px;
   letter-spacing: 0.65px;
+}
+
+/*Palette Color*/
+/*Resources*/
+/*Hero*/
+.footer {
+  width: 100%;
+  background: #000000;
+  padding-top: 1.5em;
+}
+
+.footer__content {
+  padding: 2em 3em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.footer__content__logo img {
+  padding-bottom: .5rem 0;
+}
+
+.footer__content__logo p {
+  line-height: 1.25rem;
+  letter-spacing: 0.25px;
+  font-size: 16px;
+  font-weight: 600;
+  white-space: pre-line;
+  color: #999999;
+}
+
+.footer__content_links {
+  list-style: none;
+  width: 70vw;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (auto)[3];
+      grid-template-columns: repeat(3, auto);
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 5em;
+}
+
+.footer__content_links li {
+  padding: 0.05rem;
+}
+
+.footer__content_links li h2 {
+  font-size: 18px;
+  color: #fff;
+}
+
+.footer__content_links li a {
+  -webkit-transition: ease-in 150ms;
+  transition: ease-in 150ms;
+  font-size: 16px;
+  text-decoration: none;
+  color: #999999;
+}
+
+.footer__content_links li a:hover {
+  color: #fff;
+}
+
+@media screen and (max-width: 890px) {
+  .footer__content {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    gap: 2em;
+    text-align: center;
+  }
+  .footer__content ul {
+    gap: 2em;
+    -ms-grid-columns: none;
+        grid-template-columns: none;
+  }
+}
+
+.footer_copyright {
+  border-top: 1px solid #fff;
+  padding: 1.25rem;
+  text-align: center;
+}
+
+.footer_copyright span {
+  letter-spacing: 0.25px;
+  color: #fff;
 }
 /*# sourceMappingURL=style.css.map */

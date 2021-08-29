@@ -6,6 +6,16 @@ Imports-----
 /*---------
 Config CSS
 ---------*/
+html, body{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+main{
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
 * {
   padding: 0;
   margin: 0;
@@ -52,3 +62,4 @@ Components
 @import 'components/about';
 @import 'components/plans';
 @import 'components/solutions';
+@import 'components/footer';
