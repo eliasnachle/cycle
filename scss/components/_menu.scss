@@ -3,6 +3,7 @@
 
 // Content
 .menu{
+    z-index: 999;
     position: fixed;
     width: 100%;
     background: $black;
@@ -24,11 +25,15 @@
             list-style: none;
             li{
                 a{
+                    transition: ease-in 150ms;
                     font-size: 16px;
                     letter-spacing: 0.25px;
                     font-weight: 600;
                     text-decoration: none;
                     color: $white;
+                    &:hover{
+                        opacity: 0.7;
+                    }
                 }
             }
         }

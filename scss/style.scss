@@ -29,9 +29,26 @@ Resources
     color: $white;                
   }
 }
-
+.title-text{
+  font-weight: 700;
+  font-size: $titleFontSize;
+  letter-spacing: 0.5px;
+  white-space: pre-line;
+}
+.article-text{
+  font-size: $textFontSize;
+  font-weight: 600;
+  line-height: 1.75em;
+  letter-spacing: 0.5px;
+  white-space: pre-line;
+  color: $secondaryFontColor;
+}
 /*-----
-Includes
+Components
 ------*/
 @import 'components/menu';
 @import 'components/hero';
+@import 'components/partners';
+@import 'components/about';
+@import 'components/plans';
+@import 'components/solutions';

@@ -12,12 +12,12 @@
         .hero__container{
             display: grid;        
             gap: 1em;
-            max-width: 1080px;
+            max-width: $contentWidth;
             h1{
                 text-align: center;
                 white-space: pre-line;
                 color: $white;
-                font-size: clamp(5vw, 7em, 9vw);
+                font-size: $heroFontSize;
                 letter-spacing: .25rem;
                 font-weight: 800;            
                 @media screen and (max-width: 980px){
@@ -26,10 +26,7 @@
             }
             p{
                 text-align: center;
-                font-size: clamp(16px, 1rem, 18px);
-                font-weight: 700;
-                line-height: 1.75em;
-                color: $heroText;
+                white-space: inherit;
             }
             &--buttons{
                 display: flex;
