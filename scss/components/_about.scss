@@ -1,0 +1,57 @@
+// Import palette
+@import '../root/root';
+
+//Content
+.about{
+    padding: 2em 2em 10em 2em;
+    display: grid;
+    place-items: center;
+    &__content{        
+        max-width: $contentWidth;
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(2, auto);        
+        align-items: center;
+        justify-content: space-between;
+        @media screen and (max-width: 980px){
+            display: flex;
+            width: auto;
+        }
+        .about__content__left{
+            h1{
+                padding: 1em 0;
+            }
+            &--content{                
+                display: grid;
+                gap: 1.5em;
+                section{       
+                    display: grid;
+                    grid-template-columns: auto 1fr; 
+                    gap: .5rem;
+                    article{
+                        h1{
+                            font-size: 20px;
+                            color: $black;
+                        }
+                        p{
+                            white-space: pre-line;
+                        }
+                    }
+                }
+            }
+        }
+    }
+        .about__content_right{
+            display: flex;
+            flex-direction: column;
+            gap: 1em;
+            img{
+                border-radius: 5px;
+                width: 15em;
+                box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.25);
+            }
+            @media screen and(max-width: 980px){
+                display: none;
+            }
+        }
+}
