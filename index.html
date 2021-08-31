@@ -8,28 +8,48 @@
     <link
     rel="stylesheet" 
     href="scss/style.css" 
-    />
+    />    
 </head>
 <body>
+    <!-- Mobile Menu -->
+    <section class="mobile-menu">
+        <div class="mobile-menu__close">
+            <div class="mobile-menu__close--icon">
+                <svg fill="none" height="20" viewBox="0 0 19 19" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path clip-rule="evenodd" d="M18.5578 18.5579C17.9682 19.1474 17.0124 19.1474 16.4228 18.5579L0.442158 2.57712C-0.147386 1.98757 -0.147386 1.03171 0.442158 0.442157C1.03171 -0.147388 1.98756 -0.147388 2.57711 0.442171L18.5578 16.4229C19.1474 17.0125 19.1474 17.9683 18.5578 18.5579Z" fill="white" fill-rule="evenodd"></path><path clip-rule="evenodd" d="M0.442158 18.5579C-0.147386 17.9683 -0.147386 17.0125 0.442158 16.4229L16.4228 0.442169C17.0124 -0.14739 17.9682 -0.14739 18.5578 0.442169C19.1474 1.03171 19.1474 1.98757 18.5578 2.57711L2.57711 18.5579C1.98756 19.1474 1.03171 19.1474 0.442158 18.5579Z" fill="white" fill-rule="evenodd"></path>
+                </svg>
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#section-partners">Parceiros</a></li>
+                <li><a href="#section-about">Como Funciona?</a></li>
+                <li><a href="#section-plans">Planos</a></li>
+                <li><a href="#section-solutions">Soluções</a></li>
+            </ul>
+        </nav>
+    </section>
     <!-- Menu -->
     <header class="menu">
-        <!-- Burger -->
-        <div class="menu__burger">
-            <svg fill="#FFF" viewBox="0 0 512 512" width="3em" xmlns="http://www.w3.org/2000/svg">
-                <path d="M64 384h384v-42.666H64V384zm0-106.666h384v-42.667H64v42.667zM64 128v42.665h384V128H64z"></path>
-            </svg>
-        </div>
         <!-- Logo -->
         <div class="menu__logo">
-            <img src="imgs/logo.svg" alt="cycle">
+            <a href="#section-hero">
+                <img src="imgs/logo.svg" alt="cycle">
+            </a>
+        </div>
+        <!-- Burger -->
+        <div class="menu__burger">
+            <svg height="30" viewBox="0 0 32 22" width="30" xmlns="http://www.w3.org/2000/svg">
+                <g fill="#fff" fill-rule="evenodd"><path d="M0 0h32v2H0zM0 10h32v2H0zM0 20h32v2H0z"></path></g>
+            </svg>
         </div>
         <!-- Links -->
         <nav>
             <ul>
-                <li><a href="#">Parceiros</a></li>
-                <li><a href="#">Como Funciona?</a></li>
-                <li><a href="#">Planos</a></li>
-                <li><a href="#">Soluções</a></li>
+                <li><a href="#section-partners">Parceiros</a></li>
+                <li><a href="#section-about">Como Funciona?</a></li>
+                <li><a href="#section-plans">Planos</a></li>
+                <li><a href="#section-solutions">Soluções</a></li>
             </ul>
         </nav>
         <!-- Botão -->
@@ -40,7 +60,7 @@
     <!-- Conteúdo -->
     <main>
          <!-- Hero -->
-        <section class="hero">
+        <section class="hero" id="section-hero">
             <div class="hero__content">
                 <article class="hero__container">
                     <h1>Harder, Better,
@@ -57,7 +77,7 @@
             </div>
         </section>
         <!-- Parceiros -->
-        <section class="partners">
+        <section class="partners" id="section-partners">
             <article class="partners__content">
                 <h1 class="title-text">Lorem Ipsum is simply dummy
                 text typesetting</h1>
@@ -70,7 +90,7 @@
             </article>
         </section>
         <!-- Sobre -->
-        <section class="about">
+        <section class="about" id="section-about">
             <div class="about__content">
                 <article class="about__content__left">
                     <h1 class="title-text">Lorem Ipsum is simply dummy
@@ -127,9 +147,8 @@
                 </article>
             </div>
         </section>
-
         <!-- Planos -->
-        <section class ="plans">
+        <section class ="plans" id="section-plans">
             <article class="plans__content">
                 <h1 class="title-text">Lorem Ipsum is simply dummy
                 text typesetting</h1>
@@ -251,7 +270,7 @@
             </section>        
         </section>
         <!-- Soluções -->
-        <section class="solutions">
+        <section class="solutions" id="section-solutions">
             <div class="solutions__content">
                 <h1 class="title-text">Lorem Ipsum is simply dummy 
                 text typesetting</h1>
@@ -368,5 +387,6 @@
             <span>© 2021 Cycle All rights reserved. </span>
         </div>
     </footer>
+<script src="js/menu.js"></script>    
 </body>
 </html>
