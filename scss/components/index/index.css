@@ -388,12 +388,6 @@ Components
 }
 
 .plans .plans__content__cards .plans__content__item {
-  cursor: pointer;
-  -webkit-transition: ease-in-out 300ms;
-  transition: ease-in-out 300ms;
-  background: #fff;
-  width: 300px;
-  padding: 1em 2em;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -401,27 +395,36 @@ Components
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  cursor: pointer;
+  -webkit-transition: ease-in-out 300ms;
+  transition: ease-in-out 300ms;
+  background: #fff;
+  width: 300px;
+  height: 500px;
+  padding: 1em 2em;
   border-radius: 10px;
 }
 
-.plans .plans__content__cards .plans__content__item h1 {
+.plans .plans__content__cards .plans__content__item--title h1 {
   font-size: 2em;
   font-weight: 700;
 }
 
-.plans .plans__content__cards .plans__content__item h2 {
+.plans .plans__content__cards .plans__content__item--title h2 {
   font-size: 2.5em;
   font-weight: 800;
   color: #25A9EE;
 }
 
-.plans .plans__content__cards .plans__content__item h2 span {
+.plans .plans__content__cards .plans__content__item--title h2 span {
   font-size: 16px;
 }
 
 .plans .plans__content__cards .plans__content__item ul {
   list-style: none;
-  padding: 2em 0 5em 0;
 }
 
 .plans .plans__content__cards .plans__content__item ul li {
@@ -437,19 +440,6 @@ Components
 .plans .plans__content__cards .plans__content__item ul li span {
   padding: .5rem 0;
   font-weight: 700;
-}
-
-.plans .plans__content__cards .plans__content__item a {
-  margin-bottom: 1.5em;
-  text-align: center;
-  padding: 1rem 1em;
-  background: #000000;
-  color: #fff;
-}
-
-.plans .plans__content__cards .plans__content__item a:hover {
-  background: #fff;
-  color: #000000;
 }
 
 .plans .plans__content__cards .plans__content__item:hover {
@@ -472,6 +462,29 @@ Components
 
 .plans .plans__content__cards .plans__content__item:hover li {
   color: #fff;
+}
+
+.plans .plans__content__cards .plans__content__item--btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.plans .plans__content__cards .plans__content__item--btn a {
+  margin-bottom: 1.5em;
+  text-align: center;
+  padding: 1rem 1em;
+  background: #000000;
+  color: #fff;
+}
+
+.plans .plans__content__cards .plans__content__item--btn a:hover {
+  background: #fff;
+  color: #000000;
 }
 
 /*Palette Color*/
