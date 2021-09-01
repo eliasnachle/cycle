@@ -1,0 +1,10 @@
+// Import palette
+@import '../../root/root';
+
+// Config pag
+body {
+    background: $black;
+}
+
+//Content
+@import '../menu/menu';

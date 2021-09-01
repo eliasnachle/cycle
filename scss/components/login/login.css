@@ -1,0 +1,77 @@
+/*Palette Color*/
+/*Resources*/
+/*Hero*/
+body {
+  background: #000000;
+}
+
+/*Palette Color*/
+/*Resources*/
+/*Hero*/
+.menu {
+  z-index: 999;
+  position: fixed;
+  width: 100%;
+  background: #000000;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 85px;
+  padding: 0 3em;
+}
+
+.menu__burger {
+  display: none;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 890px) {
+  .menu__burger {
+    display: block;
+  }
+}
+
+.menu nav ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 2vw;
+  list-style: none;
+}
+
+.menu nav ul li a {
+  -webkit-transition: ease-in 150ms;
+  transition: ease-in 150ms;
+  font-size: 16px;
+  letter-spacing: 0.25px;
+  font-weight: 600;
+  text-decoration: none;
+  color: #fff;
+}
+
+.menu nav ul li a:hover {
+  opacity: 0.7;
+}
+
+@media screen and (max-width: 890px) {
+  .menu nav {
+    display: none;
+  }
+}
+
+.menu__btn a {
+  padding: .6rem 1.5em;
+}
+
+@media screen and (max-width: 890px) {
+  .menu__btn {
+    display: none;
+  }
+}
+/*# sourceMappingURL=login.css.map */

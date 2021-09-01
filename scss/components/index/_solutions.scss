@@ -1,4 +1,5 @@
-@import '../root/root';
+// Import palette
+@import  '../../root/root';
 
 //Content
 .solutions{
@@ -36,6 +37,7 @@
                     transform: scale(1.025);
                 }
                 article{
+                    text-align: left;
                     h2{
                         font-size: 18px;
                         letter-spacing: 0.5px;
