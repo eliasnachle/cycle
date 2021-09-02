@@ -1,12 +1,14 @@
 /*Palette Color*/
 /*Resources*/
 /*Hero*/
+/*Menu*/
 /*-----
 Components
 ------*/
 /*Palette Color*/
 /*Resources*/
 /*Hero*/
+/*Menu*/
 .mobile-menu {
   -webkit-transition: all 0.5s cubic-bezier(0.45, 0.05, 0.55, 0.95);
   transition: all 0.5s cubic-bezier(0.45, 0.05, 0.55, 0.95);
@@ -63,6 +65,7 @@ Components
 /*Palette Color*/
 /*Resources*/
 /*Hero*/
+/*Menu*/
 .menu {
   z-index: 999;
   position: fixed;
@@ -133,9 +136,10 @@ Components
 /*Palette Color*/
 /*Resources*/
 /*Hero*/
+/*Menu*/
 .hero {
   width: 100%;
-  padding: calc(80px + 2em) 2em 2em 2em;
+  padding: calc(85px + 2em) 2em 2em 2em;
   background: #000000;
   display: -ms-grid;
   display: grid;
@@ -197,6 +201,7 @@ Components
 /*Palette Color*/
 /*Resources*/
 /*Hero*/
+/*Menu*/
 .partners {
   display: -ms-grid;
   display: grid;
@@ -257,6 +262,7 @@ Components
 /*Palette Color*/
 /*Resources*/
 /*Hero*/
+/*Menu*/
 .about {
   padding: 2em 2em 10em 2em;
   display: -ms-grid;
@@ -342,6 +348,7 @@ Components
 /*Palette Color*/
 /*Resources*/
 /*Hero*/
+/*Menu*/
 .plans {
   padding: 5em 2em;
   background: #000000;
@@ -490,6 +497,7 @@ Components
 /*Palette Color*/
 /*Resources*/
 /*Hero*/
+/*Menu*/
 .solutions {
   min-height: 60vh;
   padding: 4em 2em;
@@ -573,6 +581,7 @@ Components
 /*Palette Color*/
 /*Resources*/
 /*Hero*/
+/*Menu*/
 .footer {
   width: 100%;
   background: #000000;

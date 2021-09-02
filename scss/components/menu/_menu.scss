@@ -10,7 +10,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 85px;
+    height: $heightMenu;
     padding: 0 3em;
     &__burger{
         display: none;
