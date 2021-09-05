@@ -1,14 +1,16 @@
 /*Palette Color*/
 /*Resources*/
-/*Hero*/
 /*Menu*/
+/*Hero*/
+/*Login*/
 /*-----
 Components
 ------*/
 /*Palette Color*/
 /*Resources*/
-/*Hero*/
 /*Menu*/
+/*Hero*/
+/*Login*/
 .mobile-menu {
   -webkit-transition: all 0.5s cubic-bezier(0.45, 0.05, 0.55, 0.95);
   transition: all 0.5s cubic-bezier(0.45, 0.05, 0.55, 0.95);
@@ -64,8 +66,9 @@ Components
 
 /*Palette Color*/
 /*Resources*/
-/*Hero*/
 /*Menu*/
+/*Hero*/
+/*Login*/
 .menu {
   z-index: 999;
   position: fixed;
@@ -135,8 +138,9 @@ Components
 
 /*Palette Color*/
 /*Resources*/
-/*Hero*/
 /*Menu*/
+/*Hero*/
+/*Login*/
 .hero {
   width: 100%;
   padding: calc(85px + 2em) 2em 2em 2em;
@@ -200,8 +204,9 @@ Components
 
 /*Palette Color*/
 /*Resources*/
-/*Hero*/
 /*Menu*/
+/*Hero*/
+/*Login*/
 .partners {
   display: -ms-grid;
   display: grid;
@@ -261,8 +266,9 @@ Components
 
 /*Palette Color*/
 /*Resources*/
-/*Hero*/
 /*Menu*/
+/*Hero*/
+/*Login*/
 .about {
   padding: 2em 2em 10em 2em;
   display: -ms-grid;
@@ -347,8 +353,17 @@ Components
 
 /*Palette Color*/
 /*Resources*/
+<<<<<<< Updated upstream
 /*Hero*/
+<<<<<<< HEAD
 /*Menu*/
+=======
+=======
+/*Menu*/
+/*Hero*/
+/*Login*/
+>>>>>>> Stashed changes
+>>>>>>> f3ea0b48107bb490586135ee9560a57405d3d553
 .plans {
   padding: 5em 2em;
   background: #000000;
@@ -496,8 +511,17 @@ Components
 
 /*Palette Color*/
 /*Resources*/
+<<<<<<< Updated upstream
 /*Hero*/
+=======
 /*Menu*/
+/*Hero*/
+<<<<<<< HEAD
+/*Menu*/
+=======
+/*Login*/
+>>>>>>> Stashed changes
+>>>>>>> f3ea0b48107bb490586135ee9560a57405d3d553
 .solutions {
   min-height: 60vh;
   padding: 4em 2em;
@@ -580,8 +604,17 @@ Components
 
 /*Palette Color*/
 /*Resources*/
+<<<<<<< Updated upstream
 /*Hero*/
+=======
 /*Menu*/
+/*Hero*/
+<<<<<<< HEAD
+/*Menu*/
+=======
+/*Login*/
+>>>>>>> Stashed changes
+>>>>>>> f3ea0b48107bb490586135ee9560a57405d3d553
 .footer {
   width: 100%;
   background: #000000;
