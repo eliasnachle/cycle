@@ -1,5 +1,7 @@
 // Import palette
 @import '../../root/root';
+@import '../menu/menu';
+@import 'recover';
 
 // Config pag
 body {
@@ -7,4 +9,132 @@ body {
 }
 
 //Content
-@import '../menu/menu';
+.section-login{
+    height: 100%;
+    display: grid;;    
+    grid-template-columns: repeat(2, 1fr);
+    place-items: center;
+    @media (max-width: 980px){
+        padding: calc(85px + 2em) 0em 0em 0em;
+        grid-template-columns: 1fr;
+    }
+    &__illustration{        
+        padding: 0 2em;
+        width: 100%;
+        display: grid;
+        justify-content: end;
+        @media (max-width: 980px){
+            display: none;
+        }
+        &--content{
+            img{
+                width: 30vw;
+            }
+        }
+    }
+    /*-----------------------------------*/
+    //Form
+    &__content{
+        padding: 0 2em;
+        width: 100%;
+        display: grid;
+        justify-content: start;
+        @media (max-width: 980px){
+            height: 100%;
+            display: flex;
+        }
+        &__form{
+            width: 500px;
+            display: flex;
+            flex-direction: column;
+            padding: 0 1.5em;
+            justify-content: space-between;
+            @media (max-width: 980px){
+                padding: 0;
+                width: 100%;
+                
+            }
+            article{
+                padding-bottom: 2em;
+                h1{
+                    color: $white;
+                }
+            }
+            &--input{
+                input{
+                    transition: ease-in 150ms;
+                    padding: 1.25rem 1.5rem;
+                    cursor: pointer;
+                    font-size: $textFontSize;
+                    border: none;
+                    border-radius: 5px;
+                    background: $inputBackgroudColor;
+                    outline: none;
+                    color: $white;
+                    margin: .5em 0;
+                    border: 1.5px solid $black;
+                    width: 100%;
+                    &:focus{
+                        border: 1.75px solid $primary;
+                    }
+                }
+                ::placeholder{
+                    font-size: 15px;
+                    letter-spacing: 0.25px;
+                    font-weight: 600;
+                    color: $inputPlaceholder;
+                }
+            }
+            .section-login__content__form--options{
+                padding-top: 1em;
+                padding-bottom: 1.5em;
+                display: flex;
+                flex-direction: column;
+                justify-content:space-between;
+                font-size: 16px;
+                letter-spacing: 0.25px;
+                &--recover{     
+                    display: flex;               
+                    justify-content: space-between;
+                    padding-bottom: .5rem;
+                    span{
+                        display: flex;
+                        align-items: center;
+                        color: $white;
+                        cursor: pointer;
+                        gap: .25rem;
+                        input[type=checkbox]{
+                            cursor: pointer;
+                            padding: 10px;
+                            appearance: none;
+                            border-radius: 3px;
+                            background: $white;
+                            outline: none;
+                        }
+                        input[type=checkbox]:checked{
+                            content: "";
+                            position: relative;
+                            background-image: url(../../../imgs/check.png);
+                            background-size: contain;
+                            background-color: $primary;
+                        }
+                    }
+                    a{
+                        text-decoration: none;
+                        font-weight: 700;
+                        color: $primary;
+                        cursor: pointer;
+                    }
+                }
+                button{
+                    font-weight: 700;
+                    color: $black;
+                    border-radius: 5px;
+                    padding: 1.25rem 1.5rem;
+                    border: none;
+                    cursor: pointer;
+                }
+            }
+        }
+    }        
+}
