@@ -59,6 +59,17 @@ body {background: $black;}
                 }
             }
             &--input{
+                i{
+                    cursor: pointer;
+                    margin-top: 30px;
+                    margin-left: 415px;
+                    position: absolute;                
+                    color: #5E5E5E;
+                    @media screen and (max-width: 980px){
+                        margin-left: 85%;
+                        margin-left: calc(100% - 7em);
+                    }
+                }
                 input{
                     transition: ease-in 150ms;
                     padding: 1.25rem 1.5rem;

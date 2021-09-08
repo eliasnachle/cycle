@@ -20,7 +20,7 @@ Components
   z-index: 9999;
   height: 100%;
   width: 100%;
-  background: #000000;
+  background: #161616;
 }
 
 .mobile-menu__close {
@@ -73,7 +73,7 @@ Components
   z-index: 999;
   position: fixed;
   width: 100%;
-  background: #000000;
+  background: #161616;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -144,7 +144,7 @@ Components
 .hero {
   width: 100%;
   padding: calc(85px + 2em) 2em 2em 2em;
-  background: #000000;
+  background: #161616;
   display: -ms-grid;
   display: grid;
   place-items: center;
@@ -320,7 +320,7 @@ Components
 
 .about__content .about__content__left--content section article h1 {
   font-size: 20px;
-  color: #000000;
+  color: #161616;
 }
 
 .about__content .about__content__left--content section article p {
@@ -358,7 +358,7 @@ Components
 /*Login*/
 .plans {
   padding: 5em 2em;
-  background: #000000;
+  background: #161616;
   display: -ms-grid;
   display: grid;
   place-items: center;
@@ -492,13 +492,13 @@ Components
   margin-bottom: 1.5em;
   text-align: center;
   padding: 1rem 1em;
-  background: #000000;
+  background: #161616;
   color: #fff;
 }
 
 .plans .plans__content__cards .plans__content__item--btn a:hover {
   background: #fff;
-  color: #000000;
+  color: #161616;
 }
 
 /*Palette Color*/
@@ -593,7 +593,7 @@ Components
 /*Login*/
 .footer {
   width: 100%;
-  background: #000000;
+  background: #161616;
   padding-top: 1.5em;
 }
 

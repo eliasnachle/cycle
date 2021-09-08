@@ -12,7 +12,7 @@
   z-index: 999;
   position: fixed;
   width: 100%;
-  background: #000000;
+  background: #161616;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -89,7 +89,7 @@
   z-index: 999;
   position: fixed;
   width: 100%;
-  background: #000000;
+  background: #161616;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -200,7 +200,7 @@ body {
   outline: none;
   color: #fff;
   margin: .5em 0;
-  border: 1.5px solid #000000;
+  border: 1.5px solid #161616;
 }
 
 .section-recover__content__form input:focus {
@@ -237,7 +237,7 @@ body {
 
 .section-recover__content__form button {
   font-weight: 700;
-  color: #000000;
+  color: #161616;
   border-radius: 5px;
   padding: 1.25rem 1.5rem;
   border: none;
@@ -253,7 +253,7 @@ body {
 }
 
 body {
-  background: #000000;
+  background: #161616;
 }
 
 .section-login {
@@ -343,6 +343,21 @@ body {
   color: #fff;
 }
 
+.section-login__content__form--input i {
+  cursor: pointer;
+  margin-top: 30px;
+  margin-left: 415px;
+  position: absolute;
+  color: #5E5E5E;
+}
+
+@media screen and (max-width: 980px) {
+  .section-login__content__form--input i {
+    margin-left: 85%;
+    margin-left: calc(100% - 7em);
+  }
+}
+
 .section-login__content__form--input input {
   -webkit-transition: ease-in 150ms;
   transition: ease-in 150ms;
@@ -355,7 +370,7 @@ body {
   outline: none;
   color: #fff;
   margin: .5em 0;
-  border: 1.5px solid #000000;
+  border: 1.5px solid #161616;
   width: 100%;
 }
 
@@ -458,7 +473,7 @@ body {
 
 .section-login__content__form .section-login__content__form--options button {
   font-weight: 700;
-  color: #000000;
+  color: #161616;
   border-radius: 5px;
   padding: 1.25rem 1.5rem;
   border: none;
