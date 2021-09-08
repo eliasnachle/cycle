@@ -8,12 +8,9 @@ passwordReg = /^(?=.*[0-9]{1})(?=.*[\W]{1})(?=.*[a-z]{1})[a-zA-Z0-9\W]{6,30}$/;
 login.addEventListener('keyup', () => {    
     const iptLoginValue = login.value;
     if(iptLoginValue.match(loginReg)){
-        validate_login.innerHTML = '';
         ipt_login.style.border = '1.5px solid #25A9EE';        
         ipt_login.style.color = '#fff';
     } else {
-        validate_login.style.color = '#FB4B4B';
-        validate_login.innerHTML = 'Login Inválido';
         ipt_login.style.border = '1.5px solid #FB4B4B';
         ipt_login.style.color = '#FB4B4B';
     }
@@ -23,12 +20,9 @@ login.addEventListener('keyup', () => {
 password.addEventListener('keyup', () => {    
     const iptPasswordValue = password.value;
     if(iptPasswordValue.match(passwordReg)){
-        validate_password.innerHTML = '';
         password.style.border = '1.5px solid #25A9EE';        
         password.style.color = '#fff';
     } else {
-        validate_password.style.color = '#FB4B4B';
-        validate_password.innerHTML = 'Senha Inválida';
         password.style.border = '1.5px solid #FB4B4B';
         password.style.color = '#FB4B4B';
     }
