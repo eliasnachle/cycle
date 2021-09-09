@@ -207,6 +207,28 @@ Components
 /*Menu*/
 /*Hero*/
 /*Login*/
+.request {
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+  padding: 4em 2em;
+}
+
+.request__content {
+  width: 100%;
+  max-width: 1080px;
+  text-align: center;
+}
+
+.request__content img {
+  width: 50vw;
+}
+
+/*Palette Color*/
+/*Resources*/
+/*Menu*/
+/*Hero*/
+/*Login*/
 .partners {
   display: -ms-grid;
   display: grid;
@@ -548,9 +570,7 @@ Components
   -webkit-transition: ease-in 150ms;
   transition: ease-in 150ms;
   cursor: pointer;
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
+  width: auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
