@@ -253,7 +253,7 @@ body {
 }
 
 body {
-  background: #161616;
+  background: #fff;
 }
 
 .section-login {
@@ -336,11 +336,43 @@ body {
 }
 
 .section-login__content__form article {
-  padding-bottom: 2em;
+  padding-bottom: 1em;
 }
 
 .section-login__content__form article h1 {
-  color: #fff;
+  color: #161616;
+}
+
+.section-login__content__form select {
+  margin-top: 10px;
+  display: block;
+  margin-left: auto;
+  margin-right: 0;
+  -webkit-transition: ease-in 150ms;
+  transition: ease-in 150ms;
+  padding: 0.45rem 0.5rem;
+  cursor: pointer;
+  font-size: clamp(16px, 1rem, 18px);
+  border: none;
+  border-radius: 7px;
+  background: #fff;
+  outline: none;
+  color: #222222;
+  border: 1.5px solid #B8B8B8;
+}
+
+.section-login__content__form select:focus {
+  border: 1.5px solid #25A9EE;
+}
+
+.section-login__content__form label {
+  margin-top: 1px;
+  font-weight: 700;
+  color: #161616;
+}
+
+.section-login__content__form .email {
+  margin-bottom: 5px;
 }
 
 .section-login__content__form--input i {
@@ -366,16 +398,16 @@ body {
   font-size: clamp(16px, 1rem, 18px);
   border: none;
   border-radius: 5px;
-  background: #222222;
+  background: #fff;
   outline: none;
-  color: #fff;
-  margin: .5em 0;
-  border: 1.5px solid #161616;
+  color: #25A9EE;
+  margin: .1em 0;
+  border: 1.5px solid #B8B8B8;
   width: 100%;
 }
 
 .section-login__content__form--input input:focus {
-  border: 1.75px solid #25A9EE;
+  border: 1.5px solid #25A9EE;
 }
 
 .section-login__content__form--input ::-webkit-input-placeholder {
@@ -407,7 +439,6 @@ body {
 }
 
 .section-login__content__form .section-login__content__form--options {
-  padding-top: 1em;
   padding-bottom: 1.5em;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -430,7 +461,8 @@ body {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  padding-bottom: .5rem;
+  padding-bottom: .2rem;
+  padding-top: 0.7em;
 }
 
 .section-login__content__form .section-login__content__form--options--recover span {
@@ -466,17 +498,38 @@ body {
 
 .section-login__content__form .section-login__content__form--options--recover a {
   text-decoration: none;
-  font-weight: 700;
-  color: #25A9EE;
+  color: #999999;
   cursor: pointer;
+  font-size: small;
+  margin-top: 11px;
 }
 
 .section-login__content__form .section-login__content__form--options button {
   font-weight: 700;
-  color: #161616;
+  color: #fff;
+  background-color: #25A9EE;
   border-radius: 5px;
   padding: 1.25rem 1.5rem;
   border: none;
   cursor: pointer;
+}
+
+.section-login__content__form .section-login__content__form--options span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 10px;
+}
+
+.section-login__content__form .section-login__content__form--options p {
+  color: #999999;
+}
+
+.section-login__content__form .section-login__content__form--options a {
+  text-decoration: none;
+  font-weight: 700;
+  color: #25A9EE;
+  cursor: pointer;
+  margin-left: 7px;
 }
 /*# sourceMappingURL=login.css.map */
