@@ -63,6 +63,24 @@ Resources
   color: #fff;
 }
 
+.btn-mobile {
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  border-radius: 3px;
+  color: #25A9EE;
+  background: white;
+  -webkit-transition: ease-in 300ms;
+  transition: ease-in 300ms;
+  padding: 10px;
+}
+
+.btn-mobile:hover {
+  background: #25A9EE;
+  color: #fff;
+}
+
 .title-text {
   font-weight: 700;
   font-size: clamp(2em, 2.5vw, 3em);

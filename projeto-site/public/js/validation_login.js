@@ -17,16 +17,16 @@ login.addEventListener('keyup', () => {
 });
 
 // Validação Senha
-password.addEventListener('keyup', () => {    
-    const iptPasswordValue = password.value;
-    if(iptPasswordValue.match(passwordReg)){
-        password.style.border = '1.5px solid #25A9EE';        
-        password.style.color = '#25A9EE';
-    } else {
-        password.style.border = '1.5px solid #FB4B4B';
-        password.style.color = '#FB4B4B';
-    }
-});
+// password.addEventListener('keyup', () => {    
+//     const iptPasswordValue = password.value;
+//     if(iptPasswordValue.match(passwordReg)){
+//         password.style.border = '1.5px solid #25A9EE';        
+//         password.style.color = '#25A9EE';
+//     } else {
+//         password.style.border = '1.5px solid #FB4B4B';
+//         password.style.color = '#FB4B4B';
+//     }
+// });
 
 // Toggle Password
 togglePassword.addEventListener('click', () => {
