@@ -259,6 +259,7 @@ body {
 }
 
 .section-login {
+  padding-top: 20px;
   height: 100%;
   display: -ms-grid;
   display: grid;

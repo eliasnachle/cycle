@@ -8,6 +8,7 @@ body {background: $white;}
 
 //Content
 .section-login{
+    padding-top: 20px;
     height: 100%;
     display: grid;;    
     grid-template-columns: repeat(2, 1fr);
