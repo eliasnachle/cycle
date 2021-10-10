@@ -6,7 +6,7 @@ email.addEventListener('keyup', () => {
     const iptEmailValue = email.value;
     if(iptEmailValue.match(emailReg)){
         ipt_email.style.border = '1.5px solid #25A9EE';        
-        ipt_email.style.color = '#fff';
+        ipt_email.style.color = '#25A9EE';
     } else {
         ipt_email.style.border = '1.5px solid #FB4B4B';
         ipt_email.style.color = '#FB4B4B';

@@ -158,6 +158,7 @@ body {
 
 .section-recover {
   padding: calc(85px + 2em) 2em 0em 2em;
+  height: calc(100vh - 85px);
   display: -ms-grid;
   display: grid;
   place-items: center;
@@ -185,7 +186,7 @@ body {
 }
 
 .section-recover__content__form article h1 {
-  color: #fff;
+  color: #161616;
 }
 
 .section-recover__content__form input {
@@ -196,11 +197,11 @@ body {
   font-size: clamp(16px, 1rem, 18px);
   border: none;
   border-radius: 5px;
-  background: #222222;
+  background: #fff;
   outline: none;
-  color: #fff;
+  color: #25A9EE;
   margin: .5em 0;
-  border: 1.5px solid #161616;
+  border: 1.5px solid #B8B8B8;
 }
 
 .section-recover__content__form input:focus {
@@ -237,7 +238,8 @@ body {
 
 .section-recover__content__form button {
   font-weight: 700;
-  color: #161616;
+  color: #fff;
+  background-color: #25A9EE;
   border-radius: 5px;
   padding: 1.25rem 1.5rem;
   border: none;

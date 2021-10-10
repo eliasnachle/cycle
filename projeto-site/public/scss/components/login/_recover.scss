@@ -8,6 +8,7 @@ body {background: red ;}
 //Content
 .section-recover{
     padding: calc(85px + 2em) 2em 0em 2em;
+    height: calc(100vh - 85px );
     display: grid;
     place-items: center;
     &__content{
@@ -21,7 +22,7 @@ body {background: red ;}
             flex-direction: column;
             article{
                 h1{
-                    color: $white;
+                    color: $black;
                 }
             }
             input{
@@ -31,11 +32,11 @@ body {background: red ;}
                 font-size: $textFontSize;
                 border: none;
                 border-radius: 5px;
-                background: $inputBackgroudColor;
+                background: $white;
                 outline: none;
-                color: $white;
+                color: $primary;
                 margin: .5em 0;
-                border: 1.5px solid $black;
+                border: 1.5px solid $inputBorder;
                 &:focus{
                     border: 1.75px solid $primary;
                 }
@@ -48,7 +49,8 @@ body {background: red ;}
             }
             button{
                 font-weight: 700;
-                color: $black;
+                color: $white;
+                background-color: $primary;
                 border-radius: 5px;
                 padding: 1.25rem 1.5rem;
                 border: none;
