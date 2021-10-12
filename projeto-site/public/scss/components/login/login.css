@@ -259,8 +259,8 @@ body {
 }
 
 .section-login {
-  padding-top: 20px;
-  height: 100%;
+  height: 100vh;
+  padding-top: calc(85px + 2em);
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: (1fr)[2];
