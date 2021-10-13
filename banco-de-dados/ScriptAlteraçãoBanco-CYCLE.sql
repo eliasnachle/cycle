@@ -1,18 +1,18 @@
 -- Configurando foreign key da tabela unidade
-ALTER TABLE tblUnidade ADD FOREIGN KEY (idUsuarioContratante) REFERENCES tblUsuarioContratante(idUsuarioContratante);
-ALTER TABLE tblUnidade ADD FOREIGN KEY (idCodigoUf) REFERENCES tblCodigoUf(idCodigoUf);
+ALTER TABLE tblUnidades ADD FOREIGN KEY (idUsuarioContratante) REFERENCES tblUsuariosContratante(idUsuarioContratante);
+ALTER TABLE tblUnidades ADD FOREIGN KEY (idCodigoUf) REFERENCES tblCodigosUf(idCodigoUf);
 
 -- Configurando foreign key da tabela contratante
-ALTER TABLE tblUsuarioContratante ADD FOREIGN KEY (idPlano) REFERENCES tblPlano(idPlano);
+ALTER TABLE tblUsuariosContratante ADD FOREIGN KEY (idPlano) REFERENCES tblPlanos(idPlano);
 
 -- Configurando foreign key da tabela usuario suporte
-ALTER TABLE tblUsuarioSuporte ADD FOREIGN KEY (idUsuarioContratante) REFERENCES tblUsuarioContratante(idUsuarioContratante);
+ALTER TABLE tblUsuariosSuporte ADD FOREIGN KEY (idUsuarioContratante) REFERENCES tblUsuariosContratante(idUsuarioContratante);
 
 -- Configurando foreign key da tabela maquina
-ALTER TABLE tblMaquina ADD FOREIGN KEY (idUnidade) REFERENCES tblUnidade(idUnidade);
+ALTER TABLE tblMaquinas ADD FOREIGN KEY (idUnidade) REFERENCES tblUnidades(idUnidade);
 
 -- Configurando foreign key da tabela registro
-ALTER TABLE tblRegistro ADD FOREIGN KEY (idMaquina) REFERENCES tblMaquina(idMaquina);
+ALTER TABLE tblRegistros ADD FOREIGN KEY (idMaquina) REFERENCES tblMaquinas(idMaquina);
 
 -- Configurando foreign key da tabela alerta
-ALTER TABLE tblAlerta ADD FOREIGN KEY (idRegistro) REFERENCES tblRegistro(idRegistro);
+ALTER TABLE tblAlertas ADD FOREIGN KEY (idRegistro) REFERENCES tblRegistros(idRegistro);

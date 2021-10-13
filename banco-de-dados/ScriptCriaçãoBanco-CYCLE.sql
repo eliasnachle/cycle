@@ -2,7 +2,7 @@ CREATE DATABASE IF NOT EXISTS cycle;
 
 USE cycle;
 
-CREATE TABLE tblUnidade (
+CREATE TABLE tblUnidades (
 	idUnidade INT PRIMARY KEY AUTO_INCREMENT,
 	nomeUnidade VARCHAR(60),
 	enderecoUnidade VARCHAR(255),
@@ -12,7 +12,7 @@ CREATE TABLE tblUnidade (
 	idCodigoUf INT
 );
 
-CREATE TABLE tblUsuarioContratante(
+CREATE TABLE tblUsuariosContratante(
 	idUsuarioContratante INT PRIMARY KEY AUTO_INCREMENT,
 	nomeContratante VARCHAR(80),
 	emailContratante VARCHAR(80),
@@ -21,27 +21,27 @@ CREATE TABLE tblUsuarioContratante(
 	idPlano INT
 );
 
-CREATE TABLE tblUsuarioSuporte (
-	idSuporte INT PRIMARY KEY AUTO_INCREMENT,
+CREATE TABLE tblUsuariosSuporte (
+	idUsuarioSuporte INT PRIMARY KEY AUTO_INCREMENT,
 	nomeSuporte VARCHAR(80),
-	loginSuporte VARCHAR(30),
+	emailSuporte VARCHAR(30),
 	senhaSuporte VARCHAR(20),
 	idUsuarioContratante INT
 );
 
-CREATE TABLE IF NOT EXISTS tblCodigoUf (
+CREATE TABLE IF NOT EXISTS tblCodigosUf (
 	idCodigoUf INT PRIMARY KEY AUTO_INCREMENT,
 	descCodigoUf varchar(2)
 );
 
-CREATE TABLE tblPlano (
+CREATE TABLE tblPlanos (
 	idPlano INT PRIMARY KEY AUTO_INCREMENT,
 	nomePlano VARCHAR(20),
 	qntMaquinas INT,
 	valorPlano DOUBLE
 );
 
-CREATE TABLE tblMaquina (
+CREATE TABLE tblMaquinas (
 	idMaquina INT PRIMARY KEY AUTO_INCREMENT,
 	apelidoMaquina VARCHAR(30),
     tipoMaquina VARCHAR(10),
@@ -55,7 +55,7 @@ CREATE TABLE tblMaquina (
 	idUnidade INT
 );
 
-CREATE TABLE tblRegistro (
+CREATE TABLE tblRegistros (
 	idRegistro INT PRIMARY KEY AUTO_INCREMENT,
     cpuEmUso DOUBLE,
     temperaturaCpu DOUBLE,
@@ -65,7 +65,7 @@ CREATE TABLE tblRegistro (
     idMaquina INT
 );
 
-CREATE TABLE tblAlerta (
+CREATE TABLE tblAlertas (
 	idAlerta INT PRIMARY KEY AUTO_INCREMENT,
     componenteInstavel VARCHAR(10),
     nivelCriticidade VARCHAR(10),
