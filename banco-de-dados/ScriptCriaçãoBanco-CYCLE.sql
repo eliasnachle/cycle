@@ -22,7 +22,7 @@ CREATE TABLE tblUsuarioContratante(
 );
 
 CREATE TABLE tblUsuarioSuporte (
-	idSup INT PRIMARY KEY AUTO_INCREMENT,
+	idSuporte INT PRIMARY KEY AUTO_INCREMENT,
 	nomeSuporte VARCHAR(80),
 	loginSuporte VARCHAR(30),
 	senhaSuporte VARCHAR(20),
@@ -56,7 +56,7 @@ CREATE TABLE tblMaquina (
 );
 
 CREATE TABLE tblRegistro (
-	idregistro INT PRIMARY KEY AUTO_INCREMENT,
+	idRegistro INT PRIMARY KEY AUTO_INCREMENT,
     cpuEmUso DOUBLE,
     temperaturaCpu DOUBLE,
     espacoOcupadoDisco DOUBLE,
