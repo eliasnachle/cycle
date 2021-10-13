@@ -13,3 +13,6 @@ ALTER TABLE tblMaquina ADD FOREIGN KEY (idUnidade) REFERENCES tblUnidade(idUnida
 
 -- Configurando foreign key da tabela registro
 ALTER TABLE tblRegistro ADD FOREIGN KEY (idMaquina) REFERENCES tblMaquina(idMaquina);
+
+-- Configurando foreign key da tabela alerta
+ALTER TABLE tblAlerta ADD FOREIGN KEY (idRegistro) REFERENCES tblRegistro(idRegistro);
