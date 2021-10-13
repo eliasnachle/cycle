@@ -17,7 +17,7 @@ CREATE TABLE tblUsuarioContratante(
 	nomeContratante VARCHAR(80),
 	emailContratante VARCHAR(80),
 	senhaContratante VARCHAR(20),
-	cnpfContratante VARCHAR(14),
+	cpfContratante VARCHAR(14),
 	idPlano INT
 );
 
