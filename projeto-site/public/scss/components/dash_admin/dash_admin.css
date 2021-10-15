@@ -7,8 +7,8 @@
   background: #161616;
   position: fixed;
   height: 100%;
-  width: 16em;
-  padding: 0 1em;
+  width: 18em;
+  padding: 0 2em;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -39,7 +39,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  height: 200px;
+  height: 150px;
   align-items: center;
   -ms-flex-pack: distribute;
       justify-content: space-around;

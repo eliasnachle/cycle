@@ -1,3 +1,4 @@
+//alterar seleção na dash do administrador
 const linkColor = document.querySelectorAll('.nav-link');   
 function colorLink(){
     linkColor.forEach(i => i.classList.remove('active'));
