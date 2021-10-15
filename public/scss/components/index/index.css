@@ -3,6 +3,7 @@
 /*Menu*/
 /*Hero*/
 /*Login*/
+/*Cadastro*/
 /*-----
 Components
 ------*/
@@ -11,6 +12,7 @@ Components
 /*Menu*/
 /*Hero*/
 /*Login*/
+/*Cadastro*/
 .mobile-menu {
   -webkit-transition: all 0.5s cubic-bezier(0.45, 0.05, 0.55, 0.95);
   transition: all 0.5s cubic-bezier(0.45, 0.05, 0.55, 0.95);
@@ -71,6 +73,7 @@ Components
 /*Menu*/
 /*Hero*/
 /*Login*/
+/*Cadastro*/
 .menu {
   z-index: 999;
   position: fixed;
@@ -143,6 +146,7 @@ Components
 /*Menu*/
 /*Hero*/
 /*Login*/
+/*Cadastro*/
 .hero {
   width: 100%;
   padding: calc(85px + 2em) 2em 2em 2em;
@@ -209,6 +213,7 @@ Components
 /*Menu*/
 /*Hero*/
 /*Login*/
+/*Cadastro*/
 .request {
   display: -ms-grid;
   display: grid;
@@ -231,6 +236,7 @@ Components
 /*Menu*/
 /*Hero*/
 /*Login*/
+/*Cadastro*/
 .partners {
   display: -ms-grid;
   display: grid;
@@ -293,6 +299,7 @@ Components
 /*Menu*/
 /*Hero*/
 /*Login*/
+/*Cadastro*/
 .about {
   padding: 2em 2em 10em 2em;
   display: -ms-grid;
@@ -380,6 +387,7 @@ Components
 /*Menu*/
 /*Hero*/
 /*Login*/
+/*Cadastro*/
 .plans {
   padding: 5em 2em;
   background: #161616;
@@ -530,13 +538,13 @@ Components
 /*Menu*/
 /*Hero*/
 /*Login*/
+/*Cadastro*/
 .solutions {
   min-height: 60vh;
   padding: 4em 2em;
   display: -ms-grid;
   display: grid;
   place-items: center;
-  background: red;
 }
 
 .solutions__content {
@@ -614,6 +622,7 @@ Components
 /*Menu*/
 /*Hero*/
 /*Login*/
+/*Cadastro*/
 .footer {
   width: 100%;
   background: #161616;
