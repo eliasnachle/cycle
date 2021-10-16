@@ -2,10 +2,10 @@ module.exports = {
   // Insira aqui seus dados do banco NA NUVEM AZURE
 
   production: {
-    username: 'wesley',
-    password: '#Gfgrupo9',
-    database: 'database-demo',
-    host: 'server-bandtec-g9.database.windows.net',
+    username: 'grupo4_2adsb',
+    password: 'group4_cycle',
+    database: 'database_cycle',
+    host: 'cycle-project.database.windows.net',
     dialect: 'mssql',
     xuse_env_variable: 'DATABASE_URL',
     dialectOptions: {
