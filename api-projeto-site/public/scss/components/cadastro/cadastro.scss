@@ -1,0 +1,640 @@
+@import '../../root/root';
+@import '../menu/menu';
+
+
+.menu{
+  @media (min-width: 800px){
+    background-color: transparent;
+    }
+}
+
+//----------------------------------------------- estrutura --------------------------------------------------------
+.section-registration{
+  height: 100vh;
+  display: grid;;    
+  place-items: center;
+  @media (max-width: 980px){
+      padding: 0;
+      grid-template-columns: 1fr;
+  }
+  @media (max-width: 799px){
+    height: 0;
+    margin-top: 85px;
+  }
+
+  .content {
+    width: 100%;
+  }
+  
+  .col-input{
+    margin-top: 1em;
+  }
+
+  .content-sidebar {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .content-sidebar > *:nth-child(1) {
+    padding: 0 1.5em;
+    flex: 1 1 30%;
+    min-width: 25ch;
+    overflow: hidden;
+    background-color: #F3F3F3;
+    @media (min-width: 800px){
+      max-width: 30ch;
+      background-color: $black;
+      height: 100vh;
+      padding: 11em 4em;
+      }
+  }
+  
+  .content-sidebar > *:nth-child(2) {
+    padding: 1em;
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 70%;
+    flex: 1 1 70%;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    min-width: 25ch;
+    background-color: white;
+      @media (min-width: 800px){
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        justify-content: center;
+        max-height:100vh;
+        overflow: auto;
+      }
+
+      //@media (min-width: 800px) and (max-width:1399px){
+        //padding-top: 500px;
+     // }
+
+    }
+
+    
+  }
+
+//---------------------------------- estrututa formulario de etapas --------------------------------------
+/* Progressbar */
+  .progressbar {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    counter-reset: step;
+    margin: 2rem 0 4rem;
+    @media (min-width: 800px){
+      flex-direction: column;
+      gap: 3em;
+    }
+  }
+  .progressbar::before,
+  .progress {
+    content: "";
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 4px;
+    width: 100%;
+    background-color: $progressbar;
+    z-index: 1;
+      @media (min-width: 800px){
+        z-index: -1;
+      }
+  }
+
+  .progress {
+    background-color: $primary;
+    width: 0%;
+    transition: 0.3s;
+  }
+
+  .progress-step {
+    width: 2.1875rem;
+    height: 2.1875rem;
+    background-color: #a2a2a2;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .progress-step::before {
+    counter-increment: step;
+    content: counter(step);
+    z-index: 2;
+    color: $white;
+  }
+
+  .progress-step::after {
+    content: attr(data-title);
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    font-size: 0.85rem;
+    color: $secondaryFontColor;
+    z-index: 2;
+    @media (min-width: 800px){
+    top: auto;
+    margin-left: 9em;
+      text-align: initial;
+
+      }
+  }
+
+  .progress-step-active {
+    background-color: $primary;
+    color: $white;
+    z-index: 2;
+  }
+
+  /* Form */
+  .form {
+    margin: 0 auto;
+    border-radius: 0.35rem;
+  }
+
+  .form-step {
+    display: none;
+    transform-origin: top;
+    animation: animate 0.5s;
+    @media (min-width: 800px){
+      width: 70%;;
+    }
+  }
+
+.form-step-active {
+  display: block;
+}
+
+.input-group {
+  margin: 2rem 0;
+}
+
+@keyframes animate {
+  from {
+    transform: scale(1, 0);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1, 1);
+    opacity: 1;
+  }
+}
+
+/* Button */
+.btns-group {
+  display: flex;
+  justify-content: space-between;
+  @media (max-width: 1150px){
+    display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  }
+
+}
+
+.btns-form{
+  margin-top: 2em;
+}
+
+.btns {
+  padding: 1.25rem 1.5rem;
+  display: block;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.3s;
+  font-weight: 700;
+  color: $white;
+  border-radius: 5px;
+  border: none;
+  width: 200px;
+  @media (max-width: 1150px){
+    width: 100%;
+  }
+}
+  .btn-prev{
+    background-color: $black;
+  }
+
+  .btn-next{
+    background-color: $primary;
+    float: right;
+    right: 0;
+  }
+
+  .width-50{
+    float: right;
+  }
+  
+  // ----------------------------------------- step 1 = formulario ---------------------------------------------------
+
+  .boxes .inputs{
+    width: 100%;
+    margin-bottom: 5px;
+    box-sizing: border-box;
+    margin-bottom: 0.5em;
+    margin-top: 0.5em;
+  }
+  
+  @media screen and (min-width: 1150px) {
+    .boxes {
+      display: grid;
+      gap: 1em;
+      grid-template-columns: repeat(2, 1fr);
+      margin-bottom: 1.5em;
+      margin-top: 1.5em;
+    }
+    
+    .boxes .inputs:nth-of-type(1) {
+      order: 1;
+    }
+    
+    .boxes .inputs:nth-of-type(2) {
+      order: 2;
+    }
+    
+    .boxes .inputs:nth-of-type(3) {
+      order: 3;
+    }
+    
+    .boxes .inputs:nth-of-type(4) {
+      order: 4;
+    }
+  }
+
+  // inputs
+.form-inputs{
+  article{
+    padding-bottom: 1em;
+      h1{
+        color: $black;
+      }
+  }
+
+  label{
+    margin-top: 1px;
+    font-weight: 700;
+    color: $black;
+    text-align: initial;
+  }
+
+  .toggle-passowrd{
+    cursor: pointer;
+    margin-top: 30px;
+    position: absolute;                
+    color: #5E5E5E;
+      @media screen and (max-width: 980px){
+        margin-left: 85%;
+        margin-left: calc(100% - 7em);
+      }
+  }
+
+  input{
+    transition: ease-in 150ms;
+    padding: 1.25rem 1.5rem;
+    cursor: pointer;
+    font-size: $textFontSize;
+    border: none;
+    border-radius: 5px;
+    background: $white;
+    outline: none;
+    color: $primary;
+    margin: .1em 0;
+    border: 1.5px solid $inputBorder;
+    width: 100%;
+      &:focus{
+        border: 1.5px solid $primary;
+      }            
+  }
+  ::placeholder{
+    font-size: 15px;
+    letter-spacing: 0.25px;
+    font-weight: 600;
+    color: $inputPlaceholder;
+  }
+}
+
+// ----------------------------------------- step 2 = planos ---------------------------------------------------------
+
+//titulo dos planos
+.black{
+  color: $black;
+}
+
+.primary{
+  color: $primary;
+}
+
+.box-plan .plan{
+  width: 70%;
+  box-sizing: border-box;
+  margin-bottom: 0.5em;
+  margin-top: 0.5em;
+ 
+  display: flex;
+  align-content: space-between;
+  justify-content: space-between;
+}
+
+@media screen and (min-width: 1238px) {
+  .box-plan {
+    gap: 1em;
+    display: grid;
+    display: flex;
+    align-content: space-between;
+    justify-content: space-between;
+    grid-template-columns: repeat(3, 1fr);
+    margin-bottom: 1.5em;
+    margin-top: 1.5em;
+  }
+  
+  .boxes .plan:nth-of-type(1) {
+    order: 1;
+  }
+  
+  .boxes .plan:nth-of-type(2) {
+    order: 2;
+  }
+  
+  .boxes .plan:nth-of-type(3) {
+    order: 3;
+  }
+  
+}
+
+// responsividade
+@media (max-width: 1237px){
+  .plans-web{
+    display: none;
+  }
+
+  .plans-mobile{
+    display: block;
+  }
+}
+
+@media (min-width: 1238px){
+  .plans-web{
+    display: block;
+  }
+
+  .plans-mobile{
+    display: none;
+  }
+}
+
+// Planos WEB
+
+.form .plan input, .form .payment-plan input, .form .payment-type input{
+	display: none;
+}
+
+.form .label{
+  padding: 40px 20px;
+	position: relative;
+	color: #999999;
+	background-color: rgb(255, 255, 255);
+	font-size: 1rem;
+	text-align: center;
+	height: auto;
+	display: block;
+	cursor: pointer;
+	border: 1px solid #B7B7B7;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+  border-radius: 5px;
+  width: 100%;
+
+  h1{
+    font-size: 2rem;
+    text-align: initial;
+    span{
+      font-size: medium;
+      font-weight: normal;
+    }
+  }
+  li{
+    margin-top: 1em;
+    font-size: $textFontSize;
+    list-style: none;
+    text-align: initial;
+      i{
+        color: $black;
+      }
+  }
+  
+}
+
+.form .plan input:checked + label, .form .payment-plan input:checked + label, .form .payment-type input:checked + label{
+	border: 1px solid $primary;
+  border-radius: 5px;
+
+}
+
+.form .plan input:checked + label:after, form .payment-plan input:checked + label:after, .form .payment-type input:checked + label:after{
+	content: "\2713";
+	width: 20px;
+	height: 20px;
+	line-height: 20px;
+	border-radius: 100%;
+	border: 2px solid $primary;
+  color: $white;
+  background-color: $primary;
+	z-index: 999;
+	position: absolute;
+	top: 10px;
+	right: 10px;
+}
+
+.submit{
+	padding: 15px 60px;
+	display: inline-block;
+	border: none;
+	margin: 20px 0;
+	color: #fff;
+	border: 2px solid #333;
+	font-size: 18px;
+	-webkit-transition: transform 0.3s ease-in-out;
+	-o-transition: transform 0.3s ease-in-out;
+	transition: transform 0.3s ease-in-out;
+}
+
+.submit:hover{
+	cursor: pointer;
+	transform: rotateX(360deg);
+}
+
+// Planos MOBILE
+
+.accordion {
+  // .accordion-item {
+  //   border-bottom: 1px solid $primary;
+  //   button[aria-expanded='true'] {
+  //     border-bottom: 1px solid red;
+  //   }
+  // }
+  button {
+    position: relative;
+    display: block;
+    text-align: left;
+    width: 100%;
+    padding: 1em 1em 0em 1em;
+    color: $primary;
+    font-size: 1.15rem;
+    border: none;
+    font-weight: 400;
+    background: none;
+    outline: none;
+    &:hover, &:focus {
+      cursor: pointer;
+      color: $primary;
+      &::after {
+        cursor: pointer;
+        color: rgb(255, 255, 255);
+
+      }
+    }
+    .accordion-title {
+      padding: 1em 1.5em 1em 0;
+    }
+    .icon {
+      display: inline-block;
+      position: absolute;
+      top: 18px;
+      right: 0;
+      width: 22px;
+      height: 22px;
+      border: 1px solid;
+      border-radius: 22px;
+      &::before {
+        display: block;
+        position: absolute;
+        content: '';
+        top: 9px;
+        left: 5px;
+        width: 10px;
+        height: 2px;
+        background: currentColor;
+      }
+      &::after {
+        display: block;
+        position: absolute;
+        content: '';
+        top: 5px;
+        left: 9px;
+        width: 2px;
+        height: 10px;
+        background: currentColor;
+      }
+    }
+  }
+  button[aria-expanded='true'] {
+    color: $primary;
+    .icon {
+      &::after {
+        width: 0;
+      }
+    }
+    + .accordion-content {
+      opacity: 1;
+      max-height: 9em;
+      transition: all 200ms linear;
+      will-change: opacity, max-height;
+    }
+  }
+  .accordion-content {
+    color: #999999;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity 200ms linear, max-height 200ms linear;
+    will-change: opacity, max-height;
+    .dropdown-menu{
+      list-style: none;
+        i{
+          color: $black;
+        }
+
+        li{
+          margin-left: 1.2em;
+          margin-bottom: 0.5em;
+        }
+    }
+    }
+  }
+
+.border-list{
+  border: 1px solid $primary;
+  padding: 0em 1em 0em 1em;
+  border-radius: 10px;
+  margin-bottom: 1em;
+  margin-top: 0.5em;
+}
+
+.black{
+  color: black;
+}
+
+.primary{
+  color: $primary;
+}
+
+.grow{
+  display: flex;
+}
+
+.grow1{
+  flex-grow: 1;
+}
+
+.space{
+  display: flex; width: 100%; justify-content: space-between;
+}
+
+.margin-inp{
+  margin-top: 3em;
+}
+
+.qrcode{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .qr{
+    width: 100%;
+  }
+  .btn-pix{
+    padding: 1rem;
+    font-size: medium;
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+    font-weight: 700;
+    color: #fff;
+    border-radius: 5px;
+    border: none;
+    width: 100%;
+    background-color: $black;
+  }
+  p{
+    text-align: initial;
+  }
+
+  .img-finish{
+    width: 50%;
+  }
+
+}
+
+.btn-100{
+  width: 100%;
+}
