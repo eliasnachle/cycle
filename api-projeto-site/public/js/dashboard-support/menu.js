@@ -5,13 +5,16 @@ iconNotification = document.querySelector('.header--profile-content--icon > i'),
 iconNotificationMobile = document.querySelector('.mobile-menu-options > ul > a:nth-child(1)');
 
 // Troca imagem menu
-window.addEventListener('resize', () => {
+window.addEventListener('load', logoSize);
+window.addEventListener('resize', logoSize);
+
+function logoSize(){
   if(window.innerWidth > 1080){        
     sidebarLogo.src = "../imgs/request.svg";
   } else {
     sidebarLogo.src = "../imgs/small_logo_request.svg";    
   }  
-})
+}
 
 // Toggle opções do menu mobile e adiciona overlay  
 document.onclick = function(e){
