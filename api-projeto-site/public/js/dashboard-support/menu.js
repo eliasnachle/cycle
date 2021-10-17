@@ -7,9 +7,9 @@ iconNotificationMobile = document.querySelector('.mobile-menu-options > ul > a:n
 // Troca imagem menu
 window.addEventListener('resize', () => {
   if(window.innerWidth > 1080){        
-    sidebarLogo.src = "/imgs/request.svg";
+    sidebarLogo.src = "../imgs/request.svg";
   } else {
-    sidebarLogo.src = "/imgs/small_logo_request.svg";    
+    sidebarLogo.src = "../imgs/small_logo_request.svg";    
   }  
 })
 
