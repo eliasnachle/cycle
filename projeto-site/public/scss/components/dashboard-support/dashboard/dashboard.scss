@@ -19,6 +19,18 @@ main{
   box-sizing: border-box;
   font-family: 'Nunito Sans', sans-serif;
 }
+/*-------
+Resources
+-------*/
+.overlay{
+  background: rgba(0, 0, 0, 0.42);
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 9;
+}
 /*-----
 Components
 ------*/

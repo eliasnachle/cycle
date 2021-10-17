@@ -7,6 +7,9 @@ main{
     @media screen and (max-width: 1080px){
         padding: 2em 2em 2em calc(2em + 80px);
     }
+    @media screen and (max-width: 768px){
+        padding: 2em 1em 2em 1em;
+    }
     .dashboard__container{
         article{
             padding-bottom: 1em;
@@ -24,9 +27,9 @@ main{
                 max-width: 650px;
                 width: 100%;
                 padding: 1rem;
-                border: 2px solid $border;
                 border-radius: 10px;
                 cursor: pointer;
+                border: 2px solid $border;
                 &--title{
                     display: flex;
                     align-items: center;
@@ -58,6 +61,15 @@ main{
                         color: $secondaryFontColor;
                     }
                 }
+            }
+            .alert-card{   
+                    figure{
+                        background: $statusColorAttention;
+                    }   
+                    span{
+                        color: $statusColorAttention;
+                    }
+                border: 2px solid $statusColorAttention;
             }
         }
     }

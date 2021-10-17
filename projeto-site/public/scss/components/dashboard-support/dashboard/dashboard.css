@@ -35,6 +35,19 @@ main {
   font-family: 'Nunito Sans', sans-serif;
 }
 
+/*-------
+Resources
+-------*/
+.overlay {
+  background: rgba(0, 0, 0, 0.42);
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 9;
+}
+
 /*-----
 Components
 ------*/
@@ -285,12 +298,6 @@ Components
   display: block;
 }
 
-.mobile-menu__content a img {
-  display: block;
-  width: 50px;
-  border-radius: 5em;
-}
-
 .mobile-menu__content a:nth-child(4) {
   background: #EBE8FF;
   border-radius: 5px;
@@ -301,12 +308,22 @@ Components
   padding: 0.35em;
 }
 
+.mobile-menu__content button {
+  border: none;
+}
+
+.mobile-menu__content button img {
+  display: block;
+  width: 50px;
+  border-radius: 5em;
+}
+
 .mobile-menu-options-opened {
   bottom: 0;
 }
 
 .mobile-menu-options {
-  z-index: 9999;
+  z-index: 10;
   display: -ms-grid;
   display: grid;
   position: fixed;
@@ -364,6 +381,12 @@ main {
   }
 }
 
+@media screen and (max-width: 768px) {
+  main {
+    padding: 2em 1em 2em 1em;
+  }
+}
+
 main .dashboard__container article {
   padding-bottom: 1em;
 }
@@ -386,9 +409,9 @@ main .dashboard__container--row .card__content {
   max-width: 650px;
   width: 100%;
   padding: 1rem;
-  border: 2px solid #CACACA;
   border-radius: 10px;
   cursor: pointer;
+  border: 2px solid #CACACA;
 }
 
 main .dashboard__container--row .card__content--title {
@@ -432,5 +455,17 @@ main .dashboard__container--row .card__content--description span {
   letter-spacing: 0.75px;
   font-size: 16px;
   color: #878787;
+}
+
+main .dashboard__container--row .alert-card {
+  border: 2px solid #FB4B4B;
+}
+
+main .dashboard__container--row .alert-card figure {
+  background: #FB4B4B;
+}
+
+main .dashboard__container--row .alert-card span {
+  color: #FB4B4B;
 }
 /*# sourceMappingURL=dashboard.css.map */
