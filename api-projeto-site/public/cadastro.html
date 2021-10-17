@@ -7,9 +7,9 @@
     <title>Cycle | Cadastro</title>
     <link rel="icon" href="./favicon/favicon-32x32.png">
     <link rel="stylesheet" href="scss/style.css" />
-    <link rel="stylesheet" href="scss/components/cadastro/cadastro.css" />
+    <link rel="stylesheet" href="scss/components/cadastro/cadastro.css">
     <script src="https://kit.fontawesome.com/5621e23e17.js" crossorigin="anonymous"></script>
-    <script src="./js/form-registration.js" defer></script>
+    <script src="js/form-registration.js" defer></script>
 </head>
 <body>
     <!-- Menu -->
@@ -25,7 +25,7 @@
     <!-- content - progressbar -->
     <section class="section-registration">
         <div class="content flow">
-            <form id="form_register" method="post" onsubmit="return registerContratante()" class="form">
+            <form action="#" class="form">
             <div class="content-sidebar">
                 <div class="col">
                     <!-- Progress bar -->
@@ -51,24 +51,24 @@
                             </div>
                             <div class="inputs">
                                 <label for="Email">CPF</label>
-                                <input type="text" name="cpf" id="ipt_cpf" placeholder="Insira seu CPF">
+                                <input type="text" name="nome" id="ipt_cpf" placeholder="Insira seu CPF">
                             </div>
                           </div>
                           <div class="boxes">
                             <div class="inputs">
                                 <label for="Email">Email</label>
-                                <input type="text" name="email" id="ipt_login" placeholder="email@dominio.com">
+                                <input type="text" name="login" id="ipt_login" placeholder="email@dominio.com">
                             </div>
                             <div class="inputs">
                       
                                 <label for="senha">Senha</label>
                         
                                   
-                                    <input type="password" name="senha" id="ipt_password" placeholder="Insira sua senha">
+                                    <input type="password" name="password" id="ipt_password" placeholder="Insira sua senha">
                                 </div>
                           </div>
                         <div class="btns-form">
-                            <a class="btns btn-next width-50 ml-auto ">Próximo</a>
+                            <a href="#" class="btns btn-next width-50 ml-auto ">Próximo</a>
                         </div>
                     </div>
 
@@ -81,7 +81,7 @@
                         <div class="plans-web">
                             <div class="box-plan">
                                 <div class="plan"> 
-                                    <input type="radio" name="idPlano" id="free" value="free">
+                                    <input type="radio" name="radio1" id="free" value="free">
                                     <label class="label free-label four col-plans" for="free">
                                         <h1 class="black">Loren Plan</h1>
                                         <h1 class="primary">$20 <span> / Month</span></h1>
@@ -96,7 +96,7 @@
                                     </div>
                                     
                                 <div class="plan">
-                                    <input type="radio" name="idPlano" id="basic" value="basic" checked>
+                                    <input type="radio" name="radio1" id="basic" value="basic" checked>
                                     <label class="label basic-label four colcol-plans" for="basic">
                                         <h1 class="black">Loren Plan</h1>
                                         <h1 class="primary">$20 <span> / Month</span></h1>
@@ -110,7 +110,7 @@
                                     </label>
                                 </div>
                                 <div class="plan">
-                                    <input type="radio" name="idPlano" id="premium" value="premium">
+                                    <input type="radio" name="radio1" id="premium" value="premium">
                                     <label class="label premium-label four colcol-plans" for="premium">
                                         <h1 class="black">Loren Plan</h1>
                                         <h1 class="primary">$20 <span> / Month</span></h1>
@@ -127,7 +127,7 @@
                         </div>
 
                         <!-------------------- planos mobile --------------->
-                         <!-- <div class="plans-mobile">
+                         <div class="plans-mobile">
                                     <div class="accordion">
                                         <div class="border-list">
                                         <div class="accordion-item">
@@ -217,10 +217,10 @@
                                         </div>
                                     </div>
                                     </div>
-                                </div> -->
+                                </div>
                         <div class="btns-group btns-form">
-                            <a class="btns btn-prev">Voltar</a>
-                            <a class="btns btn-next">Próximo</a>
+                            <a href="#" class="btns btn-prev">Voltar</a>
+                            <a href="#" class="btns btn-next">Próximo</a>
                         </div>
                     </div>
             
@@ -232,7 +232,7 @@
                             <div class="inputs qrcode">
                                 <div>
                                 <img class="qr" src="/imgs/qrcode.svg" alt="">
-                                <a class="btn-pix">Copie o código pix</a>
+                                <a href="#" class="btn-pix">Copie o código pix</a>
                             </div>
                             </div>
                             <div class="inputs qrcode">
@@ -245,9 +245,8 @@
                                 </div>
                           </div>
                         <div class="btns-group margin-inp">
-                            <a class="btns btn-prev">Voltar</a>
-                            <!-- <a type="submit" class="btns btn-next">Próximo</a> -->
-                            <button type="submit" class="btns btn-next">Próximo</button>
+                            <a href="#" class="btns btn-prev">Previous</a>
+                            <a href="#" class="btns btn-next">Next</a>
                         </div>
                     </div>
 
@@ -271,5 +270,3 @@
     <script src="js/validation_login.js"></script>
   </body>
 </html>
-
-<script src="js/register_new_contratante.js"></script>
