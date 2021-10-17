@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "AAAA,iBAAiB;AASjB,aAAa",
-    "sources": [
-        "root-dashboard-support.scss"
-    ],
-    "names": [],
-    "file": "root-dashboard-support.css"
-}

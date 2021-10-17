@@ -1,0 +1,68 @@
+// Imports
+@import '../../root/root';
+@import '../menu/menu';
+
+// Config page
+body {background: red ;}
+
+//Content
+.section-recover{
+    padding: calc(85px + 2em) 2em 0em 2em;
+    height: calc(100vh - 85px );
+    display: grid;
+    place-items: center;
+    &__content{
+        width: 100%;
+        max-width: 500px;
+        @media screen and (max-width: 768px){
+            max-width: 100%;
+        }
+        &__form{
+            display: flex;
+            flex-direction: column;
+            article{
+                h1{
+                    color: $black;
+                }
+            }
+            input{
+                transition: ease-in 150ms;
+                padding: 1.25rem 1.5rem;
+                cursor: pointer;
+                font-size: $textFontSize;
+                border: none;
+                border-radius: 5px;
+                background: $white;
+                outline: none;
+                color: $primary;
+                margin: .5em 0;
+                border: 1.5px solid $inputBorder;
+                &:focus{
+                    border: 1.75px solid $primary;
+                }
+            }
+            ::placeholder{
+                font-size: 15px;
+                letter-spacing: 0.25px;
+                font-weight: 600;
+                color: $inputPlaceholder;
+            }
+            button{
+                font-weight: 700;
+                color: $white;
+                background-color: $primary;
+                border-radius: 5px;
+                padding: 1.25rem 1.5rem;
+                border: none;
+                cursor: pointer;
+            }
+            a{
+                padding-top: .5rem;
+                text-decoration: none;
+                font-weight: 700;
+                color: $primary;
+                cursor: pointer;
+            }
+        }
+    }
+}

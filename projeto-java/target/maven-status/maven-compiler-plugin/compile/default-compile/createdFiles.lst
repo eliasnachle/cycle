@@ -1,0 +1,7 @@
+model\Computer.class
+slack\Monitoration.class
+controller\ControllerConnection.class
+controller\ControllerComputer.class
+controller\ControllerConnectionMySQL.class
+slack\TesteSlack.class
+slack\OpenRequest.class
