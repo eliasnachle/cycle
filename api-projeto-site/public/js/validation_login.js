@@ -99,7 +99,7 @@ function authenticateLogin() {
 
                     console.log(sessionStorage.name_user_suporte, sessionStorage.email_user_suporte, sessionStorage.idContratante_user_suporte)
 
-                    //window.location.href = "";
+                    window.location.href = "dash_user.html";
                 });
 
             } else {
