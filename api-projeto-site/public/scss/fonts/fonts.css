@@ -117,4 +117,9 @@
   content: "\e912";
   color: #878787;
 }
+
+.icon-computer:before {
+  content: "\e913";
+  color: #878787;
+}
 /*# sourceMappingURL=fonts.css.map */

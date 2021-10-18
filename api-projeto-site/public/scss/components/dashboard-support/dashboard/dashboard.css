@@ -572,4 +572,149 @@ main .dashboard__container--row .alert-card span {
   font-size: 18px;
   color: #161616;
 }
+
+/*Palette Color*/
+/*Font Size*/
+.dashboard__container--return {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 1em;
+  padding-bottom: 1.5em;
+}
+
+.dashboard__container--return figure {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 0.25rem;
+  font-size: 18px;
+}
+
+.dashboard__container--return figure:nth-child(1) {
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 0.4rem 0.75rem;
+  background: #EBE8FF;
+  color: #836FFF;
+}
+
+.dashboard__container--return figure:nth-child(1) i::before {
+  color: #836FFF;
+}
+
+.dashboard__container--return figure:nth-child(2) i {
+  width: 40px;
+  height: 40px;
+  background: -webkit-gradient(linear, left top, right top, from(#836FFF), color-stop(99.99%, #E486EC));
+  background: linear-gradient(90deg, #836FFF 0%, #E486EC 99.99%);
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+  border-radius: 5px;
+}
+
+.dashboard__container--return figure:nth-child(2) i::before {
+  font-size: 1.3em;
+  color: white;
+}
+
+.dashboard__container--return figure:nth-child(2) span {
+  font-size: 1.1em;
+  font-weight: 700;
+  color: #161616;
+}
+
+.dashboard__container--components {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(230px, 250px))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(230px, 250px));
+  gap: 1.25rem;
+}
+
+.dashboard__container--components .components__card {
+  border: 2px solid #CACACA;
+  border-radius: 10px;
+  padding: .75rem 1.25em;
+  max-width: 250px;
+  width: 100%;
+}
+
+.dashboard__container--components .components__card--title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: .5rem;
+}
+
+.dashboard__container--components .components__card--title i {
+  border-radius: 5px;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+  width: 50px;
+  height: 50px;
+  padding: .25rem;
+  background: -webkit-gradient(linear, left top, right top, from(#836FFF), color-stop(99.99%, #E486EC));
+  background: linear-gradient(90deg, #836FFF 0%, #E486EC 99.99%);
+}
+
+.dashboard__container--components .components__card--title i::before {
+  font-size: 2em;
+  color: white;
+}
+
+.dashboard__container--components .components__card--title span {
+  font-size: 1.25em !important;
+  letter-spacing: 0.5px;
+  font-weight: 700;
+  color: #161616;
+}
+
+.dashboard__container--components .components__card--performance {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (auto)[2];
+      grid-template-columns: repeat(2, auto);
+}
+
+.dashboard__container--components .components__card--performance h1 {
+  font-weight: 900;
+  font-size: 4em;
+}
+
+.dashboard__container--components .components__card--performance--temperature {
+  padding: 1em 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.dashboard__container--components .components__card--performance--temperature span {
+  font-weight: 800;
+  font-size: 16px;
+  color: #35E156 !important;
+}
+
+.dashboard__container--components .components__card span {
+  font-size: 16px;
+  color: #878787;
+}
 /*# sourceMappingURL=dashboard.css.map */
