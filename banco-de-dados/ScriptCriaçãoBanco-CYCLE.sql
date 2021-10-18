@@ -18,6 +18,7 @@ CREATE TABLE tblUsuariosContratante(
 	emailContratante VARCHAR(80),
 	senhaContratante VARCHAR(20),
 	cpfContratante VARCHAR(14),
+    keyContratante VARCHAR(30),
 	idPlano INT
 );
 
@@ -47,9 +48,9 @@ CREATE TABLE tblMaquinas (
     tipoMaquina VARCHAR(10),
 	sistemaOperacionalMaquina VARCHAR(15),
     idProcessador VARCHAR(20),
-	modeloCpu VARCHAR(50),
+	modeloCpu VARCHAR(80),
     cpuFrequencia DOUBLE,
-    tipoDisco VARCHAR(4),
+    modeloDisco VARCHAR(80),
     espacoTotalDisco DOUBLE,
     espacoTotalRam DOUBLE,
 	idUnidade INT
@@ -59,8 +60,8 @@ CREATE TABLE tblRegistros (
 	idRegistro INT PRIMARY KEY AUTO_INCREMENT,
     cpuEmUso DOUBLE,
     temperaturaCpu DOUBLE,
-    espacoOcupadoDisco DOUBLE,
-    espacoOcupadoRam DOUBLE,
+    espacoLivreDisco DOUBLE,
+    espacoLivreRam DOUBLE,
     dataHoraRegistro DATETIME,
     idMaquina INT
 );
