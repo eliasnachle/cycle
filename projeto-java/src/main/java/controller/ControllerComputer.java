@@ -36,8 +36,12 @@ public class ControllerComputer {
         // Instanciando um objeto tbComputador, passando como parametros os valores das variáveis
         Computer pc = new Computer(idComputer, systemOperation,computerManufacturer,
                                     architectureComputer, descriptionCPU, descriptionRAM, qtdDisc);
+        
+        if (usoCPU >= 30) {
+            slack.enviarMensagem("Desempenho da CPU está alta \n Uso da CPU: " + usoCPU);
+        }
 
-        return pc;
+        return (int) Math.round(usoCPU);
 
     }
     
