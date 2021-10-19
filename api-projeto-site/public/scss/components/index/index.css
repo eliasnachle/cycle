@@ -536,7 +536,7 @@ Components
   display: -ms-grid;
   display: grid;
   place-items: center;
-  background: red;
+  background: #fff;
 }
 
 .solutions__content {

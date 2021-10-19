@@ -61,10 +61,13 @@
                             </div>
                             <div class="inputs">
                       
+                      
                                 <label for="senha">Senha</label>
                         
-                                  
-                                    <input type="password" name="senha" id="ipt_password" placeholder="Insira sua senha">
+                                <div class="first-example">
+                                    <input type="password" id="password-field" placeholder="Insira sua senha" >
+                                    <i style="position: absolute; margin-top: 25px; margin-left: -50px;" id="pass-status" class="fa fa-eye-slash pass" aria-hidden="true" onClick="viewPassword()"></i>
+                                  </div>
                                 </div>
                           </div>
                         <div class="btns-form">
@@ -124,33 +127,22 @@
                         </div>
 
                         <!-------------------- planos mobile --------------->
-                         <!-- <div class="plans-mobile">
+                        <div class="plans-mobile">
                                     <div class="accordion">
                                         <div class="border-list">
                                         <div class="accordion-item">
                                             <button id="accordion-button-1" aria-expanded="false">
                                             <span class="accordion-title">
-                                                <h1 class="black">Loren Plan</h1>
-                                                <h1 class="primary">$20 <span> / Month</span></h1>
+                                                <h1 class="black">Bronze</h1>
+                                                <h1 class="primary">$20 <span> / mês</span></h1>
                                             </span>
                                             <span class="icon" aria-hidden="true"></span></button>
                                             <div class="accordion-content">
-                                                <ul class="dropdown-menu grow">     
-                                                    <div class="grow1">                  
-                                                        <li><span><i class="fas fa-check"></i> Lorem </span></li>
-                                                    </div>   
-                                                    <div class="grow1">                  
-                                                        <li><span><i class="fas fa-check"></i> Lorem </span></li>
-                                                    </div>   
-                                                    <div class="grow1">                  
-                                                        <li><span><i class="fas fa-check"></i> Lorem </span></li>
-                                                    </div>   
-                                                    <div class="grow1">                  
-                                                        <li><span><i class="fas fa-check"></i> Lorem </span></li>
-                                                    </div>   
-                                                    <div class="grow1">                  
-                                                        <li><span><i class="fas fa-check"></i> Lorem </span></li>
-                                                    </div>   
+                                                <ul class="dropdown-menu">     
+                                                    <li><span><i class="fas fa-check"></i> Gráficos </span></li>
+                                                    <li><span><i class="fas fa-check"></i> Alertas via slack </span></li>
+                                                    <li><span><i class="fas fa-check"></i> cadastrar 10 suportes </span></li>
+                                                    <li><span><i class="fas fa-check"></i> Limite de maquinas: 10 </span></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -159,27 +151,16 @@
                                         <div class="accordion-item">
                                             <button id="accordion-button-1" aria-expanded="false">
                                             <span class="accordion-title">
-                                                <h1 class="black">Loren Plan</h1>
-                                                <h1 class="primary">$20 <span> / Month</span></h1>
+                                                <h1 class="black">Silver</h1>
+                                                <h1 class="primary">$50 <span> / mês</span></h1>
                                             </span>
                                             <span class="icon" aria-hidden="true"></span></button>
                                             <div class="accordion-content">
-                                                <ul class="dropdown-menu grow">     
-                                                    <div class="grow1">                  
-                                                        <li><span><i class="fas fa-check"></i> Lorem </span></li>
-                                                    </div>   
-                                                    <div class="grow1">                  
-                                                        <li><span><i class="fas fa-check"></i> Lorem </span></li>
-                                                    </div>   
-                                                    <div class="grow1">                  
-                                                        <li><span><i class="fas fa-check"></i> Lorem </span></li>
-                                                    </div>   
-                                                    <div class="grow1">                  
-                                                        <li><span><i class="fas fa-check"></i> Lorem </span></li>
-                                                    </div>   
-                                                    <div class="grow1">                  
-                                                        <li><span><i class="fas fa-check"></i> Lorem </span></li>
-                                                    </div>   
+                                                <ul class="dropdown-menu">                          
+                                                    <li><span><i class="fas fa-check"></i> Gráficos </span></li>
+                                                    <li><span><i class="fas fa-check"></i> Alertas via slack </span></li>
+                                                    <li><span><i class="fas fa-check"></i> cadastrar 20 suportes </span></li>
+                                                    <li><span><i class="fas fa-check"></i> Limite de maquinas: 30 </span></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -188,33 +169,22 @@
                                         <div class="accordion-item">
                                             <button id="accordion-button-1" aria-expanded="false">
                                             <span class="accordion-title">
-                                                <h1 class="black">Loren Plan</h1>
-                                                <h1 class="primary">$20 <span> / Month</span></h1>
+                                                <h1 class="black">Gold</h1>
+                                                <h1 class="primary">$100 <span> / mês</span></h1>
                                             </span>
                                             <span class="icon" aria-hidden="true"></span></button>
                                             <div class="accordion-content">
-                                                <ul class="dropdown-menu grow">     
-                                                    <div class="grow1">                  
-                                                        <li><span><i class="fas fa-check"></i> Lorem </span></li>
-                                                    </div>   
-                                                    <div class="grow1">                  
-                                                        <li><span><i class="fas fa-check"></i> Lorem </span></li>
-                                                    </div>   
-                                                    <div class="grow1">                  
-                                                        <li><span><i class="fas fa-check"></i> Lorem </span></li>
-                                                    </div>   
-                                                    <div class="grow1">                  
-                                                        <li><span><i class="fas fa-check"></i> Lorem </span></li>
-                                                    </div>   
-                                                    <div class="grow1">                  
-                                                        <li><span><i class="fas fa-check"></i> Lorem </span></li>
-                                                    </div>   
+                                                <ul class="dropdown-menu">                          
+                                                    <li><span><i class="fas fa-check"></i> Gráficos </span></li>
+                                                    <li><span><i class="fas fa-check"></i> Alertas via slack </span></li>
+                                                    <li><span><i class="fas fa-check"></i> cadastrar 30 suportes </span></li>
+                                                    <li><span><i class="fas fa-check"></i> Limite de maquinas: Ilimitado </span></li>
                                                 </ul>
                                             </div>
                                         </div>
                                     </div>
                                     </div>
-                                </div> -->
+                                </div> 
                         <div class="btns-group btns-form">
                             <a class="btns btn-prev">Voltar</a>
                             <a class="btns btn-next">Próximo</a>
@@ -257,7 +227,7 @@
                         <div class="qrcode">
                             <img class="img-finish" src="/imgs/High-quality Products 1.svg" alt="">
                         </div>
-                        <div class="btns-group margin-inp">
+                        <div class=" margin-inp">
                             <a href="index.html" class="btns btn-next btn-100">Retornar a Index</a>
                         </div>
                     </div>
@@ -265,7 +235,7 @@
             </div>        
         </form>
     </section>
-    <script src="js/validation_login.js"></script>
+    <script src="js/validation_registration.js"></script>
   </body>
 </html>
 
