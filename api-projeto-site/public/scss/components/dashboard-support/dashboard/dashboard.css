@@ -575,6 +575,11 @@ main .dashboard__container--row .alert-card span {
 
 /*Palette Color*/
 /*Font Size*/
+.dashboard__container {
+  max-width: calc(100% - 295px);
+  max-width: 100%;
+}
+
 .dashboard__container--return {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -628,12 +633,135 @@ main .dashboard__container--row .alert-card span {
   color: #161616;
 }
 
+.dashboard__container--top {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: calc(100% - 230px);
+}
+
+.dashboard__container--bottom {
+  padding-top: 1em;
+  gap: .5rem;
+  max-width: 100%;
+  display: -ms-grid;
+  display: grid;
+}
+
+.dashboard__container--consume {
+  width: 100%;
+  border-radius: 10px;
+  border: 2px solid #CACACA;
+  padding: 1rem;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+}
+
+.dashboard__container--consume h3 {
+  font-size: 1.5em;
+  color: #161616;
+}
+
+.dashboard__container--consume .circular-progress {
+  position: relative;
+  height: 250px;
+  width: 250px;
+  border-radius: 50%;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+  background: conic-gradient(#836FFF 120deg, #EBE8FF 120deg);
+}
+
+.dashboard__container--consume .circular-progress::before {
+  content: "";
+  position: absolute;
+  height: 80%;
+  width: 80%;
+  background-color: #ffffff;
+  border-radius: 50%;
+}
+
+.dashboard__container--consume .circular-progress .value-container {
+  position: relative;
+  font-size: 3.5em;
+  font-weight: 900;
+  color: #231c3d;
+}
+
+.dashboard__container--consume .progress-disk {
+  background: conic-gradient(#836FFF 250deg, #EBE8FF 250deg);
+}
+
+.dashboard__container--status {
+  border-radius: 10px;
+  border: 2px solid #CACACA;
+  padding: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+}
+
+.dashboard__container--status h3 {
+  font-size: 2em;
+  color: #161616;
+}
+
+.dashboard__container--status span {
+  font-size: 16px;
+  font-weight: 600;
+  color: #35E156;
+}
+
+.dashboard__container--config {
+  width: 100%;
+  border-radius: 10px;
+  border: 2px solid #CACACA;
+  padding: 1rem;
+}
+
+.dashboard__container--config h3 {
+  font-size: 1.5em;
+  letter-spacing: 0.5px;
+}
+
+.dashboard__container--config div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 1em 0;
+  border-bottom: 1.5px solid #CACACA;
+}
+
+.dashboard__container--config div span {
+  font-size: 16px;
+  font-weight: 600;
+  color: #5C5C5C;
+}
+
+.dashboard__container--config div span b {
+  color: #836FFF;
+}
+
 .dashboard__container--components {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (minmax(230px, 250px))[auto-fit];
-      grid-template-columns: repeat(auto-fit, minmax(230px, 250px));
-  gap: 1.25rem;
+  -ms-grid-columns: (250px)[2];
+      grid-template-columns: repeat(2, 250px);
+  gap: .75rem;
 }
 
 .dashboard__container--components .components__card {
@@ -644,17 +772,7 @@ main .dashboard__container--row .alert-card span {
   width: 100%;
 }
 
-.dashboard__container--components .components__card--title {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  gap: .5rem;
-}
-
-.dashboard__container--components .components__card--title i {
+.dashboard__container--components .components__card i {
   border-radius: 5px;
   display: -ms-grid;
   display: grid;
@@ -666,39 +784,39 @@ main .dashboard__container--row .alert-card span {
   background: linear-gradient(90deg, #836FFF 0%, #E486EC 99.99%);
 }
 
-.dashboard__container--components .components__card--title i::before {
+.dashboard__container--components .components__card i::before {
   font-size: 2em;
   color: white;
 }
 
-.dashboard__container--components .components__card--title span {
-  font-size: 1.25em !important;
-  letter-spacing: 0.5px;
-  font-weight: 700;
-  color: #161616;
+.dashboard__container--components .components__card h3 {
+  font-weight: 800;
+  font-size: 1.25em;
 }
 
-.dashboard__container--components .components__card--performance {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: (auto)[2];
-      grid-template-columns: repeat(2, auto);
+.dashboard__container--components .components__card span {
+  color: #878787;
 }
 
-.dashboard__container--components .components__card--performance h1 {
-  font-weight: 900;
-  font-size: 4em;
+.dashboard__container--components .components__card .progressbar {
+  width: 100%;
+  height: 10px;
+  border-radius: 1em;
+  background: #EBE8FF;
 }
 
-.dashboard__container--components .components__card--performance--temperature {
-  padding: 1em 0;
+.dashboard__container--components .components__card .progressbar__use {
+  border-radius: 1em;
+  height: 10px;
+  width: 20%;
+  background: #836FFF;
+}
+
+.dashboard__container--components .components__card--use {
+  padding-top: .5rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
@@ -707,14 +825,14 @@ main .dashboard__container--row .alert-card span {
           align-items: center;
 }
 
-.dashboard__container--components .components__card--performance--temperature span {
-  font-weight: 800;
-  font-size: 16px;
-  color: #35E156 !important;
+.dashboard__container--components .components__card--use span:nth-child(1) {
+  font-size: 20px;
+  color: #35E156;
+  font-weight: 900;
 }
 
-.dashboard__container--components .components__card span {
+.dashboard__container--components .components__card--use span:nth-child(2) {
   font-size: 16px;
-  color: #878787;
+  color: #5C5C5C;
 }
 /*# sourceMappingURL=dashboard.css.map */
