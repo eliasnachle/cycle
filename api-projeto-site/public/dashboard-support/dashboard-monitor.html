@@ -13,10 +13,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="../favicon/request/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../favicon/request/favicon-16x16.png">
     <link rel="manifest" href="../favicon/request/site.webmanifest">
-    <link rel="mask-icon" href="../favicon/request/safari-pinned-tab.svg" color="#836fff">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
-    <script src="http://www.chartjs.org/dist/2.7.1/Chart.js"></script>
-    <script src="http://www.chartjs.org/samples/latest/utils.js"></script>
+    <link rel="mask-icon" href="../favicon/request/safari-pinned-tab.svg" color="#836fff">    
 </head>
 <body>
 <!-- Notificações -->
@@ -199,68 +196,70 @@
               <span>Computador 1</span>
           </figure>
       </div>
-      <!-- Gráfico -->
       <div class="dashboard__container--top">
-        <canvas id="chart"></canvas>        
+        <!-- Components Cards -->     
+        <div class="dashboard__container--components">
+          <div class="components__card">
+            <i class="icon-cpu"></i>
+            <h3>CPU</h3>
+            <span>Excelente perfomance</span>
+            <div class="progressbar">
+              <div class="progressbar__use"></div>
+            </div>
+            <div class="components__card--use">
+              <span>20%</span>
+              <span>16/48GB</span>
+            </div>
+          </div>
+          <div class="components__card">
+            <i class="icon-memory"></i>
+            <h3>Memoria</h3>
+            <span>Excelente perfomance</span>
+            <div class="progressbar">
+              <div class="progressbar__use"></div>
+            </div>
+            <div class="components__card--use">
+              <span>20%</span>
+              <span>16/48GB</span>
+            </div>
+          </div>
+          <div class="components__card">
+            <i class="icon-storage"></i>
+            <h3>Disco 1</h3>
+            <span>Excelente perfomance</span>
+            <div class="progressbar">
+              <div class="progressbar__use"></div>
+            </div>
+            <div class="components__card--use">
+              <span>20%</span>
+              <span>16/48GB</span>
+            </div>
+          </div>
+          <div class="components__card">
+            <i class="icon-storage"></i>
+            <h3>Disco 2</h3>
+            <span>Excelente perfomance</span>
+            <div class="progressbar">
+              <div class="progressbar__use"></div>
+            </div>
+            <div class="components__card--use">
+              <span>20%</span>
+              <span>16/48GB</span>
+            </div>
+          </div>
+        </div>
+        <!-- Gráfico -->
+        <div class="dashboard__container--charts">
+          <canvas id="chart" height="80"></canvas>   
+        </div>
+      </div>
+      <div class="dashboard__container--bottom">
         <!-- Status Máquina -->
         <div class="dashboard__container--status"> 
           <h3>Resumo Geral</h3>
           <span>Máquina em exclente estado.</span>
           <img src="../imgs/exclente-status.svg">
         </div>
-      </div>
-      <div class="dashboard__container--bottom">
-              <!-- Components Cards -->
-      <div class="dashboard__container--components">
-        <div class="components__card">
-          <i class="icon-cpu"></i>
-          <h3>CPU</h3>
-          <span>Excelente perfomance</span>
-          <div class="progressbar">
-            <div class="progressbar__use"></div>
-          </div>
-          <div class="components__card--use">
-            <span>20%</span>
-            <span>16/48GB</span>
-          </div>
-        </div>
-        <div class="components__card">
-          <i class="icon-memory"></i>
-          <h3>Memoria</h3>
-          <span>Excelente perfomance</span>
-          <div class="progressbar">
-            <div class="progressbar__use"></div>
-          </div>
-          <div class="components__card--use">
-            <span>20%</span>
-            <span>16/48GB</span>
-          </div>
-        </div>
-        <div class="components__card">
-          <i class="icon-storage"></i>
-          <h3>Disco 1</h3>
-          <span>Excelente perfomance</span>
-          <div class="progressbar">
-            <div class="progressbar__use"></div>
-          </div>
-          <div class="components__card--use">
-            <span>20%</span>
-            <span>16/48GB</span>
-          </div>
-        </div>
-        <div class="components__card">
-          <i class="icon-storage"></i>
-          <h3>Disco 2</h3>
-          <span>Excelente perfomance</span>
-          <div class="progressbar">
-            <div class="progressbar__use"></div>
-          </div>
-          <div class="components__card--use">
-            <span>20%</span>
-            <span>16/48GB</span>
-          </div>
-        </div>
-      </div>
       <!-- Configurações -->
       <div class="dashboard__container--config">
         <h3>Configurações</h3>
@@ -283,92 +282,59 @@
       </div>
       <!-- Consumo Disco -->
       <div class="dashboard__container--consume">
-        <h3>Consumo Mensal Disco</h3>
+        <h3>Consumo Diario Disco</h3>
         <div class="circular-progress progress-disk">
           <div class="value-container">75%</div>
         </div>
       </div>
       <!-- Consumo CPU -->
       <div class="dashboard__container--consume">
-        <h3>Consumo Mensal CPU</h3>
+        <h3>Consumo Diario CPU</h3>
         <div class="circular-progress">
           <div class="value-container">35%</div>
         </div>
       </div>
-      </div>      
+      
+    </div>      
   </section>
 </main>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+
 <script>  
   window.addEventListener('load', chartJS);
+  
   // Gráfico Charts JS
   function chartJS(){
   // Dimensões Gráfico
-  var context = document.getElementById("chart").getContext("2d");
-  context.canvas.width = "100%"; // Largura do grafico
-  context.canvas.height = 300; // Altura do grafico
-  
-  // Degrade Gráfico
-  var ctx = document.getElementById("chart").getContext("2d");
-  var gradient = ctx.createLinearGradient(0, 0, 0, 300);
-  gradient.addColorStop(0, '#836FFF');
-  gradient.addColorStop(1, 'transparent');
+  var context = document.querySelector("#chart");
   
   // Configurações Charts
   var configuration = {
     type: 'line',
     data: {
-      datasets: [{
-        data: [65, 59, 80, 81, 56, 55, 40],
-        label: "Temperature x Time",
+      labesl: ["Seg","Ter","Qua","Qui","Sex","Sab","Dom"],
+      datasets: [
+      {
+        label: "Consumo",
+        data: [5, 90, 10, 30, 60, 80, 40],
         type: 'line', //line, bar, radar, pie, polarArea, bubble - Alterar aqui e na linha "type" de cima
-        backgroundColor: gradient, // Cor do Fundo
         borderColor: '#836FFF', // Cor da Linha
         borderWidth: 3, // Espessura da Linha
-              //Ponto
-              pointRadius: 8, // Tamanho
-              pointBackgroundColor: '#836FFF', // Cor do Ponto
-              pointBorderWidth: 3, // Cor da Borda do Ponto
-              // Ponto Hover
-              pointHoverRadius: 8, // Tamanho
-              pointHoverBackgroundColor: '#836FFF', // Cor do Ponto
-              pointHoverBorderColor: '#836FFF' // Cor da Borda do Ponto
-      }]
-    },
+        //Ponto
+        pointRadius: 8, // Tamanho
+        pointBackgroundColor: '#836FFF', // Cor do Ponto
+        pointBorderWidth: 3, // Cor da Borda do Ponto
+        // Ponto Hover
+        pointHoverRadius: 8, // Tamanho
+        pointHoverBackgroundColor: '#836FFF', // Cor do Ponto
+        pointHoverBorderColor: '#836FFF' // Cor da Borda do Ponto
+      }
+    ]},
     options: {
-          legend: {
-              display: false
-          },
-      scales: {
-              // Horizontal
-        xAxes: [{
-          //type: 'value',
-          distribution: 'series',
-                  ticks: {
-                      beginAtZero:true
-                  },
-                  gridLines:{
-                      color: "#FFEDDF",
-                      display: false
-                  }
-        }],
-              // Vertical
-        yAxes: [{
-          scaleLabel: {
-            display: true,
-            labelString: 'Temperature'
-                  },
-                  ticks: {
-                      beginAtZero:true
-                  },
-                  gridLines:{
-                      color: "#15132A",
-                      borderDash: [8, 4],
-                      lineWidth: 1
-                  }
-        }]
-      },
-      animation: {
-        duration: 0
+      responsive: true,
+      tooltips: {
+        intersect: true,
+        node: "index",
       }
     }
   };

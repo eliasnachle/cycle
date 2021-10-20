@@ -46,35 +46,59 @@
     }
     &--top{
         display: flex;
-        width: calc(100% - 230px);
+        justify-content: space-between;
+        gap: 1em;
+        width: 100%;
+        @media screen and (max-width: 1080px){
+            flex-direction: column;
+
+        }
     }
     &--bottom{
         padding-top: 1em;
-        // display: flex;
-        gap: .5rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
         max-width: 100%;
-        display: grid;
+        @media screen and (max-width: 1080px){
+            display: grid;
+            // grid-template-columns: repeat(2, auto);
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
     }
     // Consume
     &--consume{
-        width: 100%;
-        border-radius: 10px;
+        @media screen and (max-width: 1080px){
+            width: 100%;
+        }
+        width: calc(100% / 4 - 15px);
+        border-radius: 5px;
         border: 2px solid $border;
         padding: 1rem;
         display: grid;
         place-items: center;
+        &:last-child{
+            width: calc(100% / 4);
+            @media screen and (max-width: 1080px){
+                width: 100%;
+            }
+        }
         h3{
             font-size: 1.5em;
             color: $primaryFontColor;
         }
         .circular-progress {
             position: relative;
-            height: 250px;
-            width: 250px;
+            height: 12vw;
+            width: 12vw;
             border-radius: 50%;
             display: grid;
             place-items: center;
             background: conic-gradient($primary 120deg, $secondary 120deg);
+            @media screen and (max-width: 768px){
+                width: 30vw;
+                height: 30vw;
+            }
             &::before {
                 content: "";
                 position: absolute;
@@ -96,13 +120,17 @@
     }
     // Stauts
     &--status{        
-        border-radius: 10px;
+        width: calc(100% / 4 - 15px);
+        border-radius: 5px;
         border: 2px solid $border;
         padding: 1rem;
         display: flex;
         flex-direction: column;
         align-items: center;
         text-align: center;
+        @media screen and (max-width: 1080px){
+            width: 100%;
+        }
         h3{
             font-size: 2em;
             color: $primaryFontColor;
@@ -115,10 +143,13 @@
     }
     // Configuration
     &--config{
-        width: 100%;
-        border-radius: 10px;
+        width: calc(100% / 4 - 15px);
+        border-radius: 5px;
         border: 2px solid $border;
         padding: 1rem;
+        @media screen and (max-width: 1080px){
+            width: 100%;
+        }
         h3{
             font-size: 1.5em;
             letter-spacing: 0.5px;
@@ -139,14 +170,33 @@
 
         }
     }
+    // Gráficos
+    &--charts{
+        display: grid;
+        place-items: center;
+        border: 2px solid $border;
+        border-radius: 5px;
+        padding: .75rem 1.25em;
+        width: 100%;
+        @media screen and (max-width: 768px){
+            display: none;
+        }
+    }
     // Componentes
     &--components{
         display: grid;
         grid-template-columns: repeat(2, 250px);
         gap: .75rem;
+        @media screen and (max-width: 1080px){
+            display: flex;
+            flex-direction: column;
+        }
         .components__card{
+            @media screen and (max-width: 1080px){
+                max-width: 100%;
+            }
             border: 2px solid $border;
-            border-radius: 10px;
+            border-radius: 5px;
             padding: .75rem 1.25em;
             max-width: 250px;
             width: 100%;

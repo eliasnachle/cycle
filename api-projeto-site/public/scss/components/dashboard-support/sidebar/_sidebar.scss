@@ -36,23 +36,27 @@
         padding: 1em 2em;
         font-weight: 500;
         text-decoration: none;
+        transition: all 150ms ease-in-out;
         @media screen and (max-width: 1080px){
             padding: 1em 1em;
         }
         i{
             margin-right: 15px;
-            font-size: $iconFontSize;
+            font-size: 18px;
             &::before{
                 color: $secondaryFontColor;
             }
         }
         span{
             font-weight: 600;
-            font-size: $linkFontSize;
+            font-size: 16px;
             letter-spacing: 0.25px;
             color: $secondaryFontColor;
             @media screen and (max-width: 1080px) {display: none;}
         }
+    &:hover{
+        opacity: 0.6;
+    }
     }
 }
 // Link Ativado
