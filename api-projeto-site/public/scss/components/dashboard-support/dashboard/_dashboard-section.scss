@@ -23,42 +23,32 @@ main{
             display: grid;
             grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
             gap: 1.25rem;
-            .card__content{
-                max-width: 650px;
-                width: 100%;
-                padding: 1rem;
-                border-radius: 10px;
-                cursor: pointer;
-                border: 2px solid $border;
-                &--title{
-                    display: flex;
-                    align-items: center;
-                    gap: .75rem;
-                    figure{
-                        padding: 5px;
-                        display: grid;
-                        place-items: center;
-                        height: 50px;
-                        width: 50px;
-                        border-radius: 10px;
-                        background: linear-gradient(90deg, #836FFF 0%, #E486EC 99.99%);
-                        i::before{
-                            font-size: 2em;
-                            color: #fff;
+            a{
+                text-decoration: none;
+                .card__content{
+                    max-width: 650px;
+                    width: 100%;
+                    padding: 1rem;
+                    border-radius: 10px;
+                    cursor: pointer;
+                    border: 2px solid $border;
+                    &--title{
+                        display: flex;
+                        align-items: center;
+                        gap: .75rem;
+                        span{
+                            font-weight: 800;
+                            font-size: 18px;
+                            color: $primaryFontColor;
                         }
                     }
-                    span{
-                        font-weight: 800;
-                        font-size: 18px;
-                        color: $primaryFontColor;
-                    }
-                }
-                &--description{
-                    padding-top: .5rem;
-                    span{
-                        letter-spacing: 0.75px;
-                        font-size: 16px;
-                        color: $secondaryFontColor;
+                    &--description{
+                        padding-top: .5rem;
+                        span{
+                            letter-spacing: 0.75px;
+                            font-size: 16px;
+                            color: $secondaryFontColor;
+                        }
                     }
                 }
             }

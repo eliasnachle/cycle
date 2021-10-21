@@ -48,6 +48,23 @@ Resources
   z-index: 9;
 }
 
+.figure-icon {
+  padding: 5px;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+  height: 50px;
+  width: 50px;
+  border-radius: 10px;
+  background: -webkit-gradient(linear, left top, right top, from(#836FFF), color-stop(99.99%, #E486EC));
+  background: linear-gradient(90deg, #836FFF 0%, #E486EC 99.99%);
+}
+
+.figure-icon i::before {
+  font-size: 2em;
+  color: #fff;
+}
+
 /*-----
 Components
 ------*/
@@ -87,7 +104,11 @@ main .dashboard__container--row {
   gap: 1.25rem;
 }
 
-main .dashboard__container--row .card__content {
+main .dashboard__container--row a {
+  text-decoration: none;
+}
+
+main .dashboard__container--row a .card__content {
   max-width: 650px;
   width: 100%;
   padding: 1rem;
@@ -96,7 +117,7 @@ main .dashboard__container--row .card__content {
   border: 2px solid #CACACA;
 }
 
-main .dashboard__container--row .card__content--title {
+main .dashboard__container--row a .card__content--title {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -106,34 +127,17 @@ main .dashboard__container--row .card__content--title {
   gap: .75rem;
 }
 
-main .dashboard__container--row .card__content--title figure {
-  padding: 5px;
-  display: -ms-grid;
-  display: grid;
-  place-items: center;
-  height: 50px;
-  width: 50px;
-  border-radius: 10px;
-  background: -webkit-gradient(linear, left top, right top, from(#836FFF), color-stop(99.99%, #E486EC));
-  background: linear-gradient(90deg, #836FFF 0%, #E486EC 99.99%);
-}
-
-main .dashboard__container--row .card__content--title figure i::before {
-  font-size: 2em;
-  color: #fff;
-}
-
-main .dashboard__container--row .card__content--title span {
+main .dashboard__container--row a .card__content--title span {
   font-weight: 800;
   font-size: 18px;
   color: #161616;
 }
 
-main .dashboard__container--row .card__content--description {
+main .dashboard__container--row a .card__content--description {
   padding-top: .5rem;
 }
 
-main .dashboard__container--row .card__content--description span {
+main .dashboard__container--row a .card__content--description span {
   letter-spacing: 0.75px;
   font-size: 16px;
   color: #878787;
@@ -606,6 +610,10 @@ main .dashboard__container--row .alert-card span {
   font-size: 18px;
 }
 
+.dashboard__container--return figure a {
+  text-decoration: none;
+}
+
 .dashboard__container--return figure:nth-child(1) {
   cursor: pointer;
   border-radius: 5px;
@@ -1042,23 +1050,6 @@ select {
   color: #FB4B4B;
   font-weight: 800;
   font-size: 1.05em;
-}
-
-figure i {
-  border-radius: 5px;
-  display: -ms-grid;
-  display: grid;
-  place-items: center;
-  width: 50px;
-  height: 50px;
-  padding: .25rem;
-  background: -webkit-gradient(linear, left top, right top, from(#836FFF), color-stop(99.99%, #E486EC));
-  background: linear-gradient(90deg, #836FFF 0%, #E486EC 99.99%);
-}
-
-figure i::before {
-  font-size: 2em;
-  color: white;
 }
 
 .icon-memory:before {

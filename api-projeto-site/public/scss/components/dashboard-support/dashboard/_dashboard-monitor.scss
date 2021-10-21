@@ -9,6 +9,9 @@
         gap: 1em;
         padding-bottom: 1.5em;
         figure{
+            a{
+                text-decoration: none;
+            }
             display: flex;
             align-items: center;
             gap: 0.25rem;
