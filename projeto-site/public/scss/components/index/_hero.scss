@@ -1,0 +1,50 @@
+// Import palette
+@import  '../../root/root';
+
+// Content
+.hero{
+    width: 100%;
+    padding: calc(85px + 2em) 2em 2em 2em;
+    background: $black;
+    display: grid;
+    place-items: center;
+    &__content{        
+        .hero__container{
+            display: grid;        
+            gap: 1em;
+            max-width: $contentWidth;
+            h1{
+                text-align: center;
+                white-space: pre-line;
+                color: $white;
+                font-size: $heroFontSize;
+                letter-spacing: .25rem;
+                font-weight: 800;            
+                @media screen and (max-width: 980px){
+                    font-size: 3.5em;
+                }
+            }
+            p{
+                text-align: center;
+                white-space: inherit;
+            }
+            &--buttons{
+                display: flex;
+                justify-content: center;
+                a:nth-child(1){            
+                    padding: .6rem 1em;  
+                    background: $primary;
+                    color: $white;
+                    &:hover{
+                        opacity: 0.8;
+                    }
+                }
+                a:nth-child(2){
+                    color: $white;
+                    text-decoration: none;
+                    padding: .6rem 1em;
+                }
+            }
+        }
+    }
+}
