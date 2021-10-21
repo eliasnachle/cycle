@@ -5,19 +5,27 @@
  */
 package view;
 
+import com.github.britooo.looca.api.core.Looca;
+import com.github.britooo.looca.api.group.memoria.Memoria;
+import controller.ControllerComputer;
 import controller.ControllerMachine;
 import controller.ControllerRegistry;
+import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFormattedTextField;
+import model.Computer;
 import model.MachineInfo;
 import model.MachineRegistry;
 
-/**
- *
- * @author joao1
- */
 public class DadosCapturados extends javax.swing.JFrame {
-
+    private ControllerComputer controllerComputer = new ControllerComputer();
+    private Looca looca = new Looca();
+    private Memoria memory = new Memoria();
+    private Computer computer = new Computer();
+    
     /**
      * Creates new form DadosCapturados
      */
@@ -103,19 +111,14 @@ public class DadosCapturados extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(800, 800));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Henrique.Lima\\Desktop\\Repositorys\\carlos-registerNewMachine\\projeto-java\\src\\main\\java\\imgs\\request.png")); // NOI18N
-
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel2.setText("Dashboard");
 
-        ExitButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\Henrique.Lima\\Desktop\\Repositorys\\carlos-registerNewMachine\\projeto-java\\src\\main\\java\\imgs\\logout.png")); // NOI18N
         ExitButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ExitButtonActionPerformed(evt);
             }
         });
-
-        CalledButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\Henrique.Lima\\Desktop\\Repositorys\\carlos-registerNewMachine\\projeto-java\\src\\main\\java\\imgs\\ponto-de-exclamacao.png")); // NOI18N
 
         jLabel3.setText("Abrir chamado");
 
@@ -137,6 +140,11 @@ public class DadosCapturados extends javax.swing.JFrame {
         });
 
         InpTipoMaquina.setEditable(false);
+        InpTipoMaquina.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                InpTipoMaquinaActionPerformed(evt);
+            }
+        });
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         jLabel7.setText("Sistema operacional:");
@@ -152,6 +160,11 @@ public class DadosCapturados extends javax.swing.JFrame {
         jLabel8.setText("Modelo CPU:");
 
         InpModeloCpu.setEditable(false);
+        InpModeloCpu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                InpModeloCpuActionPerformed(evt);
+            }
+        });
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         jLabel9.setText("Frequencia da CPU:");
@@ -477,12 +490,20 @@ public class DadosCapturados extends javax.swing.JFrame {
     }//GEN-LAST:event_InpSistemaOperacionalActionPerformed
 
     private void InpFrequenciaCpuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InpFrequenciaCpuActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_InpFrequenciaCpuActionPerformed
 
     private void InpModeloDiscoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InpModeloDiscoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_InpModeloDiscoActionPerformed
+
+    private void InpTipoMaquinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InpTipoMaquinaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_InpTipoMaquinaActionPerformed
+
+    private void InpModeloCpuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InpModeloCpuActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_InpModeloCpuActionPerformed
 
     /**
      * @param args the command line arguments
