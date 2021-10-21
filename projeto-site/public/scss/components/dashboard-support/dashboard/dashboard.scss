@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800;900&display=swap");
+@import '../../../root/dashboard-support/root-dashboard-support';
 /*---------
 Config CSS
 ---------*/
@@ -31,7 +32,6 @@ Resources
   top: 0;
   z-index: 9;
 }
-
 .figure-icon{
   padding: 5px;
   display: grid;
@@ -43,6 +43,76 @@ Resources
   i::before{
       font-size: 2em;
       color: #fff;
+  }
+}
+/*---------------
+Search Restaurant
+----------------*/
+.search__restaurant{
+  display: grid;
+  place-items: center;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 11;
+  &--modal{
+    border-radius: 5px;
+    padding: 2em 3em;
+    width: 550px;
+    background: $background;
+    &--content{
+      display: grid;
+      place-items: center;
+      grid-gap: .75rem;
+      h3{
+        font-size: 1.5em;
+        font-weight: 600;
+        color: $primaryFontColor;
+      }
+      img{
+        max-width: 12em;
+      }
+      &--ipt{
+        width: 100%;
+        i::before{
+          font-size: 5em;
+          color: $primary;
+        }
+        input{
+          outline: none;
+          width: 100%;
+          padding: 1.25em;
+          border-radius: 5px;
+          border: 1.75px solid $border;
+          font-size: 14px;
+          font-weight: 600;
+          color: $primaryFontColor;
+          &::placeholder{
+            font-weight: 500;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+            color: $border;
+          }
+        }
+      }
+    }
+  }
+  button{
+    cursor: pointer;
+    width: 100%;
+    background: $primary;
+    border: none;
+    color: #fff;
+    font-size: 0.9em;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    padding: 1.25em;
+    border-radius: 5px;
+    transition: all 150ms ease-in;
+    &:hover{
+      opacity: 0.85;
+    }
   }
 }
 /*-----

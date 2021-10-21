@@ -1,4 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800;900&display=swap");
+/*Palette Color*/
+/*Font Size*/
 /*---------
 Config CSS
 ---------*/
@@ -63,6 +65,111 @@ Resources
 .figure-icon i::before {
   font-size: 2em;
   color: #fff;
+}
+
+/*---------------
+Search Restaurant
+----------------*/
+.search__restaurant {
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 11;
+}
+
+.search__restaurant--modal {
+  border-radius: 5px;
+  padding: 2em 3em;
+  width: 550px;
+  background: #FFFFFF;
+}
+
+.search__restaurant--modal--content {
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+  grid-gap: .75rem;
+}
+
+.search__restaurant--modal--content h3 {
+  font-size: 1.5em;
+  font-weight: 600;
+  color: #161616;
+}
+
+.search__restaurant--modal--content img {
+  max-width: 12em;
+}
+
+.search__restaurant--modal--content--ipt {
+  width: 100%;
+}
+
+.search__restaurant--modal--content--ipt i::before {
+  font-size: 5em;
+  color: #836FFF;
+}
+
+.search__restaurant--modal--content--ipt input {
+  outline: none;
+  width: 100%;
+  padding: 1.25em;
+  border-radius: 5px;
+  border: 1.75px solid #CACACA;
+  font-size: 14px;
+  font-weight: 600;
+  color: #161616;
+}
+
+.search__restaurant--modal--content--ipt input::-webkit-input-placeholder {
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  color: #CACACA;
+}
+
+.search__restaurant--modal--content--ipt input:-ms-input-placeholder {
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  color: #CACACA;
+}
+
+.search__restaurant--modal--content--ipt input::-ms-input-placeholder {
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  color: #CACACA;
+}
+
+.search__restaurant--modal--content--ipt input::placeholder {
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  color: #CACACA;
+}
+
+.search__restaurant button {
+  cursor: pointer;
+  width: 100%;
+  background: #836FFF;
+  border: none;
+  color: #fff;
+  font-size: 0.9em;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  padding: 1.25em;
+  border-radius: 5px;
+  -webkit-transition: all 150ms ease-in;
+  transition: all 150ms ease-in;
+}
+
+.search__restaurant button:hover {
+  opacity: 0.85;
 }
 
 /*-----

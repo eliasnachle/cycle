@@ -1,7 +1,7 @@
 @font-face {
   font-family: 'icomoon';
-  src: url("../../fonts/icomoon.eot?ntm2g4");
-  src: url("../../fonts/icomoon.eot?ntm2g4#iefix") format("embedded-opentype"), url("../../fonts/icomoon.ttf?ntm2g4") format("truetype"), url("../../fonts/icomoon.woff?ntm2g4") format("woff"), url("../../fonts/icomoon.svg?ntm2g4#icomoon") format("svg");
+  src: url("../../fonts/icomoon.eot?t2l803");
+  src: url("../../fonts/icomoon.eott2l?803#iefix") format("embedded-opentype"), url("../../fonts/icomoon.ttf?t2l803") format("truetype"), url("../../fonts/icomoon.woff?t2l803") format("woff"), url("../../fonts/icomoon.svg?t2l803#icomoon") format("svg");
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -73,7 +73,7 @@
 
 .icon-search .path1:before {
   content: "\e90a";
-  color: #836fff;
+  color: #878787;
 }
 
 .icon-search .path2:before {
