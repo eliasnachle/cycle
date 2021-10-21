@@ -33,9 +33,9 @@
 
             &.active{
                 background-color: $primary;
-                color: $black;
+                color: #005480;
                 i::before{
-                    color: $white;
+                    color: #005480;
                 }
             }
 
@@ -62,7 +62,7 @@
 
             i::before{
                 margin-right: 1em;
-                color: $primary;
+                color: white;
             }
 
             span{

@@ -1,0 +1,79 @@
+// Import
+@import '../../../root/dashboard-support/root-dashboard-support.scss';
+
+// Content
+.notifications{
+    z-index: 11;
+    transition: all 0.5s cubic-bezier(0.45, 0.05, 0.55, 0.95);    
+    height: 100%;
+    position: fixed;
+    right: -200%;
+    background: $background;
+    border: 1.75px solid $border;
+    padding: 1em;
+    max-width: 375px;
+    overflow-y: scroll;
+    @media screen and (max-width: 768px){
+        max-width: 320px;
+    }
+    &--icon-close{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-bottom: .5rem;
+        h2{
+            font-size: clamp(1.5em, 1.75vw, 2em);
+        }
+        svg{
+            cursor: pointer;
+            path{
+                fill: $primary;
+            }
+        }
+    }
+    &__content{
+        .card__content{
+            display: grid;
+            grid-template-columns: repeat(2, auto);
+            gap: 1em;
+            padding: .75rem;
+            margin-bottom: 1em;
+            border-radius: 10px;
+            cursor: pointer;
+            border: 2px solid $border;
+            figure{
+                padding: 5px;
+                display: grid;
+                place-items: center;
+                height: 67px;
+                width: 67px;
+                border-radius: 10px;
+                background: linear-gradient(90deg, #836FFF 0%, #E486EC 99.99%);
+                i::before{
+                    font-size: 2.7em;
+                    color: #fff;
+                }
+            }
+            &--description{            
+                span{
+                    letter-spacing: 0.75px;
+                    font-size: 16px;
+                    color: $secondaryFontColor;
+                }
+                .card-notifications-title{
+                    display: flex;
+                    justify-content: space-between;
+                    h3{
+                        font-size: 18px;
+                        font-weight: 800;
+                        color: $primaryFontColor;
+                    }
+                    span{
+                        font-size: 18px;
+                        color: $primaryFontColor;
+                    }
+                }
+            }
+        }
+    }
+}

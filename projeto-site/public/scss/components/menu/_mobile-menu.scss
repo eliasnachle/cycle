@@ -4,7 +4,6 @@
 // Content
 .mobile-menu{
     transition: all 0.5s cubic-bezier(0.45, 0.05, 0.55, 0.95);    
-    transform: translateY(-100vh);
     position: fixed;
     z-index: 9999;
     height: 100vh;

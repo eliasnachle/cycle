@@ -71,11 +71,11 @@
 
 .navbar-vertical .nav-vertical .nav-link.active {
   background-color: #25A9EE;
-  color: #161616;
+  color: #005480;
 }
 
 .navbar-vertical .nav-vertical .nav-link.active i::before {
-  color: #fff;
+  color: #005480;
 }
 
 .navbar-vertical .nav-vertical .nav-link:hover {
@@ -89,7 +89,7 @@
 
 .navbar-vertical .nav-vertical .nav-link i::before {
   margin-right: 1em;
-  color: #25A9EE;
+  color: white;
 }
 
 @media screen and (max-width: 1080px) {

@@ -62,7 +62,7 @@ function authenticateLogin() {
                     console.log(sessionStorage.name_user_contratante, sessionStorage.email_user_contratante, sessionStorage.idPlano_user_contratante)
 
                     submit_button.disabled = false
-                    //window.location.href = "";
+                    window.location.href = "dash_user_unidades.html";
                 });
 
             } else {
@@ -99,7 +99,7 @@ function authenticateLogin() {
 
                     console.log(sessionStorage.name_user_suporte, sessionStorage.email_user_suporte, sessionStorage.idContratante_user_suporte)
 
-                    window.location.href = "dash_user.html";
+                    window.location.href = "dashboard-support/dashboard.html";
                 });
 
             } else {

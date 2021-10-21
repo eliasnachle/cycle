@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <title>Request | Registros</title>
+    <link rel="stylesheet" href="../scss/fonts/fonts.css">
+    <link rel="stylesheet" href="../scss/components/dashboard-support/dashboard/dashboard.css">    
+    <link rel="apple-touch-icon" sizes="180x180" href="../favicon/request/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon/request/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../favicon/request/favicon-16x16.png">
+    <link rel="manifest" href="../favicon/request/site.webmanifest">
+    <link rel="mask-icon" href="../favicon/request/safari-pinned-tab.svg" color="#836fff">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+</head>
+<body>
+<!-- Notificações -->
+<section class="notifications">
+  <div class="notifications--icon-close">
+    <h2>Notificações</h2>
+    <svg id="notificationClose" fill="none" height="20" viewBox="0 0 19 19" width="20" xmlns="http://www.w3.org/2000/svg">
+      <path clip-rule="evenodd" d="M18.5578 18.5579C17.9682 19.1474 17.0124 19.1474 16.4228 18.5579L0.442158 2.57712C-0.147386 1.98757 -0.147386 1.03171 0.442158 0.442157C1.03171 -0.147388 1.98756 -0.147388 2.57711 0.442171L18.5578 16.4229C19.1474 17.0125 19.1474 17.9683 18.5578 18.5579Z" fill="white" fill-rule="evenodd"></path><path clip-rule="evenodd" d="M0.442158 18.5579C-0.147386 17.9683 -0.147386 17.0125 0.442158 16.4229L16.4228 0.442169C17.0124 -0.14739 17.9682 -0.14739 18.5578 0.442169C19.1474 1.03171 19.1474 1.98757 18.5578 2.57711L2.57711 18.5579C1.98756 19.1474 1.03171 19.1474 0.442158 18.5579Z" fill="white" fill-rule="evenodd"></path>
+    </svg>
+  </div>
+  <notifications class="notifications__content">
+    <div class="card__content">
+      <figure>
+        <i class="icon-memory"></i>
+      </figure>
+      <div class="card__content--description">
+        <div class="card-notifications-title">
+          <h3>Memoria</h3>        
+          <span>15:45</span>
+        </div>
+        <span>Alto consumo de memória,
+        verifique o totem 3</span>
+      </div>
+    </div>
+    <div class="card__content">
+      <figure>
+        <i class="icon-memory"></i>
+      </figure>
+      <div class="card__content--description">
+        <div class="card-notifications-title">
+          <h3>Memoria</h3>        
+          <span>15:45</span>
+        </div>
+        <span>Alto consumo de memória,
+        verifique o totem 3</span>
+      </div>
+    </div>
+    <div class="card__content">
+      <figure>
+        <i class="icon-memory"></i>
+      </figure>
+      <div class="card__content--description">
+        <div class="card-notifications-title">
+          <h3>Memoria</h3>        
+          <span>15:45</span>
+        </div>
+        <span>Alto consumo de memória,
+        verifique o totem 3</span>
+      </div>
+    </div>
+    <div class="card__content">
+      <figure>
+        <i class="icon-memory"></i>
+      </figure>
+      <div class="card__content--description">
+        <div class="card-notifications-title">
+          <h3>Memoria</h3>        
+          <span>15:45</span>
+        </div>
+        <span>Alto consumo de memória,
+        verifique o totem 3</span>
+      </div>
+    </div>
+    <div class="card__content">
+      <figure>
+        <i class="icon-memory"></i>
+      </figure>
+      <div class="card__content--description">
+        <div class="card-notifications-title">
+          <h3>Memoria</h3>        
+          <span>15:45</span>
+        </div>
+        <span>Alto consumo de memória,
+        verifique o totem 3</span>
+      </div>
+    </div>
+    <div class="card__content">
+      <figure>
+        <i class="icon-memory"></i>
+      </figure>
+      <div class="card__content--description">
+        <div class="card-notifications-title">
+          <h3>Memoria</h3>        
+          <span>15:45</span>
+        </div>
+        <span>Alto consumo de memória,
+        verifique o totem 3</span>
+      </div>
+    </div>
+  </notifications>
+</section>
+<!-- Header -->
+<header class="header">
+  <div class="header--message">    
+    <span>Olá, Jéssica</span>
+    <h2>Bem-Vindo(a)</h2>
+  </div>
+  <div class="header--profile-content">
+    <button class="btnSearchRestaurant" onclick="headerBtnSearchRestaurant()">
+      <i class="icon-restaurant"></i>
+      <span>Méqui 1000</span>
+    </button>
+    <div class="header--profile-content--icon">
+      <i id="notificationHeader" class="icon-bell"></i>      
+      <img src="../imgs/support.jpg" alt="Suporte">
+    </div>
+  </div>
+</header>
+<!-- Sidebar -->
+<section class="sidebar">
+  <div class="sidebar__content">
+    <div class="sidebar__content--logo">
+      <img src="../imgs/request.svg" alt="Logo Request">
+    </div>
+    <div class="sidebar__content--links">
+      <ul>
+        <a href="dashboard.html">
+          <i class="icon-dashboard"></i>
+          <span>Dashboard</span>
+        </a>
+        <a class="actived" href="dashboard-registros.html">
+          <i class="icon-register"></i>
+          <span>Registros</span>
+        </a>
+        <!-- <a href="#">
+          <i class="icon-settings"></i>
+          <span>Configurações</span>
+        </a> -->
+      </ul>
+    </div>
+  </div>
+  <a href="#">
+    <i class="icon-logout"></i>
+    <span>Encerrar</span>
+  </a>
+</section>
+<!-- Modal Opções Menu -->
+<section class="mobile-menu-options">
+  <ul>
+    <a id="notificationMobile" href="#">
+      <i class="icon-bell"></i>
+      <span>Notificações</span>
+    </a>
+    <a href="#">
+      <i class="icon-logout"></i>
+      <span>Encerrar</span>
+    </a>
+  </ul>
+</section>
+<section class="mobile-menu">
+  <div class="mobile-menu__content">
+    <a class="actived" href="dashboard.html">
+      <i class="icon-dashboard"></i>
+    </a>
+    <a href="dashboard-registros.html">
+      <i class="icon-register"></i>
+    </a>
+    <a href="#">
+      <i class="icon-settings"></i>
+    </a>
+    <button onclick="headerBtnSearchRestaurant()">
+      <i class="icon-restaurant"></i>
+    </button>
+    <button>
+      <img id="profileMenu" src="../imgs/support.jpg" alt="Suporte">
+    </button>
+  </div>
+</section>
+<!-- Conteúdo -->
+<main>
+  <section class="dashboard__container">
+      <select name="" id="">
+          <option value="">Visão Geral</option>
+          <option value="">Computadores</option>
+          <option value="">Totens</option>
+      </select>
+     
+    <div class="table-web">
+        <table class="rwd-table">
+            <tr>
+            <th></th>
+            <th>Máquina</th>
+            <th>Componente</th>
+            <th>Status</th>
+            <th>Descrição</th>
+            <th>Data</th>
+            <th>Impacto</th>
+            </tr>
+            <tr>
+            <td data-th=""><figure class="figure-icon"><i class="icon-memory"></i></figure></td>
+            <td data-th="Maquina">Computador 1</td>
+            <td data-th="Componente">Memória</td>
+            <td data-th="Status" class="desc_red">30% / 50°C</td>
+            <td data-th="Descrição">Alto consumo de memória, verifique o totem 3</td>
+            <td data-th="Data">12/03/2021 15:45</td>
+            <td data-th="Impacto" class="desc_red">Gravissimo</td>
+            </tr>
+            <tr>
+                <td data-th=""><figure class="figure-icon"><i class="icon-memory"></i></figure></td>
+                <td data-th="Maquina">Computador 2</td>
+                <td data-th="Componente">Memória</td>
+                <td data-th="Status" class="desc_red">32% / 56°C</td>
+                <td data-th="Descrição">Alto consumo de memória, verifique o totem 3</td>
+                <td data-th="Data">12/03/2021 15:45</td>
+                <td data-th="Impacto" class="desc_red">Gravissimo</td>
+            </tr>
+            <tr>
+                <td data-th=""><figure class="figure-icon"><i class="icon-memory"></i></figure></td>
+                <td data-th="Maquina">Computador 3</td>
+                <td data-th="Componente">Memória</td>
+                <td data-th="Status" class="desc_red">30% / 50°C</td>
+                <td data-th="Descrição">Alto consumo de memória, verifique o totem 3</td>
+                <td data-th="Data">12/03/2021 15:45</td>
+                <td data-th="Impacto" class="desc_red">Gravissimo</td>
+            </tr>
+            <tr>
+                <td data-th=""><figure class="figure-icon"><i class="icon-memory"></i></figure></td>
+                <td data-th="Maquina">Computador 4</td>
+                <td data-th="Componente">Memória</td>
+                <td data-th="Status" class="desc_red">30% / 50°C</td>
+                <td data-th="Descrição">Alto consumo de memória, verifique o totem 3</td>
+                <td data-th="Data">12/03/2021 15:45</td>
+                <td data-th="Impacto" class="desc_red">Gravissimo</td>
+            </tr>
+            <tr>
+                <td data-th=""><figure class="figure-icon"><i class="icon-memory"></i></figure></td>
+                <td data-th="Maquina">Computador 5</td>
+                <td data-th="Componente">Memória</td>
+                <td data-th="Status" class="desc_red">32% / 56°C</td>
+                <td data-th="Descrição">Alto consumo de memória, verifique o totem 3</td>
+                <td data-th="Data">12/03/2021 15:45</td>
+                <td data-th="Impacto" class="desc_red">Gravissimo</td>
+            </tr>
+            <tr>
+                <td data-th=""><figure class="figure-icon"><i class="icon-memory"></i></figure></td>
+                <td data-th="Maquina">Computador 6</td>
+                <td data-th="Componente">Memória</td>
+                <td data-th="Status" class="desc_red">30% / 50°C</td>
+                <td data-th="Descrição">Alto consumo de memória, verifique o totem 3</td>
+                <td data-th="Data">12/03/2021 15:45</td>
+                <td data-th="Impacto" class="desc_red">Gravissimo</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="table-mobile">
+        <div class="container-table">
+            <div class="accordion">
+
+                <div class="accordion-item">
+                    <button id="accordion-button-1" aria-expanded="false">
+                        <span class="accordion-title">
+                            <div class="flex-table">
+                                <figure class="icon-component figure-icon"><i class="icon-memory"></i></figure>
+                                <div>
+                                    <h1>Computador 1</h1>
+                                    <p>Alto consumo de memória, verifique o totem 3</p>
+                                </div>
+                            </div>
+                        </span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="flex-table">
+                            <div class="desc-table">
+                                <div class="icon-component">
+                                    <h3>Data</h3>
+                                    <span class="green">12/03/2021 15:45</span>
+                                </div>
+                                <div>
+                                    <h3>Status</h3>
+                                    <span class="desc_red">30% / 50°C</span>
+                                </div>
+                            </div>
+                            <div class="desc-table">
+                                <div class="icon-component">
+                                    <h3>Impacto</h3>
+                                    <span class="desc_red">Gravissimo</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+
+                  <div class="accordion-item">
+                    <button id="accordion-button-1" aria-expanded="false">
+                        <span class="accordion-title">
+                            <div class="flex-table">
+                                <figure class="icon-component figure-icon"><i class="icon-memory"></i></figure>
+                                <div>
+                                    <h1>Computador 2</h1>
+                                    <p>Alto consumo de memória, verifique o totem 3</p>
+                                </div>
+                            </div>
+                        </span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="flex-table">
+                            <div class="desc-table">
+                                <div class="icon-component">
+                                    <h3>Data</h3>
+                                    <span class="green">12/03/2021 15:45</span>
+                                </div>
+                                <div>
+                                    <h3>Status</h3>
+                                    <span class="desc_red">30% / 50°C</span>
+                                </div>
+                            </div>
+                            <div class="desc-table">
+                                <div class="icon-component">
+                                    <h3>Impacto</h3>
+                                    <span class="desc_red">Gravissimo</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+
+
+                  <div class="accordion-item">
+                    <button id="accordion-button-1" aria-expanded="false">
+                        <span class="accordion-title">
+                            <div class="flex-table">
+                                <figure class="icon-component figure-icon"><i class="icon-memory"></i></figure>
+                                <div>
+                                    <h1>Computador 3</h1>
+                                    <p>Alto consumo de memória, verifique o totem 3</p>
+                                </div>
+                            </div>
+                        </span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="flex-table">
+                            <div class="desc-table">
+                                <div class="icon-component">
+                                    <h3>Data</h3>
+                                    <span class="green">12/03/2021 15:45</span>
+                                </div>
+                                <div>
+                                    <h3>Status</h3>
+                                    <span class="desc_red">30% / 50°C</span>
+                                </div>
+                            </div>
+                            <div class="desc-table">
+                                <div class="icon-component">
+                                    <h3>Impacto</h3>
+                                    <span class="desc_red">Gravissimo</span>
+                                </div>
+                            </div>
+    
+                        </div>
+    
+                    </div>
+                  </div>
+
+                  <div class="accordion-item">
+                    <button id="accordion-button-1" aria-expanded="false">
+                        <span class="accordion-title">
+                            <div class="flex-table">
+                                <figure class="icon-component figure-icon"><i class="icon-memory"></i></figure>
+                                <div>
+                                    <h1>Computador 4</h1>
+                                    <p>Alto consumo de memória, verifique o totem 3</p>
+                                </div>
+                            </div>
+                        </span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="flex-table">
+                            <div class="desc-table">
+                                <div class="icon-component">
+                                    <h3>Data</h3>
+                                    <span class="green">12/03/2021 15:45</span>
+                                </div>
+                                <div>
+                                    <h3>Status</h3>
+                                    <span class="desc_red">30% / 50°C</span>
+                                </div>
+                            </div>
+                            <div class="desc-table">
+                                <div class="icon-component">
+                                    <h3>Impacto</h3>
+                                    <span class="desc_red">Gravissimo</span>
+                                </div>
+                            </div>
+    
+                        </div>
+    
+                    </div>
+                  </div>
+
+                  <div class="accordion-item">
+                    <button id="accordion-button-1" aria-expanded="false">
+                        <span class="accordion-title">
+                            <div class="flex-table">
+                                <figure class="icon-component figure-icon"><i class="icon-memory"></i></figure>
+                                <div>
+                                    <h1>Computador 5</h1>
+                                    <p>Alto consumo de memória, verifique o totem 3</p>
+                                </div>
+                            </div>
+                        </span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="flex-table">
+                            <div class="desc-table">
+                                <div class="icon-component">
+                                    <h3>Data</h3>
+                                    <span class="green">12/03/2021 15:45</span>
+                                </div>
+                                <div>
+                                    <h3>Status</h3>
+                                    <span class="desc_red">30% / 50°C</span>
+                                </div>
+                            </div>
+                            <div class="desc-table">
+                                <div class="icon-component">
+                                    <h3>Impacto</h3>
+                                    <span class="desc_red">Gravissimo</span>
+                                </div>
+                            </div>
+    
+                        </div>
+    
+                    </div>
+                  </div>
+           
+    </div>
+  </section>
+</main>
+</body>
+<script>
+    const items = document.querySelectorAll(".accordion button");
+
+function toggleAccordion() {
+  const itemToggle = this.getAttribute('aria-expanded');
+  
+  for (i = 0; i < items.length; i++) {
+    items[i].setAttribute('aria-expanded', 'false');
+  }
+  
+  if (itemToggle == 'false') {
+    this.setAttribute('aria-expanded', 'true');
+  }
+}
+
+items.forEach(item => item.addEventListener('click', toggleAccordion));
+</script>
+</html>
+<script src="../js/dashboard-support/menu.js"></script>
+<script src="../js/dashboard-support/search_restaurant.js"></script>

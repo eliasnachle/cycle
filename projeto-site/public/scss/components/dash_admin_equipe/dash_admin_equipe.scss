@@ -33,10 +33,10 @@
 
             &.active{
                 background-color: $primary;
-                color: $black;
+                color: #005480;
 
                 i::before{
-                    color: $white;
+                    color: #005480;
                 }
             }
 
@@ -60,7 +60,7 @@
             align-items: center;
             i::before{
                 margin-right: 1em;
-                color: $primary;
+                color: white;
             }
             span{
                 @media screen and (max-width: 1080px) {display: none;}

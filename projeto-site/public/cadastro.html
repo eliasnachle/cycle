@@ -5,11 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cycle | Cadastro</title>
-    <link rel="icon" href="./favicon/favicon-32x32.png">
     <link rel="stylesheet" href="scss/style.css" />
-    <link rel="stylesheet" href="scss/components/cadastro/cadastro.css" />
+    <link rel="stylesheet" href="scss/components/cadastro/cadastro.css">
     <script src="https://kit.fontawesome.com/5621e23e17.js" crossorigin="anonymous"></script>
-    <script src="./js/form-registration.js" defer></script>
+    <script src="js/form-registration.js" defer></script>
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/cycle/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/cycle/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/cycle/favicon-16x16.png">
+    <link rel="manifest" href="favicon/cycle/site.webmanifest">
+    <link rel="mask-icon" href="favicon/cycle/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
 </head>
 <body>
     <!-- Menu -->
@@ -25,7 +31,7 @@
     <!-- content - progressbar -->
     <section class="section-registration">
         <div class="content flow">
-            <form id="form_register" method="post" onsubmit="return registerContratante()" class="form">
+            <form action="#" class="form">
             <div class="content-sidebar">
                 <div class="col">
                     <!-- Progress bar -->
@@ -51,27 +57,24 @@
                             </div>
                             <div class="inputs">
                                 <label for="Email">CPF</label>
-                                <input type="text" name="cpf" id="ipt_cpf" placeholder="Insira seu CPF">
+                                <input type="text" name="nome" id="ipt_cpf" placeholder="Insira seu CPF">
                             </div>
                           </div>
                           <div class="boxes">
                             <div class="inputs">
                                 <label for="Email">Email</label>
-                                <input type="text" name="email" id="ipt_login" placeholder="email@dominio.com">
+                                <input type="text" name="login" id="ipt_login" placeholder="email@dominio.com">
                             </div>
                             <div class="inputs">
                       
-                      
                                 <label for="senha">Senha</label>
                         
-                                <div class="first-example">
-                                    <input type="password" id="password-field" placeholder="Insira sua senha" >
-                                    <i style="position: absolute; margin-top: 25px; margin-left: -50px;" id="pass-status" class="fa fa-eye-slash pass" aria-hidden="true" onClick="viewPassword()"></i>
-                                  </div>
+                                  
+                                    <input type="password" name="password" id="ipt_password" placeholder="Insira sua senha">
                                 </div>
                           </div>
                         <div class="btns-form">
-                            <a class="btns btn-next width-50 ml-auto ">Próximo</a>
+                            <a href="#" class="btns btn-next width-50 ml-auto ">Próximo</a>
                         </div>
                     </div>
 
@@ -84,42 +87,45 @@
                         <div class="plans-web">
                             <div class="box-plan">
                                 <div class="plan"> 
-                                    <input type="radio" name="idPlano" id="free" value="free">
+                                    <input type="radio" name="radio1" id="free" value="free">
                                     <label class="label free-label four col-plans" for="free">
-                                        <h1 class="black">Bronze</h1>
-                                        <h1 class="primary">$20 <span> / mês</span></h1>
+                                        <h1 class="black">Loren Plan</h1>
+                                        <h1 class="primary">$20 <span> / Month</span></h1>
                                         <ul class="dropdown-menu">                          
-                                            <li><span><i class="fas fa-check"></i> Gráficos </span></li>
-                                            <li><span><i class="fas fa-check"></i> Alertas via slack </span></li>
-                                            <li><span><i class="fas fa-check"></i> cadastrar 10 suportes </span></li>
-                                            <li><span><i class="fas fa-check"></i> Limite de maquinas: 10 </span></li>
+                                            <li><span><i class="fas fa-check"></i> Lorem </span></li>
+                                            <li><span><i class="fas fa-check"></i> Lorem </span></li>
+                                            <li><span><i class="fas fa-check"></i> Lorem </span></li>
+                                            <li><span><i class="fas fa-check"></i> Lorem </span></li>
+                                            <li><span><i class="fas fa-check"></i> Lorem </span></li>
                                         </ul>
                                     </label>
                                     </div>
                                     
                                 <div class="plan">
-                                    <input type="radio" name="idPlano" id="basic" value="basic" checked>
+                                    <input type="radio" name="radio1" id="basic" value="basic" checked>
                                     <label class="label basic-label four colcol-plans" for="basic">
-                                        <h1 class="black">Silver</h1>
-                                        <h1 class="primary">$50 <span> / mês</span></h1>
+                                        <h1 class="black">Loren Plan</h1>
+                                        <h1 class="primary">$20 <span> / Month</span></h1>
                                         <ul class="dropdown-menu">                          
-                                            <li><span><i class="fas fa-check"></i> Gráficos </span></li>
-                                            <li><span><i class="fas fa-check"></i> Alertas via slack </span></li>
-                                            <li><span><i class="fas fa-check"></i> cadastrar 20 suportes </span></li>
-                                            <li><span><i class="fas fa-check"></i> Limite de maquinas: 30 </span></li>
+                                            <li><span><i class="fas fa-check"></i> Lorem </span></li>
+                                            <li><span><i class="fas fa-check"></i> Lorem </span></li>
+                                            <li><span><i class="fas fa-check"></i> Lorem </span></li>
+                                            <li><span><i class="fas fa-check"></i> Lorem </span></li>
+                                            <li><span><i class="fas fa-check"></i> Lorem </span></li>
                                         </ul>
                                     </label>
                                 </div>
                                 <div class="plan">
-                                    <input type="radio" name="idPlano" id="premium" value="premium">
+                                    <input type="radio" name="radio1" id="premium" value="premium">
                                     <label class="label premium-label four colcol-plans" for="premium">
-                                        <h1 class="black">Gold</h1>
-                                        <h1 class="primary">$100 <span> / mês</span></h1>
+                                        <h1 class="black">Loren Plan</h1>
+                                        <h1 class="primary">$20 <span> / Month</span></h1>
                                         <ul class="dropdown-menu">                          
-                                            <li><span><i class="fas fa-check"></i> Gráficos </span></li>
-                                            <li><span><i class="fas fa-check"></i> Alertas via slack </span></li>
-                                            <li><span><i class="fas fa-check"></i> cadastrar 30 suportes </span></li>
-                                            <li><span><i class="fas fa-check"></i> Limite de maquinas: Ilimitado </span></li>
+                                            <li><span><i class="fas fa-check"></i> Lorem </span></li>
+                                            <li><span><i class="fas fa-check"></i> Lorem </span></li>
+                                            <li><span><i class="fas fa-check"></i> Lorem </span></li>
+                                            <li><span><i class="fas fa-check"></i> Lorem </span></li>
+                                            <li><span><i class="fas fa-check"></i> Lorem </span></li>
                                         </ul>
                                     </label>
                                 </div>
@@ -127,22 +133,33 @@
                         </div>
 
                         <!-------------------- planos mobile --------------->
-                        <div class="plans-mobile">
+                         <div class="plans-mobile">
                                     <div class="accordion">
                                         <div class="border-list">
                                         <div class="accordion-item">
                                             <button id="accordion-button-1" aria-expanded="false">
                                             <span class="accordion-title">
-                                                <h1 class="black">Bronze</h1>
-                                                <h1 class="primary">$20 <span> / mês</span></h1>
+                                                <h1 class="black">Loren Plan</h1>
+                                                <h1 class="primary">$20 <span> / Month</span></h1>
                                             </span>
                                             <span class="icon" aria-hidden="true"></span></button>
                                             <div class="accordion-content">
-                                                <ul class="dropdown-menu">     
-                                                    <li><span><i class="fas fa-check"></i> Gráficos </span></li>
-                                                    <li><span><i class="fas fa-check"></i> Alertas via slack </span></li>
-                                                    <li><span><i class="fas fa-check"></i> cadastrar 10 suportes </span></li>
-                                                    <li><span><i class="fas fa-check"></i> Limite de maquinas: 10 </span></li>
+                                                <ul class="dropdown-menu grow">     
+                                                    <div class="grow1">                  
+                                                        <li><span><i class="fas fa-check"></i> Lorem </span></li>
+                                                    </div>   
+                                                    <div class="grow1">                  
+                                                        <li><span><i class="fas fa-check"></i> Lorem </span></li>
+                                                    </div>   
+                                                    <div class="grow1">                  
+                                                        <li><span><i class="fas fa-check"></i> Lorem </span></li>
+                                                    </div>   
+                                                    <div class="grow1">                  
+                                                        <li><span><i class="fas fa-check"></i> Lorem </span></li>
+                                                    </div>   
+                                                    <div class="grow1">                  
+                                                        <li><span><i class="fas fa-check"></i> Lorem </span></li>
+                                                    </div>   
                                                 </ul>
                                             </div>
                                         </div>
@@ -151,16 +168,27 @@
                                         <div class="accordion-item">
                                             <button id="accordion-button-1" aria-expanded="false">
                                             <span class="accordion-title">
-                                                <h1 class="black">Silver</h1>
-                                                <h1 class="primary">$50 <span> / mês</span></h1>
+                                                <h1 class="black">Loren Plan</h1>
+                                                <h1 class="primary">$20 <span> / Month</span></h1>
                                             </span>
                                             <span class="icon" aria-hidden="true"></span></button>
                                             <div class="accordion-content">
-                                                <ul class="dropdown-menu">                          
-                                                    <li><span><i class="fas fa-check"></i> Gráficos </span></li>
-                                                    <li><span><i class="fas fa-check"></i> Alertas via slack </span></li>
-                                                    <li><span><i class="fas fa-check"></i> cadastrar 20 suportes </span></li>
-                                                    <li><span><i class="fas fa-check"></i> Limite de maquinas: 30 </span></li>
+                                                <ul class="dropdown-menu grow">     
+                                                    <div class="grow1">                  
+                                                        <li><span><i class="fas fa-check"></i> Lorem </span></li>
+                                                    </div>   
+                                                    <div class="grow1">                  
+                                                        <li><span><i class="fas fa-check"></i> Lorem </span></li>
+                                                    </div>   
+                                                    <div class="grow1">                  
+                                                        <li><span><i class="fas fa-check"></i> Lorem </span></li>
+                                                    </div>   
+                                                    <div class="grow1">                  
+                                                        <li><span><i class="fas fa-check"></i> Lorem </span></li>
+                                                    </div>   
+                                                    <div class="grow1">                  
+                                                        <li><span><i class="fas fa-check"></i> Lorem </span></li>
+                                                    </div>   
                                                 </ul>
                                             </div>
                                         </div>
@@ -169,25 +197,36 @@
                                         <div class="accordion-item">
                                             <button id="accordion-button-1" aria-expanded="false">
                                             <span class="accordion-title">
-                                                <h1 class="black">Gold</h1>
-                                                <h1 class="primary">$100 <span> / mês</span></h1>
+                                                <h1 class="black">Loren Plan</h1>
+                                                <h1 class="primary">$20 <span> / Month</span></h1>
                                             </span>
                                             <span class="icon" aria-hidden="true"></span></button>
                                             <div class="accordion-content">
-                                                <ul class="dropdown-menu">                          
-                                                    <li><span><i class="fas fa-check"></i> Gráficos </span></li>
-                                                    <li><span><i class="fas fa-check"></i> Alertas via slack </span></li>
-                                                    <li><span><i class="fas fa-check"></i> cadastrar 30 suportes </span></li>
-                                                    <li><span><i class="fas fa-check"></i> Limite de maquinas: Ilimitado </span></li>
+                                                <ul class="dropdown-menu grow">     
+                                                    <div class="grow1">                  
+                                                        <li><span><i class="fas fa-check"></i> Lorem </span></li>
+                                                    </div>   
+                                                    <div class="grow1">                  
+                                                        <li><span><i class="fas fa-check"></i> Lorem </span></li>
+                                                    </div>   
+                                                    <div class="grow1">                  
+                                                        <li><span><i class="fas fa-check"></i> Lorem </span></li>
+                                                    </div>   
+                                                    <div class="grow1">                  
+                                                        <li><span><i class="fas fa-check"></i> Lorem </span></li>
+                                                    </div>   
+                                                    <div class="grow1">                  
+                                                        <li><span><i class="fas fa-check"></i> Lorem </span></li>
+                                                    </div>   
                                                 </ul>
                                             </div>
                                         </div>
                                     </div>
                                     </div>
-                                </div> 
+                                </div>
                         <div class="btns-group btns-form">
-                            <a class="btns btn-prev">Voltar</a>
-                            <a class="btns btn-next">Próximo</a>
+                            <a href="#" class="btns btn-prev">Voltar</a>
+                            <a href="#" class="btns btn-next">Próximo</a>
                         </div>
                     </div>
             
@@ -199,7 +238,7 @@
                             <div class="inputs qrcode">
                                 <div>
                                 <img class="qr" src="/imgs/qrcode.svg" alt="">
-                                <a class="btn-pix">Copie o código pix</a>
+                                <a href="#" class="btn-pix">Copie o código pix</a>
                             </div>
                             </div>
                             <div class="inputs qrcode">
@@ -212,9 +251,8 @@
                                 </div>
                           </div>
                         <div class="btns-group margin-inp">
-                            <a class="btns btn-prev">Voltar</a>
-                            <!-- <a type="submit" class="btns btn-next">Próximo</a> -->
-                            <button type="submit" class="btns btn-next">Próximo</button>
+                            <a href="#" class="btns btn-prev">Previous</a>
+                            <a href="#" class="btns btn-next">Next</a>
                         </div>
                     </div>
 
@@ -227,7 +265,7 @@
                         <div class="qrcode">
                             <img class="img-finish" src="/imgs/High-quality Products 1.svg" alt="">
                         </div>
-                        <div class=" margin-inp">
+                        <div class="btns-group margin-inp">
                             <a href="index.html" class="btns btn-next btn-100">Retornar a Index</a>
                         </div>
                     </div>
@@ -235,8 +273,6 @@
             </div>        
         </form>
     </section>
-    <script src="js/validation_registration.js"></script>
+    <script src="js/validation_login.js"></script>
   </body>
 </html>
-
-<script src="js/register_new_contratante.js"></script>
