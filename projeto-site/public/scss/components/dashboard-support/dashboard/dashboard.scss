@@ -76,13 +76,15 @@ Search Restaurant
       &--ipt{
         width: 100%;
         i::before{
-          font-size: 5em;
+          padding: 1.25em 1em ;
+          position: absolute;
+          font-size: 1em;
           color: $primary;
         }
         input{
           outline: none;
           width: 100%;
-          padding: 1.25em;
+          padding: 1.25em 1.25em 1.25em 3.25em;
           border-radius: 5px;
           border: 1.75px solid $border;
           font-size: 14px;

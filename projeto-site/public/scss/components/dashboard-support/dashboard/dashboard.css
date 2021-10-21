@@ -110,14 +110,16 @@ Search Restaurant
 }
 
 .search__restaurant--modal--content--ipt i::before {
-  font-size: 5em;
+  padding: 1.25em 1em;
+  position: absolute;
+  font-size: 1em;
   color: #836FFF;
 }
 
 .search__restaurant--modal--content--ipt input {
   outline: none;
   width: 100%;
-  padding: 1.25em;
+  padding: 1.25em 1.25em 1.25em 3.25em;
   border-radius: 5px;
   border: 1.75px solid #CACACA;
   font-size: 14px;
