@@ -61,10 +61,19 @@ Search Restaurant
     padding: 2em 3em;
     width: 550px;
     background: $background;
+    @media (max-width: 768px){
+      width: 95%;
+    }
     &--content{
       display: grid;
       place-items: center;
       grid-gap: .75rem;
+      &--close{
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        cursor: pointer;
+      }
       h3{
         font-size: 1.5em;
         font-weight: 600;
@@ -97,6 +106,10 @@ Search Restaurant
             color: $border;
           }
         }
+      }
+      span{
+        color: $statusColorAttention;
+        font-size: 16px;
       }
     }
   }

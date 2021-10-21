@@ -31,7 +31,9 @@
         display: flex;
         align-items: center;
         gap: 1em;        
-        a{
+        button{
+            cursor: pointer;
+            border: none;
             border-radius: 5px;
             display: flex;
             align-items: center;

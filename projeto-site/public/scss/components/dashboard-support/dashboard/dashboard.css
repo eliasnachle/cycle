@@ -88,11 +88,28 @@ Search Restaurant
   background: #FFFFFF;
 }
 
+@media (max-width: 768px) {
+  .search__restaurant--modal {
+    width: 95%;
+  }
+}
+
 .search__restaurant--modal--content {
   display: -ms-grid;
   display: grid;
   place-items: center;
   grid-gap: .75rem;
+}
+
+.search__restaurant--modal--content--close {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  cursor: pointer;
 }
 
 .search__restaurant--modal--content h3 {
@@ -153,6 +170,11 @@ Search Restaurant
   font-size: 14px;
   letter-spacing: 0.5px;
   color: #CACACA;
+}
+
+.search__restaurant--modal--content span {
+  color: #FB4B4B;
+  font-size: 16px;
 }
 
 .search__restaurant button {
@@ -431,7 +453,9 @@ main .dashboard__container--row .alert-card span {
   gap: 1em;
 }
 
-.header--profile-content a {
+.header--profile-content button {
+  cursor: pointer;
+  border: none;
   border-radius: 5px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -444,13 +468,13 @@ main .dashboard__container--row .alert-card span {
   text-decoration: none;
 }
 
-.header--profile-content a i::before {
+.header--profile-content button i::before {
   font-size: 2em;
   color: #836FFF;
   margin-right: 15px;
 }
 
-.header--profile-content a span {
+.header--profile-content button span {
   font-weight: 600;
   color: #836FFF;
 }
@@ -509,21 +533,22 @@ main .dashboard__container--row .alert-card span {
           justify-content: space-between;
 }
 
-.mobile-menu__content a {
+.mobile-menu__content a, .mobile-menu__content button {
+  cursor: pointer;
   font-size: 1.5em;
   text-decoration: none;
 }
 
-.mobile-menu__content a i::before {
+.mobile-menu__content a i::before, .mobile-menu__content button i::before {
   display: block;
 }
 
-.mobile-menu__content a:nth-child(4) {
+.mobile-menu__content a:nth-child(4), .mobile-menu__content button:nth-child(4) {
   background: #EBE8FF;
   border-radius: 5px;
 }
 
-.mobile-menu__content a:nth-child(4) i::before {
+.mobile-menu__content a:nth-child(4) i::before, .mobile-menu__content button:nth-child(4) i::before {
   color: #836FFF;
   padding: 0.35em;
 }
