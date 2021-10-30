@@ -1,0 +1,142 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800;900&display=swap");
+@import '../../../root/dashboard-support/root-dashboard-support';
+/*---------
+Config CSS
+---------*/
+html, body{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  scroll-behavior: smooth;
+}
+main{
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Nunito Sans', sans-serif;
+}
+/*-------
+Resources
+-------*/
+.overlay{
+  background: rgba(0, 0, 0, 0.42);
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 9;
+}
+.figure-icon{
+  padding: 5px;
+  display: grid;
+  place-items: center;
+  height: 50px;
+  width: 50px;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #836FFF 0%, #E486EC 99.99%);
+  i::before{
+      font-size: 2em;
+      color: #fff;
+  }
+}
+/*---------------
+Search Restaurant
+----------------*/
+.search__restaurant{
+  display: grid;
+  place-items: center;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 11;
+  &--modal{
+    border-radius: 5px;
+    padding: 2em 3em;
+    width: 550px;
+    background: $background;
+    @media (max-width: 768px){
+      width: 95%;
+    }
+    &--content{
+      display: grid;
+      place-items: center;
+      grid-gap: .75rem;
+      &--close{
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        cursor: pointer;
+      }
+      h3{
+        font-size: 1.5em;
+        font-weight: 600;
+        color: $primaryFontColor;
+      }
+      img{
+        max-width: 12em;
+      }
+      &--ipt{
+        width: 100%;
+        i::before{
+          padding: 1.25em 1em ;
+          position: absolute;
+          font-size: 1em;
+          color: $primary;
+        }
+        input{
+          outline: none;
+          width: 100%;
+          padding: 1.25em 1.25em 1.25em 3.25em;
+          border-radius: 5px;
+          border: 1.75px solid $border;
+          font-size: 14px;
+          font-weight: 600;
+          color: $primaryFontColor;
+          &::placeholder{
+            font-weight: 500;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+            color: $border;
+          }
+        }
+      }
+      span{
+        color: $statusColorAttention;
+        font-size: 16px;
+      }
+    }
+  }
+  button{
+    cursor: pointer;
+    width: 100%;
+    background: $primary;
+    border: none;
+    color: #fff;
+    font-size: 0.9em;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    padding: 1.25em;
+    border-radius: 5px;
+    transition: all 150ms ease-in;
+    &:hover{
+      opacity: 0.85;
+    }
+  }
+}
+/*-----
+Components
+------*/
+@import 'dashboard-section';
+@import '../sidebar/sidebar';
+@import '../header/header';
+@import '../mobile-menu/mobile-menu';
+@import '../notifications/notifications';
+@import 'dashboard-monitor';
+@import 'dashboard-registros';

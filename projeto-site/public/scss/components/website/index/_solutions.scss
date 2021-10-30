@@ -1,5 +1,5 @@
 // Import palette
-@import  '../../root/root';
+@import '../../../root/root';
 
 //Content
 .solutions{
@@ -7,7 +7,7 @@
     padding: 4em 2em;
     display: grid;
     place-items: center;
-    background: red;
+    background: $white;
     &__content{
         max-width: $contentWidth;
         width: 100%;
