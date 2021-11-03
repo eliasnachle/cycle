@@ -305,6 +305,7 @@ public class CadastroMaquina extends javax.swing.JFrame {
         InpTipoDisco.setText(infoMachine.getModeloDisco());
         InpEspacoTotal.setText(infoMachine.getEspacoTotalDisco().toString() + " GB");
         InpTotalRam.setText(infoMachine.getEspacoTotalRam().toString() + " GB");
+        ComboUnidade.setModel();
     }
     
     private void InsertInDatabaseNewMachine() {
