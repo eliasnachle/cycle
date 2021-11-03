@@ -1,5 +1,4 @@
-const sidebarLogo = document.querySelector('.sidebar__content--logo > img'),
-mobileMenu = document.querySelector('.mobile-menu'),
+const mobileMenu = document.querySelector('.mobile-menu'),
 notificationsBar = document.querySelector('.notifications'),
 iconNotification = document.querySelector('.header--profile-content--icon > i'),
 iconNotificationMobile = document.querySelector('.mobile-menu-options > ul > a:nth-child(1)');
@@ -9,10 +8,10 @@ window.addEventListener('load', logoSize);
 window.addEventListener('resize', logoSize);
 
 function logoSize(){
+  const sidebarLogo = document.querySelector('.sidebar__content--logo > img');
+  sidebarLogo.src = "../imgs/small_logo_request.svg";    
   if(window.innerWidth > 1080){        
     sidebarLogo.src = "../imgs/request.svg";
-  } else {
-    sidebarLogo.src = "../imgs/small_logo_request.svg";    
   }  
 }
 
@@ -23,7 +22,7 @@ document.onclick = function(e){
   if(e.target.id == 'profileMenu'){
     mobileMenuOptions.style.bottom = '0';
     addOverlay();
-  } else if(e.target.id == 'notificationHeader' || e.target.id == 'notificationMobile'){
+  } else if(e.target.id == 'notificationHeader' || e.target.id == 'notificationMobile' || e.target.className == 'icon-bell'){
     notificationsBar.style.right = '0';
   } else{
     if(document.querySelector('.overlay') !== null ){
