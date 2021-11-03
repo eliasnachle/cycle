@@ -16,19 +16,6 @@ login.addEventListener('keyup', () => {
     }
 });
 
-// Validação Senha
-// password.addEventListener('keyup', () => {    
-//     const iptPasswordValue = password.value;
-//     if(iptPasswordValue.match(passwordReg)){
-//         password.style.border = '1.5px solid #25A9EE';        
-//         password.style.color = '#25A9EE';
-//     } else {
-//         password.style.border = '1.5px solid #FB4B4B';
-//         password.style.color = '#FB4B4B';
-//     }
-// });
-
-// Toggle Password
 togglePassword.addEventListener('click', () => {
     if(password.type == 'password'){
         togglePassword.className = 'fa fa-eye toggle-passowrd';
@@ -39,8 +26,7 @@ togglePassword.addEventListener('click', () => {
     }
 });
 
-function authenticateLogin() {
-    
+function authenticateLogin() { 
     submit_button.disabled = true
 
     if (isGerenteOrSuporte.value == "Gerente") {
@@ -58,11 +44,9 @@ function authenticateLogin() {
                     sessionStorage.email_user_contratante = json.emailContratante;
                     sessionStorage.idPlano_user_contratante = json.idPlano;
 
-                    console.log(json)
-                    console.log(sessionStorage.name_user_contratante, sessionStorage.email_user_contratante, sessionStorage.idPlano_user_contratante)
-
                     submit_button.disabled = false
-                    window.location.href = "dash_user_unidades.html";
+                    window.location.href = "dash_user_equipe.html";
+
                 });
 
             } else {
