@@ -3,7 +3,7 @@ package model;
 import com.github.britooo.looca.api.core.Looca;
 import java.time.LocalDateTime;
 
-public class MachineRegistry {
+public class MachineRegistryModel {
     private Integer idRegistro;
     private Double cpuEmUso;
     private Double temperaturaCpu;
@@ -12,7 +12,7 @@ public class MachineRegistry {
     private String dataHoraRegistro;
     private Integer idMaquina;
 
-    public MachineRegistry() {
+    public MachineRegistryModel() {
         Looca looca = new Looca();
         
         this.cpuEmUso = looca.getProcessador().getUso();
