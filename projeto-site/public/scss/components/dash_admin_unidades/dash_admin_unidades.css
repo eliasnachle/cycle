@@ -150,6 +150,7 @@
           align-items: center;
   background-color: #25A9EE;
   color: white;
+  font-weight: 100;
 }
 
 .data_content .datas {
@@ -170,9 +171,10 @@
   display: -ms-grid;
   display: grid;
   gap: 2em;
-  border-color: grey;
-  border-width: 0 0 2px 0;
+  border-color: #CACACA;
+  border-width: 0 0 1px 0;
   border-style: solid;
+  padding: 0 0 1em 0;
 }
 
 .data_content .datas .data_column .data_line .icon-restaurant::before {

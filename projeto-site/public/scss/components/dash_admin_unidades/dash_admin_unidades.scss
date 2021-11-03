@@ -107,6 +107,7 @@
                 align-items: center;
                 background-color: $primary;
                 color: white;
+                font-weight: 100;
             }
         }
         .datas{
@@ -119,9 +120,10 @@
                     .data_line{
                         display: grid;
                         gap: 2em;
-                        border-color: grey;
-                        border-width: 0 0 2px 0;
+                        border-color:#CACACA;
+                        border-width: 0 0 1px 0;
                         border-style: solid;
+                        padding: 0 0 1em 0;
                         .icon-restaurant::before{
                             color: $primary;
                             margin-right: 10px;
