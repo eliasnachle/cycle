@@ -120,5 +120,11 @@ public class ControllerComputer {
             Integer usoVolume = (int) Math.round(usoVolumeD);
         }
     }
+    
+    public List<Disco> getDisk() {
+        List<Disco> typeDisk = discGroup.getDiscos();
+        
+        return typeDisk;
+    }
 }
 

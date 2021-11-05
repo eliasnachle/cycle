@@ -9,6 +9,7 @@ public class Computer {
     private String descriptionCPU;
     private String descriptionRAM;
     private Integer qtdDisc;
+    public String getDisk;
 
     //Construtor Vazio
     public Computer() {
@@ -79,6 +80,14 @@ public class Computer {
 
     public void setQtdDisc(Integer qtdDisc) {
         this.qtdDisc = qtdDisc;
+    }
+
+    public String getGetDisk() {
+        return getDisk;
+    }
+
+    public void setGetDisk(String getDisk) {
+        this.getDisk = getDisk;
     }
     
     

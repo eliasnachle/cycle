@@ -4,6 +4,13 @@
  */
 package view;
 
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import model.Computer;
+import model.MachineInfo;
+import slack.Monitoration;
+
 /**
  *
  * @author chris
@@ -153,6 +160,15 @@ public class AberturaChamado extends javax.swing.JFrame {
 
     private void buttonSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSendActionPerformed
         // TODO add your handling code here:
+        Monitoration sendMessage = new Monitoration();
+
+        try {
+            sendMessage.enviarMensagem(buttonSend.getText());
+        } catch (IOException ex) {
+            Logger.getLogger(AberturaChamado.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(AberturaChamado.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_buttonSendActionPerformed
 
     /**
@@ -189,6 +205,17 @@ public class AberturaChamado extends javax.swing.JFrame {
             }
         });
     }
+    
+    private void searchInfo() {
+        Computer pc = new Computer();
+        
+        modelPC.setText(pc.getComputerManufacturer());
+        modelCPU.setText(pc.getDescriptionCPU());
+        modelRAM.setText(pc.getDescriptionRAM());
+        modelDisk.setText(pc.getGetDisk());
+    }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonCancel;
