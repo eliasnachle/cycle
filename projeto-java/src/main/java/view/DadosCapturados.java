@@ -7,6 +7,7 @@ package view;
 
 import controller.ControllerMachineInfo;
 import controller.ControllerRegistry;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 import model.MachineInfoModel;
@@ -477,39 +478,35 @@ public class DadosCapturados extends javax.swing.JFrame {
     
     private void insertInInputMachineInfo() {
         System.out.println("Inserindo dados no banco");
-        MachineInfoModel machineInfo = new MachineInfoModel();
         ControllerMachineInfo controllerMachine = new ControllerMachineInfo();
         
-        controllerMachine.consultMachineInfo(machineInfo);
+        List<MachineInfoModel> machineInfo = controllerMachine.consultMachineInfo();
         
-        InpApelidoMaquina.setText(machineInfo.getApelidoMaquina());
-        InpEspacoTotalDisco.setText(machineInfo.getEspacoTotalDisco().toString());
-        InpEspacoTotalRam.setText(machineInfo.getEspacoTotalRam().toString());
-        InpFrequenciaCpu.setText(machineInfo.getCpuFrequencia().toString());
-        InpModeloCpu.setText(machineInfo.getModeloCpu());
-        InpSistemaOperacional.setText(machineInfo.getSistemaOperacionalMaquina());
-        InpModeloDisco.setText(machineInfo.getModeloDisco());
-        InpTipoMaquina.setText(machineInfo.getTipoMaquina());
+        InpApelidoMaquina.setText(machineInfo.get(0).getApelidoMaquina());
+        InpEspacoTotalDisco.setText(machineInfo.get(0).getEspacoTotalDisco().toString());
+        InpEspacoTotalRam.setText(machineInfo.get(0).getEspacoTotalRam().toString());
+        InpFrequenciaCpu.setText(machineInfo.get(0).getCpuFrequencia().toString());
+        InpModeloCpu.setText(machineInfo.get(0).getModeloCpu());
+        InpSistemaOperacional.setText(machineInfo.get(0).getSistemaOperacionalMaquina());
+        InpModeloDisco.setText(machineInfo.get(0).getModeloDisco());
+        InpTipoMaquina.setText(machineInfo.get(0).getTipoMaquina());
     }
     
     private void insertInInputRegistryInfo() {
         System.out.println("Inserindo dados nos inputs");
-        MachineInfoModel machineInfo = new MachineInfoModel();
-        ControllerMachineInfo controllerMachine = new ControllerMachineInfo();
-        
-        controllerMachine.consultMachineInfo(machineInfo);
         
         MachineRegistryModel machineRegistry = new MachineRegistryModel();
         ControllerRegistry controllerRegistry = new ControllerRegistry();
         
-        controllerRegistry.consultMachineRegister(machineRegistry);
+        ControllerMachineInfo controllerMachine = new ControllerMachineInfo();
+        List<MachineInfoModel> infoMachineDataBase = controllerMachine.consultMachineInfo();
         
         // Inserindo valores nos inputs
         UsoCpu.setText(machineRegistry.getCpuEmUso().toString() + " %");
         TemperaturaCpu.setText(machineRegistry.getTemperaturaCpu().toString() + " Cº");
-        UsoRam.setText(machineInfo.getEspacoTotalRam() - machineRegistry.getEspacoLivreRam() + " GB");
+        UsoRam.setText(infoMachineDataBase.get(0).getEspacoTotalRam() - machineRegistry.getEspacoLivreRam() + " GB");
         RamDisponivel.setText(machineRegistry.getEspacoLivreRam().toString() + " GB");
-        DiscoUsado.setText(machineInfo.getEspacoTotalDisco() - machineRegistry.getEspacoLivreDisco() + " GB");
+        DiscoUsado.setText(infoMachineDataBase.get(0).getEspacoTotalDisco() - machineRegistry.getEspacoLivreDisco() + " GB");
         DiscoDisponivel.setText(machineRegistry.getEspacoLivreDisco().toString() + " GB");
     }
     

@@ -1,6 +1,7 @@
 package view;
 
 import controller.ControllerMachineInfo;
+import java.util.List;
 import javax.swing.JOptionPane;
 import model.MachineInfoModel;
 
@@ -296,16 +297,17 @@ public class CadastroMaquina extends javax.swing.JFrame {
     }
     
     private void InsertInInputValues() {
-        MachineInfoModel infoMachine = new MachineInfoModel();
+        ControllerMachineInfo infoMachine = new ControllerMachineInfo();
+        List<MachineInfoModel> infoMachineDataBase = infoMachine.consultMachineInfo();
         
         //InpApelidoMaquina.;
-        InpFrequenciaCpu.setText(infoMachine.getCpuFrequencia().toString() + " GHz");
-        InpModeloCpu.setText(infoMachine.getModeloCpu());
-        InpSistemaOperacional.setText(infoMachine.getSistemaOperacionalMaquina());
-        InpTipoDisco.setText(infoMachine.getModeloDisco());
-        InpEspacoTotal.setText(infoMachine.getEspacoTotalDisco().toString() + " GB");
-        InpTotalRam.setText(infoMachine.getEspacoTotalRam().toString() + " GB");
-        ComboUnidade.setModel();
+        InpFrequenciaCpu.setText(infoMachineDataBase.get(0).getCpuFrequencia().toString() + " GHz");
+        InpModeloCpu.setText(infoMachineDataBase.get(0).getModeloCpu());
+        InpSistemaOperacional.setText(infoMachineDataBase.get(0).getSistemaOperacionalMaquina());
+        InpTipoDisco.setText(infoMachineDataBase.get(0).getModeloDisco());
+        InpEspacoTotal.setText(infoMachineDataBase.get(0).getEspacoTotalDisco().toString() + " GB");
+        InpTotalRam.setText(infoMachineDataBase.get(0).getEspacoTotalRam().toString() + " GB");
+        //ComboUnidade.setModel();
     }
     
     private void InsertInDatabaseNewMachine() {

@@ -34,7 +34,9 @@ public class ControllerRegistry {
        
     }
     
-    public void consultMachineRegister(MachineRegistryModel machineRegistry) {
+    public List<MachineRegistryModel> consultMachineRegister() {
+        
+        MachineRegistryModel machineRegistry = new MachineRegistryModel();
         
         List<MachineInfoModel> machineInfoSelect = connection.query("SELECT * FROM "
                 + "tblMaquinas WHERE idProcessador = ?", new BeanPropertyRowMapper(MachineInfoModel.class), 
@@ -44,12 +46,6 @@ public class ControllerRegistry {
                 new BeanPropertyRowMapper(MachineRegistryModel.class), 
                 machineInfoSelect.get(0).getIdMaquina());
         
-        machineRegistry.setIdRegistro(registrySelect.get(0).getIdRegistro());
-        machineRegistry.setCpuEmUso(registrySelect.get(0).getCpuEmUso());
-        machineRegistry.setEspacoLivreDisco(registrySelect.get(0).getEspacoLivreDisco());
-        machineRegistry.setEspacoLivreRam(registrySelect.get(0).getEspacoLivreRam());
-        machineRegistry.setDataHoraRegistro(registrySelect.get(0).getIdRegistro().toString());
-        machineRegistry.setIdMaquina(registrySelect.get(0).getIdMaquina());
-        
+        return registrySelect;
     }
 }

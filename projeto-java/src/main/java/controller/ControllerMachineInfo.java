@@ -31,7 +31,8 @@ public class ControllerMachineInfo {
         System.out.println("Cadastro da maquina concluido");
     }
     
-    public List<MachineInfoModel> consultMachineInfo(MachineInfoModel machineInfo){
+    public List<MachineInfoModel> consultMachineInfo(){
+        MachineInfoModel machineInfo = new MachineInfoModel();
         
         System.out.println("Fazendo consulta sobre a maquina");
         List<MachineInfoModel> machineInfoSelect = 

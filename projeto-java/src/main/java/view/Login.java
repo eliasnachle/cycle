@@ -148,7 +148,7 @@ public class Login extends javax.swing.JFrame {
 
         } else {
             
-            if (controllerMachineInfo.consultMachineInfo(machineInfo).isEmpty()){
+            if (controllerMachineInfo.consultMachineInfo().isEmpty()){
                 CadastroMaquina frame2 = new CadastroMaquina();
                 setVisible(false);
                 frame2.setVisible(true);   
