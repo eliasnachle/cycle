@@ -95,7 +95,7 @@ public class MachineInfoModel {
     }
 
     public Double getEspacoTotalDisco() {
-        return (double) Math.round(espacoTotalDisco);
+        return espacoTotalDisco;
     }
 
     public void setEspacoTotalDisco(Double espacoTotalDisco) {
@@ -103,11 +103,11 @@ public class MachineInfoModel {
     }
 
     public Double getEspacoTotalRam() {
-        return (double) Math.round(espacoTotalRam);
+        return espacoTotalRam;
     }
 
     public void setEspacoTotalRam(Double espacoTotalRam) {
-        this.espacoTotalRam = (double) Math.round(espacoTotalRam);
+        this.espacoTotalRam = espacoTotalRam;
     }
 
     public Integer getIdUnidade() {

@@ -494,20 +494,19 @@ public class DadosCapturados extends javax.swing.JFrame {
     
     private void insertInInputRegistryInfo() {
         System.out.println("Inserindo dados nos inputs");
-        
-        MachineRegistryModel machineRegistry = new MachineRegistryModel();
         ControllerRegistry controllerRegistry = new ControllerRegistry();
         
         ControllerMachineInfo controllerMachine = new ControllerMachineInfo();
         List<MachineInfoModel> infoMachineDataBase = controllerMachine.consultMachineInfo();
+        List<MachineRegistryModel> infoRegistryDataBase = controllerRegistry.consultMachineRegister();
         
         // Inserindo valores nos inputs
-        UsoCpu.setText(machineRegistry.getCpuEmUso().toString() + " %");
-        TemperaturaCpu.setText(machineRegistry.getTemperaturaCpu().toString() + " Cº");
-        UsoRam.setText(infoMachineDataBase.get(0).getEspacoTotalRam() - machineRegistry.getEspacoLivreRam() + " GB");
-        RamDisponivel.setText(machineRegistry.getEspacoLivreRam().toString() + " GB");
-        DiscoUsado.setText(infoMachineDataBase.get(0).getEspacoTotalDisco() - machineRegistry.getEspacoLivreDisco() + " GB");
-        DiscoDisponivel.setText(machineRegistry.getEspacoLivreDisco().toString() + " GB");
+        UsoCpu.setText(infoRegistryDataBase.get(0).getCpuEmUso().toString() + " %");
+        TemperaturaCpu.setText(infoRegistryDataBase.get(0).getTemperaturaCpu().toString() + " Cº");
+        UsoRam.setText(infoMachineDataBase.get(0).getEspacoTotalRam() - infoRegistryDataBase.get(0).getEspacoLivreRam() + " GB");
+        RamDisponivel.setText(infoRegistryDataBase.get(0).getEspacoLivreRam().toString() + " GB");
+        DiscoUsado.setText(infoMachineDataBase.get(0).getEspacoTotalDisco() - infoRegistryDataBase.get(0).getEspacoLivreDisco() + " GB");
+        DiscoDisponivel.setText(infoRegistryDataBase.get(0).getEspacoLivreDisco().toString() + " GB");
     }
     
     private void insertResgistryInDatabase() {
