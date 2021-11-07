@@ -2,7 +2,7 @@ package model;
 
 import com.github.britooo.looca.api.core.Looca;
 
-public class MachineInfo {
+public class MachineInfoModel {
     private String idMaquina;
     private String apelidoMaquina;
     private String tipoMaquina;
@@ -15,7 +15,7 @@ public class MachineInfo {
     private Double espacoTotalRam;
     private Integer idUnidade;
 
-    public MachineInfo() {
+    public MachineInfoModel() {
         
         Looca looca = new Looca();
         
@@ -95,7 +95,7 @@ public class MachineInfo {
     }
 
     public Double getEspacoTotalDisco() {
-        return (double) Math.round(espacoTotalDisco);
+        return espacoTotalDisco;
     }
 
     public void setEspacoTotalDisco(Double espacoTotalDisco) {
@@ -103,11 +103,11 @@ public class MachineInfo {
     }
 
     public Double getEspacoTotalRam() {
-        return (double) Math.round(espacoTotalRam);
+        return espacoTotalRam;
     }
 
     public void setEspacoTotalRam(Double espacoTotalRam) {
-        this.espacoTotalRam = (double) Math.round(espacoTotalRam);
+        this.espacoTotalRam = espacoTotalRam;
     }
 
     public Integer getIdUnidade() {

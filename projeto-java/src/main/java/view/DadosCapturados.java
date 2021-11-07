@@ -5,41 +5,28 @@
  */
 package view;
 
-import com.github.britooo.looca.api.core.Looca;
-import com.github.britooo.looca.api.group.memoria.Memoria;
-import controller.ControllerComputer;
-import controller.ControllerMachine;
+import controller.ControllerMachineInfo;
 import controller.ControllerRegistry;
-import java.io.IOException;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JFormattedTextField;
-import model.Computer;
-import model.MachineInfo;
-import model.MachineRegistry;
+import model.MachineInfoModel;
+import model.MachineRegistryModel;
 
 public class DadosCapturados extends javax.swing.JFrame {
-    private ControllerComputer controllerComputer = new ControllerComputer();
-    private Looca looca = new Looca();
-    private Memoria memory = new Memoria();
-    private Computer computer = new Computer();
     
-    /**
-     * Creates new form DadosCapturados
-     */
     public DadosCapturados() {
         initComponents();
-        insertInInputInfoMachine();
-        insertResgistryInDatabase();
+        insertInInputMachineInfo();
         
         Timer timer = new Timer();
-        int delay = 0;
-        int interval = 500;
+        int delay = 50;
+        int interval = 1000;
         timer.scheduleAtFixedRate(new TimerTask() {
+            @Override
             public void run() {
-                insertInInputInfoRegistry();
+                insertResgistryInDatabase();
+                insertInInputRegistryInfo();
             }
         }, delay, interval);
     }
@@ -57,8 +44,6 @@ public class DadosCapturados extends javax.swing.JFrame {
         jSlider1 = new javax.swing.JSlider();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        ExitButton = new javax.swing.JButton();
-        CalledButton = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
@@ -113,12 +98,6 @@ public class DadosCapturados extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel2.setText("Dashboard");
-
-        ExitButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ExitButtonActionPerformed(evt);
-            }
-        });
 
         jLabel3.setText("Abrir chamado");
 
@@ -212,25 +191,25 @@ public class DadosCapturados extends javax.swing.JFrame {
                     .addComponent(jLabel5)
                     .addComponent(InpApelidoMaquina)
                     .addComponent(InpTipoMaquina, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel7)
                     .addComponent(jLabel8)
                     .addComponent(InpSistemaOperacional)
                     .addComponent(InpModeloCpu, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel9)
                     .addComponent(jLabel10)
                     .addComponent(InpModeloDisco)
                     .addComponent(InpFrequenciaCpu, javax.swing.GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(InpEspacoTotalDisco, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+                    .addComponent(InpEspacoTotalDisco, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE)
                     .addComponent(InpEspacoTotalRam)
                     .addComponent(jLabel11)
                     .addComponent(jLabel12))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(8, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -292,7 +271,7 @@ public class DadosCapturados extends javax.swing.JFrame {
                             .addComponent(DiscoDisponivel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel6Layout.createSequentialGroup()
                                 .addComponent(jLabel15)
-                                .addGap(0, 159, Short.MAX_VALUE)))
+                                .addGap(0, 177, Short.MAX_VALUE)))
                         .addContainerGap())))
         );
         jPanel6Layout.setVerticalGroup(
@@ -384,12 +363,12 @@ public class DadosCapturados extends javax.swing.JFrame {
                     .addComponent(UsoRam, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 136, Short.MAX_VALUE))
+                        .addGap(0, 154, Short.MAX_VALUE))
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel8Layout.createSequentialGroup()
                                 .addComponent(jLabel13)
-                                .addGap(0, 149, Short.MAX_VALUE))
+                                .addGap(0, 167, Short.MAX_VALUE))
                             .addComponent(RamDisponivel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addContainerGap())))
         );
@@ -417,34 +396,27 @@ public class DadosCapturados extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(14, 14, 14)
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(CalledButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(ExitButton)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(jLabel4)))
-                        .addGap(20, 20, 20))
+                        .addGap(0, 0, 0)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel4)
+                        .addGap(44, 44, 44))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                         .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                         .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(18, 18, Short.MAX_VALUE)
                         .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap(22, Short.MAX_VALUE))))
+                        .addContainerGap(40, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -452,10 +424,7 @@ public class DadosCapturados extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(ExitButton)
-                    .addComponent(CalledButton)
-                    .addComponent(jLabel2))
+                .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -476,10 +445,6 @@ public class DadosCapturados extends javax.swing.JFrame {
     private void InpEspacoTotalRamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InpEspacoTotalRamActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_InpEspacoTotalRamActionPerformed
-
-    private void ExitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitButtonActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_ExitButtonActionPerformed
 
     private void InpApelidoMaquinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InpApelidoMaquinaActionPerformed
         // TODO add your handling code here:
@@ -505,97 +470,53 @@ public class DadosCapturados extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_InpModeloCpuActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DadosCapturados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DadosCapturados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DadosCapturados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DadosCapturados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new DadosCapturados().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new DadosCapturados().setVisible(true);
         });
     }
     
-    private void insertInInputInfoMachine() {
-        MachineInfo machineInfo = new MachineInfo();
-        ControllerMachine controllerMachine = new ControllerMachine();
+    private void insertInInputMachineInfo() {
+        System.out.println("Inserindo dados no banco");
+        ControllerMachineInfo controllerMachine = new ControllerMachineInfo();
         
-        controllerMachine.consultMachineInfo(machineInfo);
+        List<MachineInfoModel> machineInfo = controllerMachine.consultMachineInfo();
         
-        InpApelidoMaquina.setText(machineInfo.getApelidoMaquina());
-        InpEspacoTotalDisco.setText(machineInfo.getEspacoTotalDisco().toString());
-        InpEspacoTotalRam.setText(machineInfo.getEspacoTotalRam().toString());
-        InpFrequenciaCpu.setText(machineInfo.getCpuFrequencia().toString());
-        InpModeloCpu.setText(machineInfo.getModeloCpu());
-        InpSistemaOperacional.setText(machineInfo.getSistemaOperacionalMaquina());
-        InpModeloDisco.setText(machineInfo.getModeloDisco());
-        InpTipoMaquina.setText(machineInfo.getTipoMaquina());
+        InpApelidoMaquina.setText(machineInfo.get(0).getApelidoMaquina());
+        InpEspacoTotalDisco.setText(machineInfo.get(0).getEspacoTotalDisco().toString());
+        InpEspacoTotalRam.setText(machineInfo.get(0).getEspacoTotalRam().toString());
+        InpFrequenciaCpu.setText(machineInfo.get(0).getCpuFrequencia().toString());
+        InpModeloCpu.setText(machineInfo.get(0).getModeloCpu());
+        InpSistemaOperacional.setText(machineInfo.get(0).getSistemaOperacionalMaquina());
+        InpModeloDisco.setText(machineInfo.get(0).getModeloDisco());
+        InpTipoMaquina.setText(machineInfo.get(0).getTipoMaquina());
     }
     
-    private void insertInInputInfoRegistry() {
-        MachineInfo machineInfo = new MachineInfo();
-        ControllerMachine controllerMachine = new ControllerMachine();
-        
-        controllerMachine.consultMachineInfo(machineInfo);
-        
-        MachineRegistry machineRegistry = new MachineRegistry();
+    private void insertInInputRegistryInfo() {
+        System.out.println("Inserindo dados nos inputs");
         ControllerRegistry controllerRegistry = new ControllerRegistry();
         
-        controllerRegistry.consultMachineRegister(machineRegistry);
+        ControllerMachineInfo controllerMachine = new ControllerMachineInfo();
+        List<MachineInfoModel> infoMachineDataBase = controllerMachine.consultMachineInfo();
+        List<MachineRegistryModel> infoRegistryDataBase = controllerRegistry.consultMachineRegister();
         
-        Double usoRam = machineInfo.getEspacoTotalRam() - machineRegistry.getEspacoLivreRam() ;
-        Double usoDisco =  machineInfo.getEspacoTotalDisco() - machineRegistry.getEspacoLivreDisco();
-        
-        UsoCpu.setText(machineRegistry.getCpuEmUso().toString() + " %");
-        TemperaturaCpu.setText(machineRegistry.getTemperaturaCpu().toString() + " Cº");
-        UsoRam.setText(usoRam.toString() + " GB");
-        RamDisponivel.setText(machineRegistry.getEspacoLivreRam().toString() + " GB");
-        DiscoUsado.setText(usoDisco.toString() + " GB");
-        DiscoDisponivel.setText(machineRegistry.getEspacoLivreDisco().toString() + " GB");
+        // Inserindo valores nos inputs
+        UsoCpu.setText(infoRegistryDataBase.get(0).getCpuEmUso().toString() + " %");
+        TemperaturaCpu.setText(infoRegistryDataBase.get(0).getTemperaturaCpu().toString() + " Cº");
+        UsoRam.setText(infoMachineDataBase.get(0).getEspacoTotalRam() - infoRegistryDataBase.get(0).getEspacoLivreRam() + " GB");
+        RamDisponivel.setText(infoRegistryDataBase.get(0).getEspacoLivreRam().toString() + " GB");
+        DiscoUsado.setText(infoMachineDataBase.get(0).getEspacoTotalDisco() - infoRegistryDataBase.get(0).getEspacoLivreDisco() + " GB");
+        DiscoDisponivel.setText(infoRegistryDataBase.get(0).getEspacoLivreDisco().toString() + " GB");
     }
     
     private void insertResgistryInDatabase() {
         ControllerRegistry registry = new ControllerRegistry();
-        
-        Timer timer = new Timer();
-        int delay = 0;
-        int interval = 1000;
-        timer.scheduleAtFixedRate(new TimerTask() {
-            public void run() {
-                registry.registerInDatabaseNewRegistry();
-            }
-        }, delay, interval);
+        registry.registerInDatabaseNewRegistry();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton CalledButton;
     private javax.swing.JLabel DiscoDisponivel;
     private javax.swing.JLabel DiscoUsado;
-    private javax.swing.JButton ExitButton;
     private javax.swing.JFormattedTextField InpApelidoMaquina;
     private javax.swing.JFormattedTextField InpEspacoTotalDisco;
     private javax.swing.JFormattedTextField InpEspacoTotalRam;
