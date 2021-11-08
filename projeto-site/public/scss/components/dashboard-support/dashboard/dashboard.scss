@@ -48,7 +48,7 @@ Resources
 /*---------------
 Search Restaurant
 ----------------*/
-.search__restaurant{
+.overlay__modal{
   display: grid;
   place-items: center;
   position: fixed;
@@ -81,6 +81,12 @@ Search Restaurant
       }
       img{
         max-width: 12em;
+      }
+      &--text{
+        padding: 1em 0;
+        span{
+          color: $secondaryFontColor !important;
+        }
       }
       &--ipt{
         width: 100%;
@@ -127,6 +133,10 @@ Search Restaurant
     transition: all 150ms ease-in;
     &:hover{
       opacity: 0.85;
+    }
+    &:nth-last-child(1){
+      background: none;
+      color: $primary;
     }
   }
 }

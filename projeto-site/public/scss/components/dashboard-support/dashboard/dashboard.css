@@ -70,7 +70,7 @@ Resources
 /*---------------
 Search Restaurant
 ----------------*/
-.search__restaurant {
+.overlay__modal {
   display: -ms-grid;
   display: grid;
   place-items: center;
@@ -81,7 +81,7 @@ Search Restaurant
   z-index: 11;
 }
 
-.search__restaurant--modal {
+.overlay__modal--modal {
   border-radius: 5px;
   padding: 2em 3em;
   width: 550px;
@@ -89,19 +89,19 @@ Search Restaurant
 }
 
 @media (max-width: 768px) {
-  .search__restaurant--modal {
+  .overlay__modal--modal {
     width: 95%;
   }
 }
 
-.search__restaurant--modal--content {
+.overlay__modal--modal--content {
   display: -ms-grid;
   display: grid;
   place-items: center;
   grid-gap: .75rem;
 }
 
-.search__restaurant--modal--content--close {
+.overlay__modal--modal--content--close {
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -112,28 +112,36 @@ Search Restaurant
   cursor: pointer;
 }
 
-.search__restaurant--modal--content h3 {
+.overlay__modal--modal--content h3 {
   font-size: 1.5em;
   font-weight: 600;
   color: #161616;
 }
 
-.search__restaurant--modal--content img {
+.overlay__modal--modal--content img {
   max-width: 12em;
 }
 
-.search__restaurant--modal--content--ipt {
+.overlay__modal--modal--content--text {
+  padding: 1em 0;
+}
+
+.overlay__modal--modal--content--text span {
+  color: #878787 !important;
+}
+
+.overlay__modal--modal--content--ipt {
   width: 100%;
 }
 
-.search__restaurant--modal--content--ipt i::before {
+.overlay__modal--modal--content--ipt i::before {
   padding: 1.25em 1em;
   position: absolute;
   font-size: 1em;
   color: #836FFF;
 }
 
-.search__restaurant--modal--content--ipt input {
+.overlay__modal--modal--content--ipt input {
   outline: none;
   width: 100%;
   padding: 1.25em 1.25em 1.25em 3.25em;
@@ -144,40 +152,40 @@ Search Restaurant
   color: #161616;
 }
 
-.search__restaurant--modal--content--ipt input::-webkit-input-placeholder {
+.overlay__modal--modal--content--ipt input::-webkit-input-placeholder {
   font-weight: 500;
   font-size: 14px;
   letter-spacing: 0.5px;
   color: #CACACA;
 }
 
-.search__restaurant--modal--content--ipt input:-ms-input-placeholder {
+.overlay__modal--modal--content--ipt input:-ms-input-placeholder {
   font-weight: 500;
   font-size: 14px;
   letter-spacing: 0.5px;
   color: #CACACA;
 }
 
-.search__restaurant--modal--content--ipt input::-ms-input-placeholder {
+.overlay__modal--modal--content--ipt input::-ms-input-placeholder {
   font-weight: 500;
   font-size: 14px;
   letter-spacing: 0.5px;
   color: #CACACA;
 }
 
-.search__restaurant--modal--content--ipt input::placeholder {
+.overlay__modal--modal--content--ipt input::placeholder {
   font-weight: 500;
   font-size: 14px;
   letter-spacing: 0.5px;
   color: #CACACA;
 }
 
-.search__restaurant--modal--content span {
+.overlay__modal--modal--content span {
   color: #FB4B4B;
   font-size: 16px;
 }
 
-.search__restaurant button {
+.overlay__modal button {
   cursor: pointer;
   width: 100%;
   background: #836FFF;
@@ -192,8 +200,13 @@ Search Restaurant
   transition: all 150ms ease-in;
 }
 
-.search__restaurant button:hover {
+.overlay__modal button:hover {
   opacity: 0.85;
+}
+
+.overlay__modal button:nth-last-child(1) {
+  background: none;
+  color: #836FFF;
 }
 
 /*-----
