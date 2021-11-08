@@ -15,6 +15,21 @@ function logoSize(){
   }  
 }
 
+// Adiciona overlay
+function addOverlay(){
+  const overlay = document.querySelector('.overlay');
+  if(!overlay){
+    const overlay = document.createElement("div");
+    overlay.className = 'overlay';
+    body.appendChild(overlay);
+  }
+}
+// Remove overlay
+function removeOverlay(){
+  const overlay = document.querySelector('.overlay');
+  overlay.parentNode.removeChild(overlay);
+}
+
 // Toggle opções do menu mobile e adiciona overlay  
 document.onclick = function(e){
   const mobileMenuOptions = document.querySelector('.mobile-menu-options');
@@ -24,6 +39,7 @@ document.onclick = function(e){
     addOverlay();
   } else if(e.target.id == 'notificationHeader' || e.target.id == 'notificationMobile' || e.target.className == 'icon-bell'){
     notificationsBar.style.right = '0';
+    addOverlay();
   } else{
     if(document.querySelector('.overlay') !== null ){
       removeOverlay();
@@ -31,15 +47,4 @@ document.onclick = function(e){
     notificationsBar.style.right = '-200%';
     mobileMenuOptions.style.bottom = '-100%';
   }
-}
-
-// Adiciona overlay
-function addOverlay(){
-  const body = document.getElementsByTagName('BODY')[0];
-  body.innerHTML += `<div class="overlay"></div>`;
-}
-// Remove overlay
-function removeOverlay(){
-  const overlay = document.querySelector('.overlay');
-  overlay.parentNode.removeChild(overlay);
 }
