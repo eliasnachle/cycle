@@ -61,7 +61,7 @@ if(sessionStorage.getItem("restaurantSession") == null){
           <h3>Qual unidade você quer encontrar?</h3>
           <div class="overlay__modal--modal--content--ipt">
             <i class="icon-search"></i>
-            <input type="text" id="iptSearchRestaurant" placeholder="Busque pelo nome da unidade">
+            <input type="text" id="ipt_search_restaurant" placeholder="Busque pelo nome da unidade">
           </div>      
           <button onclick="searchResraurant()" id="btn_search_restaurant">Buscar</button>
           <span id="msg_validate_search_restaurant"></span>
