@@ -226,7 +226,7 @@ main {
 
 @media screen and (max-width: 768px) {
   main {
-    padding: 2em 1em 2em 1em;
+    padding: 2em 1em 5em 1em;
   }
 }
 
@@ -258,7 +258,14 @@ main .dashboard__container--row a .card__content {
   padding: 1rem;
   border-radius: 10px;
   cursor: pointer;
-  border: 2px solid #CACACA;
+  background: #F9F8FF;
+  -webkit-transition: all ease-in 150ms;
+  transition: all ease-in 150ms;
+}
+
+main .dashboard__container--row a .card__content:hover {
+  -webkit-filter: brightness(0.92);
+          filter: brightness(0.92);
 }
 
 main .dashboard__container--row a .card__content--title {
@@ -284,11 +291,28 @@ main .dashboard__container--row a .card__content--description {
 main .dashboard__container--row a .card__content--description span {
   letter-spacing: 0.75px;
   font-size: 16px;
+  font-weight: 600;
   color: #878787;
 }
 
+main .dashboard__container--row .exclent-card .card__content--title span {
+  color: #161616 !important;
+}
+
+main .dashboard__container--row .exclent-card span {
+  color: #35E156 !important;
+}
+
+main .dashboard__container--row .exclent-card span svg {
+  fill: #35E156 !important;
+}
+
 main .dashboard__container--row .alert-card {
-  border: 2px solid #FB4B4B;
+  background: #FFDFDF !important;
+}
+
+main .dashboard__container--row .alert-card .card__content--title span {
+  color: #FB4B4B;
 }
 
 main .dashboard__container--row .alert-card figure {
@@ -296,7 +320,11 @@ main .dashboard__container--row .alert-card figure {
 }
 
 main .dashboard__container--row .alert-card span {
-  color: #FB4B4B;
+  color: #FB4B4B !important;
+}
+
+main .dashboard__container--row .alert-card span svg {
+  fill: #FB4B4B !important;
 }
 
 /*Palette Color*/

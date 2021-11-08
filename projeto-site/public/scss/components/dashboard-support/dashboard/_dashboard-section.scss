@@ -8,7 +8,7 @@ main{
         padding: 2em 2em 2em calc(2em + 80px);
     }
     @media screen and (max-width: 768px){
-        padding: 2em 1em 2em 1em;
+        padding: 2em 1em 5em 1em;
     }
     .dashboard__container{
         article{
@@ -31,7 +31,11 @@ main{
                     padding: 1rem;
                     border-radius: 10px;
                     cursor: pointer;
-                    border: 2px solid $border;
+                    background: #F9F8FF;
+                    transition: all ease-in 150ms;
+                    &:hover{
+                        filter: brightness(0.92);
+                    }
                     &--title{
                         display: flex;
                         align-items: center;
@@ -47,19 +51,41 @@ main{
                         span{
                             letter-spacing: 0.75px;
                             font-size: 16px;
+                            font-weight: 600;
                             color: $secondaryFontColor;
                         }
                     }
                 }
             }
+            .exclent-card{
+                .card__content--title{
+                    span{
+                        color: $primaryFontColor !important;
+                    }
+                }
+                span{
+                    svg{
+                        fill: $statusColorGood !important;
+                    }
+                    color: $statusColorGood !important;
+                }
+            }
             .alert-card{   
+                background: #FFDFDF !important;
+                .card__content--title{
+                    span{
+                        color: $statusColorAttention;
+                    }
+                }
                     figure{
                         background: $statusColorAttention;
                     }   
                     span{
-                        color: $statusColorAttention;
+                        svg{
+                            fill: $statusColorAttention !important;
+                        }
+                        color: $statusColorAttention !important;
                     }
-                border: 2px solid $statusColorAttention;
             }
         }
     }
