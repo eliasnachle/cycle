@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste</title>
+    <style type="text/css">
+        .menu {
+            background-color: #999999;
+            width: 100%;
+            height: 40px;
+            float: left;
+        }
+
+        .navbar {
+            margin: 43% 0 0 80%;
+            height: 50px;
+            width: 225px;
+            background-color: #25A9EE;
+            position: fixed;
+            overflow-y: hidden;
+        }
+
+        .navbar h1 {
+            font-size: 12px;
+            margin: 8% 0 0 5%;
+            float: left;
+        }
+
+        .navbar ul li {
+            margin: 15px 90px 15px 10px;
+            float: right;
+            list-style-type: none;
+            color: white;
+            font-size: 20px;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            transition: 250ms;
+        }
+
+        .navbar a:hover {
+            color: rgb(0, 153, 255);
+            transition: 250ms;
+        }
+
+        /*SideBar*/
+        .openbtn {
+            font-size: 30px;
+            cursor: pointer;
+            color: white;
+            border: none;
+            margin: -10px 10px 0px 0;
+            float: right;
+        }
+
+        .sidebar {
+            margin: 20% 0 0 75%;
+            height: 100%;
+            width: 0;
+            background-color: #25A9EE;
+            position: fixed;
+            overflow-x: hidden;
+            transition: 0.3s;
+            border-radius: 5px;
+        }
+
+        .sidebar a {
+            padding: 8px;
+            text-decoration: none;
+            font-size: 20px;
+            color: white;
+            display: block;
+        }
+
+        .sidebar .closebtn {
+            font-size: 35px;
+            margin-top: -10px;
+            float: right;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="sidebar" id="mySidebar">
+        <div class="menu">
+            <a href="#" class="closebtn" onclick="closeNav()">x</a>
+        </div>
+        <input type="text" id="" placeholder="Nome">
+        <input type="text" id="" placeholder="E-mail">
+        <input type="text" id="" placeholder="(11)">
+        <input type="text" id="" placeholder="99123-1234">
+        <textarea name="" id="" cols="30" rows="10"></textarea>
+    </div>
+    <div class="navbar" id="navbar">
+        <h1>Precisa de ajuda?</h1>
+        <ul>
+            <a class="openbtn" onclick="openNav()">☰</a>
+        </ul>
+    </div>
+</body>
+
+</html>
+<script>
+    function closeNav() {
+        document.getElementById("mySidebar").style.width = "0";
+        navbar.style.display = 'block';
+    }
+
+    function openNav() {
+        document.getElementById("mySidebar").style.width = "300px";
+        navbar.style.display = 'none';
+    }
+</script>
