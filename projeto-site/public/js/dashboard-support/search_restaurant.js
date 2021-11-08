@@ -1,5 +1,8 @@
 const body = document.getElementsByTagName('BODY')[0],
 btnSearchRestaurant = document.querySelector('#btnSearchRestaurant'),
+clickHandlerMobileSearchRestaurant = document.querySelector('.mobile-menu__content > button'),
+clickHandlerSearchRestaurant = document.querySelector('.header--profile-content > button'),
+clickHandlerSignOut = document.querySelector('.sidebar > a'),
 resturantReg = /^[À-úA-z ]{3,35}$/;
 
 /*----------
@@ -18,8 +21,7 @@ function closeModal(){
 /*--------------
 Modal Restaurante
 ---------------*/
-// Modal restaurante setado
-function headerBtnSearchRestaurant(){
+[clickHandlerSearchRestaurant, clickHandlerMobileSearchRestaurant].map(element => element.addEventListener('click', () => {
     addOverflow();
     const modalSearchRestaurant = document.createElement("section");
     modalSearchRestaurant.classList.add('overlay__modal');
@@ -45,7 +47,7 @@ function headerBtnSearchRestaurant(){
       </div>
     </section>`; 
     body.appendChild(modalSearchRestaurant);
-}
+}));
 // Modal restaurante nao setado
 if(sessionStorage.getItem("restaurantSession") == null){
     addOverflow();
@@ -59,7 +61,7 @@ if(sessionStorage.getItem("restaurantSession") == null){
           <h3>Qual unidade você quer encontrar?</h3>
           <div class="overlay__modal--modal--content--ipt">
             <i class="icon-search"></i>
-            <input type="text" id="ipt_search_restaurant" placeholder="Busque pelo nome da unidade">
+            <input type="text" id="iptSearchRestaurant" placeholder="Busque pelo nome da unidade">
           </div>      
           <button onclick="searchResraurant()" id="btn_search_restaurant">Buscar</button>
           <span id="msg_validate_search_restaurant"></span>
@@ -92,7 +94,6 @@ function searchResraurant(){
 /*------------
 Modal Encerrar
 ------------*/
-const clickHandlerSignOut = document.querySelector('.sidebar > a');
 clickHandlerSignOut.addEventListener('click', () => {
   addOverflow();
   const ModalSignOut = document.createElement("section");
