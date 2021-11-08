@@ -10,7 +10,7 @@ window.addEventListener('resize', logoSize);
 function logoSize(){
   const sidebarLogo = document.querySelector('.sidebar__content--logo > img');
   sidebarLogo.src = "../imgs/small_logo_request.svg";    
-  if(window.innerWidth > 1080){        
+  if(window.innerWidth > 1366){        
     sidebarLogo.src = "../imgs/request.svg";
   }  
 }

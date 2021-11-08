@@ -11,7 +11,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 1em 2em 1em calc(295px + 2em);
-    @media screen and (max-width: 1080px) {        
+    @media screen and (max-width: 1366px) {        
         padding: 1em 2em 1em calc(80px + 2em);
     }
     @media screen and(max-width: 768px){display: none;}

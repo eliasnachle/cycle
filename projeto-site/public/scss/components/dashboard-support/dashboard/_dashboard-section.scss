@@ -4,7 +4,7 @@
 // Content
 main{
     padding: 2em 2em 2em calc(2em + 295px);
-    @media screen and (max-width: 1080px){
+    @media screen and (max-width: 1366px){
         padding: 2em 2em 2em calc(2em + 80px);
     }
     @media screen and (max-width: 768px){

@@ -20,7 +20,7 @@
             justify-content: space-between;
             gap: 2em;
             grid-template-columns: repeat(auto-fit, minmax(18em, auto));
-            @media screen and (max-width: 1080px){
+            @media screen and (max-width: 1366px){
                 justify-content: center;
             }
             &--item{

@@ -218,7 +218,7 @@ main {
   padding: 2em 2em 2em calc(2em + 295px);
 }
 
-@media screen and (max-width: 1080px) {
+@media screen and (max-width: 1366px) {
   main {
     padding: 2em 2em 2em calc(2em + 80px);
   }
@@ -349,7 +349,7 @@ main .dashboard__container--row .alert-card span svg {
           justify-content: space-between;
 }
 
-@media screen and (max-width: 1080px) {
+@media screen and (max-width: 1366px) {
   .sidebar {
     padding: 1.5em 1em;
     width: 80px;
@@ -394,7 +394,7 @@ main .dashboard__container--row .alert-card span svg {
   transition: all 150ms ease-in-out;
 }
 
-@media screen and (max-width: 1080px) {
+@media screen and (max-width: 1366px) {
   .sidebar a {
     padding: 1em 1em;
   }
@@ -416,7 +416,7 @@ main .dashboard__container--row .alert-card span svg {
   color: #878787;
 }
 
-@media screen and (max-width: 1080px) {
+@media screen and (max-width: 1366px) {
   .sidebar a span {
     display: none;
   }
@@ -460,7 +460,7 @@ main .dashboard__container--row .alert-card span svg {
   padding: 1em 2em 1em calc(295px + 2em);
 }
 
-@media screen and (max-width: 1080px) {
+@media screen and (max-width: 1366px) {
   .header {
     padding: 1em 2em 1em calc(80px + 2em);
   }
@@ -834,7 +834,7 @@ main .dashboard__container--row .alert-card span svg {
   width: 100%;
 }
 
-@media screen and (max-width: 1080px) {
+@media screen and (max-width: 1366px) {
   .dashboard__container--top {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -854,7 +854,7 @@ main .dashboard__container--row .alert-card span svg {
   max-width: 100%;
 }
 
-@media screen and (max-width: 1080px) {
+@media screen and (max-width: 1366px) {
   .dashboard__container--bottom {
     display: -ms-grid;
     display: grid;
@@ -873,7 +873,7 @@ main .dashboard__container--row .alert-card span svg {
   place-items: center;
 }
 
-@media screen and (max-width: 1080px) {
+@media screen and (max-width: 1366px) {
   .dashboard__container--consume {
     width: 100%;
   }
@@ -883,7 +883,7 @@ main .dashboard__container--row .alert-card span svg {
   width: calc(100% / 4);
 }
 
-@media screen and (max-width: 1080px) {
+@media screen and (max-width: 1366px) {
   .dashboard__container--consume:last-child {
     width: 100%;
   }
@@ -950,7 +950,7 @@ main .dashboard__container--row .alert-card span svg {
   text-align: center;
 }
 
-@media screen and (max-width: 1080px) {
+@media screen and (max-width: 1366px) {
   .dashboard__container--status {
     width: 100%;
   }
@@ -974,7 +974,7 @@ main .dashboard__container--row .alert-card span svg {
   padding: 1rem;
 }
 
-@media screen and (max-width: 1080px) {
+@media screen and (max-width: 1366px) {
   .dashboard__container--config {
     width: 100%;
   }
@@ -1031,7 +1031,7 @@ main .dashboard__container--row .alert-card span svg {
   gap: .75rem;
 }
 
-@media screen and (max-width: 1080px) {
+@media screen and (max-width: 1366px) {
   .dashboard__container--components {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -1051,7 +1051,7 @@ main .dashboard__container--row .alert-card span svg {
   width: 100%;
 }
 
-@media screen and (max-width: 1080px) {
+@media screen and (max-width: 1366px) {
   .dashboard__container--components .components__card {
     max-width: 100%;
   }
