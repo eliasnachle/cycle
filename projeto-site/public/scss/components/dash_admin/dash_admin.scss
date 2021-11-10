@@ -1,6 +1,12 @@
 @import '../../root/root.scss';
 
+
 .navbar-vertical{
+
+    @media screen and(max-width: 890px){
+        display: none;
+    }
+    
     background: $black;
     position: fixed;
     height: 100%;
@@ -29,11 +35,19 @@
             &.active{
                 background-color: $primary;
                 color: #005480;
+
+                i::before{
+                    color: #005480;
+                }
             }
 
             &:hover{
                 background-color: $primary;
                 color: $black;
+
+                i::before{
+                    color: $white;
+                }
             }
 
             text-decoration: none;
@@ -45,6 +59,13 @@
             height: 40px;
             display: flex;
             align-items: center;
+            i::before{
+                margin-right: 1em;
+                color: white;
+            }
+            span{
+                @media screen and (max-width: 1080px) {display: none;}
+            }
         }
     }
 
@@ -60,3 +81,8 @@
     }
 }
 
+//imports
+
+@import '../dash_admin/mobile/mobile';
+@import '../dash_admin/modal/modal';
+@import '../dash_admin/data-content/data-content';
