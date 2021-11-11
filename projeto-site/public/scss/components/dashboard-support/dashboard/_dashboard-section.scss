@@ -70,6 +70,23 @@ main{
                     color: $statusColorGood !important;
                 }
             }
+            .warning-card{   
+                background: #FFE68B !important;
+                .card__content--title{
+                    span{
+                        color: #FFAE11;
+                    }
+                }
+                    figure{
+                        background: #FFAE11;
+                    }   
+                    span{
+                        svg{
+                            fill: #FFAE11 !important;
+                        }
+                        color: #FFAE11 !important;
+                    }
+            }
             .alert-card{   
                 background: #FFDFDF !important;
                 .card__content--title{

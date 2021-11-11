@@ -307,6 +307,26 @@ main .dashboard__container--row .exclent-card span svg {
   fill: #35E156 !important;
 }
 
+main .dashboard__container--row .warning-card {
+  background: #FFE68B !important;
+}
+
+main .dashboard__container--row .warning-card .card__content--title span {
+  color: #FFAE11;
+}
+
+main .dashboard__container--row .warning-card figure {
+  background: #FFAE11;
+}
+
+main .dashboard__container--row .warning-card span {
+  color: #FFAE11 !important;
+}
+
+main .dashboard__container--row .warning-card span svg {
+  fill: #FFAE11 !important;
+}
+
 main .dashboard__container--row .alert-card {
   background: #FFDFDF !important;
 }
