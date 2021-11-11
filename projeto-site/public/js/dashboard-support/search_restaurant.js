@@ -14,6 +14,7 @@ function addOverflow(){
 }
 // Fecha Modal
 function closeModal(){
+  body.style = '';
   modal = document.querySelector('.overlay__modal');
   modal.parentNode.removeChild(modal);
 }
@@ -35,7 +36,6 @@ function modalRestaurant(){
   const modalSearchRestaurant = document.createElement("section");
   modalSearchRestaurant.classList.add('overlay__modal');
   modalSearchRestaurant.innerHTML += `
-  <section class="overlay__modal">
     <div class="overlay__modal--modal">
       <div class="overlay__modal--modal--content">
         <img src="../imgs/search_restaurant.svg">
@@ -47,8 +47,7 @@ function modalRestaurant(){
         <button onclick="searchResraurant()" id="btn_search_restaurant">Buscar</button>
         <span id="msg_validate_search_restaurant"></span>
       </div>
-    </div>
-  </section>`;
+    </div>`;
   body.appendChild(modalSearchRestaurant);
   if(sessionStorage.getItem("restaurantSession") !== null){
     const modalContent = document.querySelector('.overlay__modal--modal--content');
