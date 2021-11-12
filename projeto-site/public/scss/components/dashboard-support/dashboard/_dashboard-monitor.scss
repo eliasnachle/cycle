@@ -52,7 +52,7 @@
         justify-content: space-between;
         gap: 1em;
         width: 100%;
-        @media screen and (max-width: 1080px){
+        @media screen and (max-width: 1366px){
             flex-direction: column;
 
         }
@@ -63,7 +63,7 @@
         flex-wrap: wrap;
         gap: 15px;
         max-width: 100%;
-        @media screen and (max-width: 1080px){
+        @media screen and (max-width: 1366px){
             display: grid;
             // grid-template-columns: repeat(2, auto);
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -71,7 +71,7 @@
     }
     // Consume
     &--consume{
-        @media screen and (max-width: 1080px){
+        @media screen and (max-width: 1366px){
             width: 100%;
         }
         width: calc(100% / 4 - 15px);
@@ -82,7 +82,7 @@
         place-items: center;
         &:last-child{
             width: calc(100% / 4);
-            @media screen and (max-width: 1080px){
+            @media screen and (max-width: 1366px){
                 width: 100%;
             }
         }
@@ -131,7 +131,7 @@
         flex-direction: column;
         align-items: center;
         text-align: center;
-        @media screen and (max-width: 1080px){
+        @media screen and (max-width: 1366px){
             width: 100%;
         }
         h3{
@@ -150,7 +150,7 @@
         border-radius: 5px;
         border: 2px solid $border;
         padding: 1rem;
-        @media screen and (max-width: 1080px){
+        @media screen and (max-width: 1366px){
             width: 100%;
         }
         h3{
@@ -190,12 +190,12 @@
         display: grid;
         grid-template-columns: repeat(2, 250px);
         gap: .75rem;
-        @media screen and (max-width: 1080px){
+        @media screen and (max-width: 1366px){
             display: flex;
             flex-direction: column;
         }
         .components__card{
-            @media screen and (max-width: 1080px){
+            @media screen and (max-width: 1366px){
                 max-width: 100%;
             }
             border: 2px solid $border;
