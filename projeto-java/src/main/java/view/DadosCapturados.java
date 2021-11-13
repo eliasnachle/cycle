@@ -72,9 +72,7 @@ public class DadosCapturados extends javax.swing.JFrame {
         jPanel7 = new javax.swing.JPanel();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel14 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
         UsoCpu = new javax.swing.JLabel();
-        TemperaturaCpu = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel13 = new javax.swing.JLabel();
@@ -295,14 +293,8 @@ public class DadosCapturados extends javax.swing.JFrame {
         jLabel14.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel14.setText("Em uso:");
 
-        jLabel16.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel16.setText("Temperatura:");
-
         UsoCpu.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         UsoCpu.setText(".");
-
-        TemperaturaCpu.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        TemperaturaCpu.setText(".");
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -317,10 +309,7 @@ public class DadosCapturados extends javax.swing.JFrame {
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel14)
-                            .addComponent(jLabel16)
-                            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(TemperaturaCpu, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
-                                .addComponent(UsoCpu, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(UsoCpu, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap())))
         );
         jPanel7Layout.setVerticalGroup(
@@ -331,11 +320,7 @@ public class DadosCapturados extends javax.swing.JFrame {
                 .addComponent(UsoCpu, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel16)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(TemperaturaCpu, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20))
+                .addGap(105, 105, 105))
         );
 
         jPanel8.setBorder(javax.swing.BorderFactory.createTitledBorder("RAM"));
@@ -396,7 +381,6 @@ public class DadosCapturados extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, 0)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel4)
@@ -502,7 +486,6 @@ public class DadosCapturados extends javax.swing.JFrame {
         
         // Inserindo valores nos inputs
         UsoCpu.setText(infoRegistryDataBase.get(0).getCpuEmUso().toString() + " %");
-        TemperaturaCpu.setText(infoRegistryDataBase.get(0).getTemperaturaCpu().toString() + " Cº");
         UsoRam.setText(infoMachineDataBase.get(0).getEspacoTotalRam() - infoRegistryDataBase.get(0).getEspacoLivreRam() + " GB");
         RamDisponivel.setText(infoRegistryDataBase.get(0).getEspacoLivreRam().toString() + " GB");
         DiscoUsado.setText(infoMachineDataBase.get(0).getEspacoTotalDisco() - infoRegistryDataBase.get(0).getEspacoLivreDisco() + " GB");
@@ -526,7 +509,6 @@ public class DadosCapturados extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField InpSistemaOperacional;
     private javax.swing.JFormattedTextField InpTipoMaquina;
     private javax.swing.JLabel RamDisponivel;
-    private javax.swing.JLabel TemperaturaCpu;
     private javax.swing.JLabel UsoCpu;
     private javax.swing.JLabel UsoRam;
     private javax.swing.JLabel jLabel1;
@@ -536,7 +518,6 @@ public class DadosCapturados extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;

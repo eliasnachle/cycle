@@ -6,7 +6,6 @@ import java.time.LocalDateTime;
 public class MachineRegistryModel {
     private Integer idRegistro;
     private Double cpuEmUso;
-    private Double temperaturaCpu;
     private Double espacoLivreDisco;
     private Double espacoLivreRam;
     private String dataHoraRegistro;
@@ -16,7 +15,6 @@ public class MachineRegistryModel {
         Looca looca = new Looca();
         
         this.cpuEmUso = looca.getProcessador().getUso();
-        this.temperaturaCpu = looca.getTemperatura().getTemperatura();
         this.espacoLivreDisco = looca.getGrupoDeDiscos().getVolumes().get(0).getDisponivel().doubleValue() / 1024.0 / 1024 / 1024;
         this.espacoLivreRam = looca.getMemoria().getDisponivel().doubleValue() / 1024.0 / 1024 / 1024;
         this.dataHoraRegistro = LocalDateTime.now().toString();
@@ -36,14 +34,6 @@ public class MachineRegistryModel {
 
     public void setCpuEmUso(Double cpuEmUso) {
         this.cpuEmUso = cpuEmUso;
-    }
-
-    public Double getTemperaturaCpu() {
-        return temperaturaCpu;
-    }
-
-    public void setTemperaturaCpu(Double temperaturaCpu) {
-        this.temperaturaCpu = temperaturaCpu;
     }
 
     public Double getEspacoLivreDisco() {
