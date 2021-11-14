@@ -6,7 +6,8 @@ import java.time.LocalDateTime;
 public class MachineRegistryModel {
     private Integer idRegistro;
     private Double cpuEmUso;
-    private Double espacoLivreDisco;
+    private Double espacoLivreDisco1;
+    private Double espacoLivreDisco2;
     private Double espacoLivreRam;
     private String dataHoraRegistro;
     private Integer idMaquina;
@@ -15,8 +16,14 @@ public class MachineRegistryModel {
         Looca looca = new Looca();
         
         this.cpuEmUso = looca.getProcessador().getUso();
-        this.espacoLivreDisco = looca.getGrupoDeDiscos().getVolumes().get(0).getDisponivel().doubleValue() / 1024.0 / 1024 / 1024;
+        this.espacoLivreDisco1 = looca.getGrupoDeDiscos().getVolumes().get(0).getDisponivel().doubleValue() / 1024.0 / 1024 / 1024;
+        this.espacoLivreDisco2 = looca.getGrupoDeDiscos().getVolumes().get(0).getDisponivel().doubleValue() / 1024.0 / 1024 / 1024;
         this.espacoLivreRam = looca.getMemoria().getDisponivel().doubleValue() / 1024.0 / 1024 / 1024;
+        try {
+            this.espacoLivreDisco2 = looca.getMemoria().getDisponivel().doubleValue() / 1024.0 / 1024 / 1024;
+        } catch (Exception e){
+            this.espacoLivreDisco2 = 0.0;
+        }
         this.dataHoraRegistro = LocalDateTime.now().toString();
     }
 
@@ -36,14 +43,22 @@ public class MachineRegistryModel {
         this.cpuEmUso = cpuEmUso;
     }
 
-    public Double getEspacoLivreDisco() {
-        return espacoLivreDisco;
+    public Double getEspacoLivreDisco1() {
+        return espacoLivreDisco1;
     }
 
-    public void setEspacoLivreDisco(Double espacoLivreDisco) {
-        this.espacoLivreDisco = espacoLivreDisco;
+    public void setEspacoLivreDisco1(Double espacoLivreDisco) {
+        this.espacoLivreDisco1 = espacoLivreDisco;
     }
 
+    public Double getEspacoLivreDisco2() {
+        return espacoLivreDisco2;
+    }
+
+    public void setEspacoLivreDisco2(Double espacoLivreDisco) {
+        this.espacoLivreDisco2 = espacoLivreDisco;
+    }
+    
     public Double getEspacoLivreRam() {
         return espacoLivreRam;
     }

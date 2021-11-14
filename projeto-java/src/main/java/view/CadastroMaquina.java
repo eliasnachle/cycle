@@ -272,17 +272,16 @@ public class CadastroMaquina extends javax.swing.JFrame {
     }
     
     private void InsertInInputValues() {
-        ControllerMachineInfo infoMachine = new ControllerMachineInfo();
-        List<MachineInfoModel> infoMachineDataBase = infoMachine.consultMachineInfo();
+        MachineInfoModel machineInfo = new MachineInfoModel();
         
-        //InpApelidoMaquina.;
-        InpFrequenciaCpu.setText(infoMachineDataBase.get(0).getCpuFrequencia().toString() + " GHz");
-        InpModeloCpu.setText(infoMachineDataBase.get(0).getModeloCpu());
-        InpSistemaOperacional.setText(infoMachineDataBase.get(0).getSistemaOperacionalMaquina());
-        InpTipoDisco.setText(infoMachineDataBase.get(0).getModeloDisco());
-        InpEspacoTotal.setText(infoMachineDataBase.get(0).getEspacoTotalDisco().toString() + " GB");
-        InpTotalRam.setText(infoMachineDataBase.get(0).getEspacoTotalRam().toString() + " GB");
-        //ComboUnidade.setModel();
+        InpFrequenciaCpu.setText(machineInfo.getCpuFrequencia() + " GHz");
+        InpModeloCpu.setText(machineInfo.getModeloCpu());
+        InpSistemaOperacional.setText(machineInfo.getSistemaOperacionalMaquina());
+        InpTipoDisco.setText(machineInfo.getModeloDisco1());
+        InpEspacoTotal.setText(Math.round(machineInfo.getEspacoTotalDisco1()) + " GB");
+        //InpTipoDisco.setText(infoMachineDataBase.get(0).getModeloDisco2());
+        //InpEspacoTotal.setText(infoMachineDataBase.get(0).getEspacoTotalDisco2().toString() + " GB");
+        InpTotalRam.setText(Math.round(machineInfo.getEspacoTotalRam()) + " GB");
     }
     
     private void InsertInDatabaseNewMachine() {
@@ -293,12 +292,18 @@ public class CadastroMaquina extends javax.swing.JFrame {
                JOptionPane.showMessageDialog(rootPane, "Por favor coloque um apelido para a maquina");
                RegisterButton.setEnabled(true);
         }else {
-            infoMachineModel.setApelidoMaquina(InpApelidoMaquina.getText());
-            infoMachineModel.setTipoMaquina(ComboTipoMaquina.getSelectedItem().toString());
-            controllerMachine.registerInDatabaseNewMachine(infoMachineModel);
-            setVisible(false);
-            DadosCapturados frame3 = new DadosCapturados();
-            frame3.setVisible(true);
+            try {
+                infoMachineModel.setApelidoMaquina(InpApelidoMaquina.getText());
+                infoMachineModel.setTipoMaquina(ComboTipoMaquina.getSelectedItem().toString());
+                controllerMachine.registerInDatabaseNewMachine(infoMachineModel);
+                setVisible(false);
+                DadosCapturados frame3 = new DadosCapturados();
+                frame3.setVisible(true);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(rootPane, "Algum erro inesperado aconteceu, por favor tente novamente mais tarde");
+                RegisterButton.setEnabled(true);
+            }
+            
         }
     }
 

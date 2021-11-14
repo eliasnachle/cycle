@@ -21,12 +21,14 @@ public class ControllerMachineInfo {
 
         connection.update("INSERT INTO tblMaquinas"
                 + "(apelidoMaquina, tipoMaquina, sistemaOperacionalMaquina, idProcessador,"
-                + " modeloCpu, cpuFrequencia, modeloDisco, espacoTotalDisco, espacoTotalRam)"
-                + "VALUES(?,?,?,?,?,ROUND(?, 2, 1),?,ROUND(?, 2, 1),ROUND(?, 2, 1))",
+                + " modeloCpu, cpuFrequencia, modeloDisco1, espacoTotalDisco1,"
+                + "modeloDisco2, espacoTotalDisco2, espacoTotalRam)"
+                + "VALUES(?,?,?,?,?,ROUND(?, 2, 1),?,ROUND(?, 2, 1),?,ROUND(?, 2, 1),ROUND(?, 2, 1))",
                 machineInfo.getApelidoMaquina(), machineInfo.getTipoMaquina(), 
                 machineInfo.getSistemaOperacionalMaquina(), machineInfo.getIdProcessador(),
-                machineInfo.getModeloCpu(), machineInfo.getCpuFrequencia(), machineInfo.getModeloDisco(),
-                machineInfo.getEspacoTotalDisco(), machineInfo.getEspacoTotalRam());
+                machineInfo.getModeloCpu(), machineInfo.getCpuFrequencia(), machineInfo.getModeloDisco1(),
+                machineInfo.getEspacoTotalDisco1(), machineInfo.getModeloDisco2(),
+                machineInfo.getEspacoTotalDisco2(), machineInfo.getEspacoTotalRam());
         
         System.out.println("Cadastro da maquina concluido");
     }
