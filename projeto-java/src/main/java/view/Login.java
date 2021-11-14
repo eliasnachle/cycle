@@ -2,11 +2,12 @@ package view;
 
 import controller.ControllerLogin;
 import controller.ControllerMachineInfo;
+import java.util.List;
 import javax.swing.JOptionPane;
-import model.MachineInfoModel;
+import model.LoginModel;
 
 public class Login extends javax.swing.JFrame {
-
+    
     public Login() {
         initComponents();
     }
@@ -136,12 +137,12 @@ public class Login extends javax.swing.JFrame {
         ControllerLogin controllerLogin = new ControllerLogin();
         ControllerMachineInfo controllerMachineInfo = new ControllerMachineInfo();
         
-        MachineInfoModel machineInfo = new MachineInfoModel();
-        
         String login = jTextField1.getText();
         String password = jPasswordField1.getText();
 
-        if (controllerLogin.consultUserData(login, password).isEmpty()) {
+        List<LoginModel> selectLogin = controllerLogin.consultUserData(login, password);
+        
+        if (selectLogin.isEmpty()) {
 
             JOptionPane.showMessageDialog(rootPane, "Usuário não encontrados ou Login e senha inválidos");
             jButton1.setEnabled(true);
@@ -149,7 +150,7 @@ public class Login extends javax.swing.JFrame {
         } else {
             
             if (controllerMachineInfo.consultMachineInfo().isEmpty()){
-                CadastroMaquina frame2 = new CadastroMaquina();
+                CadastroMaquina frame2 = new CadastroMaquina(selectLogin.get(0).getId().toString());
                 setVisible(false);
                 frame2.setVisible(true);   
             } else {
