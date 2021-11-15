@@ -30,7 +30,7 @@ module.exports = (sequelize, DataTypes) => {
 		},
 		idUsuarioContratante: {
 			field: 'idUsuarioContratante',
-			type: DataTypes.STRING,
+			type: DataTypes.INTEGER,
 			allowNull: false
 		}
 	}, 
