@@ -92,7 +92,7 @@
   color: white;
 }
 
-@media screen and (max-width: 1080px) {
+@media screen and (max-width: 1366px) {
   .navbar-vertical .nav-vertical .nav-link span {
     display: none;
   }

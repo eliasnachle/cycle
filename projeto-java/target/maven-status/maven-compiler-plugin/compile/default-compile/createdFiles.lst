@@ -1,10 +1,6 @@
 controller\ControllerLogin.class
 view\CadastroMaquina$5.class
 view\CadastroMaquina.class
-model\MachineRegistry.class
-controller\ControllerConnection.class
-controller\MainTestes$1.class
-controller\ControllerMachine.class
 view\CadastroMaquina$3.class
 view\Login$2.class
 view\DadosCapturados$5.class
@@ -13,12 +9,8 @@ view\DadosCapturados$1.class
 view\CadastroMaquina$2.class
 view\DadosCapturados$8.class
 view\DadosCapturados$6.class
-view\Login$4.class
-controller\MainTestes.class
 view\DadosCapturados$3.class
 view\DadosCapturados$4.class
-model\MachineInfo.class
-view\Login$3.class
 view\Login$1.class
 view\CadastroMaquina$4.class
 controller\ControllerRegistry.class
