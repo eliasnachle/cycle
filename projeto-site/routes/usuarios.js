@@ -3,6 +3,7 @@ var router = express.Router();
 var sequelize = require('../models').sequelize;
 var Usuario = require('../models').Usuario;
 
+var Planos = require('../models').Planos;
 var UsuariosSuporte = require('../models').UsuariosSuporte;
 var UsuariosContratante = require('../models').UsuariosContratante;
 
@@ -72,7 +73,7 @@ router.post('/login-suporte', function (req, res, next) {
 	});
 });
 
-/* Cadastrar usuário com validação de email */
+/* Cadastrar usuário contratante com validação de email */
 router.post('/register-contratante-validation', function (req, res, next) {
 	console.log('Criando um usuário');
 
@@ -112,7 +113,7 @@ router.post('/register-contratante-validation', function (req, res, next) {
 	});
 });
 
-// Cadastro simples de ususario
+/* Cadastro simples de ususario contratante*/
 router.post('/register-contratante/:key', function (req, res, next) {
 	console.log('Registrando novo gerente');
 
@@ -136,6 +137,45 @@ router.post('/register-contratante/:key', function (req, res, next) {
 	}).then(resultado => {
 		console.log(`Registro criado: ${resultado}`)
 		res.status(201).send(resultado);
+	}).catch(erro => {
+		console.error(erro);
+		res.status(500).send(erro.message);
+	});
+
+});
+
+/* Cadastro simples de ususario suporte*/
+router.post('/register-suporte/:idContratante', function (req, res, next) {
+	console.log('Registrando novo gerente');
+
+	UsuariosSuporte.create({
+		nomeSuporte: req.body.nome,
+		emailSuporte: req.body.email,
+		senhaSuporte: req.body.senha,
+		idPlano: req.params.idContratante
+	}).then(resultado => {
+		console.log(`Registro criado: ${resultado}`)
+		res.status(201).send(resultado);
+	}).catch(erro => {
+		console.error(erro);
+		res.status(500).send(erro.message);
+	});
+
+});
+
+/* Deletando usuario suporte pelo seu id */
+router.delete('/delete-suporte/:idSuporte', function (req, res, next) {
+
+	var instrucaoSql = `DELETE tblUsuariosSuporte WHERE idUsuarioSuporte = ${req.params.idSuporte}`
+
+	sequelize.query(instrucaoSql, {
+		model: UsuariosSuporte
+	}).then(resultado => {
+		if (resultado.length == 1) {
+			res.status(204).send('O usuario suporte foi deletado com sucesso');
+		} else if (resultado.length == 0) {
+			res.status(404).send('Não foi possivel deletar o usuario, nem um usuario encontrado');
+		}
 	}).catch(erro => {
 		console.error(erro);
 		res.status(500).send(erro.message);

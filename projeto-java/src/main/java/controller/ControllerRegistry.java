@@ -1,7 +1,6 @@
 package controller;
 
 import com.github.britooo.looca.api.core.Looca;
-import java.time.LocalDateTime;
 import java.util.List;
 import model.MachineInfoModel;
 import model.MachineRegistryModel;
@@ -25,18 +24,26 @@ public class ControllerRegistry {
                 + "tblMaquinas WHERE idProcessador = ?", new BeanPropertyRowMapper(MachineInfoModel.class), 
                 looca.getProcessador().getId());
         
-        connection.update("INSERT INTO tblRegistros(cpuEmUso, temperaturaCpu, espacoLivreDisco, espacoLivreRam, dataHoraRegistro, idMaquina) "
-                + "VALUES(?,?,ROUND(?, 2, 1), ROUND(?, 2, 1),?,?)",
-                (double) Math.round(looca.getProcessador().getUso()), looca.getTemperatura().getTemperatura(),
-                looca.getGrupoDeDiscos().getVolumes().get(0).getDisponivel() / 1024.0 / 1024 / 1024,
-                looca.getMemoria().getDisponivel() / 1024.0 / 1024 / 1024, 
-                LocalDateTime.now(), machineInfoSelect.get(0).getIdMaquina());
-       
+        if (machineInfoSelect.get(0).getModeloDisco2().equals("Sem segundo disco")) {
+            connection.update("INSERT INTO tblRegistros(cpuEmUso, espacoLivreDisco1, espacoLivreDisco2, espacoLivreRam, dataHoraRegistro, idMaquina) "
+                    + "VALUES(ROUND(?, 2, 1), ROUND(?, 2, 1), ?, ROUND(?, 2, 1), CURRENT_TIMESTAMP, ?)",
+                    looca.getProcessador().getUso(),
+                    looca.getGrupoDeDiscos().getVolumes().get(0).getDisponivel() / 1024.0 / 1024 / 1024,
+                    0.0,
+                    looca.getMemoria().getDisponivel() / 1024.0 / 1024 / 1024, 
+                    machineInfoSelect.get(0).getIdMaquina());
+        } else {
+            connection.update("INSERT INTO tblRegistros(cpuEmUso, espacoLivreDisco1, espacoLivreDisco2, espacoLivreRam, dataHoraRegistro, idMaquina) "
+                    + "VALUES(ROUND(?, 2, 1), ROUND(?, 2, 1), ROUND(?, 2, 1), ROUND(?, 2, 1), CURRENT_TIMESTAMP, ?)",
+                    looca.getProcessador().getUso(),
+                    looca.getGrupoDeDiscos().getVolumes().get(0).getDisponivel() / 1024.0 / 1024 / 1024,
+                    looca.getGrupoDeDiscos().getVolumes().get(1).getDisponivel() / 1024.0 / 1024 / 1024,
+                    looca.getMemoria().getDisponivel() / 1024.0 / 1024 / 1024, 
+                    machineInfoSelect.get(0).getIdMaquina());
+        }
     }
     
     public List<MachineRegistryModel> consultMachineRegister() {
-        
-        MachineRegistryModel machineRegistry = new MachineRegistryModel();
         
         List<MachineInfoModel> machineInfoSelect = connection.query("SELECT * FROM "
                 + "tblMaquinas WHERE idProcessador = ?", new BeanPropertyRowMapper(MachineInfoModel.class), 

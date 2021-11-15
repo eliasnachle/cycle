@@ -57,18 +57,22 @@ public class DadosCapturados extends javax.swing.JFrame {
         InpModeloCpu = new javax.swing.JFormattedTextField();
         jLabel9 = new javax.swing.JLabel();
         InpFrequenciaCpu = new javax.swing.JFormattedTextField();
-        jLabel10 = new javax.swing.JLabel();
-        InpModeloDisco = new javax.swing.JFormattedTextField();
         jLabel11 = new javax.swing.JLabel();
-        InpEspacoTotalDisco = new javax.swing.JFormattedTextField();
+        InpEspacoTotalDisco1 = new javax.swing.JFormattedTextField();
         jLabel12 = new javax.swing.JLabel();
         InpEspacoTotalRam = new javax.swing.JFormattedTextField();
+        InpModeloDisco1 = new javax.swing.JFormattedTextField();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        InpEspacoTotalDisco2 = new javax.swing.JFormattedTextField();
+        jLabel20 = new javax.swing.JLabel();
+        InpModeloDisco2 = new javax.swing.JFormattedTextField();
         jPanel6 = new javax.swing.JPanel();
         jSeparator3 = new javax.swing.JSeparator();
         jLabel15 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
-        DiscoDisponivel = new javax.swing.JLabel();
-        DiscoUsado = new javax.swing.JLabel();
+        DiscoDisponivel1 = new javax.swing.JLabel();
+        DiscoUsado1 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel14 = new javax.swing.JLabel();
@@ -81,6 +85,12 @@ public class DadosCapturados extends javax.swing.JFrame {
         jLabel17 = new javax.swing.JLabel();
         UsoRam = new javax.swing.JLabel();
         RamDisponivel = new javax.swing.JLabel();
+        jPanel9 = new javax.swing.JPanel();
+        jSeparator4 = new javax.swing.JSeparator();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        DiscoDisponivel2 = new javax.swing.JLabel();
+        DiscoUsado2 = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -155,20 +165,15 @@ public class DadosCapturados extends javax.swing.JFrame {
             }
         });
 
-        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        jLabel10.setText("Modelo Disco");
+        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        jLabel11.setText("Espaco total no disco 1:");
 
-        InpModeloDisco.setEditable(false);
-        InpModeloDisco.addActionListener(new java.awt.event.ActionListener() {
+        InpEspacoTotalDisco1.setEditable(false);
+        InpEspacoTotalDisco1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                InpModeloDiscoActionPerformed(evt);
+                InpEspacoTotalDisco1ActionPerformed(evt);
             }
         });
-
-        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        jLabel11.setText("Espaco total no disco:");
-
-        InpEspacoTotalDisco.setEditable(false);
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         jLabel12.setText("Total de mémoria RAM:");
@@ -180,112 +185,159 @@ public class DadosCapturados extends javax.swing.JFrame {
             }
         });
 
+        InpModeloDisco1.setEditable(false);
+        InpModeloDisco1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                InpModeloDisco1ActionPerformed(evt);
+            }
+        });
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        jLabel10.setText("Modelo Disco 1:");
+
+        jLabel19.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        jLabel19.setText("Espaco total no disco 2:");
+
+        InpEspacoTotalDisco2.setEditable(false);
+
+        jLabel20.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        jLabel20.setText("Modelo Disco 2:");
+
+        InpModeloDisco2.setEditable(false);
+        InpModeloDisco2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                InpModeloDisco2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(16, 16, 16)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel6)
                     .addComponent(jLabel5)
                     .addComponent(InpApelidoMaquina)
                     .addComponent(InpTipoMaquina, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 115, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel7)
                     .addComponent(jLabel8)
                     .addComponent(InpSistemaOperacional)
                     .addComponent(InpModeloCpu, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel10)
-                    .addComponent(InpModeloDisco)
-                    .addComponent(InpFrequenciaCpu, javax.swing.GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 116, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(InpEspacoTotalDisco, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE)
-                    .addComponent(InpEspacoTotalRam)
-                    .addComponent(jLabel11)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(InpEspacoTotalRam)
+                        .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(InpFrequenciaCpu, javax.swing.GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE))
                     .addComponent(jLabel12))
-                .addContainerGap(8, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel10)
+                    .addComponent(jLabel11)
+                    .addComponent(InpEspacoTotalDisco1)
+                    .addComponent(InpModeloDisco1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel19)
+                    .addComponent(InpEspacoTotalDisco2, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(InpModeloDisco2, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel20))
+                .addContainerGap(88, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel11))
-                .addGap(1, 1, 1)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(InpApelidoMaquina)
-                    .addComponent(InpSistemaOperacional)
-                    .addComponent(InpFrequenciaCpu)
-                    .addComponent(InpEspacoTotalDisco))
-                .addGap(11, 11, 11)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel12))
-                .addGap(1, 1, 1)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(InpTipoMaquina)
-                    .addComponent(InpModeloCpu)
-                    .addComponent(InpModeloDisco)
-                    .addComponent(InpEspacoTotalRam))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(InpEspacoTotalDisco2)
+                        .addGap(45, 45, 45))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel11)
+                            .addComponent(jLabel19))
+                        .addGap(1, 1, 1)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(InpApelidoMaquina)
+                            .addComponent(InpSistemaOperacional)
+                            .addComponent(InpFrequenciaCpu)
+                            .addComponent(InpEspacoTotalDisco1))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(11, 11, 11)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel8)
+                                    .addComponent(jLabel12)
+                                    .addComponent(jLabel10))
+                                .addGap(1, 1, 1)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(InpTipoMaquina)
+                                    .addComponent(InpModeloCpu)
+                                    .addComponent(InpEspacoTotalRam)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(8, 8, 8)
+                                .addComponent(jLabel20)
+                                .addGap(3, 3, 3)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(InpModeloDisco1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(InpModeloDisco2))))))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder("Disco"));
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel15.setText("Em uso:");
+        jLabel15.setText("Em uso DISCO 1:");
 
         jLabel18.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel18.setText("Disponivel:");
+        jLabel18.setText("Disponivel DISCO 1:");
 
-        DiscoDisponivel.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        DiscoDisponivel.setText(".");
+        DiscoDisponivel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        DiscoDisponivel1.setText(".");
 
-        DiscoUsado.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        DiscoUsado.setText(".");
+        DiscoUsado1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        DiscoUsado1.setText(".");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(DiscoUsado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(DiscoUsado1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jSeparator3)
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(DiscoDisponivel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(DiscoDisponivel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel6Layout.createSequentialGroup()
                                 .addComponent(jLabel15)
-                                .addGap(0, 177, Short.MAX_VALUE)))
+                                .addGap(0, 0, Short.MAX_VALUE)))
                         .addContainerGap())))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addComponent(jLabel18)
+                .addGap(0, 161, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addComponent(jLabel15)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(DiscoUsado, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(DiscoUsado1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel18)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(DiscoDisponivel, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(DiscoDisponivel1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -363,12 +415,12 @@ public class DadosCapturados extends javax.swing.JFrame {
                     .addComponent(UsoRam, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 154, Short.MAX_VALUE))
+                        .addGap(0, 234, Short.MAX_VALUE))
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel8Layout.createSequentialGroup()
                                 .addComponent(jLabel13)
-                                .addGap(0, 167, Short.MAX_VALUE))
+                                .addGap(0, 247, Short.MAX_VALUE))
                             .addComponent(RamDisponivel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addContainerGap())))
         );
@@ -387,28 +439,78 @@ public class DadosCapturados extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder("Disco"));
+
+        jLabel21.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel21.setText("Em uso DISCO 2:");
+
+        jLabel22.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel22.setText("Disponivel DISCO 2:");
+
+        DiscoDisponivel2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        DiscoDisponivel2.setText(".");
+
+        DiscoUsado2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        DiscoUsado2.setText(".");
+
+        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(DiscoUsado2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jSeparator4)
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(DiscoDisponivel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel9Layout.createSequentialGroup()
+                                .addComponent(jLabel21)
+                                .addGap(0, 145, Short.MAX_VALUE)))
+                        .addContainerGap())))
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addComponent(jLabel22)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addComponent(jLabel21)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(DiscoUsado2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel22)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(DiscoDisponivel2, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, 0)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel4)
                         .addGap(44, 44, 44))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                         .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                         .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(18, 18, Short.MAX_VALUE)
-                        .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap(40, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
+                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
+                        .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(47, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
@@ -425,18 +527,24 @@ public class DadosCapturados extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jLabel3))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(43, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(30, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         pack();
@@ -458,9 +566,9 @@ public class DadosCapturados extends javax.swing.JFrame {
 
     }//GEN-LAST:event_InpFrequenciaCpuActionPerformed
 
-    private void InpModeloDiscoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InpModeloDiscoActionPerformed
+    private void InpModeloDisco1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InpModeloDisco1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_InpModeloDiscoActionPerformed
+    }//GEN-LAST:event_InpModeloDisco1ActionPerformed
 
     private void InpTipoMaquinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InpTipoMaquinaActionPerformed
         // TODO add your handling code here:
@@ -470,12 +578,14 @@ public class DadosCapturados extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_InpModeloCpuActionPerformed
 
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(() -> {
-            new DadosCapturados().setVisible(true);
-        });
-    }
-    
+    private void InpModeloDisco2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InpModeloDisco2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_InpModeloDisco2ActionPerformed
+
+    private void InpEspacoTotalDisco1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InpEspacoTotalDisco1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_InpEspacoTotalDisco1ActionPerformed
+   
     private void insertInInputMachineInfo() {
         System.out.println("Inserindo dados no banco");
         ControllerMachineInfo controllerMachine = new ControllerMachineInfo();
@@ -483,30 +593,34 @@ public class DadosCapturados extends javax.swing.JFrame {
         List<MachineInfoModel> machineInfo = controllerMachine.consultMachineInfo();
         
         InpApelidoMaquina.setText(machineInfo.get(0).getApelidoMaquina());
-        InpEspacoTotalDisco.setText(machineInfo.get(0).getEspacoTotalDisco().toString());
+        InpEspacoTotalDisco1.setText(machineInfo.get(0).getEspacoTotalDisco1().toString());
+        InpEspacoTotalDisco2.setText(machineInfo.get(0).getEspacoTotalDisco2().toString());
         InpEspacoTotalRam.setText(machineInfo.get(0).getEspacoTotalRam().toString());
         InpFrequenciaCpu.setText(machineInfo.get(0).getCpuFrequencia().toString());
         InpModeloCpu.setText(machineInfo.get(0).getModeloCpu());
         InpSistemaOperacional.setText(machineInfo.get(0).getSistemaOperacionalMaquina());
-        InpModeloDisco.setText(machineInfo.get(0).getModeloDisco());
+        InpModeloDisco1.setText(machineInfo.get(0).getModeloDisco1());
+        InpModeloDisco2.setText(machineInfo.get(0).getModeloDisco2());
         InpTipoMaquina.setText(machineInfo.get(0).getTipoMaquina());
     }
     
     private void insertInInputRegistryInfo() {
         System.out.println("Inserindo dados nos inputs");
-        ControllerRegistry controllerRegistry = new ControllerRegistry();
         
-        ControllerMachineInfo controllerMachine = new ControllerMachineInfo();
-        List<MachineInfoModel> infoMachineDataBase = controllerMachine.consultMachineInfo();
-        List<MachineRegistryModel> infoRegistryDataBase = controllerRegistry.consultMachineRegister();
+        ControllerRegistry controllerRegistry = new ControllerRegistry();
+        List<MachineRegistryModel> selectResultRegistry = controllerRegistry.consultMachineRegister();
+        
+        ControllerMachineInfo controllerMachineInfo = new ControllerMachineInfo();
+        List<MachineInfoModel> selectResultMachineInfo = controllerMachineInfo.consultMachineInfo();
         
         // Inserindo valores nos inputs
-        UsoCpu.setText(infoRegistryDataBase.get(0).getCpuEmUso().toString() + " %");
-        TemperaturaCpu.setText(infoRegistryDataBase.get(0).getTemperaturaCpu().toString() + " Cº");
-        UsoRam.setText(infoMachineDataBase.get(0).getEspacoTotalRam() - infoRegistryDataBase.get(0).getEspacoLivreRam() + " GB");
-        RamDisponivel.setText(infoRegistryDataBase.get(0).getEspacoLivreRam().toString() + " GB");
-        DiscoUsado.setText(infoMachineDataBase.get(0).getEspacoTotalDisco() - infoRegistryDataBase.get(0).getEspacoLivreDisco() + " GB");
-        DiscoDisponivel.setText(infoRegistryDataBase.get(0).getEspacoLivreDisco().toString() + " GB");
+        UsoCpu.setText(String.format("%.2f %%", selectResultRegistry.get(0).getCpuEmUso() ));
+        UsoRam.setText(String.format("%.2f GB",selectResultMachineInfo.get(0).getEspacoTotalRam() - selectResultRegistry.get(0).getEspacoLivreRam() ));
+        RamDisponivel.setText(String.format("%.2f GB", selectResultRegistry.get(0).getEspacoLivreRam() ));
+        DiscoUsado1.setText(String.format("%.2f GB", selectResultMachineInfo.get(0).getEspacoTotalDisco1() - selectResultRegistry.get(0).getEspacoLivreDisco1() ));
+        DiscoUsado2.setText(String.format("%.2f GB", selectResultMachineInfo.get(0).getEspacoTotalDisco2() - selectResultRegistry.get(0).getEspacoLivreDisco2() ));
+        DiscoDisponivel1.setText(String.format("%.2f GB",selectResultRegistry.get(0).getEspacoLivreDisco1() ));
+        DiscoDisponivel2.setText(String.format("%.2f GB",selectResultRegistry.get(0).getEspacoLivreDisco2() ));
     }
     
     private void insertResgistryInDatabase() {
@@ -515,14 +629,18 @@ public class DadosCapturados extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel DiscoDisponivel;
-    private javax.swing.JLabel DiscoUsado;
+    private javax.swing.JLabel DiscoDisponivel1;
+    private javax.swing.JLabel DiscoDisponivel2;
+    private javax.swing.JLabel DiscoUsado1;
+    private javax.swing.JLabel DiscoUsado2;
     private javax.swing.JFormattedTextField InpApelidoMaquina;
-    private javax.swing.JFormattedTextField InpEspacoTotalDisco;
+    private javax.swing.JFormattedTextField InpEspacoTotalDisco1;
+    private javax.swing.JFormattedTextField InpEspacoTotalDisco2;
     private javax.swing.JFormattedTextField InpEspacoTotalRam;
     private javax.swing.JFormattedTextField InpFrequenciaCpu;
     private javax.swing.JFormattedTextField InpModeloCpu;
-    private javax.swing.JFormattedTextField InpModeloDisco;
+    private javax.swing.JFormattedTextField InpModeloDisco1;
+    private javax.swing.JFormattedTextField InpModeloDisco2;
     private javax.swing.JFormattedTextField InpSistemaOperacional;
     private javax.swing.JFormattedTextField InpTipoMaquina;
     private javax.swing.JLabel RamDisponivel;
@@ -539,7 +657,11 @@ public class DadosCapturados extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -552,9 +674,11 @@ public class DadosCapturados extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSlider jSlider1;
     // End of variables declaration//GEN-END:variables
 }

@@ -10,8 +10,10 @@ public class MachineInfoModel {
     private String idProcessador;
     private String modeloCpu;
     private Double cpuFrequencia;
-    private String modeloDisco;
-    private Double espacoTotalDisco;
+    private String modeloDisco1;
+    private Double espacoTotalDisco1;
+    private String modeloDisco2;
+    private Double espacoTotalDisco2;
     private Double espacoTotalRam;
     private Integer idUnidade;
 
@@ -25,8 +27,15 @@ public class MachineInfoModel {
         this.idProcessador = looca.getProcessador().getId();
         this.modeloCpu = looca.getProcessador().getNome();
         this.cpuFrequencia = looca.getProcessador().getFrequencia().doubleValue() / Math.pow(10,9);
-        this.modeloDisco = looca.getGrupoDeDiscos().getDiscos().get(0).getModelo();
-        this.espacoTotalDisco = looca.getGrupoDeDiscos().getDiscos().get(0).getTamanho() / 1024.0 / 1024 / 1024;
+        this.modeloDisco1 = looca.getGrupoDeDiscos().getDiscos().get(0).getModelo();
+        this.espacoTotalDisco1 = looca.getGrupoDeDiscos().getDiscos().get(0).getTamanho() / 1024.0 / 1024 / 1024;
+        try {
+            this.modeloDisco2 = looca.getGrupoDeDiscos().getDiscos().get(1).getModelo();
+            this.espacoTotalDisco2 = looca.getGrupoDeDiscos().getDiscos().get(1).getTamanho() / 1024.0 / 1024 / 1024;
+        } catch (Exception e) {
+            this.modeloDisco2 = "Sem segundo disco";
+            this.espacoTotalDisco2 = 0.0;
+        }
         this.espacoTotalRam = looca.getMemoria().getTotal() / 1024.0 / 1024 / 1024;
     }
 
@@ -86,20 +95,36 @@ public class MachineInfoModel {
         this.cpuFrequencia = cpuFrequencia;
     }
 
-    public String getModeloDisco() {
-        return modeloDisco;
+    public String getModeloDisco1() {
+        return modeloDisco1;
     }
 
-    public void setModeloDisco(String modeloDisco) {
-        this.modeloDisco = modeloDisco;
+    public void setModeloDisco1(String modeloDisco) {
+        this.modeloDisco1 = modeloDisco;
     }
 
-    public Double getEspacoTotalDisco() {
-        return espacoTotalDisco;
+    public Double getEspacoTotalDisco1() {
+        return espacoTotalDisco1;
     }
 
-    public void setEspacoTotalDisco(Double espacoTotalDisco) {
-        this.espacoTotalDisco = espacoTotalDisco;
+    public void setEspacoTotalDisco1(Double espacoTotalDisco) {
+        this.espacoTotalDisco1 = espacoTotalDisco;
+    }
+    
+    public String getModeloDisco2() {
+        return modeloDisco2;
+    }
+
+    public void setModeloDisco2(String modeloDisco) {
+        this.modeloDisco2 = modeloDisco;
+    }
+
+    public Double getEspacoTotalDisco2() {
+        return espacoTotalDisco2;
+    }
+
+    public void setEspacoTotalDisco2(Double espacoTotalDisco) {
+        this.espacoTotalDisco2 = espacoTotalDisco;
     }
 
     public Double getEspacoTotalRam() {
@@ -120,7 +145,7 @@ public class MachineInfoModel {
 
     @Override
     public String toString() {
-        return "MachineInfo{" + "idMaquina=" + idMaquina + ", apelidoMaquina=" + apelidoMaquina + ", tipoMaquina=" + tipoMaquina + ", sistemaOperacionalMaquina=" + sistemaOperacionalMaquina + ", idProcessador=" + idProcessador + ", modeloCpu=" + modeloCpu + ", cpuFrequencia=" + cpuFrequencia + ", modeloDisco=" + modeloDisco + ", espacoLivreDisco=" + espacoTotalDisco + ", espacoLivreRam=" + espacoTotalRam + ", idUnidade=" + idUnidade + '}';
+        return "MachineInfoModel{" + "idMaquina=" + idMaquina + ", apelidoMaquina=" + apelidoMaquina + ", tipoMaquina=" + tipoMaquina + ", sistemaOperacionalMaquina=" + sistemaOperacionalMaquina + ", idProcessador=" + idProcessador + ", modeloCpu=" + modeloCpu + ", cpuFrequencia=" + cpuFrequencia + ", modeloDisco1=" + modeloDisco1 + ", espacoTotalDisco1=" + espacoTotalDisco1 + ", modeloDisco2=" + modeloDisco2 + ", espacoTotalDisco2=" + espacoTotalDisco2 + ", espacoTotalRam=" + espacoTotalRam + ", idUnidade=" + idUnidade + '}';
     }
 
     

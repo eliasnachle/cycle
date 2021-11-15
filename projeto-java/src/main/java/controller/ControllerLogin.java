@@ -6,12 +6,12 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 public class ControllerLogin {
-    private JdbcTemplate db;
+    private JdbcTemplate connection;
     
     public ControllerLogin() {
         ControllerConnectionSqlServer databaseConfig = new ControllerConnectionSqlServer();
         
-        this.db = new JdbcTemplate(databaseConfig.getDataSource());
+        this.connection = new JdbcTemplate(databaseConfig.getDataSource());
     }
    
     public List<LoginModel> consultUserData(String email, String password){
@@ -22,9 +22,10 @@ public class ControllerLogin {
                 password
             );
             System.out.println("Fazendo select");
-            List<LoginModel> user = db.query(select, new BeanPropertyRowMapper(LoginModel.class));
+            List<LoginModel> user = connection.query(select, new BeanPropertyRowMapper(LoginModel.class));
             
             System.out.println("Fim do select");
+            
             return user; 
     }
 }
