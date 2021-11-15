@@ -22,7 +22,7 @@ public class ControllerMachineInfo {
         connection.update("INSERT INTO tblMaquinas"
                 + "(apelidoMaquina, tipoMaquina, sistemaOperacionalMaquina, idProcessador,"
                 + " modeloCpu, cpuFrequencia, modeloDisco1, espacoTotalDisco1,"
-                + "modeloDisco2, espacoTotalDisco2, espacoTotalRam, idContratante)"
+                + "modeloDisco2, espacoTotalDisco2, espacoTotalRam, idUsuarioContratante)"
                 + "VALUES(?,?,?,?,?,ROUND(?, 2, 1),?,ROUND(?, 2, 1),?,ROUND(?, 2, 1),ROUND(?, 2, 1), ?)",
                 machineInfo.getApelidoMaquina(), machineInfo.getTipoMaquina(), 
                 machineInfo.getSistemaOperacionalMaquina(), machineInfo.getIdProcessador(),

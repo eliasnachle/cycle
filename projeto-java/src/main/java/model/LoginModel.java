@@ -2,7 +2,7 @@ package model;
 
 public class LoginModel {
     
-    private Integer id;
+    private String idUsuarioContratante;
     private String nomeContratante;
     private String emailContratante;
     private String senhaContratante;
@@ -10,12 +10,12 @@ public class LoginModel {
     private String keyContratante;
     private Integer idPlano;
 
-    public Integer getId() {
-        return id;
+    public String getIdUsuarioContratante() {
+        return idUsuarioContratante;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIdUsuarioContratante(String idUsuarioContratante) {
+        this.idUsuarioContratante = idUsuarioContratante;
     }
 
     public String getNomeContratante() {

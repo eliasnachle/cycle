@@ -9,9 +9,9 @@ public class CadastroMaquina extends javax.swing.JFrame {
     private String idContratante;
     
     public CadastroMaquina(String idContratante) {
-        this.idContratante = idContratante;
         initComponents();
         InsertInInputValues();
+        this.idContratante = idContratante;
     }
 
     @SuppressWarnings("unchecked")

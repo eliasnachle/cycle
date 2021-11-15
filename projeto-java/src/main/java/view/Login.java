@@ -150,7 +150,7 @@ public class Login extends javax.swing.JFrame {
         } else {
             
             if (controllerMachineInfo.consultMachineInfo().isEmpty()){
-                CadastroMaquina frame2 = new CadastroMaquina(selectLogin.get(0).getId().toString());
+                CadastroMaquina frame2 = new CadastroMaquina(selectLogin.get(0).getIdUsuarioContratante());
                 setVisible(false);
                 frame2.setVisible(true);   
             } else {
