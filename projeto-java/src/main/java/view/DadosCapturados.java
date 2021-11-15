@@ -617,8 +617,8 @@ public class DadosCapturados extends javax.swing.JFrame {
         UsoCpu.setText(String.format("%.2f %%", selectResultRegistry.get(0).getCpuEmUso() ));
         UsoRam.setText(String.format("%.2f GB",selectResultMachineInfo.get(0).getEspacoTotalRam() - selectResultRegistry.get(0).getEspacoLivreRam() ));
         RamDisponivel.setText(String.format("%.2f GB", selectResultRegistry.get(0).getEspacoLivreRam() ));
-        DiscoUsado1.setText(String.format("%.2f GB", selectResultMachineInfo.get(0).getEspacoTotalDisco2() - selectResultRegistry.get(0).getEspacoLivreDisco1() ));
-        DiscoUsado2.setText(String.format("%.2f GB", selectResultMachineInfo.get(0).getEspacoTotalDisco2() - selectResultRegistry.get(0).getEspacoLivreDisco1() ));
+        DiscoUsado1.setText(String.format("%.2f GB", selectResultMachineInfo.get(0).getEspacoTotalDisco1() - selectResultRegistry.get(0).getEspacoLivreDisco1() ));
+        DiscoUsado2.setText(String.format("%.2f GB", selectResultMachineInfo.get(0).getEspacoTotalDisco2() - selectResultRegistry.get(0).getEspacoLivreDisco2() ));
         DiscoDisponivel1.setText(String.format("%.2f GB",selectResultRegistry.get(0).getEspacoLivreDisco1() ));
         DiscoDisponivel2.setText(String.format("%.2f GB",selectResultRegistry.get(0).getEspacoLivreDisco2() ));
     }
