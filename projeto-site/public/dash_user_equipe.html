@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="scss/style.css">
     <link rel="stylesheet" href="scss/components/dash_admin_equipe/dash_admin_equipe.css">
     <link rel="stylesheet" href="scss/fonts/fonts.css">
+    <link rel="stylesheet" href="scss/modalRequest.css">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon/cycle/favicon-32x32.png">
 </head>
 
@@ -330,6 +331,36 @@
         </div>
     </div>
 
+    <!--Request Modal-->
+    <div class="sidebar" id="mySidebar">
+        <div class="menu">
+            <a href="#" class="closebtn" onclick="closeNav()">_</a>
+        </div>
+        <div class="requestBox">
+            <h3>Qual o problema?</h3>
+            <select name="" id="">
+                
+                <option value="">Tipo</option>
+                <option value="">Equipamento</option>
+                <option value="">Site</option>
+                <option value="">Dúvida</option>
+            </select>
+            <input class="modal-input" type="text" id="" placeholder="Nome">
+            <input class="modal-input" type="text" id="" placeholder="Local">
+            <textarea name="" id="comment" cols="19" rows="10" placeholder="Motivo"></textarea>
+            
+        </div>
+        <button class="buttonSend">
+            Enviar
+        </button>
+    </div>
+    <div class="navbar" id="navbar">
+        <h1>Precisa de ajuda?</h1>
+        <ul>
+            <a class="openbtn" onclick="openNav()">☰</a>
+        </ul>
+    </div>
+
 </body>
 
 </html>
@@ -344,5 +375,16 @@
 
     function abrir(){
         div_background.style.display = "flex";
+    }
+
+    //Modal Request
+    function closeNav() {
+        document.getElementById("mySidebar").style.width = "0";
+        navbar.style.display = 'block';
+    }
+
+    function openNav() {
+        document.getElementById("mySidebar").style.width = "300px";
+        navbar.style.display = 'none';
     }
 </script>
