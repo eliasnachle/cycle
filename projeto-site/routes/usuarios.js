@@ -183,6 +183,46 @@ router.delete('/delete-suporte/:idSuporte', function (req, res, next) {
 
 });
 
+/* Mudando senha do usuario contratante */
+router.put('/update-senha/:idContratante,:newSenha', function (req, res, next) {
+
+	var instrucaoSql = `UPDATE tblUsuariosContratante SET senhaContratante = ${req.params.newSenha} WHERE idContratante = ${req.params.idContratante}`
+
+	sequelize.query(instrucaoSql, {
+		model: UsuariosContratante
+	}).then(resultado => {
+		if (resultado.length == 1) {
+			res.status(200).send("Senha alterada com sucesso!");
+		} else if (resultado.length == 0) {
+			res.status(404).send("Não foi possivel alterar a senha!");
+		}
+	}).catch(erro => {
+		console.error(erro);
+		res.status(500).send(erro.message);
+	});
+
+});
+
+/* Mudando email do usuario contratante */
+router.put('/update-senha/:idContratante,:newEmail', function (req, res, next) {
+
+	var instrucaoSql = `UPDATE tblUsuariosContratante SET emailContratante = ${req.params.newEmail} WHERE idContratante = ${req.params.idContratante}`
+
+	sequelize.query(instrucaoSql, {
+		model: UsuariosContratante
+	}).then(resultado => {
+		if (resultado.length == 1) {
+			res.status(200).send("Email alterada com sucesso!");
+		} else if (resultado.length == 0) {
+			res.status(404).send("Não foi possivel alterar o email!");
+		}
+	}).catch(erro => {
+		console.error(erro);
+		res.status(500).send(erro.message);
+	});
+
+});
+
 /* Verificação de usuário */
 router.get('/sessao/:login', function (req, res, next) {
 	let login = req.params.login;
