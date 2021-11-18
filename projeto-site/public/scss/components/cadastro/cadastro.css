@@ -620,6 +620,21 @@
   color: #161616;
 }
 
+.form .plan .plan-gold {
+  background-color: #25A9EE;
+  color: #fff;
+}
+
+.form .plan .plan-gold i {
+  color: #fff;
+}
+
+.form .plan .plan-gold:after {
+  color: #25A9EE !important;
+  background: #fff !important;
+  border: 2px solid #fff;
+}
+
 .form .plan input:checked + label, .form .payment-plan input:checked + label, .form .payment-type input:checked + label {
   border: 1px solid #25A9EE;
   border-radius: 5px;
