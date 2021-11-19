@@ -15,7 +15,7 @@
           align-items: center;
 }
 
-@media screen and (max-width: 890px) {
+@media screen and (max-width: 710px) {
   .navbar-vertical {
     display: none;
   }
@@ -92,12 +92,6 @@
   color: white;
 }
 
-@media screen and (max-width: 1080px) {
-  .navbar-vertical .nav-vertical .nav-link span {
-    display: none;
-  }
-}
-
 .navbar-vertical .navbar-logo {
   width: 100%;
   cursor: pointer;
@@ -131,7 +125,7 @@
           justify-content: space-between;
 }
 
-@media screen and (max-width: 890px) {
+@media screen and (max-width: 710px) {
   .mobile {
     display: block;
   }
@@ -477,15 +471,22 @@
 /*Login*/
 /*Cadastro*/
 .data_content {
+  display: block;
   border-radius: 30px;
   height: 100%;
   padding: 2em 0 0 22em;
 }
 
-@media screen and (max-width: 890px) {
+@media screen and (max-width: 710px) {
   .data_content {
     display: none;
   }
+}
+
+.data_content .welcome {
+  color: #161616;
+  font-size: clamp(16px, 1rem, 18px);
+  margin-bottom: 1em;
 }
 
 .data_content .register_ref {
@@ -513,32 +514,91 @@
   font-weight: 100;
 }
 
-.data_content .datas {
-  width: 96%;
+.data_content .data_box {
+  width: 35%;
+  display: -ms-grid;
+  display: grid;
+  margin-right: 5em;
+  float: left;
+}
+
+.data_content .data_box .data_config {
+  display: -ms-grid;
+  display: grid;
+  gap: 2em;
+  margin-top: 3em;
+  width: 100%;
+}
+
+.data_content .data_box .data_config .data_line {
+  display: -ms-grid;
+  display: grid;
+  gap: 1em;
+  border-color: #CACACA;
+  border-width: 0 0 1px 0;
+  border-style: solid;
+}
+
+.data_content .data_box .data_config .data_line span {
+  color: #5B5B5B;
+  font-weight: clamp(16px, 1rem, 18px);
+}
+
+.data_content .data_box .data_config .data_line .icon-settings::before {
+  color: #25A9EE;
+  float: right;
+  font-size: larger;
+  cursor: pointer;
+}
+
+.data_content .data_box .data_config .data_line .toggle-passwrd {
+  font-size: medium;
+  color: #5B5B5B;
+  cursor: pointer;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  margin-left: 0.2em;
+}
+
+.data_content .data_box .data_config .data_line .toggle-passwrd:hover {
+  color: #25A9EE;
+}
+
+.data_content .sup_list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.data_content .sup_list .data_card {
+  margin: 0.5em 0;
+  width: 90%;
+  -webkit-box-shadow: 2.5px 3.8px 2.8px 1px #CACACA;
+          box-shadow: 2.5px 3.8px 2.8px 1px #CACACA;
+  border: 1px solid #25A9EE;
+  height: 8em;
+  border-radius: 0.5em;
   -ms-grid-columns: (auto)[5];
       grid-template-columns: repeat(5, auto);
   display: -ms-grid;
   display: grid;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-.data_content .datas .data_column {
-  display: -ms-grid;
-  display: grid;
-  gap: 2em;
-}
-
-.data_content .datas .data_column .data_line {
-  display: -ms-grid;
-  display: grid;
-  gap: 2em;
-  border-color: #CACACA;
-  border-width: 0 0 1px 0;
-  border-style: solid;
-  padding: 0 0 1em 0;
-}
-
-.data_content .datas .data_column .data_line .icon-restaurant::before {
+.data_content .sup_list .data_card .icon-profile::before {
+  font-size: 3em;
+  margin-left: 1em;
   color: #25A9EE;
-  margin-right: 10px;
+}
+
+.data_content .sup_list .data_card .card_field {
+  display: -ms-grid;
+  display: grid;
 }
 /*# sourceMappingURL=dash_admin.css.map */

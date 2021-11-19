@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cycle | Equipe</title>
+    <link rel="stylesheet" href="../scss/style.css">
+    <link rel="stylesheet" href="../scss/components/dash_admin/dash_admin.css">
+    <link rel="stylesheet" href="..//scss/fonts/fonts.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon/cycle/favicon-32x32.png">
+</head>
+
+<body>
+
+    <div class="navbar-vertical">
+        <div class="navbar-logo">
+            <a href="../index.html">
+                <img src="../imgs/logo.svg" alt="Teste Logo" />
+            </a>
+        </div>
+        <nav class="nav-vertical">
+            <!-- Links -->
+            <ul>
+                
+                <!-- Unidades -->
+                <a href="./config-admin.html" class="nav-link">
+                    <i class="icon-settings"></i>
+                    <span>Configurações</span>
+                </a>
+                <!-- Equipe -->
+                <a href="#" class="nav-link active">
+                    <i class="icon-profile"></i>
+                    <span>Equipe</span>
+                </a>
+            </ul>
+            <!-- Encerrar -->
+            <a href="#" class="nav-link">
+                <i class="icon-logout"></i>
+                <span>Encerrar</span>
+            </a>
+        </nav>
+    </div>
+
+    <!-- conteudo site -->
+    <div class="data_content">
+        <div class="welcome">
+            <h2>Bem vindo(a) Lucas Inutilismo</h2>
+        </div>
+        <div class="data_header">
+            <h1>Equipe</h1>
+        </div>
+        <div id="div_abrir"  class="register_ref">
+            <a href="#" class="reg_btn">Cadastrar</a>
+        </div>
+        <h3>Suportes cadastrados</h3>
+        <div class="sup_list">
+            <div class="data_card">
+                <i class="icon-profile"></i>
+                <div class="card_field">
+                    <h3>Nome</h3>
+                    <span>
+                        teste suporte
+                    </span>
+                </div>
+                <div class="card_field">
+                    <h3>Email</h3>
+                    <span>
+                        teste suporte
+                    </span>
+                </div>
+                <div class="card_field">
+                    <h3>Contratante</h3>
+                    <span>
+                        teste suporte
+                    </span>
+                </div>
+                <div class="card_field">
+                    <h3>Senha</h3>
+                    <span>
+                        teste suporte
+                    </span>
+                </div>
+            </div>
+            
+        </div>
+        
+    </div>
+    <!-- Mobile -->
+    <div class="mobile">
+        <div class="mobile-content">
+            <div class="mobile-card-open">
+                <div class="icon">
+                    <i class="icon-restaurant"></i>
+                </div>
+                <div class="header">
+                    <span class="title">Méqui 1000</span>
+                    <span class="location">Av. Paulista, 1811 - Bela Vista, São Paulo</span>
+                </div>
+                <div class="card-content">
+                    <div class="left-content">
+                        <span class="title">CNPJ</span>
+                        <span>51.656.465/0001-36</span>
+                        <span class="title">Plano</span>
+                        <span>Plano Prata</span>
+                    </div>
+                    <div class="right-content">
+                        <span class="title">Usuários</span>
+                        <span>10</span>
+                    </div>
+                </div>
+            </div>
+            <div class="mobile-card">
+                <div class="icon">
+                    <i class="icon-restaurant"></i>
+                </div>
+                <div class="header">
+                    <span class="title">Méqui 1000</span>
+                    <span class="location">Av. Paulista, 1811 - Bela Vista, São Paulo</span>
+                </div>
+            </div>
+            <div class="mobile-card">
+                <div class="icon">
+                    <i class="icon-restaurant"></i>
+                </div>
+                <div class="header">
+                    <span class="title">Méqui 1000</span>
+                    <span class="location">Av. Paulista, 1811 - Bela Vista, São Paulo</span>
+                </div>
+            </div>
+            
+        </div>
+        <div class="mobile-menu">
+            <a href="#" class="icon-menu">
+                <i class="icon-logout"></i>
+            </a>
+            <a href="#" class="icon-menu active">
+                <i class="icon-profile"></i>
+            </a>
+            <a href="#" class="icon-menu">
+                <i class="icon-settings"></i>
+            </a>
+            <a href="./dash_user_unidades.html" class="icon-menu">
+                <i class="icon-restaurant"></i>
+            </a>
+        </div>
+    </div>
+    <!-- Modal de Cadastro -->
+    <div id="div_background" class="background">
+        <div class="modal-container">
+            <h2>Cadastrar Suporte <span onclick="fechar()">X</span></h2>
+            
+            <div class="modal-content">
+                <div class="modal-separator">
+                    <div class="boxes">
+                        <h3>Nome Suporte</h3>
+                        <input class="content-input" type="text" placeholder="Nome do usuário">
+                    </div>
+                    <div class="boxes">
+                        <h3>Senha</h3>
+                        <input class="content-input" type="password" placeholder="Password">
+                    </div>
+                </div>
+                <div class="boxes">
+                    <h3>E-mail</h3>
+                    <input class="content-input" type="email" placeholder="ex: usuario@cycle.com.br">
+                </div>
+                <button class="btn_confirm">Confirmar</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
+
+
+<script src="../js/dash_user.js"></script>
+<script>
+
+    function fechar(){
+        div_background.style.display = "none";
+    }
+
+    function abrir(){
+        div_background.style.display = "flex";
+    }
+</script>

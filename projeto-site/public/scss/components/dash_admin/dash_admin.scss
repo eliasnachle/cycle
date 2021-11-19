@@ -3,7 +3,7 @@
 
 .navbar-vertical{
 
-    @media screen and(max-width: 890px){
+    @media screen and(max-width: 710px){
         display: none;
     }
     
@@ -62,9 +62,6 @@
             i::before{
                 margin-right: 1em;
                 color: white;
-            }
-            span{
-                @media screen and (max-width: 1080px) {display: none;}
             }
         }
     }
