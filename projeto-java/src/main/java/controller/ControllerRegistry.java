@@ -1,5 +1,6 @@
 package controller;
 
+import connection.ConnectionSqlServer;
 import com.github.britooo.looca.api.core.Looca;
 import java.util.List;
 import model.MachineInfoModel;
@@ -12,7 +13,7 @@ public class ControllerRegistry {
     private Looca looca;
     
     public ControllerRegistry() {
-        ControllerConnectionSqlServer databaseConfig = new ControllerConnectionSqlServer();
+        ConnectionSqlServer databaseConfig = new ConnectionSqlServer();
         
         this.connection = new JdbcTemplate(databaseConfig.getDataSource());
         this.looca = new Looca();

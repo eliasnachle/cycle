@@ -1,5 +1,6 @@
 package controller;
 
+import connection.ConnectionSqlServer;
 import java.util.List;
 import model.MachineInfoModel;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -10,7 +11,7 @@ public class ControllerMachineInfo {
     private JdbcTemplate connection;
     
     public ControllerMachineInfo() {
-        ControllerConnectionSqlServer databaseConfig = new ControllerConnectionSqlServer();
+        ConnectionSqlServer databaseConfig = new ConnectionSqlServer();
         
         this.connection = new JdbcTemplate(databaseConfig.getDataSource());
     }

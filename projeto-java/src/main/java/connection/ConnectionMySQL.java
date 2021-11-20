@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller;
+package connection;
 
 import org.apache.commons.dbcp2.BasicDataSource;
 
@@ -12,12 +12,12 @@ import org.apache.commons.dbcp2.BasicDataSource;
  *
  * @author Aluno
  */
-public class ControllerConnectionMySQL {
+public class ConnectionMySQL {
     // Atributo da classe - para ajudar na conexao com o BD
     private BasicDataSource dataSource;
 
     //Construtor 
-    public ControllerConnectionMySQL() {
+    public ConnectionMySQL() {
 
         this.dataSource = new BasicDataSource();
         this.dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");

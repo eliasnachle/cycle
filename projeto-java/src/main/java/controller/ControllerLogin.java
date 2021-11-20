@@ -1,5 +1,6 @@
 package controller;
 
+import connection.ConnectionSqlServer;
 import java.util.List;
 import model.LoginModel;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -9,7 +10,7 @@ public class ControllerLogin {
     private JdbcTemplate connection;
     
     public ControllerLogin() {
-        ControllerConnectionSqlServer databaseConfig = new ControllerConnectionSqlServer();
+        ConnectionSqlServer databaseConfig = new ConnectionSqlServer();
         
         this.connection = new JdbcTemplate(databaseConfig.getDataSource());
     }

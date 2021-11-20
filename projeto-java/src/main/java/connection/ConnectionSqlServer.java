@@ -1,13 +1,13 @@
-package controller;
+package connection;
 
 import org.apache.commons.dbcp2.BasicDataSource;
 
-public class ControllerConnectionSqlServer {
+public class ConnectionSqlServer {
     // Atributo da classe - para ajudar na conexao com o BD
     private BasicDataSource dataSource;
 
     // Construtor 
-    public ControllerConnectionSqlServer() {
+    public ConnectionSqlServer() {
 
 //        this.dataSource = new BasicDataSource();
 //        this.dataSource.setDriverClassName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
