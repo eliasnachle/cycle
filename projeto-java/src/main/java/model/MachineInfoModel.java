@@ -15,7 +15,7 @@ public class MachineInfoModel {
     private String modeloDisco2;
     private Double espacoTotalDisco2;
     private Double espacoTotalRam;
-    private Integer idUnidade;
+    private String idUnidade;
 
     public MachineInfoModel() {
         
@@ -135,11 +135,11 @@ public class MachineInfoModel {
         this.espacoTotalRam = espacoTotalRam;
     }
 
-    public Integer getIdUnidade() {
+    public String getIdUnidade() {
         return idUnidade;
     }
 
-    public void setIdUnidade(Integer idUnidade) {
+    public void setIdUnidade(String idUnidade) {
         this.idUnidade = idUnidade;
     }
 

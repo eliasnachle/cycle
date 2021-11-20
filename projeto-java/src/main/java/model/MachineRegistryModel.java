@@ -10,7 +10,7 @@ public class MachineRegistryModel {
     private Double espacoLivreDisco2;
     private Double espacoLivreRam;
     private String dataHoraRegistro;
-    private Integer idMaquina;
+    private String idMaquina;
 
     public MachineRegistryModel() {
         Looca looca = new Looca();
@@ -75,11 +75,11 @@ public class MachineRegistryModel {
         this.dataHoraRegistro = dataHoraRegistro;
     }
 
-    public Integer getIdMaquina() {
+    public String getIdMaquina() {
         return idMaquina;
     }
 
-    public void setIdMaquina(Integer idMaquina) {
+    public void setIdMaquina(String idMaquina) {
         this.idMaquina = idMaquina;
     }
     

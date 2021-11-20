@@ -8,7 +8,7 @@ public class LoginModel {
     private String senhaContratante;
     private String cpfContratante;
     private String keyContratante;
-    private Integer idPlano;
+    private String idPlano;
 
     public String getIdUsuarioContratante() {
         return idUsuarioContratante;
@@ -58,11 +58,11 @@ public class LoginModel {
         this.keyContratante = keyContratante;
     }
 
-    public Integer getIdPlano() {
+    public String getIdPlano() {
         return idPlano;
     }
 
-    public void setIdPlano(Integer idPlano) {
+    public void setIdPlano(String idPlano) {
         this.idPlano = idPlano;
     }
     
