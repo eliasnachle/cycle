@@ -4,7 +4,7 @@ import com.github.britooo.looca.api.core.Looca;
 import java.time.LocalDateTime;
 
 public class MachineRegistryModel {
-    private Integer idRegistro;
+    private String idRegistro;
     private Double cpuEmUso;
     private Double espacoLivreDisco1;
     private Double espacoLivreDisco2;
@@ -27,11 +27,11 @@ public class MachineRegistryModel {
         this.dataHoraRegistro = LocalDateTime.now().toString();
     }
 
-    public Integer getIdRegistro() {
+    public String getIdRegistro() {
         return idRegistro;
     }
 
-    public void setIdRegistro(Integer idRegistro) {
+    public void setIdRegistro(String idRegistro) {
         this.idRegistro = idRegistro;
     }
 
