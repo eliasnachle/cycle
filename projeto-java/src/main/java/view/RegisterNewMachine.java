@@ -4,13 +4,13 @@ import controller.ControllerMachineInfo;
 import javax.swing.JOptionPane;
 import model.MachineInfoModel;
 
-public class CadastroMaquina extends javax.swing.JFrame {
+public class RegisterNewMachine extends javax.swing.JFrame {
     
     private ControllerMachineInfo controllerMachineInfo;
     private MachineInfoModel machineInfoModel;
     private String idContratante;
     
-    public CadastroMaquina(String idContratante, ControllerMachineInfo controllerMachineInfo, MachineInfoModel machineInfoModel) {
+    public RegisterNewMachine(String idContratante, ControllerMachineInfo controllerMachineInfo, MachineInfoModel machineInfoModel) {
         initComponents();
         InsertInInputValues();
         this.idContratante = idContratante;
@@ -336,7 +336,7 @@ public class CadastroMaquina extends javax.swing.JFrame {
                 this.controllerMachineInfo.registerInDatabaseNewMachine(this.machineInfoModel, this.idContratante);
                 
                 setVisible(false);
-                DadosCapturados frame3 = new DadosCapturados(this.controllerMachineInfo, this.machineInfoModel);
+                RegistryDashboard frame3 = new RegistryDashboard(this.controllerMachineInfo, this.machineInfoModel);
                 frame3.setVisible(true);
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(rootPane, "Algum erro inesperado aconteceu, por favor tente novamente mais tarde");

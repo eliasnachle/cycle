@@ -13,14 +13,14 @@ import java.util.TimerTask;
 import model.MachineInfoModel;
 import model.MachineRegistryModel;
 
-public class DadosCapturados extends javax.swing.JFrame {
+public class RegistryDashboard extends javax.swing.JFrame {
     
     private ControllerMachineInfo controllerMachineInfo;
     private MachineInfoModel machineInfoModel;
     private ControllerRegistry controllerRegistry;
     private MachineRegistryModel machineRegistryModel;
     
-    public DadosCapturados(ControllerMachineInfo controllerMachineInfo, MachineInfoModel machineInfoModel) {
+    public RegistryDashboard(ControllerMachineInfo controllerMachineInfo, MachineInfoModel machineInfoModel) {
         initComponents();
         this.controllerMachineInfo = controllerMachineInfo;
         this.machineInfoModel = machineInfoModel;
@@ -542,16 +542,15 @@ public class DadosCapturados extends javax.swing.JFrame {
                     .addComponent(jLabel3))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addContainerGap(30, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
