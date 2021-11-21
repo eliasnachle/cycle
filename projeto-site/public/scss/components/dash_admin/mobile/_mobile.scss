@@ -1,0 +1,170 @@
+@import '../../../root/root.scss';
+
+.mobile{
+    display: none;
+    @media screen and(max-width: 710px){
+        display: block;
+    }
+
+    width: 100%;
+    height: 100vh;
+    justify-content: space-between;
+
+    &-content{
+        background-color: $white;
+        width: 100%;
+        height: 90vh;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        flex-direction: column;
+
+
+        .mobile-card{
+            padding: 10px;
+            margin-top: 10px;
+            background-color: white;
+            width: 90%;
+            height: 100px;
+            border: 1px solid $secondaryFontColor;
+            border-radius: 5px;
+            transition: 0.5s;
+            display: flex;
+            align-items: center;
+
+            .icon{
+                background-color: $primary;
+                width: 70px;
+                height: 70px;
+                border-radius: 8px;
+                margin-right: 3px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                
+                i::before{
+                    color: $white;
+                    font-size: 3em;
+                }
+            }
+
+            .title{
+                font-weight: bold;
+            }
+
+            .location{
+                font-size: 13px;
+            }
+
+            .header{
+                display: flex;
+                padding: 5px;
+                flex-direction: column;  
+            }
+            
+            &-open{
+                padding: 10px;
+                height: 225px;
+                z-index: 10;
+                margin-top: 20px;
+                background-color: white;
+                width: 90%;
+                border: 2px solid $primary;
+                border-radius: 5px;
+                transition: 0.5s;
+
+                .icon{
+                    float: left;
+                    background-color: $primary;
+                    width: 70px;
+                    height: 70px;
+                    border-radius: 8px;
+                    margin-right: 3px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    i::before{
+                        color: $white;
+                        font-size: 3em;
+                    }
+                }
+
+                .title{
+                    font-weight: bold;
+                }
+    
+                .location{
+                    font-size: 15px;
+                }
+    
+                .header{
+                    display: flex;
+                    padding: 5px;
+                    flex-direction: column;  
+                }
+
+                .card-content{
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    height: 50%;
+                    margin-top: 20px;
+                    padding-right: 10px;
+                    .left-content{
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between
+
+                    }
+    
+                    .right-content{
+                        display: flex;
+                        flex-direction: column;
+                    }
+                }
+            }
+            
+        }
+    }
+
+    &-menu{
+        background-color: $black;
+        width: 100%;
+        height: 10vh;
+        position: fixed;
+        z-index: 99999;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+
+        .icon-menu{
+            text-decoration: none;
+            width: 100%;
+            height: 50px;
+            border-radius: 5px;
+            margin: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+    
+            i::before{
+                font-size: x-large;
+                color: $white;
+            }
+            &:hover{
+                background-color: $primary;
+            }
+               
+        }
+
+        .active{
+            background-color: $primary; 
+            i::before{
+                color: $black;
+            } 
+        }
+    }
+
+}

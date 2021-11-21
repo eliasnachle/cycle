@@ -1,64 +1,75 @@
 const body = document.getElementsByTagName('BODY')[0],
-btnSearchRestaurant = document.querySelector('#btnSearchRestaurant');
-const resturantReg = /^[À-úA-z ]{3,35}$/;
+btnSearchRestaurant = document.querySelector('#btnSearchRestaurant'),
+clickHandlerMobileSearchRestaurant = document.querySelector('.mobile-menu__content > button'),
+clickHandlerSearchRestaurant = document.querySelector('.header--profile-content > button'),
+clickHandlerSignOut = document.querySelector('.sidebar > a'),
+resturantReg = /^[À-úA-z ]{3,35}$/;
 
-function headerBtnSearchRestaurant(){
-    body.style.overflow = 'hidden';
-    body.innerHTML += `
-    <section class="search__restaurant">
-    <div class="search__restaurant--modal">
-      <div class="search__restaurant--modal--content">
-      <div class="search__restaurant--modal--content--close" onclick="closeSearchRestaurantModal()">
-        <svg fill="none" height="20" viewBox="0 0 19 19" width="20" xmlns="http://www.w3.org/2000/svg">
-            <path clip-rule="evenodd" d="M18.5578 18.5579C17.9682 19.1474 17.0124 19.1474 16.4228 18.5579L0.442158 2.57712C-0.147386 1.98757 -0.147386 1.03171 0.442158 0.442157C1.03171 -0.147388 1.98756 -0.147388 2.57711 0.442171L18.5578 16.4229C19.1474 17.0125 19.1474 17.9683 18.5578 18.5579Z" fill="#161616" fill-rule="evenodd"></path>
-            <path clip-rule="evenodd" d="M0.442158 18.5579C-0.147386 17.9683 -0.147386 17.0125 0.442158 16.4229L16.4228 0.442169C17.0124 -0.14739 17.9682 -0.14739 18.5578 0.442169C19.1474 1.03171 19.1474 1.98757 18.5578 2.57711L2.57711 18.5579C1.98756 19.1474 1.03171 19.1474 0.442158 18.5579Z" fill="#161616" fill-rule="evenodd"></path>
-        </svg>
-      </div>      
-        <img src="../imgs/search_restaurant.svg">
-        <h3>Qual unidade você quer encontrar?</h3>
-        <div class="search__restaurant--modal--content--ipt">
-          <i class="icon-search"></i>
-          <input type="text" id="ipt_search_restaurant" placeholder="Busque pelo nome da unidade">
-        </div>      
-        <button onclick="searchResraurant()" id="btn_search_restaurant">Buscar</button>
-        <span id="msg_validate_search_restaurant"></span>
-      </div>
-    </div>
-    </section>`; 
+/*----------
+Modal Global
+----------*/
+// Adiciona overflow hidden
+function addOverflow(){
+  body.style.overflow = 'hidden';
+}
+// Fecha Modal
+function closeModal(){
+  body.style = '';
+  modal = document.querySelector('.overlay__modal');
+  modal.parentNode.removeChild(modal);
 }
 
-function closeSearchRestaurantModal(){
-    searchRestaurantModal = document.querySelector('.search__restaurant');
-    searchRestaurantModal.parentNode.removeChild(searchRestaurantModal);
-}
-
-// Adicionando modal ao site
+/*--------------
+Modal Restaurante
+---------------*/
+[clickHandlerSearchRestaurant, clickHandlerMobileSearchRestaurant].map(element => element.addEventListener('click', () => {
+    addOverflow();
+    modalRestaurant();
+}));
+// Modal restaurante nao setado
 if(sessionStorage.getItem("restaurantSession") == null){
-    body.style.overflow = 'hidden';
-    body.innerHTML += `
-    <section class="search__restaurant">
-    <div class="search__restaurant--modal">
-      <div class="search__restaurant--modal--content">
+    addOverflow();    
+    modalRestaurant();
+}
+
+function modalRestaurant(){
+  const modalSearchRestaurant = document.createElement("section");
+  modalSearchRestaurant.classList.add('overlay__modal');
+  modalSearchRestaurant.innerHTML += `
+    <div class="overlay__modal--modal">
+      <div class="overlay__modal--modal--content">
         <img src="../imgs/search_restaurant.svg">
         <h3>Qual unidade você quer encontrar?</h3>
-        <div class="search__restaurant--modal--content--ipt">
+        <div class="overlay__modal--modal--content--ipt">
           <i class="icon-search"></i>
           <input type="text" id="ipt_search_restaurant" placeholder="Busque pelo nome da unidade">
         </div>      
         <button onclick="searchResraurant()" id="btn_search_restaurant">Buscar</button>
         <span id="msg_validate_search_restaurant"></span>
       </div>
-    </div>
-    </section>`;
+    </div>`;
+  body.appendChild(modalSearchRestaurant);
+  if(sessionStorage.getItem("restaurantSession") !== null){
+    const modalContent = document.querySelector('.overlay__modal--modal--content');
+    modalContent.insertAdjacentHTML('beforebegin' ,`
+    <div class="overlay__modal--modal--content--close" onclick="closeModal()">
+      <svg fill="none" height="20" viewBox="0 0 19 19" width="20" xmlns="http://www.w3.org/2000/svg">
+        <path clip-rule="evenodd" d="M18.5578 18.5579C17.9682 19.1474 17.0124 19.1474 16.4228 18.5579L0.442158 2.57712C-0.147386 1.98757 -0.147386 1.03171 0.442158 0.442157C1.03171 -0.147388 1.98756 -0.147388 2.57711 0.442171L18.5578 16.4229C19.1474 17.0125 19.1474 17.9683 18.5578 18.5579Z" fill="#161616" fill-rule="evenodd"></path>
+        <path clip-rule="evenodd" d="M0.442158 18.5579C-0.147386 17.9683 -0.147386 17.0125 0.442158 16.4229L16.4228 0.442169C17.0124 -0.14739 17.9682 -0.14739 18.5578 0.442169C19.1474 1.03171 19.1474 1.98757 18.5578 2.57711L2.57711 18.5579C1.98756 19.1474 1.03171 19.1474 0.442158 18.5579Z" fill="#161616" fill-rule="evenodd"></path>
+      </svg>
+    </div> 
+    `);
+  }
 }
-
+// Validacao pesquisa resturante
 function searchResraurant(){
     const iptSearchRestaurant = document.querySelector('#ipt_search_restaurant'),
     iptSearchRestaurantValue = iptSearchRestaurant.value,
     msgValidate = msg_validate_search_restaurant,
-    searchRestaurantModal = document.querySelector('.search__restaurant');
-    console.log(iptSearchRestaurantValue);
+    searchRestaurantModal = document.querySelector('.overlay__modal');
+
     iptSearchRestaurant.value = '';
+    
     if(iptSearchRestaurantValue.match(resturantReg)){
         msgValidate.innerHTML = '';
         // Atribuindo valor do input ao sessionStorage
@@ -70,3 +81,25 @@ function searchResraurant(){
         msgValidate.innerHTML = 'Digite um nome válido';
     }
 }
+
+/*------------
+Modal Encerrar
+------------*/
+clickHandlerSignOut.addEventListener('click', () => {
+  addOverflow();
+  const ModalSignOut = document.createElement("section");
+  ModalSignOut.classList.add('overlay__modal');
+  ModalSignOut.innerHTML += `
+  <div class="overlay__modal--modal">
+    <div class="overlay__modal--modal--content">
+      <h3>Encerrar sessão</h3>
+      <div class="overlay__modal--modal--content--text">
+        <span>Tem certeza que deseja encerrar?</span>
+      </div>
+      <button onclick="searchResraurant()" id="btn_search_restaurant">Encerrar</button>
+      <button onclick="closeModal()">Cancelar</button>
+    </div>
+  </div>  
+  `;
+  body.appendChild(ModalSignOut);
+});

@@ -438,6 +438,22 @@
   
 }
 
+.form .plan .plan-gold{
+  background-color: $primary;
+  color: $white;  
+ 
+
+  i{
+    color: $white;
+  }
+
+  &:after {
+    color:  $primary !important;
+    background: $white !important;
+    border:2px solid $white;
+}
+}
+
 .form .plan input:checked + label, .form .payment-plan input:checked + label, .form .payment-type input:checked + label{
 	border: 1px solid $primary;
   border-radius: 5px;
@@ -650,5 +666,3 @@
 .btn-100{
   width: 100%;
 }
-
-

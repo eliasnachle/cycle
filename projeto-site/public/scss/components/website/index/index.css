@@ -160,7 +160,7 @@ Components
   display: -ms-grid;
   display: grid;
   gap: 1em;
-  max-width: 1080px;
+  max-width: 1366px;
 }
 
 .hero__content .hero__container h1 {
@@ -223,7 +223,7 @@ Components
 
 .request__content {
   width: 100%;
-  max-width: 1080px;
+  max-width: 1366px;
   text-align: center;
 }
 
@@ -245,7 +245,7 @@ Components
 }
 
 .partners__content {
-  max-width: 1080px;
+  max-width: 1366px;
   width: 100%;
 }
 
@@ -256,7 +256,7 @@ Components
 
 .partners__content .partners__items {
   padding-top: 2em;
-  max-width: 1080px;
+  max-width: 1366px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -308,7 +308,7 @@ Components
 }
 
 .about__content {
-  max-width: 1080px;
+  max-width: 1366px;
   width: 100%;
   display: -ms-grid;
   display: grid;
@@ -410,7 +410,7 @@ Components
 }
 
 .plans .plans__content__cards {
-  max-width: 1080px;
+  max-width: 1366px;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -549,7 +549,7 @@ Components
 }
 
 .solutions__content {
-  max-width: 1080px;
+  max-width: 1366px;
   width: 100%;
   text-align: center;
 }
@@ -569,7 +569,7 @@ Components
       grid-template-columns: repeat(auto-fit, minmax(18em, auto));
 }
 
-@media screen and (max-width: 1080px) {
+@media screen and (max-width: 1366px) {
   .solutions__content_cards {
     -webkit-box-pack: center;
         -ms-flex-pack: center;

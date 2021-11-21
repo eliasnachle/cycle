@@ -1,5 +1,4 @@
-const sidebarLogo = document.querySelector('.sidebar__content--logo > img'),
-mobileMenu = document.querySelector('.mobile-menu'),
+const mobileMenu = document.querySelector('.mobile-menu'),
 notificationsBar = document.querySelector('.notifications'),
 iconNotification = document.querySelector('.header--profile-content--icon > i'),
 iconNotificationMobile = document.querySelector('.mobile-menu-options > ul > a:nth-child(1)');
@@ -9,11 +8,26 @@ window.addEventListener('load', logoSize);
 window.addEventListener('resize', logoSize);
 
 function logoSize(){
-  if(window.innerWidth > 1080){        
+  const sidebarLogo = document.querySelector('.sidebar__content--logo > img');
+  sidebarLogo.src = "../imgs/small_logo_request.svg";    
+  if(window.innerWidth > 1366){        
     sidebarLogo.src = "../imgs/request.svg";
-  } else {
-    sidebarLogo.src = "../imgs/small_logo_request.svg";    
   }  
+}
+
+// Adiciona overlay
+function addOverlay(){
+  const overlay = document.querySelector('.overlay');
+  if(!overlay){
+    const overlay = document.createElement("div");
+    overlay.className = 'overlay';
+    body.appendChild(overlay);
+  }
+}
+// Remove overlay
+function removeOverlay(){
+  const overlay = document.querySelector('.overlay');
+  overlay.parentNode.removeChild(overlay);
 }
 
 // Toggle opções do menu mobile e adiciona overlay  
@@ -23,8 +37,9 @@ document.onclick = function(e){
   if(e.target.id == 'profileMenu'){
     mobileMenuOptions.style.bottom = '0';
     addOverlay();
-  } else if(e.target.id == 'notificationHeader' || e.target.id == 'notificationMobile'){
+  } else if(e.target.id == 'notificationHeader' || e.target.id == 'notificationMobile' || e.target.className == 'icon-bell'){
     notificationsBar.style.right = '0';
+    addOverlay();
   } else{
     if(document.querySelector('.overlay') !== null ){
       removeOverlay();
@@ -32,15 +47,4 @@ document.onclick = function(e){
     notificationsBar.style.right = '-200%';
     mobileMenuOptions.style.bottom = '-100%';
   }
-}
-
-// Adiciona overlay
-function addOverlay(){
-  const body = document.getElementsByTagName('BODY')[0];
-  body.innerHTML += `<div class="overlay"></div>`;
-}
-// Remove overlay
-function removeOverlay(){
-  const overlay = document.querySelector('.overlay');
-  overlay.parentNode.removeChild(overlay);
 }

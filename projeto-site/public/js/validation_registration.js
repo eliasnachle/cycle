@@ -14,13 +14,13 @@ function viewPassword()
   }
 }
 
-const togglePassword = document.querySelector('.section-login__content__form--input > i'),
+const togglePassword = document.querySelector('.section-login_content_form--input > i'),
 nome = document.querySelector('#ipt_nome'),
 cpf = document.querySelector('#ipt_cpf'),
 login = document.querySelector('#ipt_login'),
 password = document.querySelector('#password-field'),
-loginReg = /^([À-úA-z0-9._-]+@[a-z0-9._-]+\.[A-z0-9_-]+)$/,
-passwordReg = /^(?=.*[0-9]{1})(?=.*[\W]{1})(?=.*[a-z]{1})[a-zA-Z0-9\W]{6,30}$/;
+loginReg = /^([À-úA-z0-9.-]+@[a-z0-9.-]+\.[A-z0-9_-]+)$/,
+passwordReg = /^(?=.[0-9]{1})(?=.[\W]{1})(?=.*[a-z]{1})[a-zA-Z0-9\W]{6,30}$/;
 nomeReg = /^[a-z ,.'-]+$/i;
 cpfReg = /^\d{3}\.\d{3}\.\d{3}\-\d{2}$/;
 
@@ -73,3 +73,30 @@ cpf.addEventListener('keyup', () => {
 });
 
 
+function copyTextToClipboard(text) {
+  var textArea = document.createElement("textarea");
+
+  textArea.value = text;
+
+
+  document.body.appendChild(textArea);
+  textArea.select();
+
+  try {
+    var successful = document.execCommand('copy');
+    var msg = successful ? 'successful' : 'unsuccessful';
+    console.log('Copying text command was ' + msg);
+    alert('Código pix copiado para área de transferência!');
+  } catch (err) {
+    console.log('Oops, unable to copy');
+    window.prompt("Copie para área de transferência: Ctrl+C e tecle Enter", text);
+  }
+
+  document.body.removeChild(textArea);
+}
+
+// Teste
+var copyTest = document.querySelector('.copyTest');
+copyTest.addEventListener('click', function(event) {
+  copyTextToClipboard('01321441');
+});

@@ -1,5 +1,6 @@
 package controller;
 
+import connection.ConnectionSqlServer;
 import java.util.List;
 import model.MachineInfoModel;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -10,29 +11,30 @@ public class ControllerMachineInfo {
     private JdbcTemplate connection;
     
     public ControllerMachineInfo() {
-        ControllerConnectionSqlServer databaseConfig = new ControllerConnectionSqlServer();
+        ConnectionSqlServer databaseConfig = new ConnectionSqlServer();
         
         this.connection = new JdbcTemplate(databaseConfig.getDataSource());
     }
     
-    public void registerInDatabaseNewMachine(MachineInfoModel machineInfo) {
+    public void registerInDatabaseNewMachine(MachineInfoModel newMachine, String idContratante) {
         
         System.out.println("Iniciando cadastro da maquina");
 
         connection.update("INSERT INTO tblMaquinas"
                 + "(apelidoMaquina, tipoMaquina, sistemaOperacionalMaquina, idProcessador,"
-                + " modeloCpu, cpuFrequencia, modeloDisco, espacoTotalDisco, espacoTotalRam)"
-                + "VALUES(?,?,?,?,?,ROUND(?, 2, 1),?,ROUND(?, 2, 1),ROUND(?, 2, 1))",
-                machineInfo.getApelidoMaquina(), machineInfo.getTipoMaquina(), 
-                machineInfo.getSistemaOperacionalMaquina(), machineInfo.getIdProcessador(),
-                machineInfo.getModeloCpu(), machineInfo.getCpuFrequencia(), machineInfo.getModeloDisco(),
-                machineInfo.getEspacoTotalDisco(), machineInfo.getEspacoTotalRam());
+                + " modeloCpu, cpuFrequencia, modeloDisco1, espacoTotalDisco1,"
+                + "modeloDisco2, espacoTotalDisco2, espacoTotalRam, idUsuarioContratante)"
+                + "VALUES(?,?,?,?,?,ROUND(?, 2, 1),?,ROUND(?, 2, 1),?,ROUND(?, 2, 1),ROUND(?, 2, 1), ?)",
+                newMachine.getApelidoMaquina(), newMachine.getTipoMaquina(), 
+                newMachine.getSistemaOperacionalMaquina(), newMachine.getIdProcessador(),
+                newMachine.getModeloCpu(), newMachine.getCpuFrequencia(), newMachine.getModeloDisco1(),
+                newMachine.getEspacoTotalDisco1(), newMachine.getModeloDisco2(),
+                newMachine.getEspacoTotalDisco2(), newMachine.getEspacoTotalRam(), idContratante);
         
         System.out.println("Cadastro da maquina concluido");
     }
     
-    public List<MachineInfoModel> consultMachineInfo(){
-        MachineInfoModel machineInfo = new MachineInfoModel();
+    public List<MachineInfoModel> consultMachineInfo(MachineInfoModel machineInfo){
         
         System.out.println("Fazendo consulta sobre a maquina");
         List<MachineInfoModel> machineInfoSelect = 

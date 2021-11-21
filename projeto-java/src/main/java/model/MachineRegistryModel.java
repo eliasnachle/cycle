@@ -4,29 +4,34 @@ import com.github.britooo.looca.api.core.Looca;
 import java.time.LocalDateTime;
 
 public class MachineRegistryModel {
-    private Integer idRegistro;
+    private String idRegistro;
     private Double cpuEmUso;
-    private Double temperaturaCpu;
-    private Double espacoLivreDisco;
+    private Double espacoLivreDisco1;
+    private Double espacoLivreDisco2;
     private Double espacoLivreRam;
     private String dataHoraRegistro;
-    private Integer idMaquina;
+    private String idMaquina;
 
     public MachineRegistryModel() {
         Looca looca = new Looca();
         
         this.cpuEmUso = looca.getProcessador().getUso();
-        this.temperaturaCpu = looca.getTemperatura().getTemperatura();
-        this.espacoLivreDisco = looca.getGrupoDeDiscos().getVolumes().get(0).getDisponivel().doubleValue() / 1024.0 / 1024 / 1024;
+        this.espacoLivreDisco1 = looca.getGrupoDeDiscos().getVolumes().get(0).getDisponivel().doubleValue() / 1024.0 / 1024 / 1024;
+        this.espacoLivreDisco2 = looca.getGrupoDeDiscos().getVolumes().get(0).getDisponivel().doubleValue() / 1024.0 / 1024 / 1024;
         this.espacoLivreRam = looca.getMemoria().getDisponivel().doubleValue() / 1024.0 / 1024 / 1024;
+        try {
+            this.espacoLivreDisco2 = looca.getMemoria().getDisponivel().doubleValue() / 1024.0 / 1024 / 1024;
+        } catch (Exception e){
+            this.espacoLivreDisco2 = 0.0;
+        }
         this.dataHoraRegistro = LocalDateTime.now().toString();
     }
 
-    public Integer getIdRegistro() {
+    public String getIdRegistro() {
         return idRegistro;
     }
 
-    public void setIdRegistro(Integer idRegistro) {
+    public void setIdRegistro(String idRegistro) {
         this.idRegistro = idRegistro;
     }
 
@@ -38,22 +43,22 @@ public class MachineRegistryModel {
         this.cpuEmUso = cpuEmUso;
     }
 
-    public Double getTemperaturaCpu() {
-        return temperaturaCpu;
+    public Double getEspacoLivreDisco1() {
+        return espacoLivreDisco1;
     }
 
-    public void setTemperaturaCpu(Double temperaturaCpu) {
-        this.temperaturaCpu = temperaturaCpu;
+    public void setEspacoLivreDisco1(Double espacoLivreDisco) {
+        this.espacoLivreDisco1 = espacoLivreDisco;
     }
 
-    public Double getEspacoLivreDisco() {
-        return espacoLivreDisco;
+    public Double getEspacoLivreDisco2() {
+        return espacoLivreDisco2;
     }
 
-    public void setEspacoLivreDisco(Double espacoLivreDisco) {
-        this.espacoLivreDisco = espacoLivreDisco;
+    public void setEspacoLivreDisco2(Double espacoLivreDisco) {
+        this.espacoLivreDisco2 = espacoLivreDisco;
     }
-
+    
     public Double getEspacoLivreRam() {
         return espacoLivreRam;
     }
@@ -70,11 +75,11 @@ public class MachineRegistryModel {
         this.dataHoraRegistro = dataHoraRegistro;
     }
 
-    public Integer getIdMaquina() {
+    public String getIdMaquina() {
         return idMaquina;
     }
 
-    public void setIdMaquina(Integer idMaquina) {
+    public void setIdMaquina(String idMaquina) {
         this.idMaquina = idMaquina;
     }
     

@@ -1,7 +1,7 @@
 package controller;
 
+import connection.ConnectionSqlServer;
 import com.github.britooo.looca.api.core.Looca;
-import java.time.LocalDateTime;
 import java.util.List;
 import model.MachineInfoModel;
 import model.MachineRegistryModel;
@@ -13,34 +13,42 @@ public class ControllerRegistry {
     private Looca looca;
     
     public ControllerRegistry() {
-        ControllerConnectionSqlServer databaseConfig = new ControllerConnectionSqlServer();
+        ConnectionSqlServer databaseConfig = new ConnectionSqlServer();
         
         this.connection = new JdbcTemplate(databaseConfig.getDataSource());
         this.looca = new Looca();
     }
     
-    public void registerInDatabaseNewRegistry() {
+    public void registerInDatabaseNewRegistry(MachineInfoModel machineInfo, MachineRegistryModel machineRegistryModel) {
         
         List<MachineInfoModel> machineInfoSelect = connection.query("SELECT * FROM "
                 + "tblMaquinas WHERE idProcessador = ?", new BeanPropertyRowMapper(MachineInfoModel.class), 
-                looca.getProcessador().getId());
+                machineInfo.getIdProcessador());
         
-        connection.update("INSERT INTO tblRegistros(cpuEmUso, temperaturaCpu, espacoLivreDisco, espacoLivreRam, dataHoraRegistro, idMaquina) "
-                + "VALUES(?,?,ROUND(?, 2, 1), ROUND(?, 2, 1),?,?)",
-                (double) Math.round(looca.getProcessador().getUso()), looca.getTemperatura().getTemperatura(),
-                looca.getGrupoDeDiscos().getVolumes().get(0).getDisponivel() / 1024.0 / 1024 / 1024,
-                looca.getMemoria().getDisponivel() / 1024.0 / 1024 / 1024, 
-                LocalDateTime.now(), machineInfoSelect.get(0).getIdMaquina());
-       
+        if (machineInfoSelect.get(0).getModeloDisco2().equals("Sem segundo disco")) {
+            connection.update("INSERT INTO tblRegistros(cpuEmUso, espacoLivreDisco1, espacoLivreDisco2, espacoLivreRam, dataHoraRegistro, idMaquina) "
+                    + "VALUES(ROUND(?, 2, 1), ROUND(?, 2, 1), ?, ROUND(?, 2, 1), CURRENT_TIMESTAMP, ?)",
+                    machineRegistryModel.getCpuEmUso(),
+                    machineRegistryModel.getEspacoLivreDisco1(),
+                    0.0,
+                    machineRegistryModel.getEspacoLivreRam(), 
+                    machineInfoSelect.get(0).getIdMaquina());
+        } else {
+            connection.update("INSERT INTO tblRegistros(cpuEmUso, espacoLivreDisco1, espacoLivreDisco2, espacoLivreRam, dataHoraRegistro, idMaquina) "
+                    + "VALUES(ROUND(?, 2, 1), ROUND(?, 2, 1), ROUND(?, 2, 1), ROUND(?, 2, 1), CURRENT_TIMESTAMP, ?)",
+                    machineRegistryModel.getCpuEmUso(),
+                    machineRegistryModel.getEspacoLivreDisco1(),
+                    machineRegistryModel.getEspacoLivreDisco2(),
+                    machineRegistryModel.getEspacoLivreRam(), 
+                    machineInfoSelect.get(0).getIdMaquina());
+        }
     }
     
-    public List<MachineRegistryModel> consultMachineRegister() {
-        
-        MachineRegistryModel machineRegistry = new MachineRegistryModel();
+    public List<MachineRegistryModel> consultMachineRegister(MachineInfoModel machineInfo) {
         
         List<MachineInfoModel> machineInfoSelect = connection.query("SELECT * FROM "
                 + "tblMaquinas WHERE idProcessador = ?", new BeanPropertyRowMapper(MachineInfoModel.class), 
-                looca.getProcessador().getId());
+                machineInfo.getIdProcessador());
         
         List<MachineRegistryModel> registrySelect = connection.query("SELECT TOP 1 * FROM tblRegistros WHERE idMaquina = ? ORDER BY idRegistro DESC;", 
                 new BeanPropertyRowMapper(MachineRegistryModel.class), 

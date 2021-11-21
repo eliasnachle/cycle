@@ -2,16 +2,6 @@ CREATE DATABASE IF NOT EXISTS cycle;
 
 USE cycle;
 
-CREATE TABLE tblUnidades (
-	idUnidade INT PRIMARY KEY AUTO_INCREMENT,
-	nomeUnidade VARCHAR(60),
-	enderecoUnidade VARCHAR(255),
-	telefoneUnidade VARCHAR(14),
-	cnpjUnidade VARCHAR(14),
-	idUsuarioContratante INT,
-	idCodigoUf INT
-);
-
 CREATE TABLE tblUsuariosContratante(
 	idUsuarioContratante INT PRIMARY KEY AUTO_INCREMENT,
 	nomeContratante VARCHAR(80),
@@ -30,11 +20,6 @@ CREATE TABLE tblUsuariosSuporte (
 	idUsuarioContratante INT
 );
 
-CREATE TABLE IF NOT EXISTS tblCodigosUf (
-	idCodigoUf INT PRIMARY KEY AUTO_INCREMENT,
-	descCodigoUf varchar(2)
-);
-
 CREATE TABLE tblPlanos (
 	idPlano INT PRIMARY KEY AUTO_INCREMENT,
 	nomePlano VARCHAR(20),
@@ -50,17 +35,20 @@ CREATE TABLE tblMaquinas (
     idProcessador VARCHAR(20),
 	modeloCpu VARCHAR(80),
     cpuFrequencia DOUBLE,
-    modeloDisco VARCHAR(80),
-    espacoTotalDisco DOUBLE,
+    modeloDisco1 VARCHAR(80),
+    modeloDisco2 VARCHAR(80),
+    espacoTotalDisco1 DOUBLE,
+    espacoTotalDisco2 DOUBLE,
     espacoTotalRam DOUBLE,
-	idUnidade INT
+	idUsuarioContratante INT
 );
 
 CREATE TABLE tblRegistros (
 	idRegistro INT PRIMARY KEY AUTO_INCREMENT,
     cpuEmUso DOUBLE,
     temperaturaCpu DOUBLE,
-    espacoLivreDisco DOUBLE,
+    espacoLivreDisco1 DOUBLE,
+    espacoLivreDisco2 DOUBLE,
     espacoLivreRam DOUBLE,
     dataHoraRegistro DATETIME,
     idMaquina INT

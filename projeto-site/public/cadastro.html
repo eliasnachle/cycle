@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cycle | Cadastro</title>
-    <link rel="icon" href="./favicon/favicon-32x32.png">
+    <link rel="icon" href="./favicon/cycle/favicon-32x32.png">
     <link rel="stylesheet" href="scss/style.css" />
     <link rel="stylesheet" href="scss/components/cadastro/cadastro.css" />
     <script src="https://kit.fontawesome.com/5621e23e17.js" crossorigin="anonymous"></script>
@@ -91,12 +91,26 @@
                                         <ul class="dropdown-menu">                          
                                             <li><span><i class="fas fa-check"></i> Gráficos </span></li>
                                             <li><span><i class="fas fa-check"></i> Alertas via slack </span></li>
-                                            <li><span><i class="fas fa-check"></i> cadastrar 10 suportes </span></li>
-                                            <li><span><i class="fas fa-check"></i> Limite de maquinas: 10 </span></li>
+                                            <li><span><i class="fas fa-times"></i> Suporte 24/7 </span></li>
+                                            <li><span><i class="fas fa-times"></i> Limite de maquinas: ilimitado </span></li>
                                         </ul>
                                     </label>
                                     </div>
                                     
+                                <div class="plan check-gold">
+                                    <input type="radio" name="idPlano" id="premium" value="premium">
+                                    <label class="label premium-label four colcol-plans plan-gold" for="premium">
+                                        <h1 class="white">Gold</h1>
+                                        <h1 class="white">$100 <span style="color: #0076B4"> / mês</span></h1>
+                                        <ul class="dropdown-menu">                          
+                                            <li><span><i class="fas fa-check"></i> Gráficos </span></li>
+                                            <li><span><i class="fas fa-check"></i> Alertas via slack </span></li>
+                                            <li><span><i class="fas fa-check"></i> Suporte 24/7 </span></li>
+                                            <li><span><i class="fas fa-check"></i> Limite de maquinas: Ilimitado </span></li>
+                                        </ul>
+                                    </label>
+                                </div>
+
                                 <div class="plan">
                                     <input type="radio" name="idPlano" id="basic" value="basic" checked>
                                     <label class="label basic-label four colcol-plans" for="basic">
@@ -105,21 +119,8 @@
                                         <ul class="dropdown-menu">                          
                                             <li><span><i class="fas fa-check"></i> Gráficos </span></li>
                                             <li><span><i class="fas fa-check"></i> Alertas via slack </span></li>
-                                            <li><span><i class="fas fa-check"></i> cadastrar 20 suportes </span></li>
-                                            <li><span><i class="fas fa-check"></i> Limite de maquinas: 30 </span></li>
-                                        </ul>
-                                    </label>
-                                </div>
-                                <div class="plan">
-                                    <input type="radio" name="idPlano" id="premium" value="premium">
-                                    <label class="label premium-label four colcol-plans" for="premium">
-                                        <h1 class="black">Gold</h1>
-                                        <h1 class="primary">$100 <span> / mês</span></h1>
-                                        <ul class="dropdown-menu">                          
-                                            <li><span><i class="fas fa-check"></i> Gráficos </span></li>
-                                            <li><span><i class="fas fa-check"></i> Alertas via slack </span></li>
-                                            <li><span><i class="fas fa-check"></i> cadastrar 30 suportes </span></li>
-                                            <li><span><i class="fas fa-check"></i> Limite de maquinas: Ilimitado </span></li>
+                                            <li><span><i class="fas fa-check"></i> Suporte 24/7 </span></li>
+                                            <li><span><i class="fas fa-times"></i> Limite de maquinas: Ilimitado </span></li>
                                         </ul>
                                     </label>
                                 </div>
@@ -141,8 +142,8 @@
                                                 <ul class="dropdown-menu">     
                                                     <li><span><i class="fas fa-check"></i> Gráficos </span></li>
                                                     <li><span><i class="fas fa-check"></i> Alertas via slack </span></li>
-                                                    <li><span><i class="fas fa-check"></i> cadastrar 10 suportes </span></li>
-                                                    <li><span><i class="fas fa-check"></i> Limite de maquinas: 10 </span></li>
+                                                    <li><span><i class="fas fa-times"></i> Suporte 24/7 </span></li>
+                                                    <li><span><i class="fas fa-times"></i> Limite de maquinas: ilimitado </span></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -159,8 +160,8 @@
                                                 <ul class="dropdown-menu">                          
                                                     <li><span><i class="fas fa-check"></i> Gráficos </span></li>
                                                     <li><span><i class="fas fa-check"></i> Alertas via slack </span></li>
-                                                    <li><span><i class="fas fa-check"></i> cadastrar 20 suportes </span></li>
-                                                    <li><span><i class="fas fa-check"></i> Limite de maquinas: 30 </span></li>
+                                                    <li><span><i class="fas fa-check"></i> Suporte 24/7 </span></li>
+                                                    <li><span><i class="fas fa-times"></i> Limite de maquinas: Ilimitado </span></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -177,19 +178,20 @@
                                                 <ul class="dropdown-menu">                          
                                                     <li><span><i class="fas fa-check"></i> Gráficos </span></li>
                                                     <li><span><i class="fas fa-check"></i> Alertas via slack </span></li>
-                                                    <li><span><i class="fas fa-check"></i> cadastrar 30 suportes </span></li>
+                                                    <li><span><i class="fas fa-check"></i> Suporte 24/7 </span></li>
                                                     <li><span><i class="fas fa-check"></i> Limite de maquinas: Ilimitado </span></li>
                                                 </ul>
                                             </div>
                                         </div>
                                     </div>
                                     </div>
-                                </div>  -->
+                                </div> 
+                                -->
                         <div class="btns-group btns-form">
                             <a class="btns btn-prev">Voltar</a>
                             <a class="btns btn-next">Próximo</a>
                         </div>
-                    </div>
+                    </div> 
             
                     <!-- Page 3 -->
                     <div class="form-step">
@@ -199,7 +201,7 @@
                             <div class="inputs qrcode">
                                 <div>
                                 <img class="qr" src="/imgs/qrcode.svg" alt="">
-                                <a class="btn-pix">Copie o código pix</a>
+                                <a id="btn" class="btn-pix copyTest">Copie o código pix</a>
                             </div>
                             </div>
                             <div class="inputs qrcode">
@@ -211,6 +213,7 @@
                             </div>
                                 </div>
                           </div>
+                          
                         <div class="btns-group margin-inp">
                             <a class="btns btn-prev">Voltar</a>
                             <!-- <a type="submit" class="btns btn-next">Próximo</a> -->

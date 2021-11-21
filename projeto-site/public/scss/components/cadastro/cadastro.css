@@ -433,20 +433,6 @@
   text-align: initial;
 }
 
-.form-inputs .toggle-passowrd {
-  cursor: pointer;
-  margin-top: 30px;
-  position: absolute;
-  color: #5E5E5E;
-}
-
-@media screen and (max-width: 980px) {
-  .form-inputs .toggle-passowrd {
-    margin-left: 85%;
-    margin-left: calc(100% - 7em);
-  }
-}
-
 .form-inputs input {
   -webkit-transition: ease-in 150ms;
   transition: ease-in 150ms;
@@ -465,6 +451,26 @@
 
 .form-inputs input:focus {
   border: 1.5px solid #25A9EE;
+}
+
+.form-inputs #login_error_message {
+  color: red;
+  display: none;
+}
+
+.form-inputs i {
+  cursor: pointer;
+  margin-top: 30px;
+  margin-left: 415px;
+  position: absolute;
+  color: #5E5E5E;
+}
+
+@media screen and (max-width: 980px) {
+  .form-inputs i {
+    margin-left: 85%;
+    margin-left: calc(100% - 7em);
+  }
 }
 
 .form-inputs ::-webkit-input-placeholder {
@@ -614,6 +620,21 @@
   color: #161616;
 }
 
+.form .plan .plan-gold {
+  background-color: #25A9EE;
+  color: #fff;
+}
+
+.form .plan .plan-gold i {
+  color: #fff;
+}
+
+.form .plan .plan-gold:after {
+  color: #25A9EE !important;
+  background: #fff !important;
+  border: 2px solid #fff;
+}
+
 .form .plan input:checked + label, .form .payment-plan input:checked + label, .form .payment-type input:checked + label {
   border: 1px solid #25A9EE;
   border-radius: 5px;
@@ -757,7 +778,6 @@
 
 .border-list {
   border: 1px solid #25A9EE;
-  padding: 0em 1em 0em 1em;
   border-radius: 10px;
   margin-bottom: 1em;
   margin-top: 0.5em;
@@ -835,7 +855,19 @@
 }
 
 .qrcode .img-finish {
-  width: 50%;
+  width: 56vh;
+}
+
+@media (max-width: 799px) {
+  .qrcode .img-finish {
+    width: 34vh;
+  }
+}
+
+@media (min-width: 800px) and (max-width: 1200px) {
+  .qrcode .img-finish {
+    width: 45vh;
+  }
 }
 
 .btn-100 {
