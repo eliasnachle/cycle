@@ -19,36 +19,36 @@ public class ControllerRegistry {
         this.looca = new Looca();
     }
     
-    public void registerInDatabaseNewRegistry() {
+    public void registerInDatabaseNewRegistry(MachineInfoModel machineInfo, MachineRegistryModel machineRegistryModel) {
         
         List<MachineInfoModel> machineInfoSelect = connection.query("SELECT * FROM "
                 + "tblMaquinas WHERE idProcessador = ?", new BeanPropertyRowMapper(MachineInfoModel.class), 
-                looca.getProcessador().getId());
+                machineInfo.getIdProcessador());
         
         if (machineInfoSelect.get(0).getModeloDisco2().equals("Sem segundo disco")) {
             connection.update("INSERT INTO tblRegistros(cpuEmUso, espacoLivreDisco1, espacoLivreDisco2, espacoLivreRam, dataHoraRegistro, idMaquina) "
                     + "VALUES(ROUND(?, 2, 1), ROUND(?, 2, 1), ?, ROUND(?, 2, 1), CURRENT_TIMESTAMP, ?)",
-                    looca.getProcessador().getUso(),
-                    looca.getGrupoDeDiscos().getVolumes().get(0).getDisponivel() / 1024.0 / 1024 / 1024,
+                    machineRegistryModel.getCpuEmUso(),
+                    machineRegistryModel.getEspacoLivreDisco1(),
                     0.0,
-                    looca.getMemoria().getDisponivel() / 1024.0 / 1024 / 1024, 
+                    machineRegistryModel.getEspacoLivreRam(), 
                     machineInfoSelect.get(0).getIdMaquina());
         } else {
             connection.update("INSERT INTO tblRegistros(cpuEmUso, espacoLivreDisco1, espacoLivreDisco2, espacoLivreRam, dataHoraRegistro, idMaquina) "
                     + "VALUES(ROUND(?, 2, 1), ROUND(?, 2, 1), ROUND(?, 2, 1), ROUND(?, 2, 1), CURRENT_TIMESTAMP, ?)",
-                    looca.getProcessador().getUso(),
-                    looca.getGrupoDeDiscos().getVolumes().get(0).getDisponivel() / 1024.0 / 1024 / 1024,
-                    looca.getGrupoDeDiscos().getVolumes().get(1).getDisponivel() / 1024.0 / 1024 / 1024,
-                    looca.getMemoria().getDisponivel() / 1024.0 / 1024 / 1024, 
+                    machineRegistryModel.getCpuEmUso(),
+                    machineRegistryModel.getEspacoLivreDisco1(),
+                    machineRegistryModel.getEspacoLivreDisco2(),
+                    machineRegistryModel.getEspacoLivreRam(), 
                     machineInfoSelect.get(0).getIdMaquina());
         }
     }
     
-    public List<MachineRegistryModel> consultMachineRegister() {
+    public List<MachineRegistryModel> consultMachineRegister(MachineInfoModel machineInfo) {
         
         List<MachineInfoModel> machineInfoSelect = connection.query("SELECT * FROM "
                 + "tblMaquinas WHERE idProcessador = ?", new BeanPropertyRowMapper(MachineInfoModel.class), 
-                looca.getProcessador().getId());
+                machineInfo.getIdProcessador());
         
         List<MachineRegistryModel> registrySelect = connection.query("SELECT TOP 1 * FROM tblRegistros WHERE idMaquina = ? ORDER BY idRegistro DESC;", 
                 new BeanPropertyRowMapper(MachineRegistryModel.class), 

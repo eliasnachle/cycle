@@ -6,12 +6,16 @@ import model.MachineInfoModel;
 
 public class CadastroMaquina extends javax.swing.JFrame {
     
+    private ControllerMachineInfo controllerMachineInfo;
+    private MachineInfoModel machineInfoModel;
     private String idContratante;
     
-    public CadastroMaquina(String idContratante) {
+    public CadastroMaquina(String idContratante, ControllerMachineInfo controllerMachineInfo, MachineInfoModel machineInfoModel) {
         initComponents();
         InsertInInputValues();
         this.idContratante = idContratante;
+        this.controllerMachineInfo = controllerMachineInfo;
+        this.machineInfoModel = machineInfoModel;
     }
 
     @SuppressWarnings("unchecked")
@@ -310,32 +314,29 @@ public class CadastroMaquina extends javax.swing.JFrame {
     }//GEN-LAST:event_InpTipoDisco2ActionPerformed
    
     private void InsertInInputValues() {
-        MachineInfoModel machineInfo = new MachineInfoModel();
-        
-        InpFrequenciaCpu.setText(String.format("%.2f GHz", machineInfo.getCpuFrequencia() ));
-        InpModeloCpu.setText(machineInfo.getModeloCpu());
-        InpSistemaOperacional.setText(machineInfo.getSistemaOperacionalMaquina());
-        InpTipoDisco1.setText(machineInfo.getModeloDisco1());
-        InpEspacoTotal1.setText(String.format("%.2f GB", machineInfo.getEspacoTotalDisco1() ));
-        InpTipoDisco2.setText(machineInfo.getModeloDisco2());
-        InpEspacoTotal2.setText(String.format("%.2f GB", machineInfo.getEspacoTotalDisco2() ));
-        InpTotalRam.setText(String.format("%.2f GB", machineInfo.getEspacoTotalRam() ));
+        InpFrequenciaCpu.setText(String.format("%.2f GHz", this.machineInfoModel.getCpuFrequencia() ));
+        InpModeloCpu.setText(this.machineInfoModel.getModeloCpu());
+        InpSistemaOperacional.setText(this.machineInfoModel.getSistemaOperacionalMaquina());
+        InpTipoDisco1.setText(this.machineInfoModel.getModeloDisco1());
+        InpEspacoTotal1.setText(String.format("%.2f GB", this.machineInfoModel.getEspacoTotalDisco1() ));
+        InpTipoDisco2.setText(this.machineInfoModel.getModeloDisco2());
+        InpEspacoTotal2.setText(String.format("%.2f GB", this.machineInfoModel.getEspacoTotalDisco2() ));
+        InpTotalRam.setText(String.format("%.2f GB", this.machineInfoModel.getEspacoTotalRam() ));
     }
     
     private void InsertInDatabaseNewMachine() {
-        MachineInfoModel infoMachineModel = new MachineInfoModel();
-        ControllerMachineInfo controllerMachine = new ControllerMachineInfo();
         
         if(InpApelidoMaquina.getText().equals("")) {
                JOptionPane.showMessageDialog(rootPane, "Por favor coloque um apelido para a maquina");
                RegisterButton.setEnabled(true);
         }else {
             try {
-                infoMachineModel.setApelidoMaquina(InpApelidoMaquina.getText());
-                infoMachineModel.setTipoMaquina(ComboTipoMaquina.getSelectedItem().toString());
-                controllerMachine.registerInDatabaseNewMachine(infoMachineModel, this.idContratante);
+                this.machineInfoModel.setApelidoMaquina(InpApelidoMaquina.getText());
+                this.machineInfoModel.setTipoMaquina(ComboTipoMaquina.getSelectedItem().toString());
+                this.controllerMachineInfo.registerInDatabaseNewMachine(this.machineInfoModel, this.idContratante);
+                
                 setVisible(false);
-                DadosCapturados frame3 = new DadosCapturados();
+                DadosCapturados frame3 = new DadosCapturados(this.controllerMachineInfo, this.machineInfoModel);
                 frame3.setVisible(true);
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(rootPane, "Algum erro inesperado aconteceu, por favor tente novamente mais tarde");

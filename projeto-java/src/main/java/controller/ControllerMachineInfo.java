@@ -16,7 +16,7 @@ public class ControllerMachineInfo {
         this.connection = new JdbcTemplate(databaseConfig.getDataSource());
     }
     
-    public void registerInDatabaseNewMachine(MachineInfoModel machineInfo, String idContratante) {
+    public void registerInDatabaseNewMachine(MachineInfoModel newMachine, String idContratante) {
         
         System.out.println("Iniciando cadastro da maquina");
 
@@ -25,17 +25,16 @@ public class ControllerMachineInfo {
                 + " modeloCpu, cpuFrequencia, modeloDisco1, espacoTotalDisco1,"
                 + "modeloDisco2, espacoTotalDisco2, espacoTotalRam, idUsuarioContratante)"
                 + "VALUES(?,?,?,?,?,ROUND(?, 2, 1),?,ROUND(?, 2, 1),?,ROUND(?, 2, 1),ROUND(?, 2, 1), ?)",
-                machineInfo.getApelidoMaquina(), machineInfo.getTipoMaquina(), 
-                machineInfo.getSistemaOperacionalMaquina(), machineInfo.getIdProcessador(),
-                machineInfo.getModeloCpu(), machineInfo.getCpuFrequencia(), machineInfo.getModeloDisco1(),
-                machineInfo.getEspacoTotalDisco1(), machineInfo.getModeloDisco2(),
-                machineInfo.getEspacoTotalDisco2(), machineInfo.getEspacoTotalRam(), idContratante);
+                newMachine.getApelidoMaquina(), newMachine.getTipoMaquina(), 
+                newMachine.getSistemaOperacionalMaquina(), newMachine.getIdProcessador(),
+                newMachine.getModeloCpu(), newMachine.getCpuFrequencia(), newMachine.getModeloDisco1(),
+                newMachine.getEspacoTotalDisco1(), newMachine.getModeloDisco2(),
+                newMachine.getEspacoTotalDisco2(), newMachine.getEspacoTotalRam(), idContratante);
         
         System.out.println("Cadastro da maquina concluido");
     }
     
-    public List<MachineInfoModel> consultMachineInfo(){
-        MachineInfoModel machineInfo = new MachineInfoModel();
+    public List<MachineInfoModel> consultMachineInfo(MachineInfoModel machineInfo){
         
         System.out.println("Fazendo consulta sobre a maquina");
         List<MachineInfoModel> machineInfoSelect = 

@@ -2,7 +2,7 @@ package model;
 
 import com.github.britooo.looca.api.core.Looca;
 
-public class MachineInfoModel {
+    public class MachineInfoModel {
     private String idMaquina;
     private String apelidoMaquina;
     private String tipoMaquina;

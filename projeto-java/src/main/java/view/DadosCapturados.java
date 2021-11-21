@@ -15,15 +15,24 @@ import model.MachineRegistryModel;
 
 public class DadosCapturados extends javax.swing.JFrame {
     
-    public DadosCapturados() {
+    private ControllerMachineInfo controllerMachineInfo;
+    private MachineInfoModel machineInfoModel;
+    private ControllerRegistry controllerRegistry;
+    private MachineRegistryModel machineRegistryModel;
+    
+    public DadosCapturados(ControllerMachineInfo controllerMachineInfo, MachineInfoModel machineInfoModel) {
         initComponents();
+        this.controllerMachineInfo = controllerMachineInfo;
+        this.machineInfoModel = machineInfoModel;
+        this.controllerRegistry = new ControllerRegistry();
+        this.machineRegistryModel = new MachineRegistryModel();
+        
         insertInInputMachineInfo();
         
         Timer timer = new Timer();
         int delay = 50;
         int interval = 1000;
         timer.scheduleAtFixedRate(new TimerTask() {
-            @Override
             public void run() {
                 insertResgistryInDatabase();
                 insertInInputRegistryInfo();
@@ -588,30 +597,27 @@ public class DadosCapturados extends javax.swing.JFrame {
    
     private void insertInInputMachineInfo() {
         System.out.println("Inserindo dados no banco");
-        ControllerMachineInfo controllerMachine = new ControllerMachineInfo();
+         
+        List<MachineInfoModel> selectMachineInfo = this.controllerMachineInfo.consultMachineInfo(this.machineInfoModel);
         
-        List<MachineInfoModel> machineInfo = controllerMachine.consultMachineInfo();
-        
-        InpApelidoMaquina.setText(machineInfo.get(0).getApelidoMaquina());
-        InpEspacoTotalDisco1.setText(machineInfo.get(0).getEspacoTotalDisco1().toString());
-        InpEspacoTotalDisco2.setText(machineInfo.get(0).getEspacoTotalDisco2().toString());
-        InpEspacoTotalRam.setText(machineInfo.get(0).getEspacoTotalRam().toString());
-        InpFrequenciaCpu.setText(machineInfo.get(0).getCpuFrequencia().toString());
-        InpModeloCpu.setText(machineInfo.get(0).getModeloCpu());
-        InpSistemaOperacional.setText(machineInfo.get(0).getSistemaOperacionalMaquina());
-        InpModeloDisco1.setText(machineInfo.get(0).getModeloDisco1());
-        InpModeloDisco2.setText(machineInfo.get(0).getModeloDisco2());
-        InpTipoMaquina.setText(machineInfo.get(0).getTipoMaquina());
+        InpApelidoMaquina.setText(selectMachineInfo.get(0).getApelidoMaquina());
+        InpEspacoTotalDisco1.setText(selectMachineInfo.get(0).getEspacoTotalDisco1().toString());
+        InpEspacoTotalDisco2.setText(selectMachineInfo.get(0).getEspacoTotalDisco2().toString());
+        InpEspacoTotalRam.setText(selectMachineInfo.get(0).getEspacoTotalRam().toString());
+        InpFrequenciaCpu.setText(selectMachineInfo.get(0).getCpuFrequencia().toString());
+        InpModeloCpu.setText(selectMachineInfo.get(0).getModeloCpu());
+        InpSistemaOperacional.setText(selectMachineInfo.get(0).getSistemaOperacionalMaquina());
+        InpModeloDisco1.setText(selectMachineInfo.get(0).getModeloDisco1());
+        InpModeloDisco2.setText(selectMachineInfo.get(0).getModeloDisco2());
+        InpTipoMaquina.setText(selectMachineInfo.get(0).getTipoMaquina());
     }
     
     private void insertInInputRegistryInfo() {
         System.out.println("Inserindo dados nos inputs");
         
-        ControllerRegistry controllerRegistry = new ControllerRegistry();
-        List<MachineRegistryModel> selectResultRegistry = controllerRegistry.consultMachineRegister();
+        List<MachineRegistryModel> selectResultRegistry = this.controllerRegistry.consultMachineRegister(this.machineInfoModel);
         
-        ControllerMachineInfo controllerMachineInfo = new ControllerMachineInfo();
-        List<MachineInfoModel> selectResultMachineInfo = controllerMachineInfo.consultMachineInfo();
+        List<MachineInfoModel> selectResultMachineInfo = this.controllerMachineInfo.consultMachineInfo(this.machineInfoModel);
         
         // Inserindo valores nos inputs
         UsoCpu.setText(String.format("%.2f %%", selectResultRegistry.get(0).getCpuEmUso() ));
@@ -624,8 +630,7 @@ public class DadosCapturados extends javax.swing.JFrame {
     }
     
     private void insertResgistryInDatabase() {
-        ControllerRegistry registry = new ControllerRegistry();
-        registry.registerInDatabaseNewRegistry();
+        this.controllerRegistry.registerInDatabaseNewRegistry(this.machineInfoModel, this.machineRegistryModel);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

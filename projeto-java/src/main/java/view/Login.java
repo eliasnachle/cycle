@@ -9,11 +9,19 @@ import javax.swing.*;
 import javax.swing.border.Border;
 
 import model.LoginModel;
+import model.MachineInfoModel;
 
 public class Login extends javax.swing.JFrame {
+    ControllerLogin controllerLogin;
+    ControllerMachineInfo controllerMachineInfo;
+    MachineInfoModel machineInfoModel;
     
     public Login() {
         initComponents();
+        
+        this.controllerLogin = new ControllerLogin();
+        this.controllerMachineInfo = new ControllerMachineInfo();
+        this.machineInfoModel = new MachineInfoModel();
     }
 
     @SuppressWarnings("unchecked")
@@ -182,13 +190,11 @@ public class Login extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
         jButton1.setEnabled(false);
-        ControllerLogin controllerLogin = new ControllerLogin();
-        ControllerMachineInfo controllerMachineInfo = new ControllerMachineInfo();
         
         String login = jTextField1.getText();
         String password = jPasswordField1.getText();
-
-        List<LoginModel> selectLogin = controllerLogin.consultUserData(login, password);
+        
+        List<LoginModel> selectLogin = this.controllerLogin.consultUserData(login, password);
         
         if (selectLogin.isEmpty()) {
 
@@ -197,12 +203,12 @@ public class Login extends javax.swing.JFrame {
 
         } else {
 
-            if (controllerMachineInfo.consultMachineInfo().isEmpty()){
-                CadastroMaquina frame2 = new CadastroMaquina(selectLogin.get(0).getIdUsuarioContratante());
+            if (controllerMachineInfo.consultMachineInfo(machineInfoModel).isEmpty()){
+                CadastroMaquina frame2 = new CadastroMaquina(selectLogin.get(0).getIdUsuarioContratante(), this.controllerMachineInfo, this.machineInfoModel);
                 setVisible(false);
                 frame2.setVisible(true);
             } else {
-                DadosCapturados frame3 = new DadosCapturados();
+                DadosCapturados frame3 = new DadosCapturados(this.controllerMachineInfo, this.machineInfoModel);
                 setVisible(false);
                 frame3.setVisible(true);
             }
