@@ -7,6 +7,8 @@ package view;
 
 import controller.ControllerMachineInfo;
 import controller.ControllerRegistry;
+
+import java.io.IOException;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -34,7 +36,13 @@ public class RegistryDashboard extends javax.swing.JFrame {
         int interval = 1000;
         timer.scheduleAtFixedRate(new TimerTask() {
             public void run() {
-                insertResgistryInDatabase();
+                try {
+                    insertResgistryInDatabase();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 insertInInputRegistryInfo();
             }
         }, delay, interval);
@@ -628,7 +636,7 @@ public class RegistryDashboard extends javax.swing.JFrame {
         DiscoDisponivel2.setText(String.format("%.2f GB",selectResultRegistry.get(0).getEspacoLivreDisco2() ));
     }
     
-    private void insertResgistryInDatabase() {
+    private void insertResgistryInDatabase() throws IOException, InterruptedException {
         this.controllerRegistry.registerInDatabaseNewRegistry(this.machineInfoModel, this.machineRegistryModel);
     }
 
