@@ -149,10 +149,10 @@ router.post('/register-suporte/:idContratante', function (req, res, next) {
 	console.log('Registrando novo gerente');
 
 	UsuariosSuporte.create({
-		nomeSuporte: req.body.nome,
-		emailSuporte: req.body.email,
-		senhaSuporte: req.body.senha,
-		idPlano: req.params.idContratante
+		nomeSuporte: req.body.nome_supp,
+		emailSuporte: req.body.email_supp,
+		senhaSuporte: req.body.pass_supp,
+		idUsuarioContratante: req.params.idContratante
 	}).then(resultado => {
 		console.log(`Registro criado: ${resultado}`)
 		res.status(201).send(resultado);

@@ -34,7 +34,18 @@ var env = process.env.NODE_ENV || 'development';
 router.get('/get-suporte-list/:idContratante', function (req, res, next) {
 	console.log('Recuperando os usuarios suporte');
 
-	let instrucaoSql = `select * from tblUsuariosContratante where idUsuarioContratante = ${req.params.idContratante}`;
+	let instrucaoSql = `
+	select 
+		tus.nomeSuporte,
+		tus.emailSuporte,
+		tus.senhaSuporte,
+		tuc.nomeContratante
+	from 
+		tblUsuariosSuporte as tus
+	inner join tblUsuariosContratante as tuc
+		on tuc.idUsuarioContratante = tus.idUsuarioContratante
+	where 
+		tus.idUsuarioContratante = ${req.params.idContratante}`;
 
 	console.log(instrucaoSql);
 
