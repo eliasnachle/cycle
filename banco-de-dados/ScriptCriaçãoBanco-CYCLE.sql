@@ -69,10 +69,10 @@ CREATE TABLE tblRegistrosServidor (
     modeloCpu VARCHAR(80), 
     cpuEmUso DOUBLE,
 	espacoTotalDisco1 DOUBLE, 
-    espacoTotalDisco1 DOUBLE,
+    espacoTotalDisco2 DOUBLE,
 	espacoLivreDisco1 DOUBLE,
     espacoLivreDisco2 DOUBLE,
     espacoTotalRam DOUBLE, 
     espacoLivreRam DOUBLE,
     dataHoraRegistro DATETIME
-)
+);
