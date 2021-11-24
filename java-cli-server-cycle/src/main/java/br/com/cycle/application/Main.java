@@ -3,16 +3,15 @@ package br.com.cycle.application;
 import br.com.cycle.controller.ControllerLogin;
 import br.com.cycle.controller.ControllerRegistryServerInfo;
 import br.com.cycle.model.ModelServerInfo;
-import com.github.britooo.looca.api.core.Looca;
 
 import java.util.Scanner;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Main {
     public static void main(String[] args) {
         ControllerLogin controllerLogin = new ControllerLogin();
         ControllerRegistryServerInfo controllerRegistryServerInfo = new ControllerRegistryServerInfo();
-
-        ModelServerInfo modelServerInfo = new ModelServerInfo();
 
         Scanner reader = new Scanner(System.in);
 
@@ -26,9 +25,15 @@ public class Main {
 
             loginValidate = controllerLogin.login(email, password);
         }
-        System.out.println("Funcionou");
 
-        //Iniciar captura
-        controllerRegistryServerInfo.insertNewRegistry(modelServerInfo, loginValidate);
+        Timer timer = new Timer();
+        int delay = 50;
+        int interval = 1000;
+        timer.scheduleAtFixedRate(new TimerTask() {
+            public void run() {
+                ModelServerInfo modelServerInfo = new ModelServerInfo();
+                controllerRegistryServerInfo.insertNewRegistry(modelServerInfo);
+            }
+        }, delay, interval);
     }
 }

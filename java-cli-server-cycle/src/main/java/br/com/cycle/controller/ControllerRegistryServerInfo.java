@@ -14,9 +14,8 @@ public class ControllerRegistryServerInfo {
         this.connection = new JdbcTemplate(databaseConfig.getDataSource());
     }
 
-    public void insertNewRegistry(ModelServerInfo modelServerInfo, Boolean loginValidado){
+    public void insertNewRegistry(ModelServerInfo modelServerInfo){
 
-        if (loginValidado == false){
             System.out.println("Registrando informações da maquina");
 
             this.connection.update("INSERT INTO tblRegistrosServidor" +
@@ -24,13 +23,10 @@ public class ControllerRegistryServerInfo {
                     "espacoTotalDisco1, espacoTotalDisco2, " +
                     "espacoLivreDisco1, espacoLivreDisco2," +
                     "espacoTotalRam, espacoLivreRam, dataHoraRegistro)" +
-                    "values (?,?,?,?,?,?,?,?,?,CURRENT_TIMESTAMP)", modelServerInfo.getSistemaOperacionalMaquina(), modelServerInfo.getModeloCpu(),
+                    "values (?,?,TRUNCATE(?,2),TRUNCATE(?,2),TRUNCATE(?,2),TRUNCATE(?,2),TRUNCATE(?,2),TRUNCATE(?,2),TRUNCATE(?,2),CURRENT_TIMESTAMP)", modelServerInfo.getSistemaOperacionalMaquina(), modelServerInfo.getModeloCpu(),
                     modelServerInfo.getCpuEmUso(), modelServerInfo.getEspacoTotalDisco1(),modelServerInfo.getEspacoTotalDisco2(),
                     modelServerInfo.getEspacoTotalDisco1(), modelServerInfo.getEspacoTotalDisco2(),
                     modelServerInfo.getEspacoTotalRam(),modelServerInfo.getEspacoLivreRam());
-        } else {
-
-        }
 
     }
 }
