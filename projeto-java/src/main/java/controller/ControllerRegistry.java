@@ -1,15 +1,21 @@
 package controller;
 
 import com.github.britooo.looca.api.core.Looca;
+
+import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.List;
 import model.MachineInfoModel;
 import model.MachineRegistryModel;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import slack.Monitoration;
 
 public class ControllerRegistry {
     private JdbcTemplate connection;
     private Looca looca;
+    private Monitoration monitoration = new Monitoration();
     
     public ControllerRegistry() {
         ControllerConnectionSqlServer databaseConfig = new ControllerConnectionSqlServer();
@@ -18,7 +24,11 @@ public class ControllerRegistry {
         this.looca = new Looca();
     }
     
-    public void registerInDatabaseNewRegistry() {
+    public void registerInDatabaseNewRegistry() throws IOException, InterruptedException {
+
+        Double disco = looca.getGrupoDeDiscos().getVolumes().get(0).getDisponivel() / 1024.0 / 1024 / 1024;
+        Double discoTotal = looca.getGrupoDeDiscos().getVolumes().get(0).getTotal() / 1024.0 / 1024 / 1024;
+        Double validacao = disco - discoTotal;
         
         List<MachineInfoModel> machineInfoSelect = connection.query("SELECT * FROM "
                 + "tblMaquinas WHERE idProcessador = ?", new BeanPropertyRowMapper(MachineInfoModel.class), 
@@ -41,6 +51,43 @@ public class ControllerRegistry {
                     looca.getMemoria().getDisponivel() / 1024.0 / 1024 / 1024, 
                     machineInfoSelect.get(0).getIdMaquina());
         }
+        if(looca.getProcessador().getUso() > 92.0) {
+            LocalDateTime horarioPC = LocalDateTime.now(ZoneId.of("America/Sao_Paulo"));
+
+            monitoration.enviarMensagem(String.format("A CPU está sobrecarregando \n" +
+                    "Uso atual é de: %.2f", looca.getProcessador().getUso()));
+            connection.update("INSERT INTO tblAlertas(componenteInstavel" +
+                            ", nivelCriticidade" +
+                            ", descAlerta" +
+                            ", dataHoraAlerta" +
+                            ", idRegistro) VALUES (?,?,?,?,?)",
+                    "CPU", "alta", "CPU acima do limite", horarioPC, machineInfoSelect.get(0).getIdMaquina());
+        }
+        if(looca.getMemoria().getEmUso() > 92.0) {
+            LocalDateTime horarioPC = LocalDateTime.now(ZoneId.of("America/Sao_Paulo"));
+
+            monitoration.enviarMensagem(String.format("A RAM está sobrecarregando \n" +
+                    "Uso atual é de: %.2f", looca.getProcessador().getUso()));
+            connection.update("INSERT INTO tblAlertas(componenteInstavel" +
+                            ", nivelCriticidade" +
+                            ", descAlerta" +
+                            ", dataHoraAlerta" +
+                            ", idRegistro) VALUES (?,?,?,?,?)",
+                    "RAM", "alta", "RAM acima do limite", horarioPC, machineInfoSelect.get(0).getIdMaquina());
+        }
+        if(validacao < validacao * 0.9 ) {
+            LocalDateTime horarioPC = LocalDateTime.now(ZoneId.of("America/Sao_Paulo"));
+
+            monitoration.enviarMensagem(String.format("A Disco está sobrecarregando \n" +
+                    "Uso atual é de: %.2f", looca.getProcessador().getUso()));
+            connection.update("INSERT INTO tblAlertas(componenteInstavel" +
+                            ", nivelCriticidade" +
+                            ", descAlerta" +
+                            ", dataHoraAlerta" +
+                            ", idRegistro) VALUES (?,?,?,?,?)",
+                    "Disco", "alta", "Disco acima do limite", horarioPC, machineInfoSelect.get(0).getIdMaquina());
+        }
+
     }
     
     public List<MachineRegistryModel> consultMachineRegister() {
@@ -55,4 +102,16 @@ public class ControllerRegistry {
         
         return registrySelect;
     }
+
+    /*public void setAlert(MachineInfoModel machineInfo){
+
+
+        connection.update("INSERT INTO tblAlerta(componenteInstavel" +
+                ", nivelCriticidade" +
+                ", descAlerta" +
+                ", dataHoraAlerta" +
+                ", idRegistro) VALUE (?,?,?,?,?)",
+                );
+
+    }*/
 }

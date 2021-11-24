@@ -7,6 +7,8 @@ package view;
 
 import controller.ControllerMachineInfo;
 import controller.ControllerRegistry;
+
+import java.io.IOException;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -25,7 +27,13 @@ public class DadosCapturados extends javax.swing.JFrame {
         timer.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
-                insertResgistryInDatabase();
+                try {
+                    insertResgistryInDatabase();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 insertInInputRegistryInfo();
             }
         }, delay, interval);
@@ -623,7 +631,7 @@ public class DadosCapturados extends javax.swing.JFrame {
         DiscoDisponivel2.setText(String.format("%.2f GB",selectResultRegistry.get(0).getEspacoLivreDisco2() ));
     }
     
-    private void insertResgistryInDatabase() {
+    private void insertResgistryInDatabase() throws IOException, InterruptedException {
         ControllerRegistry registry = new ControllerRegistry();
         registry.registerInDatabaseNewRegistry();
     }
