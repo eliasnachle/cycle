@@ -622,7 +622,7 @@ public class RegistryDashboard extends javax.swing.JFrame {
     private void insertInInputRegistryInfo() {
         System.out.println("Inserindo dados nos inputs");
         
-        List<MachineRegistryModel> selectResultRegistry = this.controllerRegistry.consultMachineRegister(this.machineInfoModel);
+        List<MachineRegistryModel> selectResultRegistry = this.controllerRegistry.consultMachineRegister();
         
         List<MachineInfoModel> selectResultMachineInfo = this.controllerMachineInfo.consultMachineInfo(this.machineInfoModel);
         

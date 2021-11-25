@@ -92,7 +92,7 @@ public class ControllerRegistry {
 
     }
 
-    public List<MachineRegistryModel> consultMachineRegister(MachineInfoModel machineInfoModel) {
+    public List<MachineRegistryModel> consultMachineRegister() {
 
         List<MachineInfoModel> machineInfoSelect = connection.query("SELECT * FROM "
                         + "tblMaquinas WHERE idProcessador = ?", new BeanPropertyRowMapper(MachineInfoModel.class),
