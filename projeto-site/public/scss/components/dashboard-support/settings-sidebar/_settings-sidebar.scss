@@ -1,0 +1,68 @@
+// Import
+@import '../../../root/dashboard-support/root-dashboard-support.scss';
+
+//Content
+.sidebar-settings{
+    border-right: 1.75px solid #CACACA;
+    padding: 100px 0 0 295px;
+    position: fixed;
+    height: 100%;
+    &__content{
+        width: 300px;
+        &--link{
+            cursor: pointer;
+            border-bottom: 1.75px solid #CACACA;
+            padding: 1.25em 1em;
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: 1em;
+            &-icon{
+                border-radius: 5px;
+                width: 3em;
+                height: 3em;
+                padding: 1em;
+                background: #878787;
+                i:before{
+                    font-size: 1.25em;
+                    color: #fff;
+                }
+            }
+            &-item{
+                h2{
+                    font-size: 1em;
+                    color: #161616;
+                }
+                span{
+                    font-size: 0.85em;
+                    font-weight: 600;
+                    color: #878787;
+                }
+            }
+            svg{
+                
+            }
+        }
+    }
+}
+.sidebar-settings__content--actived{
+    .sidebar-settings__content--link-icon{
+        background: #EBE8FF;
+        i:before{
+            color: #836FFF;
+        }
+    }
+    .sidebar-settings__content--link-item{
+        h2{color: #836FFF;}
+    }
+    svg{
+        path{
+            stroke: #836FFF !important;   
+        }
+    }
+}
+.main-settings{
+    padding: 2em 2em 2em calc(2em + 295px + 300px);
+    .dashboard__container--settings{
+        
+    }
+}
