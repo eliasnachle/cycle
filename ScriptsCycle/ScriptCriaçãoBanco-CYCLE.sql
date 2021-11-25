@@ -91,3 +91,7 @@ ALTER TABLE tblRegistros ADD FOREIGN KEY (idMaquina) REFERENCES tblMaquinas(idMa
 
 -- Configurando foreign key da tabela alerta
 ALTER TABLE tblAlertas ADD FOREIGN KEY (idRegistro) REFERENCES tblRegistros(idRegistro);
+
+-- Inserindo o usuario responsavel pelo banco
+INSERT INTO tblUsuariosContratante (nomeContratante, emailContratante, senhaContratante, cpfContratante, keyContratante)
+values ("João", "cycle.request@outlook.com", "123", "500.600.600-11", "fjwnfoi21n21jfo1j3");
