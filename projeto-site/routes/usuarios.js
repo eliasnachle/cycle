@@ -164,18 +164,15 @@ router.post('/register-suporte/:idContratante', function (req, res, next) {
 });
 
 /* Deletando usuario suporte pelo seu id */
-router.delete('/delete-suporte/:idSuporte', function (req, res, next) {
+router.delete('/delete-suporte/:idUsuarioSuporte', function (req, res, next) {
 
-	var instrucaoSql = `DELETE tblUsuariosSuporte WHERE idUsuarioSuporte = ${req.params.idSuporte}`
+	var instrucaoSql = `DELETE tblUsuariosSuporte WHERE idUsuarioSuporte = ${req.params.idUsuarioSuporte}`
 
 	sequelize.query(instrucaoSql, {
 		model: UsuariosSuporte
 	}).then(resultado => {
-		if (resultado.length == 1) {
+			console.log(resultado)
 			res.status(204).send('O usuario suporte foi deletado com sucesso');
-		} else if (resultado.length == 0) {
-			res.status(404).send('Não foi possivel deletar o usuario, nem um usuario encontrado');
-		}
 	}).catch(erro => {
 		console.error(erro);
 		res.status(500).send(erro.message);
