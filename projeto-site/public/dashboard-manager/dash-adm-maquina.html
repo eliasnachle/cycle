@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cycle | Máquinas</title>
+    <link rel="stylesheet" href="../scss/style.css">
+    <link rel="stylesheet" href="../scss/components/dash_admin/dash_admin.css">
+    <link rel="stylesheet" href="../scss/fonts/fonts.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon/cycle/favicon-32x32.png">
+    <script src="../js/index.js"></script>
+    <script src="../js/dashboard-admin/usuarios-support.js"></script>
+</head>
+<body onload="getAllMachinesByContratant()">
+    <div class="navbar-vertical">
+        <div class="navbar-logo">
+            <a href="../index.html">
+                <img src="../imgs/logo.svg" alt="Teste Logo" />
+            </a>
+        </div>
+        <nav class="nav-vertical">
+            <!-- Links -->
+            <ul>
+
+                <!-- Unidades -->
+                <a href="./config-admin.html" class="nav-link">
+                    <i class="icon-settings"></i>
+                    <span>Configurações</span>
+                </a>
+                <!-- Equipe -->
+                <a href="dash-adm-equipe.html" class="nav-link">
+                    <i class="icon-profile"></i>
+                    <span>Equipe</span>
+                </a>
+                <!-- Máquinas -->
+                <a href="#" class="nav-link active">
+                    <i class="icon-computer"></i>
+                    <span>Máquinas</span>
+                </a>
+            </ul>
+            <!-- Encerrar -->
+            <a href="#" onclick="logoff()" class="nav-link">
+                <i class="icon-logout"></i>
+                <span>Encerrar</span>
+            </a>
+        </nav>
+    </div>
+
+    <!-- conteudo site -->
+    <div class="data_content">
+        <div class="welcome">
+            <h2>Bem vindo(a) <span id="name_header">Lucas Inutilismo</span></h2>
+        </div>
+        <div class="data_header">
+            <h1>Máquinas Cadastradas</h1>
+        </div>
+        <div id="div_abrir" class="register_ref">
+            <a href="#" class="reg_btn">Deletar Máquina</a>
+        </div>
+        
+        <form id="list_machine"></form>
+
+    </div>
+    
+</body>
+</html>
+<script>
+    function verificateAuth() {
+        
+        login_usuario = sessionStorage.email_user_contratante;
+        nome_usuario = sessionStorage.name_user_contratante;
+        cpf_usuario = sessionStorage.cpf_user_contratante;
+        console.log(nome_usuario)
+
+        if (login_usuario == undefined) {
+            redirecionar_login();
+        } else {
+            console.log("teste")
+
+            name_header.innerHTML = nome_usuario;
+
+            validar_sessao();
+        }
+    }
+</script>
