@@ -35,17 +35,19 @@ router.get('/get-suporte-list/:idContratante', function (req, res, next) {
 	console.log('Recuperando os usuarios suporte');
 
 	let instrucaoSql = `
-	select 
+	SELECT
+		tus.idUsuarioSuporte,
 		tus.nomeSuporte,
 		tus.emailSuporte,
 		tus.senhaSuporte,
 		tuc.nomeContratante
-	from 
-		tblUsuariosSuporte as tus
-	inner join tblUsuariosContratante as tuc
-		on tuc.idUsuarioContratante = tus.idUsuarioContratante
-	where 
-		tus.idUsuarioContratante = ${req.params.idContratante}`;
+	FROM 
+		tblUsuariosSuporte AS tus
+	INNER JOIN tblUsuariosContratante as tuc
+		ON tuc.idUsuarioContratante = tus.idUsuarioContratante
+	WHERE 
+		tus.idUsuarioContratante = ${req.params.idContratante}
+	ORDER BY tus.idUsuarioSuporte DESC`;
 
 	console.log(instrucaoSql);
 
@@ -58,4 +60,28 @@ router.get('/get-suporte-list/:idContratante', function (req, res, next) {
 		});
 });
 
+router.get('/get-machine-list/:idContratante', function (req, res, next) {
+	console.log('Recuperando as máquinas do contratante');
+
+	let instrucaoSql = `
+	SELECT 
+		apelidoMaquina,
+		sistemaOperacionalMaquina,
+		modeloCpu,
+		espacoTotalRam
+	FROM
+		tblMaquinas
+	WHERE idUsuarioContratante = ${req.params.idContratante}
+	ORDER BY idMaquina`;
+
+	console.log(instrucaoSql);
+
+	sequelize.query(instrucaoSql, { type: sequelize.QueryTypes.SELECT })
+		.then(resultado => {
+			res.json(resultado);
+		}).catch(erro => {
+			console.error(erro);
+			res.status(500).send(erro.message);
+		});
+});
 module.exports = router;

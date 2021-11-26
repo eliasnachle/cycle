@@ -378,6 +378,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  position: fixed;
 }
 
 .background .modal-container {
@@ -592,6 +593,12 @@
 }
 
 .data_content .sup_list .data_card .icon-profile::before {
+  font-size: 3em;
+  margin-left: 1em;
+  color: #25A9EE;
+}
+
+.data_content .sup_list .data_card .icon-computer::before {
   font-size: 3em;
   margin-left: 1em;
   color: #25A9EE;
