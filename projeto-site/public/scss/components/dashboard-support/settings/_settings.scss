@@ -1,0 +1,45 @@
+// Import
+@import '../../../root/dashboard-support/root-dashboard-support.scss';
+
+.main-settings{
+    padding: 2em 2em 2em calc(2em + 295px + 300px);
+    @media screen and (max-width: 1366px){
+        padding: 2em 2em 2em calc(2em + 80px + 300px);
+    }
+    @media screen and (max-width: 768px){
+        display: none;
+    }
+    .dashboard__container--settings{
+        &--title{
+            h3{
+                font-size: 2em;
+                color: #222222;
+            }
+            span{
+                color: #878787;
+            }
+        }
+        &--item{
+            h2{
+                font-size: 1.25em;
+                letter-spacing: 0.25px;
+                color: #222222;
+            }
+            span{
+                font-size: 1em;
+                font-weight: 700;
+                color: #878787;
+                margin-right: 1.5em;
+            }
+            button{
+                cursor: pointer;
+                padding: 0.5em 1em;
+                border-radius: 10px;
+                font-weight: 700;
+                color: #836FFF;
+                background: #EBE8FF;
+                border: none;
+            }
+        }
+    }
+}

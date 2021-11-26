@@ -782,6 +782,56 @@ main .dashboard__container--row .alert-card span svg {
 
 /*Palette Color*/
 /*Font Size*/
+.main-settings {
+  padding: 2em 2em 2em calc(2em + 295px + 300px);
+}
+
+@media screen and (max-width: 1366px) {
+  .main-settings {
+    padding: 2em 2em 2em calc(2em + 80px + 300px);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .main-settings {
+    display: none;
+  }
+}
+
+.main-settings .dashboard__container--settings--title h3 {
+  font-size: 2em;
+  color: #222222;
+}
+
+.main-settings .dashboard__container--settings--title span {
+  color: #878787;
+}
+
+.main-settings .dashboard__container--settings--item h2 {
+  font-size: 1.25em;
+  letter-spacing: 0.25px;
+  color: #222222;
+}
+
+.main-settings .dashboard__container--settings--item span {
+  font-size: 1em;
+  font-weight: 700;
+  color: #878787;
+  margin-right: 1.5em;
+}
+
+.main-settings .dashboard__container--settings--item button {
+  cursor: pointer;
+  padding: 0.5em 1em;
+  border-radius: 10px;
+  font-weight: 700;
+  color: #836FFF;
+  background: #EBE8FF;
+  border: none;
+}
+
+/*Palette Color*/
+/*Font Size*/
 .sidebar-settings {
   border-right: 1.75px solid #CACACA;
   padding: 100px 0 0 295px;
@@ -789,8 +839,27 @@ main .dashboard__container--row .alert-card span svg {
   height: 100%;
 }
 
+@media screen and (max-width: 1366px) {
+  .sidebar-settings {
+    padding: 100px 0 0 80px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .sidebar-settings {
+    padding: 0;
+    width: 100%;
+  }
+}
+
 .sidebar-settings__content {
   width: 300px;
+}
+
+@media screen and (max-width: 768px) {
+  .sidebar-settings__content {
+    width: 100%;
+  }
 }
 
 .sidebar-settings__content--link {
@@ -842,10 +911,6 @@ main .dashboard__container--row .alert-card span svg {
 
 .sidebar-settings__content--actived svg path {
   stroke: #836FFF !important;
-}
-
-.main-settings {
-  padding: 2em 2em 2em calc(2em + 295px + 300px);
 }
 
 /*Palette Color*/

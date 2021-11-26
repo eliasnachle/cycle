@@ -7,8 +7,18 @@
     padding: 100px 0 0 295px;
     position: fixed;
     height: 100%;
+    @media screen and (max-width: 1366px){
+        padding: 100px 0 0 80px;
+    }
+    @media screen and (max-width: 768px){
+        padding: 0;
+        width: 100%;
+    }
     &__content{
         width: 300px;
+        @media screen and (max-width: 768px){
+            width: 100%;
+        }
         &--link{
             cursor: pointer;
             border-bottom: 1.75px solid #CACACA;
@@ -38,9 +48,6 @@
                     color: #878787;
                 }
             }
-            svg{
-                
-            }
         }
     }
 }
@@ -58,11 +65,5 @@
         path{
             stroke: #836FFF !important;   
         }
-    }
-}
-.main-settings{
-    padding: 2em 2em 2em calc(2em + 295px + 300px);
-    .dashboard__container--settings{
-        
     }
 }
