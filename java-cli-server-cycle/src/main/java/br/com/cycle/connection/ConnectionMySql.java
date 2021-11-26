@@ -12,9 +12,9 @@ public class ConnectionMySql {
         this.dataSource = new BasicDataSource();
         this.dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
         //Coloque o caminho do MySQL aqui em baixo
-        this.dataSource.setUrl("jdbc:mysql://localhost:3306/cycle?useTimezone=true&serverTimezone=UTC");
+        this.dataSource.setUrl("jdbc:mysql://mysql-cycle:3306/cycle?useTimezone=true&serverTimezone=UTC");
         this.dataSource.setUsername("root");
-        this.dataSource.setPassword("bandtec");
+        this.dataSource.setPassword("Bandtec@123");
 
     }
 
