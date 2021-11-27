@@ -176,4 +176,4 @@ instalarDocker() {
 
 }
 
-instalarDocker()
+instalarDocker
