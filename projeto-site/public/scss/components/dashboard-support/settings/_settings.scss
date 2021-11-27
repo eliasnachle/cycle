@@ -10,7 +10,11 @@
         display: none;
     }
     .dashboard__container--settings{
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
         &--title{
+            padding-bottom: 0.5em;
             h3{
                 font-size: 2em;
                 color: #222222;
