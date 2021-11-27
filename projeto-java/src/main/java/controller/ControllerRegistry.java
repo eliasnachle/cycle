@@ -45,13 +45,37 @@ public class ControllerRegistry {
                     looca.getMemoria().getDisponivel() / 1024.0 / 1024 / 1024,
                     machineInfoSelect.get(0).getIdMaquina());
         } else {
-            connection.update("INSERT INTO tblRegistros(cpuEmUso, espacoLivreDisco1, espacoLivreDisco2, espacoLivreRam, dataHoraRegistro, idMaquina) "
-                            + "VALUES(ROUND(?, 2, 1), ROUND(?, 2, 1), ROUND(?, 2, 1), ROUND(?, 2, 1), CURRENT_TIMESTAMP, ?)",
-                    looca.getProcessador().getUso(),
-                    looca.getGrupoDeDiscos().getVolumes().get(0).getDisponivel() / 1024.0 / 1024 / 1024,
-                    looca.getGrupoDeDiscos().getVolumes().get(1).getDisponivel() / 1024.0 / 1024 / 1024,
-                    looca.getMemoria().getDisponivel() / 1024.0 / 1024 / 1024,
-                    machineInfoSelect.get(0).getIdMaquina());
+            Boolean disk2 = false;
+            try {
+                looca.getGrupoDeDiscos().getVolumes().get(1).getDisponivel();
+                disk2 = true;
+            }
+            catch (IndexOutOfBoundsException e) {
+                System.out.println("Não tem volume 2");
+            }
+            catch(NullPointerException e) {
+                System.out.println("Não tem volume 2");
+            }
+            if(disk2) {
+                connection.update("INSERT INTO tblRegistros(cpuEmUso, espacoLivreDisco1, espacoLivreDisco2, espacoLivreRam, dataHoraRegistro, idMaquina) "
+                                + "VALUES(ROUND(?, 2, 1), ROUND(?, 2, 1), ROUND(?, 2, 1), ROUND(?, 2, 1), CURRENT_TIMESTAMP, ?)",
+                        looca.getProcessador().getUso(),
+                        looca.getGrupoDeDiscos().getVolumes().get(0).getDisponivel() / 1024.0 / 1024 / 1024,
+
+                        looca.getGrupoDeDiscos().getVolumes().get(1).getDisponivel() / 1024.0 / 1024 / 1024,
+                        looca.getMemoria().getDisponivel() / 1024.0 / 1024 / 1024,
+                        machineInfoSelect.get(0).getIdMaquina());
+            }
+            else{
+                connection.update("INSERT INTO tblRegistros(cpuEmUso, espacoLivreDisco1,espacoLivreDisco2, espacoLivreRam, dataHoraRegistro, idMaquina) "
+                                + "VALUES(ROUND(?, 2, 1), ROUND(?, 2, 1), 0.0, ROUND(?, 2, 1), CURRENT_TIMESTAMP, ?)",
+                        looca.getProcessador().getUso(),
+                        looca.getGrupoDeDiscos().getVolumes().get(0).getDisponivel() / 1024.0 / 1024 / 1024,
+
+                        //looca.getGrupoDeDiscos().getVolumes().get(1).getDisponivel() / 1024.0 / 1024 / 1024,
+                        looca.getMemoria().getDisponivel() / 1024.0 / 1024 / 1024,
+                        machineInfoSelect.get(0).getIdMaquina());
+            }
         }
         if(looca.getProcessador().getUso() > 92.0) {
             LocalDateTime horarioPC = LocalDateTime.now(ZoneId.of("America/Sao_Paulo"));
@@ -76,18 +100,6 @@ public class ControllerRegistry {
                             ", dataHoraAlerta" +
                             ", idRegistro) VALUES (?,?,?,?,?)",
                     "RAM", "alta", "RAM acima do limite", horarioPC, machineInfoSelect.get(0).getIdMaquina());
-        }
-        if(validacao < validacao * 0.9 ) {
-            LocalDateTime horarioPC = LocalDateTime.now(ZoneId.of("America/Sao_Paulo"));
-
-            monitoration.enviarMensagem(String.format("A Disco está sobrecarregando \n" +
-                    "Uso atual é de: %.2f", looca.getProcessador().getUso()));
-            connection.update("INSERT INTO tblAlertas(componenteInstavel" +
-                            ", nivelCriticidade" +
-                            ", descAlerta" +
-                            ", dataHoraAlerta" +
-                            ", idRegistro) VALUES (?,?,?,?,?)",
-                    "Disco", "alta", "Disco acima do limite", horarioPC, machineInfoSelect.get(0).getIdMaquina());
         }
 
     }

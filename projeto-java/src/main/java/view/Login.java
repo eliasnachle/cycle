@@ -192,7 +192,7 @@ public class Login extends javax.swing.JFrame {
         String login = jTextField1.getText();
         String password = jTextField2.getText();
         
-        List<LoginModel> selectLogin = this.controllerLogin.consultUserData(login, password);
+        List<LoginModel> selectLogin = controllerLogin.consultUserData(login, password);
         
         if (selectLogin.isEmpty()) {
 
@@ -206,7 +206,7 @@ public class Login extends javax.swing.JFrame {
                 setVisible(false);
                 frame2.setVisible(true);
             } else {
-                RegistryDashboard frame3 = new RegistryDashboard(this.controllerMachineInfo, this.machineInfoModel);
+                RegistryDashboard frame3 = new RegistryDashboard(controllerMachineInfo, machineInfoModel);
                 setVisible(false);
                 frame3.setVisible(true);
             }
