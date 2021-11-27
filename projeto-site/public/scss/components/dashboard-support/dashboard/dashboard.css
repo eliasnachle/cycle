@@ -798,6 +798,21 @@ main .dashboard__container--row .alert-card span svg {
   }
 }
 
+.main-settings .dashboard__container--settings {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 1em;
+}
+
+.main-settings .dashboard__container--settings--title {
+  padding-bottom: 0.5em;
+}
+
 .main-settings .dashboard__container--settings--title h3 {
   font-size: 2em;
   color: #222222;
