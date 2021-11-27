@@ -186,7 +186,7 @@
 <aside class="sidebar-settings">
     <div class="sidebar-settings__content">
     <ul>
-        <li class="sidebar-settings__content--link sidebar-settings__content--actived">
+        <li id="sidebar-profile" class="sidebar-settings__content--link sidebar-settings__content--actived">
                 <div class="sidebar-settings__content--link-icon">
                     <i class="icon-profile"></i>
                 </div>
@@ -198,7 +198,7 @@
                     <path d="M1 1L7 6.13333L1.33333 12" stroke="#000000" stroke-width="2" stroke-linecap="round"/>
                 </svg>
             </li>
-            <li class="sidebar-settings__content--link">
+            <li id="sidebar-security" class="sidebar-settings__content--link">
                 <div class="sidebar-settings__content--link-icon">
                     <i class="icon-lock"></i>
                 </div>
@@ -210,7 +210,7 @@
                     <path d="M1 1L7 6.13333L1.33333 12" stroke="#000000" stroke-width="2" stroke-linecap="round"/>
                 </svg>
             </li>
-            <li class="sidebar-settings__content--link">
+            <li id="sidebar-theme" class="sidebar-settings__content--link">
                 <div class="sidebar-settings__content--link-icon">
                     <i class="icon-paint"></i>
                 </div>
@@ -222,7 +222,7 @@
                     <path d="M1 1L7 6.13333L1.33333 12" stroke="#000000" stroke-width="2" stroke-linecap="round"/>
                 </svg>
             </li>
-            <li class="sidebar-settings__content--link">
+            <li id="sidebar-access" class="sidebar-settings__content--link">
                 <div class="sidebar-settings__content--link-icon">
                     <i class="icon-secure"></i>
                 </div>
@@ -247,7 +247,7 @@
       <div class="dashboard__container--settings--item">
         <h2>Nome de usuário</h2>
         <span>Jessica</span>
-        <button>Editar</button>
+        <button onclick="modalEditLabel()">Editar</button>
       </div>
       <div class="dashboard__container--settings--item">
         <h2>E-mail</h2>
@@ -259,3 +259,4 @@
 </html>
 <script src="../js/dashboard-support/menu.js"></script>
 <script src="../js/dashboard-support/search_restaurant.js"></script>
+<script src="../js/dashboard-support/sidebar_settings.js"></script>
