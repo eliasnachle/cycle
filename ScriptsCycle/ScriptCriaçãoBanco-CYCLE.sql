@@ -94,4 +94,4 @@ ALTER TABLE tblAlertas ADD FOREIGN KEY (idRegistro) REFERENCES tblRegistros(idRe
 
 -- Inserindo o usuario responsavel pelo banco
 INSERT INTO tblUsuariosContratante (nomeContratante, emailContratante, senhaContratante, cpfContratante, keyContratante)
-values ("João", "cycle.request@outlook.com", "123", "500.600.600-11", "fjwnfoi21n21jfo1j3");
+values ("Teste", "cycle.request@outlook.com", "123", "500.600.600-11", "fjwnfoi21n21jfo1j3");

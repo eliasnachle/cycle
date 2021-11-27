@@ -5,7 +5,7 @@ buildDockerFile() {
 
     echo "$(tput setaf 10)[API Installer]:$(tput setaf 7) Criando a imagem do docker"
     
-    docker build.
+    sudo docker build
 
     echo ""
 
@@ -110,4 +110,4 @@ rodarScript() {
 
 }
 
-rodarScript
+rodarScript()
