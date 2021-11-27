@@ -314,7 +314,7 @@ public class RegisterNewMachine extends javax.swing.JFrame {
     }//GEN-LAST:event_InpTipoDisco2ActionPerformed
    
     private void InsertInInputValues() {
-        InpFrequenciaCpu.setText(String.format("%.2f GHz", this.machineInfoModel.getCpuFrequencia() ));
+        InpFrequenciaCpu.setText(String.format("%.2f GHz", machineInfoModel.getCpuFrequencia()));
         InpModeloCpu.setText(this.machineInfoModel.getModeloCpu());
         InpSistemaOperacional.setText(this.machineInfoModel.getSistemaOperacionalMaquina());
         InpTipoDisco1.setText(this.machineInfoModel.getModeloDisco1());
