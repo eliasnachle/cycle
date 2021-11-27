@@ -122,14 +122,6 @@ Search Restaurant
   max-width: 12em;
 }
 
-.overlay__modal--modal--content--text {
-  padding: 1em 0;
-}
-
-.overlay__modal--modal--content--text span {
-  color: #878787 !important;
-}
-
 .overlay__modal--modal--content--ipt {
   width: 100%;
 }
@@ -178,11 +170,6 @@ Search Restaurant
   font-size: 14px;
   letter-spacing: 0.5px;
   color: #CACACA;
-}
-
-.overlay__modal--modal--content span {
-  color: #FB4B4B;
-  font-size: 16px;
 }
 
 .overlay__modal button {
@@ -794,7 +781,9 @@ main .dashboard__container--row .alert-card span svg {
 
 @media screen and (max-width: 768px) {
   .main-settings {
-    display: none;
+    padding: 2em 2em 2em 2em;
+    position: fixed;
+    right: -1000%;
   }
 }
 
@@ -810,15 +799,31 @@ main .dashboard__container--row .alert-card span svg {
 }
 
 .main-settings .dashboard__container--settings--title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 1.5em;
   padding-bottom: 0.5em;
 }
 
-.main-settings .dashboard__container--settings--title h3 {
+.main-settings .dashboard__container--settings--title button {
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  background: none;
+}
+
+.main-settings .dashboard__container--settings--title button i:before {
+  font-size: 1.75em;
+  color: #836FFF;
+}
+
+.main-settings .dashboard__container--settings--title--content h3 {
   font-size: 2em;
   color: #222222;
 }
 
-.main-settings .dashboard__container--settings--title span {
+.main-settings .dashboard__container--settings--title--content span {
   color: #878787;
 }
 
@@ -843,6 +848,67 @@ main .dashboard__container--row .alert-card span svg {
   color: #836FFF;
   background: #EBE8FF;
   border: none;
+}
+
+.main-settings .dashboard__container--settings--item ul {
+  font-weight: 700;
+  color: #878787;
+  padding: 0.5em 1em;
+}
+
+.main-settings .dashboard__container--settings--item ul li {
+  padding: .20rem;
+}
+
+.main-settings .dashboard__container--settings--item input[type=checkbox] {
+  height: 0;
+  width: 0;
+  visibility: hidden;
+}
+
+.main-settings .dashboard__container--settings--item label {
+  cursor: pointer;
+  text-indent: -9999px;
+  width: 50px;
+  height: 25px;
+  background: #CACACA;
+  display: block;
+  border-radius: 100px;
+  position: relative;
+}
+
+.main-settings .dashboard__container--settings--item label:after {
+  content: '';
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 15px;
+  height: 15px;
+  background: #fff;
+  border-radius: 90px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.main-settings .dashboard__container--settings--item input:checked + label {
+  background: #836FFF;
+}
+
+.main-settings .dashboard__container--settings--item input:checked + label:after {
+  left: calc(100% - 5px);
+  -webkit-transform: translateX(-100%);
+          transform: translateX(-100%);
+}
+
+.main-settings-mobile-actived-aside {
+  height: 100%;
+  width: 100%;
+  -webkit-transition: all 300ms ease-in;
+  transition: all 300ms ease-in;
+  right: 0;
+  padding: 2em 2em 2em 2em;
+  z-index: 0;
+  background: #FFFFFF;
 }
 
 /*Palette Color*/
