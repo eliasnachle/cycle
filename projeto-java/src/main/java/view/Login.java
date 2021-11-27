@@ -4,7 +4,10 @@ import controller.ControllerLogin;
 import controller.ControllerMachineInfo;
 
 import java.awt.*;
+import java.io.IOException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.*;
 import javax.swing.border.Border;
 
@@ -12,13 +15,14 @@ import model.LoginModel;
 import model.MachineInfoModel;
 
 public class Login extends javax.swing.JFrame {
+
     private ControllerLogin controllerLogin;
     private ControllerMachineInfo controllerMachineInfo;
     private MachineInfoModel machineInfoModel;
-    
+
     public Login() {
         initComponents();
-        
+
         this.controllerLogin = new ControllerLogin();
         this.controllerMachineInfo = new ControllerMachineInfo();
         this.machineInfoModel = new MachineInfoModel();
@@ -186,13 +190,55 @@ public class Login extends javax.swing.JFrame {
 
     private void acessar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acessar
 
+        try {
+            LoginValidation();
+        } catch (IOException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }//GEN-LAST:event_acessar
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
+
+    public static void main(String args[]) {
+        java.awt.EventQueue.invokeLater(() -> {
+            new Login().setVisible(true); 
+        });
+    }
+
+    class RoundBtn implements Border {
+
+        private int r;
+
+        RoundBtn(int r) {
+            this.r = r;
+        }
+
+        public Insets getBorderInsets(Component c) {
+            return new Insets(this.r + 1, this.r + 1, this.r + 2, this.r);
+        }
+
+        public boolean isBorderOpaque() {
+            return true;
+        }
+
+        public void paintBorder(Component c, Graphics g, int x, int y,
+                int width, int height) {
+            g.drawRoundRect(x, y, width - 1, height - 1, r, r);
+        }
+
+    }
+
+    private void LoginValidation() throws IOException {
         jButton1.setEnabled(false);
-        
+
         String login = jTextField1.getText();
         String password = jTextField2.getText();
-        
+
         List<LoginModel> selectLogin = this.controllerLogin.consultUserData(login, password);
-        
+
         if (selectLogin.isEmpty()) {
 
             JOptionPane.showMessageDialog(rootPane, "Usuário não encontrados ou Login e senha inválidos");
@@ -200,7 +246,7 @@ public class Login extends javax.swing.JFrame {
 
         } else {
 
-            if (controllerMachineInfo.consultMachineInfo(machineInfoModel).isEmpty()){
+            if (controllerMachineInfo.consultMachineInfo(machineInfoModel).isEmpty()) {
                 RegisterNewMachine frame2 = new RegisterNewMachine(selectLogin.get(0).getIdUsuarioContratante(), this.controllerMachineInfo, this.machineInfoModel);
                 setVisible(false);
                 frame2.setVisible(true);
@@ -211,37 +257,7 @@ public class Login extends javax.swing.JFrame {
             }
 
         }
-        
-    }//GEN-LAST:event_acessar
-
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
-
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(() -> {
-            new Login().setVisible(true);
-        });
     }
-
-    class RoundBtn implements Border
-    {
-        private int r;
-        RoundBtn(int r) {
-            this.r = r;
-        }
-        public Insets getBorderInsets(Component c) {
-            return new Insets(this.r+1, this.r+1, this.r+2, this.r);
-        }
-        public boolean isBorderOpaque() {
-            return true;
-        }
-        public void paintBorder(Component c, Graphics g, int x, int y,
-                                int width, int height) {
-            g.drawRoundRect(x, y, width-1, height-1, r, r);
-        }
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
