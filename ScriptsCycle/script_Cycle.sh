@@ -15,7 +15,7 @@ iniciar_Api() { #Após todas as verificações conferidas, a API se inicializar�
 
 instalar_Api() { #Essa função verifica se a API já esta instalada na máquina, caso esteja, ela irá iniciar automaticamente
 
-	if [ "$(  ls -l | grep 'cycle-1.0-SNAPSHOT-jar-with-dependencies.jar' | wc -l )" = '0' ]; then
+	if [ "$( ls -l | grep 'cycle-1.0-SNAPSHOT-jar-with-dependencies.jar' | wc -l )" = '0' ]; then
 
 		echo ""
 

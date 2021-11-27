@@ -12,10 +12,10 @@ public class RegisterNewMachine extends javax.swing.JFrame {
     
     public RegisterNewMachine(String idContratante, ControllerMachineInfo controllerMachineInfo, MachineInfoModel machineInfoModel) {
         initComponents();
-        InsertInInputValues();
         this.idContratante = idContratante;
         this.controllerMachineInfo = controllerMachineInfo;
         this.machineInfoModel = machineInfoModel;
+        InsertInInputValues();
     }
 
     @SuppressWarnings("unchecked")
