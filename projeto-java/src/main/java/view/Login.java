@@ -4,6 +4,7 @@ import controller.ControllerLogin;
 import controller.ControllerMachineInfo;
 
 import java.awt.*;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
 import java.util.logging.Level;
@@ -11,8 +12,10 @@ import java.util.logging.Logger;
 import javax.swing.*;
 import javax.swing.border.Border;
 
+import logs.cycle.LogCycle;
 import model.LoginModel;
 import model.MachineInfoModel;
+import org.codehaus.plexus.util.xml.pull.XmlPullParserException;
 
 public class Login extends javax.swing.JFrame {
 
@@ -188,7 +191,7 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
-    private void acessar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acessar
+    private void acessar(java.awt.event.ActionEvent evt)  {
 
         try {
             LoginValidation();
@@ -196,16 +199,19 @@ public class Login extends javax.swing.JFrame {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-    }//GEN-LAST:event_acessar
+    }
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }
 
-    public static void main(String args[]) {
+    public static void main(String args[]) throws FileNotFoundException, IOException, XmlPullParserException {
         java.awt.EventQueue.invokeLater(() -> {
-            new Login().setVisible(true); 
+            new Login().setVisible(true);
         });
+
+        LogCycle logCycle = new LogCycle();
+        logCycle.iniciandoApp();
     }
 
     class RoundBtn implements Border {
@@ -225,7 +231,7 @@ public class Login extends javax.swing.JFrame {
         }
 
         public void paintBorder(Component c, Graphics g, int x, int y,
-                int width, int height) {
+                                int width, int height) {
             g.drawRoundRect(x, y, width - 1, height - 1, r, r);
         }
 
@@ -241,7 +247,7 @@ public class Login extends javax.swing.JFrame {
 
         if (selectLogin.isEmpty()) {
 
-            JOptionPane.showMessageDialog(rootPane, "Usuário não encontrados ou Login e senha inválidos");
+            JOptionPane.showMessageDialog(rootPane, "UsuÃ¡rio nÃ£o encontrados ou Login e senha invÃ¡lidos");
             jButton1.setEnabled(true);
 
         } else {

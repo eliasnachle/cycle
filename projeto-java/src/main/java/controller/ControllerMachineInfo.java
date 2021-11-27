@@ -22,7 +22,7 @@ public class ControllerMachineInfo {
         
         System.out.println("Iniciando cadastro da maquina");
         // log cadastro da máquina
-        LogCycle.guardarLog("Iniciando cadastro da maquina");
+        //LogCycle.guardarLog("Iniciando cadastro da maquina");
         
         connection.update("INSERT INTO tblMaquinas"
                 + "(apelidoMaquina, tipoMaquina, sistemaOperacionalMaquina, idProcessador,"
@@ -37,12 +37,12 @@ public class ControllerMachineInfo {
         
         System.out.println("Cadastro da maquina concluido");
         // log cadastro da máquina concuido
-        LogCycle.guardarLog("Cadastro da maquina concluido");
+        //LogCycle.guardarLog("Cadastro da maquina concluido");
     }
     
     public List<MachineInfoModel> consultMachineInfo(MachineInfoModel machineInfo){
         // log consulta sobre a maquina
-        LogCycle.guardarLog("Fazendo consulta sobre a maquina");
+        //LogCycle.guardarLog("Fazendo consulta sobre a maquina");
         System.out.println("Fazendo consulta sobre a maquina");
         List<MachineInfoModel> machineInfoSelect = 
                 connection.query("SELECT * FROM tblMaquinas WHERE idProcessador = ?",
