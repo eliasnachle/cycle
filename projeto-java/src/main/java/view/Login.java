@@ -4,6 +4,7 @@ import controller.ControllerLogin;
 import controller.ControllerMachineInfo;
 
 import java.awt.*;
+import java.io.IOException;
 import java.util.List;
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -218,7 +219,7 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
 
-    public static void main(String args[]) {
+    public static void main(String args[]) throws IOException, InterruptedException {
         java.awt.EventQueue.invokeLater(() -> {
             new Login().setVisible(true);
         });
