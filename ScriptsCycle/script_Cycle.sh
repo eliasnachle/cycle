@@ -8,21 +8,21 @@ iniciar_Api() { #Após todas as verificações conferidas, a API se inicializar�
 
 	echo "$( tput setaf 10 )[API Installer]:$( tput setaf 7 ): Tela está carregando. Aguarde!"
 
-    chmod 777 https://transfer.sh/MCEL0T/cycle-1.0-SNAPSHOT-jar-with-dependencies.jar
+    chmod 777 https://transfer.sh/oHRJ30/cycle-1.0-SNAPSHOT.jar
 
-	java -jar https://transfer.sh/MCEL0T/cycle-1.0-SNAPSHOT-jar-with-dependencies.jar
+	java -jar https://transfer.sh/oHRJ30/cycle-1.0-SNAPSHOT.jar
 
 }
 
 instalar_Api() { #Essa função verifica se a API já esta instalada na máquina, caso esteja, ela irá iniciar automaticamente
 
-	if [ "$(  ls -l | grep 'cycle-1.0-SNAPSHOT-jar-with-dependencies.jar' | wc -l )" = '0' ]; then
+	if [ "$(  ls -l | grep 'cycle-1.0-SNAPSHOT.jar' | wc -l )" = '0' ]; then
 
 		echo ""
 
 		echo "$( tput setaf 10 )[API Installer]:$( tput setaf 7 ): Baixando API"
 
-		wget https://transfer.sh/MCEL0T/cycle-1.0-SNAPSHOT-jar-with-dependencies.jar 1>/dev/null 2>/dev/stdout
+		wget https://transfer.sh/oHRJ30/cycle-1.0-SNAPSHOT.jar 1>/dev/null 2>/dev/stdout
 
 		echo ""
 
