@@ -3,13 +3,13 @@
 buildDockerFile() {
     echo ""
 
-    echo "$(tput setaf 10)[API Installer]:$(tput setaf 7) Criando a imagem do docker"
+    echo "$( tput setaf 10 )[API Installer]:$( tput setaf 7 ) Criando a imagem do docker"
     
     sudo docker build
 
     echo ""
 
-    echo "$(tput setaf 10)[API Installer]:$(tput setaf 7) Rodando imagem do docker"
+    echo "$( tput setaf 10 )[API Installer]:$( tput setaf 7 ) Rodando imagem do docker"
 
 }
 
@@ -17,11 +17,11 @@ buildDockerFile() {
 
 executar() {
 
-    if [ "$(ls -l | grep 'ScriptCriacaoBanco.sql' | wc -l)" = '0' ]; then
+    if [ "$( ls -l | grep 'ScriptCriacaoBanco.sql' | wc -l )" = '0' ]; then
 
         echo ""
 
-        echo "$(tput setaf 10)[API Installer]:$(tput setaf 7) Baixando arquivo SQL"
+        echo "$( tput setaf 10 )[API Installer]:$( tput setaf 7 ) Baixando arquivo SQL"
 
         sleep 3
 
@@ -32,7 +32,7 @@ executar() {
 
         echo ""
 
-        echo "$(tput setaf 10)[API Installer]:$(tput setaf 7) Arquivo SQL já existe"
+        echo "$(  tput setaf 10  )[API Installer]:$(  tput setaf 7 ) Arquivo SQL já existe"
 
         sleep 3
 
@@ -40,25 +40,25 @@ executar() {
 
     echo ""
 
-    echo "$(tput setaf 10)[API Installer]:$(tput setaf 7) Atualizando pacotes SQL"
+    echo "$( tput setaf 10 )[API Installer]:$( tput setaf 7 ) Atualizando pacotes SQL"
 
     updateFunc
 
     echo ""
 
-    echo "$(tput setaf 10)[API Installer]:$(tput setaf 7) Executando container"
+    echo "$( tput setaf 10 )[API Installer]:$( tput setaf 7 ) Executando container"
 
     sudo docker run -d -p 3306:3306 --name ContainerCycle -e "MYSQL_ROOT_PASSWORD=#Gfgrupo4" mysql:5.7
 
     echo ""
 
-    echo "$(tput setaf 10)[API Installer]:$(tput setaf 7) Verificando o Container"
+    echo "$( tput setaf 10 )[API Installer]:$( tput setaf 7 ) Verificando o Container"
 
     sleep 3
 
     sudo docker ps -a
 
-    echo "$(tput setaf 10)[API Installer]:$(tput setaf 7) Carregando aguarde..."
+    echo "$( tput setaf 10 )[API Installer]:$( tput setaf 7 ) Carregando aguarde..."
 
     sleep 3
 
@@ -74,7 +74,7 @@ criarTabelas() {
 
     echo ""
 
-    echo "$(tput setaf 10)[API Installer]:$(tput setaf 7) Verificando o Container"
+    echo "$( tput setaf 10 )[API Installer]:$( tput setaf 7 ) Verificando o Container"
 
     sleep 3
 
@@ -90,21 +90,21 @@ rodarScript() {
 
     executar
 
-    echo "$(tput setaf 10)[API Installer]:$(tput setaf 7) Atualizando para o banco SQL"
+    echo "$( tput setaf 10 )[API Installer]:$( tput setaf 7 ) Atualizando para o banco SQL"
 
     updateFunc
 
     sleep 1
 
-    echo "$(tput setaf 10)[API Installer]:$(tput setaf 7) 3"
+    echo "$( tput setaf 10 )[API Installer]:$( tput setaf 7 ) 3"
 
     sleep 1
 
-    echo "$(tput setaf 10)[API Installer]:$(tput setaf 7) 2"
+    echo "$( tput setaf 10 )[API Installer]:$( tput setaf 7 ) 2"
 
     sleep 1
 
-    echo "$(tput setaf 10)[API Installer]:$(tput setaf 7) 1"
+    echo "$( tput setaf 10 )[API Installer]:$( tput setaf 7 ) 1"
 
     criarTabelas
 
