@@ -8,9 +8,8 @@ iniciar_Api() { #Após todas as verificações conferidas, a API se inicializar�
 
 	echo "$( tput setaf 10 )[API Installer]:$( tput setaf 7 ): Tela está carregando. Aguarde!"
 
-    chmod 777 https://transfer.sh/xT1G3r/cycle-1.0-SNAPSHOT-jar-with-dependencies.jar
 
-	java -jar https://transfer.sh/xT1G3r/cycle-1.0-SNAPSHOT-jar-with-dependencies.jar
+	java -jar cycle-1.0-SNAPSHOT-jar-with-dependencies.jar
 
 }
 
