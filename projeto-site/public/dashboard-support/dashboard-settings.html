@@ -171,7 +171,7 @@
     <a href="dashboard-registros.html">
       <i class="icon-register"></i>
     </a>
-    <a class="actived" href="#">
+    <a class="actived" href="dashboard-settings.html">
       <i class="icon-settings"></i>
     </a>
     <button>
@@ -241,13 +241,15 @@
 <main class="main-settings">
   <section class="dashboard__container--settings">
       <div class="dashboard__container--settings--title">
-        <h3>Preferências de Conta</h3>
-        <span>Configurações gerais da conta.</span>
+        <div class="dashboard__container--settings--title--content">
+          <h3>Preferências de Conta</h3>
+          <span>Configurações gerais da conta.</span>
+        </div>
       </div>
       <div class="dashboard__container--settings--item">
         <h2>Nome de usuário</h2>
         <span>Jessica</span>
-        <button onclick="modalEditLabel()">Editar</button>
+        <button value="username" onclick="modalEditUsername(this.value)">Editar</button>
       </div>
       <div class="dashboard__container--settings--item">
         <h2>E-mail</h2>
