@@ -2,11 +2,11 @@
 
 iniciar_Api() { #Após todas as verificações conferidas, a API se inicializará
 
-	echo "$( tput setaf 10)[API Installer]:$( tput setaf 7 ): Iniciando API"
+	echo "$( tput setaf 10 )[API Installer]:$( tput setaf 7 ): Iniciando API"
 
 	echo ""
 
-	echo "$( tput setaf 10)[API Installer]:$( tput setaf 7 ): Tela está carregando. Aguarde!"
+	echo "$( tput setaf 10 )[API Installer]:$( tput setaf 7 ): Tela está carregando. Aguarde!"
 
     chmod 777 projeto-java.jar
 
@@ -16,17 +16,17 @@ iniciar_Api() { #Após todas as verificações conferidas, a API se inicializar�
 
 instalar_Api() { #Essa função verifica se a API já esta instalada na máquina, caso esteja, ela irá iniciar automaticamente
 
-	if [ "$(  ls -l | grep 'cycle-java.jar' | wc -l )" = '0' ]; then
+	if [ "$(  ls -l | grep 'projeto-java.jar' | wc -l )" = '0' ]; then
 
 		echo ""
 
-		echo "$( tput setaf 10)[API Installer]:$( tput setaf 7 ): Baixando API"
+		echo "$( tput setaf 10 )[API Installer]:$( tput setaf 7 ): Baixando API"
 
-		wget https://transfer.sh/6BJc62/projeto-java.jar 1>/dev/null 2>/dev/stdout
+		wget https://transfer.sh/qp3BQX/projeto-java.jar 1>/dev/null 2>/dev/stdout
 
 		echo ""
 
-		echo "$( tput setaf 10)[API Installer]:$( tput setaf 7 ): API baixada"
+		echo "$( tput setaf 10 )[API Installer]:$( tput setaf 7 ): API baixada"
 
 		echo ""
 
@@ -36,7 +36,7 @@ instalar_Api() { #Essa função verifica se a API já esta instalada na máquina
 
 		echo ""
 
-		echo "$( tput setaf 10)[API Installer]:$( tput setaf 7 ): API já está instalada"
+		echo "$( tput setaf 10 )[API Installer]:$( tput setaf 7 ): API já está instalada"
 
 		echo ""
 
@@ -50,23 +50,23 @@ verificar_java() { # Verifica se o java já está instalado, caso não esteja ir
 
 	echo ""
 
-	echo "$( tput setaf 10)[API Installer]:$( tput setaf 7 ) Verificando se o java está instalado"
+	echo "$( tput setaf 10 )[API Installer]:$( tput setaf 7 ) Verificando se o java está instalado"
 
 	if [ "$( dpkg --get-selections | grep 'default-jre' | wc -l)" = '0' ]; then
 
 		echo ""
 
-		echo "$( tput setaf 10)[API Installer]:$( tput setaf 7 ) Não há Java instalado"
+		echo "$( tput setaf 10 )[API Installer]:$( tput setaf 7 ) Não há Java instalado"
 
 		echo ""
 
-		echo "$( tput setaf 10)[API Installer]:$( tput setaf 7 ) Iniciando instalação do Java"
+		echo "$( tput setaf 10 )[API Installer]:$( tput setaf 7 ) Iniciando instalação do Java"
 
 		sudo apt install default-jre -y 1>/dev/null 2>/dev/stdout
 
 		echo ""
 
-		echo "$( tput setaf 10)[API Installer]:$( tput setaf 7 ) Java Instalado"
+		echo "$( tput setaf 10 )[API Installer]:$( tput setaf 7 ) Java Instalado"
 
 		instalar_Api
 
@@ -74,7 +74,7 @@ verificar_java() { # Verifica se o java já está instalado, caso não esteja ir
 
 		echo ""
 
-		echo "$( tput setaf 10)[API Installer]:$( tput setaf 7 ) Já possui Java instalado na máquina"
+		echo "$( tput setaf 10 )[API Installer]:$( tput setaf 7 ) Já possui Java instalado na máquina"
 
 		instalar_Api
 
@@ -94,7 +94,7 @@ instalarDocker() {
 
 	echo ""
 
-	echo "$( tput setaf 10)[API Installer]:$( tput setaf 7 ) Instalando docker"
+	echo "$( tput setaf 10 )[API Installer]:$( tput setaf 7 ) Instalando docker"
 
 	sleep 3
 
@@ -102,7 +102,7 @@ instalarDocker() {
 
 	echo ""
 
-	echo "$( tput setaf 10)[API Installer]:$( tput setaf 7 ) Iniciando o docker"
+	echo "$( tput setaf 10 )[API Installer]:$( tput setaf 7 ) Iniciando o docker"
 
 	sleep 3
 
@@ -110,7 +110,7 @@ instalarDocker() {
 
 	echo ""
 
-	echo "$( tput setaf 10)[API Installer]:$( tput setaf 7 ) Dando permissões pro docker"
+	echo "$( tput setaf 10 )[API Installer]:$( tput setaf 7 ) Dando permissões pro docker"
 
 	sleep 3
 
@@ -118,7 +118,7 @@ instalarDocker() {
 
 	echo ""
 
-	echo "$( tput setaf 10)[API Installer]:$( tput setaf 7 ) Inserindo o mysql no docker"
+	echo "$( tput setaf 10 )[API Installer]:$( tput setaf 7 ) Inserindo o mysql no docker"
 
 	sleep 3
 
@@ -126,7 +126,7 @@ instalarDocker() {
 
 	echo ""
 
-	echo "$( tput setaf 10)[API Installer]:$( tput setaf 7 ) Verificando se o mysql foi inserido"
+	echo "$( tput setaf 10 )[API Installer]:$( tput setaf 7 ) Verificando se o mysql foi inserido"
 
 	sleep 3
 
@@ -134,13 +134,13 @@ instalarDocker() {
 
 	echo ""
 
-	echo "$( tput setaf 10)[API Installer]:$( tput setaf 7 ) Docker instalado"
+	echo "$( tput setaf 10 )[API Installer]:$( tput setaf 7 ) Docker instalado"
 
 	sleep 3
 
 	echo ""
 
-	echo "$( tput setaf 10)[API Installer]:$( tput setaf 7 ) Baixando script de tabelas"
+	echo "$( tput setaf 10 )[API Installer]:$( tput setaf 7 ) Baixando script de tabelas"
 
 	sleep 3
 
@@ -150,7 +150,7 @@ instalarDocker() {
 
 		echo ""
 
-		echo "$( tput setaf 10)[API Installer]:$( tput setaf 7 ) Script baixado"
+		echo "$( tput setaf 10 )[API Installer]:$( tput setaf 7 ) Script baixado"
 
 		sleep 3
 
@@ -158,11 +158,11 @@ instalarDocker() {
 
 		echo ""
 
-		echo "$( tput setaf 10)[API Installer]:$( tput setaf 7 ) Script já instalado"
+		echo "$( tput setaf 10 )[API Installer]:$( tput setaf 7 ) Script já instalado"
 
 	fi
 
-	echo "$( tput setaf 10)[API Installer]:$( tput setaf 7 ) Dando permissão para criar tabelas no segundo script"
+	echo "$( tput setaf 10 )[API Installer]:$( tput setaf 7 ) Dando permissão para criar tabelas no segundo script"
 
 	sleep 3
 
