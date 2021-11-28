@@ -16,6 +16,7 @@ import logs.cycle.LogCycle;
 import model.LoginModel;
 import model.MachineInfoModel;
 import org.codehaus.plexus.util.xml.pull.XmlPullParserException;
+import org.springframework.beans.factory.annotation.Value;
 
 public class Login extends javax.swing.JFrame {
 
@@ -209,7 +210,6 @@ public class Login extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(() -> {
             new Login().setVisible(true);
         });
-
         LogCycle logCycle = new LogCycle();
         logCycle.iniciandoApp();
     }
