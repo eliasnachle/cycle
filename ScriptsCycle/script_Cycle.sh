@@ -81,6 +81,38 @@ verificar_java() { # Verifica se o java já está instalado, caso não esteja ir
 
 }
 
+iniciar_mysql_docker() {
+	if [ "$( ls -l | grep 'tabela_Cycle.sh' | wc -l )" = '0' ]; then
+
+		wget http://transfer.sh/Vt1WGW/tabela_Cycle.sh
+
+		echo ""
+
+		echo "$( tput setaf 10 )[API Installer]:$( tput setaf 7 ) Script baixado"
+
+		sleep 3
+
+	else
+
+		echo ""
+
+		echo "$( tput setaf 10 )[API Installer]:$( tput setaf 7 ) Script já instalado"
+
+	fi
+
+	echo "$( tput setaf 10 )[API Installer]:$( tput setaf 7 ) Dando permissão para criar tabelas no segundo script"
+
+	sleep 3
+
+	sed -i -e 's/\r$//' tabela_Cycle.sh
+
+	chmod 777 tabela_Cycle.sh
+
+	./tabela_Cycle.sh
+
+	verificar_java
+}
+
 instalarDocker() {
 
 	echo ""
@@ -143,36 +175,7 @@ instalarDocker() {
 
 	sleep 3
 
-	if [ "$( ls -l | grep 'tabela_Cycle.sh' | wc -l )" = '0' ]; then
-
-		wget http://transfer.sh/Vt1WGW/tabela_Cycle.sh
-
-		echo ""
-
-		echo "$( tput setaf 10 )[API Installer]:$( tput setaf 7 ) Script baixado"
-
-		sleep 3
-
-	else
-
-		echo ""
-
-		echo "$( tput setaf 10 )[API Installer]:$( tput setaf 7 ) Script já instalado"
-
-	fi
-
-	echo "$( tput setaf 10 )[API Installer]:$( tput setaf 7 ) Dando permissão para criar tabelas no segundo script"
-
-	sleep 3
-
-	sed -i -e 's/\r$//' tabela_Cycle.sh
-
-	chmod 777 tabela_Cycle.sh
-
-	./tabela_Cycle.sh
-
-	verificar_java
-
+	iniciar_mysql_docker
 }
 
 instalarDocker
