@@ -34,7 +34,7 @@ router.get('/alerts:idContractorSession', function(req, res, next) {
 router.get('/:idContractorSession', function(req, res, next) {
 	console.log('Buscando máquinas');
     const idContractorSession = req.params.idContractorSession;
-    let instrucaoSql = `SELECT 
+    let instrucaoSql = `SELECT idMaquina,
     apelidoMaquina,
 	tipoMaquina
     FROM tblMaquinas
@@ -51,5 +51,7 @@ router.get('/:idContractorSession', function(req, res, next) {
 		res.status(500).send(erro.message);
 	});
 });
+
+
 
 module.exports = router;
