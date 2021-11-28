@@ -9,7 +9,7 @@ iniciar_Api() { #Após todas as verificações conferidas, a API se inicializar�
 	echo "$( tput setaf 10 )[API Installer]:$( tput setaf 7 ): Tela está carregando. Aguarde!"
 
 
-	java -jar cycle-1.0-SNAPSHOT-jar-with-dependencies.jar
+	java -jar java-cli-server-cycle-1.0-SNAPSHOT-jar-with-dependencies.jar
 
 }
 
