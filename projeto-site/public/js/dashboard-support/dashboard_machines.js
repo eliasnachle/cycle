@@ -13,10 +13,17 @@ function postMachines(machines) {
             <span>${machine.apelidoMaquina}</span>
           </div>
         </div>
-        `;
-        machineItem.href = 'dashboard-monitor.html';
+        `;        
+        machineItem.value = machine.idMaquina;
+        machineItem.setAttribute('onclick', 'getIdMachine(this, value)');
         dashboardContainerRow.appendChild(machineItem);
+        machineItem.href = 'dashboard-monitor.html';
     }
+}
+
+function getIdMachine(idMachine, value) {
+    sessionStorage.setItem('idMachine', value);
+    sessionStorage.setItem('nameMachine', idMachine.textContent);
 }
 
 function getMachines(idContractorSession) {
