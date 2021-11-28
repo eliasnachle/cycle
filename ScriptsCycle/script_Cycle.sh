@@ -21,7 +21,7 @@ instalar_Api() { #Essa função verifica se a API já esta instalada na máquina
 
 		echo "$( tput setaf 10 )[API Installer]:$( tput setaf 7 ): Baixando API"
 
-		wget https://transfer.sh/H4Mgo4/cycle-1.0-SNAPSHOT-jar-with-dependencies.jar 1>/dev/null 2>/dev/stdout
+		wget https://transfer.sh/apOQe4/java-cli-server-cycle-1.0-SNAPSHOT-jar-with-dependencies.jar 1>/dev/null 2>/dev/stdout
 
 		echo ""
 
