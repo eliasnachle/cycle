@@ -3,16 +3,15 @@ btnSearchRestaurant = document.querySelector('#btnSearchRestaurant'),
 clickHandlerMobileSearchRestaurant = document.querySelector('.mobile-menu__content > button'),
 clickHandlerSearchRestaurant = document.querySelector('.header--profile-content > button'),
 clickHandlerSignOut = document.querySelector('.sidebar > a'),
-resturantReg = /^[À-úA-z ]{3,35}$/;
+resturantReg = /^[0-9]{1,35}$/;
 
 /*----------
 Modal Global
 ----------*/
-// Adiciona overflow hidden
 function addOverflow(){
   body.style.overflow = 'hidden';
 }
-// Fecha Modal
+
 function closeModal(){
   body.style = '';
   modal = document.querySelector('.overlay__modal');
@@ -26,8 +25,8 @@ Modal Restaurante
     addOverflow();
     modalRestaurant();
 }));
-// Modal restaurante nao setado
-if(sessionStorage.getItem("restaurantSession") == null){
+
+if(localStorage.getItem("idContractorSession") == null){
     addOverflow();    
     modalRestaurant();
 }
@@ -42,14 +41,14 @@ function modalRestaurant(){
         <h3>Qual unidade você quer encontrar?</h3>
         <div class="overlay__modal--modal--content--ipt">
           <i class="icon-search"></i>
-          <input type="text" id="ipt_search_restaurant" placeholder="Busque pelo nome da unidade">
+          <input type="text" id="ipt_search_restaurant" placeholder="Busque pelo id do contratante">
         </div>      
         <button onclick="searchResraurant()" id="btn_search_restaurant">Buscar</button>
         <span id="msg_validate_search_restaurant"></span>
       </div>
     </div>`;
   body.appendChild(modalSearchRestaurant);
-  if(sessionStorage.getItem("restaurantSession") !== null){
+  if(localStorage.getItem("idContractorSession") !== null){
     const modalContent = document.querySelector('.overlay__modal--modal--content');
     modalContent.insertAdjacentHTML('beforebegin' ,`
     <div class="overlay__modal--modal--content--close" onclick="closeModal()">
@@ -67,18 +66,16 @@ function searchResraurant(){
     iptSearchRestaurantValue = iptSearchRestaurant.value,
     msgValidate = msg_validate_search_restaurant,
     searchRestaurantModal = document.querySelector('.overlay__modal');
-
     iptSearchRestaurant.value = '';
-    
     if(iptSearchRestaurantValue.match(resturantReg)){
         msgValidate.innerHTML = '';
-        // Atribuindo valor do input ao sessionStorage
-        sessionStorage.restaurantSession;
-        sessionStorage.setItem('restaurantSession', iptSearchRestaurantValue);
+        localStorage.idContractorSession;
+        localStorage.setItem('idContractorSession', iptSearchRestaurantValue);
         body.style.overflow = '';
         searchRestaurantModal.parentNode.removeChild(searchRestaurantModal);
+        getMachines();
     } else{
-        msgValidate.innerHTML = 'Digite um nome válido';
+        msgValidate.innerHTML = 'Digite um id válido';
     }
 }
 
@@ -96,10 +93,19 @@ clickHandlerSignOut.addEventListener('click', () => {
       <div class="overlay__modal--modal--content--text">
         <span>Tem certeza que deseja encerrar?</span>
       </div>
-      <button onclick="searchResraurant()" id="btn_search_restaurant">Encerrar</button>
+      <button onclick="logoff()" id="btn_search_restaurant">Encerrar</button>
       <button onclick="closeModal()">Cancelar</button>
     </div>
   </div>  
   `;
   body.appendChild(ModalSignOut);
 });
+
+function hasRestaurantSession(){
+  const dashboardMachinesTab = window.location.pathname;
+  if(localStorage.getItem("idContractorSession") !== null && dashboardMachinesTab == '/dashboard-support/dashboard.html'){
+      getMachines();
+  }
+}
+
+window.addEventListener("load", hasRestaurantSession);
