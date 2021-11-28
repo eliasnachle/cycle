@@ -57,8 +57,13 @@
         <div class="data_header">
             <h1>Equipe</h1>
         </div>
-        <div id="div_abrir" onclick="abrir()" class="register_ref">
-            <a href="#" class="reg_btn">Cadastrar</a>
+        <div class="buttons">
+            <div id="div_abrir" onclick="openRegister()" class="register_ref">
+                <a href="#" class="reg_btn">Cadastrar Suporte</a>
+            </div>
+            <div id="div_abrir" onclick="openDelete()" class="register_ref">
+                <a href="#" class="reg_btn">Deletar Suporte</a>
+            </div>
         </div>
         <form id="list_sup"></form>
 
@@ -125,10 +130,10 @@
     <!-- Modal de Cadastro -->
     <div id="div_background" class="background">
         <div class="modal-container">
-            <h2>Cadastrar Suporte <span onclick="fechar()">X</span></h2>
+            <h2>Cadastrar Suporte <span onclick="closeRegister()">X</span></h2>
 
             <div class="modal-content">
-                <form id="form_cadastro_suporte" method="post" onsubmit="return registerSupport()">
+                <form class="form" id="form_cadastro_suporte" method="post" onsubmit="return registerSupport()">
                     <div class="modal-separator">
                         <div class="boxes">
                             <h3>Nome Suporte</h3>
@@ -149,17 +154,40 @@
         </div>
     </div>
 
+    <!-- Modal Delete -->
+    <div id="modal_delete" class="background">
+        <div class="modal-container">
+            <h2>Deletar Suporte <span onclick="closeDelete()">X</span></h2>
+            <div class="modal-content">
+                <form class="form" id="form_delete_support">
+                    <div class="modal-separator">
+                            <select class="content-input" id="select_delete"></select>
+                    </div>
+                    <button type="submit" onclick="deleteSupport(select_delete.value)" class="btn_confirm">Confirmar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
 </body>
 
 </html>
 <script>
 
-    function fechar() {
+    function closeRegister() {
         div_background.style.display = "none";
     }
 
-    function abrir() {
+    function openRegister() {
         div_background.style.display = "flex";
+    }
+
+    function closeDelete() {
+        modal_delete.style.display = "none";
+    }
+
+    function openDelete() {
+        modal_delete.style.display = "flex";
     }
 
     function verificateAuth() {

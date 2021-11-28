@@ -409,6 +409,16 @@
           flex-direction: column;
 }
 
+.background .modal-container .modal-content .form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
 .background .modal-container .modal-content .btn_confirm {
   cursor: pointer;
   margin-top: 20px;
@@ -446,7 +456,7 @@
   margin-bottom: 2em;
 }
 
-.background .modal-container .modal-content .boxes .content-input {
+.background .modal-container .modal-content .content-input {
   -webkit-transition: ease-in 150ms;
   transition: ease-in 150ms;
   padding: 1rem 1.3rem;
@@ -461,7 +471,7 @@
   width: 100%;
 }
 
-.background .modal-container .modal-content .boxes .content-input:focus {
+.background .modal-container .modal-content .content-input:focus {
   border: 1.5px solid #25A9EE;
 }
 
@@ -488,6 +498,15 @@
   color: #161616;
   font-size: clamp(16px, 1rem, 18px);
   margin-bottom: 1em;
+}
+
+.data_content .buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
 }
 
 .data_content .register_ref {
