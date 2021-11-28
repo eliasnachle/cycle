@@ -751,6 +751,9 @@ main .dashboard__container--row .alert-card span svg {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
@@ -758,12 +761,12 @@ main .dashboard__container--row .alert-card span svg {
 
 .notifications__content .card__content--description .card-notifications-title h3 {
   font-size: 18px;
-  font-weight: 800;
   color: #161616;
 }
 
 .notifications__content .card__content--description .card-notifications-title span {
-  font-size: 18px;
+  font-size: 13px;
+  font-weight: 600;
   color: #161616;
 }
 

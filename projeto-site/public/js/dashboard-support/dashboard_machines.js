@@ -21,7 +21,7 @@ function postMachines(machines) {
 
 function getMachines(idContractorSession) {
     var idContractorSession = localStorage.idContractorSession;
-    fetch(`/machines/${idContractorSession}`)
+    fetch(`/dashboardSupport/${idContractorSession}`)
     .then((resposta) => {
         if (resposta.ok) {
             resposta.json().then(function (resposta) {

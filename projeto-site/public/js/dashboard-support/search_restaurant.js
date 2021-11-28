@@ -3,6 +3,7 @@ btnSearchRestaurant = document.querySelector('#btnSearchRestaurant'),
 clickHandlerMobileSearchRestaurant = document.querySelector('.mobile-menu__content > button'),
 clickHandlerSearchRestaurant = document.querySelector('.header--profile-content > button'),
 clickHandlerSignOut = document.querySelector('.sidebar > a'),
+clickHandlerSignOutMobile = document.getElementById('logoutMobile'),
 resturantReg = /^[0-9]{1,35}$/;
 
 /*----------
@@ -82,7 +83,7 @@ function searchResraurant(){
 /*------------
 Modal Encerrar
 ------------*/
-clickHandlerSignOut.addEventListener('click', () => {
+[clickHandlerSignOutMobile, clickHandlerSignOut].map(element => element.addEventListener ('click', () => {
   addOverflow();
   const ModalSignOut = document.createElement("section");
   ModalSignOut.classList.add('overlay__modal');
@@ -99,7 +100,7 @@ clickHandlerSignOut.addEventListener('click', () => {
   </div>  
   `;
   body.appendChild(ModalSignOut);
-});
+}));
 
 function hasRestaurantSession(){
   const dashboardMachinesTab = window.location.pathname;

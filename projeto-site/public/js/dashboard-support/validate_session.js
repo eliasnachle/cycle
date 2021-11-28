@@ -15,4 +15,9 @@ function authenticateLogin(){
     }
 }
 
-window.addEventListener('load', authenticateLogin)
+function callMethods(){
+    authenticateLogin();
+    getAlerts();
+}
+
+window.addEventListener('load', callMethods)

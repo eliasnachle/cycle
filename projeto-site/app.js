@@ -7,7 +7,7 @@ logger = require('morgan'),
 indexRouter = require('./routes/index'),
 usuariosRouter = require('./routes/usuarios'),
 leiturasRouter = require('./routes/leituras'),
-machinesRouter = require('./routes/machines'),
+dashboardSupportRouter = require('./routes/dashboardSupport'),
 app = express();
 
 app.use(logger('dev')); 
@@ -19,6 +19,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/usuarios', usuariosRouter);
 app.use('/leituras', leiturasRouter);
-app.use('/machines', machinesRouter)
+app.use('/dashboardSupport', dashboardSupportRouter);
 
 module.exports = app;

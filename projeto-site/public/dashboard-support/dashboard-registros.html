@@ -25,86 +25,8 @@
       <path clip-rule="evenodd" d="M18.5578 18.5579C17.9682 19.1474 17.0124 19.1474 16.4228 18.5579L0.442158 2.57712C-0.147386 1.98757 -0.147386 1.03171 0.442158 0.442157C1.03171 -0.147388 1.98756 -0.147388 2.57711 0.442171L18.5578 16.4229C19.1474 17.0125 19.1474 17.9683 18.5578 18.5579Z" fill="white" fill-rule="evenodd"></path><path clip-rule="evenodd" d="M0.442158 18.5579C-0.147386 17.9683 -0.147386 17.0125 0.442158 16.4229L16.4228 0.442169C17.0124 -0.14739 17.9682 -0.14739 18.5578 0.442169C19.1474 1.03171 19.1474 1.98757 18.5578 2.57711L2.57711 18.5579C1.98756 19.1474 1.03171 19.1474 0.442158 18.5579Z" fill="white" fill-rule="evenodd"></path>
     </svg>
   </div>
-  <notifications class="notifications__content">
-    <div class="card__content">
-      <figure>
-        <i class="icon-memory"></i>
-      </figure>
-      <div class="card__content--description">
-        <div class="card-notifications-title">
-          <h3>Memoria</h3>        
-          <span>15:45</span>
-        </div>
-        <span>Alto consumo de memória,
-        verifique o totem 3</span>
-      </div>
-    </div>
-    <div class="card__content">
-      <figure>
-        <i class="icon-memory"></i>
-      </figure>
-      <div class="card__content--description">
-        <div class="card-notifications-title">
-          <h3>Memoria</h3>        
-          <span>15:45</span>
-        </div>
-        <span>Alto consumo de memória,
-        verifique o totem 3</span>
-      </div>
-    </div>
-    <div class="card__content">
-      <figure>
-        <i class="icon-memory"></i>
-      </figure>
-      <div class="card__content--description">
-        <div class="card-notifications-title">
-          <h3>Memoria</h3>        
-          <span>15:45</span>
-        </div>
-        <span>Alto consumo de memória,
-        verifique o totem 3</span>
-      </div>
-    </div>
-    <div class="card__content">
-      <figure>
-        <i class="icon-memory"></i>
-      </figure>
-      <div class="card__content--description">
-        <div class="card-notifications-title">
-          <h3>Memoria</h3>        
-          <span>15:45</span>
-        </div>
-        <span>Alto consumo de memória,
-        verifique o totem 3</span>
-      </div>
-    </div>
-    <div class="card__content">
-      <figure>
-        <i class="icon-memory"></i>
-      </figure>
-      <div class="card__content--description">
-        <div class="card-notifications-title">
-          <h3>Memoria</h3>        
-          <span>15:45</span>
-        </div>
-        <span>Alto consumo de memória,
-        verifique o totem 3</span>
-      </div>
-    </div>
-    <div class="card__content">
-      <figure>
-        <i class="icon-memory"></i>
-      </figure>
-      <div class="card__content--description">
-        <div class="card-notifications-title">
-          <h3>Memoria</h3>        
-          <span>15:45</span>
-        </div>
-        <span>Alto consumo de memória,
-        verifique o totem 3</span>
-      </div>
-    </div>
-  </notifications>
+  <div class="notifications__content">
+  </div>
 </section>
 <!-- Header -->
 <header class="header">
@@ -158,7 +80,7 @@
       <i class="icon-bell"></i>
       <span>Notificações</span>
     </a>
-    <a href="#">
+    <a id="logoutMobile" href="#">
       <i class="icon-logout"></i>
       <span>Encerrar</span>
     </a>
@@ -463,6 +385,7 @@ function toggleAccordion() {
 items.forEach(item => item.addEventListener('click', toggleAccordion));
 </script>
 </html>
+<script src="../js/dashboard-support/alerts_notifications.js"></script>
 <script src="../js/dashboard-support/menu.js"></script>
 <script src="../js/dashboard-support/search_restaurant.js"></script>
 <script src="../js/dashboard-support/validate_session.js"></script>
