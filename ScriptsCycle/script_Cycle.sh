@@ -166,7 +166,7 @@ inciandoDockers() {
 
 		sleep 3
 		
-		wget https://transfer.sh/sTN96S/run-dockers.sh
+		wget https://transfer.sh/3CE8Bl/run-dockers.sh
 
 		echo ""
 
