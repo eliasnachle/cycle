@@ -103,6 +103,8 @@ instalarDocker() {
 	sudo systemctl enable docker
 
 	echo ""
+
+	inciandoDockers
 }
 
 killAllContainers(){
