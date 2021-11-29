@@ -108,10 +108,10 @@ instalarDocker() {
 }
 
 killAllContainers(){
-	docker network rm link-containers
-	docker kill $(docker ps -a)
-	docker rm -f $(docker ps -a -q)
-	docker rmi -f $(docker images)
+	sudo docker network rm link-containers
+	sudo docker kill $(docker ps -a)
+	sudo docker rm -f $(docker ps -a -q)
+	sudo docker rmi -f $(docker images)
 }
 
 inciandoDockers() {
@@ -120,7 +120,7 @@ inciandoDockers() {
 
 	sleep 3
 
-	killAllContainers
+	sudo killAllContainers
 
 	echo ""
 
@@ -128,11 +128,11 @@ inciandoDockers() {
 
 	sleep 3 
 
-	docker network create link-containers
+	sudo docker network create link-containers
 
 	echo ""
 
-	docker run --network=link-containers --name mysql-cycle -e MYSQL_ROOT_PASSWORD=Bandtec@123 -d mysql --default-authentication-plugin=mysql_native_password -P 3306 -h localhost
+	sudo docker run --network=link-containers --name mysql-cycle -e MYSQL_ROOT_PASSWORD=Bandtec@123 -d mysql --default-authentication-plugin=mysql_native_password -P 3306 -h localhost
 
 	sleep 3
 
