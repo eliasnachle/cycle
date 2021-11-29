@@ -29,8 +29,15 @@ function postAlerts(alerts) {
         </div>
         `;
         alertCard.classList.add('card__content');
+        alertCard.value = i+1;
+        alertCard.setAttribute('onclick', 'teste(value)');
         noticationsContent.appendChild(alertCard);
+
     }
+}
+
+function teste(idCard) {
+    console.log(idCard);
 }
 
 function getAlerts(idContractorSession) {

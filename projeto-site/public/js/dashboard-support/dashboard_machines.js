@@ -42,4 +42,3 @@ function getMachines(idContractorSession) {
         console.error(`Erro na obtenção das publicações: ${error.message}`);
     });
 }
-
