@@ -13,11 +13,15 @@ function getDiaryUse(idMachine) {
             resposta.json().then(function (resposta) {
                 console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                 const dailyRamUsage = document.querySelectorAll('.value-container')[0],
-                dailyCpuUsage = document.querySelectorAll('.value-container')[1];        
+                dailyCpuUsage = document.querySelectorAll('.value-container')[1]
+                dailyRamUsageProgressBar = document.querySelectorAll('.circular-progress > svg > circle')[1],
+                dailyCpuUsageProgressBar = document.querySelectorAll('.circular-progress > svg > circle')[3];
                 let porcentageDailyCpuUsage = ((resposta[0].cpuEmUso/cpuFrequency)*100).toFixed(0),
                 porcentageDailyRamsage = (((sizeRam-resposta[0].espacoLivreRam)/sizeRam)*100).toFixed(0);
-                dailyRamUsage.innerHTML = `${porcentageDailyCpuUsage}%`;
-                dailyCpuUsage.innerHTML = `${porcentageDailyRamsage}%`;
+                dailyRamUsage.innerHTML = `<h2>${porcentageDailyCpuUsage}<span>%</span></h2>`;
+                dailyCpuUsage.innerHTML = `<h2>${porcentageDailyRamsage}<span>%</span></h2>`;
+                dailyCpuUsageProgressBar.style.strokeDashoffset = `calc(440 - (440 * ${porcentageDailyCpuUsage}) / 100);`;
+                dailyRamUsageProgressBar.style.strokeDashoffset = `calc(440 - (440 * ${dailyRamUsageProgressBar}) / 100);`;
             });
         } else {
             console.error('Nenhum dado encontrado ou erro na API');
