@@ -120,7 +120,7 @@ inciandoDockers() {
 
 	sleep 3
 
-	sudo killAllContainers
+	killAllContainers
 
 	echo ""
 
