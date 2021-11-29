@@ -52,6 +52,8 @@ function listSuppToDelete(usuariosSuporte){
     supList.innerHTML = "";
 
     if(usuariosSuporte.length == 0){
+        var button = document.getElementById('btn_delete');
+        button.setAttribute("disabled", true);
         supList.innerHTML += `
         <option value="">Nenhum suporte cadastrado.</option>
         `;
@@ -72,6 +74,8 @@ function listMachineToDelete(machines){
     supList.innerHTML = "";
 
     if(machines.length == 0){
+        var button = document.getElementById('btn_delete');
+        button.setAttribute("disabled", true);
         supList.innerHTML += `
         <option value="">Nenhuma máquina cadastrada.</option>
         `;
