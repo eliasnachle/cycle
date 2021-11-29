@@ -13,10 +13,9 @@ function getDiaryUse(idMachine) {
             resposta.json().then(function (resposta) {
                 console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                 const dailyRamUsage = document.querySelectorAll('.value-container')[0],
-                dailyCpuUsage = document.querySelectorAll('.value-container')[1];
+                dailyCpuUsage = document.querySelectorAll('.value-container')[1];        
                 let porcentageDailyCpuUsage = ((resposta[0].cpuEmUso/cpuFrequency)*100).toFixed(0),
                 porcentageDailyRamsage = (((sizeRam-resposta[0].espacoLivreRam)/sizeRam)*100).toFixed(0);
-
                 dailyRamUsage.innerHTML = `${porcentageDailyCpuUsage}%`;
                 dailyCpuUsage.innerHTML = `${porcentageDailyRamsage}%`;
             });

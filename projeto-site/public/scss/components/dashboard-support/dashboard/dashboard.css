@@ -1359,6 +1359,67 @@ main .dashboard__container--row .alert-card span svg {
   color: #5C5C5C;
 }
 
+.percent {
+  position: relative;
+  width: 150px;
+  height: 150px;
+}
+
+.percent svg {
+  position: relative;
+  width: 150px;
+  height: 150px;
+}
+
+.percent svg circle {
+  width: 150px;
+  height: 150px;
+  fill: none;
+  stroke-width: 10;
+  stroke: #FFFFFF;
+  -webkit-transform: translate(5px, 5px);
+          transform: translate(5px, 5px);
+  stroke-dasharray: 440;
+  stroke-dashoffset: 440;
+  stroke-linecap: round;
+}
+
+.percent svg circle:nth-child(1) {
+  stroke-dashoffset: 0;
+  stroke: #EBE8FF;
+}
+
+.percent svg circle:nth-child(2) {
+  stroke-dashoffset: calc(440 - (440 * 87) / 100);
+  stroke: #836FFF;
+}
+
+.percent .number {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #161616;
+}
+
+.percent .number h2 {
+  font-size: 48px;
+}
+
+.percent .number h2 span {
+  font-size: 24px;
+}
+
 /*Palette Color*/
 /*Font Size*/
 select {
