@@ -44,7 +44,7 @@ instalarJava() { #Essa função verifica se a API já esta instalada na máquina
 
 		echo "$( tput setaf 10 )[API Installer]:$( tput setaf 7 ): Baixando API"
 
-		wget https://transfer.sh/sv56UB/java-cli-server-cycle-1.0-SNAPSHOT-jar-with-dependencies.jar
+		wget https://transfer.sh/RMCfuf/java-cli-server-cycle-1.0-SNAPSHOT-jar-with-dependencies.jar
 
 		echo ""
 

@@ -6,6 +6,7 @@ br\com\cycle\connection\ConnectionMySql.class
 br\com\cycle\connection\ConnectionSqlServer.class
 br\com\cycle\controller\ControllerLogin.class
 br\com\cycle\controller\ControllerRegistryServerInfo.class
+br\com\cycle\model\ModelServerInfo.class
 br\com\cycle\model\ServerModel.class
 br\com\cycle\slack\Monitoration.class
 br\com\cycle\controller\ControllerRegistryMachineServer.class
