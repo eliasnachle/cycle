@@ -126,6 +126,4 @@ router.get('/:idContractorSession', function(req, res, next) {
 	});
 });
 
-
-
 module.exports = router;
