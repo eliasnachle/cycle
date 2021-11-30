@@ -62,3 +62,17 @@ CREATE TABLE tblAlertas (
     dataHoraAlerta DATETIME,
     idRegistro INT
 );
+
+CREATE TABLE tblRegistrosServidor (
+	idRegistroServidor INT PRIMARY KEY AUTO_INCREMENT,
+    sistemaOperacionalMaquina VARCHAR(15), 
+    modeloCpu VARCHAR(80), 
+    cpuEmUso DOUBLE,
+	espacoTotalDisco1 DOUBLE, 
+    espacoTotalDisco2 DOUBLE,
+	espacoLivreDisco1 DOUBLE,
+    espacoLivreDisco2 DOUBLE,
+    espacoTotalRam DOUBLE, 
+    espacoLivreRam DOUBLE,
+    dataHoraRegistro DATETIME
+);

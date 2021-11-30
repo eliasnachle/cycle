@@ -16,6 +16,11 @@
         font-size: $textFontSize;
         margin-bottom: 1em;
     }
+
+    .buttons{
+        display: flex;
+        justify-content: flex-end;
+    }
     
     .register_ref{
         display: grid;
@@ -99,6 +104,11 @@
             align-items: center;
 
             .icon-profile::before{
+                font-size: 3em;
+                margin-left: 1em;
+                color: $primary;
+            }
+            .icon-computer::before{
                 font-size: 3em;
                 margin-left: 1em;
                 color: $primary;

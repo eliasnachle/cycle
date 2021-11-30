@@ -40,12 +40,14 @@ function authenticateLogin() {
 
                 resposta.json().then(json => {
 
+                    sessionStorage.id_user_contratant = json.idUsuarioContratante;
                     sessionStorage.name_user_contratante = json.nomeContratante;
                     sessionStorage.email_user_contratante = json.emailContratante;
+                    sessionStorage.cpf_user_contratante = json.cpfContratante;
                     sessionStorage.idPlano_user_contratante = json.idPlano;
 
                     submit_button.disabled = false
-                    window.location.href = "dash_user_equipe.html";
+                    window.location.href = "dashboard-manager/config-admin.html";
 
                 });
 

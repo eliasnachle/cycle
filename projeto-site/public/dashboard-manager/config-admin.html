@@ -11,9 +11,10 @@
     <link rel="stylesheet" href="../scss/fonts/fonts.css">
     <link rel="icon" type="image/png" sizes="32x32" href="../favicon/cycle/favicon-32x32.png">
     <script src="https://kit.fontawesome.com/5621e23e17.js" crossorigin="anonymous"></script>
+    <script src="../js/index.js"></script>
 </head>
 
-<body>
+<body onload="verificateAuth()">
 
     <div class="navbar-vertical">
         <div class="navbar-logo">
@@ -35,9 +36,14 @@
                     <i class="icon-profile"></i>
                     <span>Equipe</span>
                 </a>
+                <!-- Máquinas -->
+                <a href="dash-adm-maquina.html" class="nav-link">
+                    <i class="icon-computer"></i>
+                    <span>Máquinas</span>
+                </a>
             </ul>
             <!-- Encerrar -->
-            <a href="#" class="nav-link">
+            <a href="#" class="nav-link" onclick="logoff()">
                 <i class="icon-logout"></i>
                 <span>Encerrar</span>
             </a>
@@ -47,7 +53,7 @@
     <!-- conteudo site -->
     <div class="data_content">
         <div class="welcome">
-            <h2>Bem vindo(a) Lucas Inutilismo</h2>
+            <h2>Bem vindo(a) <span id="name_header">Lucas Inutilismo</span></h2>
         </div>
         <h1>Configurações</h1>
         <div class="data_box">
@@ -55,29 +61,29 @@
                 <div class="data_line">
                     <h3>Nome</h3>
                     <span>
-                        Lucas Inutilismo
+                        <b id="name_user">lucao.teste@gmail.com</b>
                         <i class="icon-settings"></i>
                     </span>
                 </div>
                 <div class="data_line">
                     <h3>E-mail</h3>
                     <span>
-                        lucao.teste@gmail.com
+                        <b id="email_usuario">lucao.teste@gmail.com</b>
                         <i class="icon-settings"></i>
                     </span>
                 </div>
                 <div class="data_line">
-                    <h3>Plano</h3>
+                    <h3>CPF</h3>
                     <span>
-                        Plano Gold
+                        <b id="cpf_user">Plano Gold</b>
                         <i class="icon-settings"></i>
                     </span>
                 </div>
                 <div class="data_line">
-                    <h3>Senha 
+                    <h3>Senha
                         <i class="fa fa-eye-slash toggle-passwrd"></i>
                     </h3>
-                    <span >
+                    <span>
                         Password
                         <i class="icon-settings"></i>
                     </span>
@@ -147,34 +153,7 @@
             </a>
         </div>
     </div>
-    <!-- Modal de Cadastro -->
-    <div id="div_background" class="background">
-        <div class="modal-container">
-            <h2>Cadastrar Unidade <span onclick="fechar()">X</span></h2>
-
-            <div class="modal-content">
-                <div class="modal-separator">
-                    <div class="boxes">
-                        <h3>CNPJ</h3>
-                        <input class="content-input" type="text" placeholder="12.345.678/0001-90">
-                    </div>
-                    <div class="boxes">
-                        <h3>Nome</h3>
-                        <input class="content-input" type="text" placeholder="Nome da Unidade">
-                    </div>
-                </div>
-                <div class="boxes">
-                    <h3>Localização</h3>
-                    <input class="content-input" type="text" placeholder="Av. Paulista, 1001 - Paulista">
-                </div>
-                <button class="btn_confirm">Confirmar</button>
-            </div>
-        </div>
-    </div>
 
 </body>
 
 </html>
-
-
-<script src="../js/dash_user.js"></script>

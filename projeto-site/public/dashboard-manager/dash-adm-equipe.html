@@ -10,10 +10,11 @@
     <link rel="stylesheet" href="../scss/components/dash_admin/dash_admin.css">
     <link rel="stylesheet" href="..//scss/fonts/fonts.css">
     <link rel="icon" type="image/png" sizes="32x32" href="../favicon/cycle/favicon-32x32.png">
+    <script src="../js/index.js"></script>
+    <script src="../js/dashboard-admin/usuarios-support.js"></script>
 </head>
 
-<body>
-
+<body onload="getAllSupportsByContratant()">
     <div class="navbar-vertical">
         <div class="navbar-logo">
             <a href="../index.html">
@@ -23,7 +24,7 @@
         <nav class="nav-vertical">
             <!-- Links -->
             <ul>
-                
+
                 <!-- Unidades -->
                 <a href="./config-admin.html" class="nav-link">
                     <i class="icon-settings"></i>
@@ -34,9 +35,14 @@
                     <i class="icon-profile"></i>
                     <span>Equipe</span>
                 </a>
+                <!-- Máquinas -->
+                <a href="dash-adm-maquina.html" class="nav-link">
+                    <i class="icon-computer"></i>
+                    <span>Máquinas</span>
+                </a>
             </ul>
             <!-- Encerrar -->
-            <a href="#" class="nav-link">
+            <a href="#" onclick="logoff()" class="nav-link">
                 <i class="icon-logout"></i>
                 <span>Encerrar</span>
             </a>
@@ -46,46 +52,21 @@
     <!-- conteudo site -->
     <div class="data_content">
         <div class="welcome">
-            <h2>Bem vindo(a) Lucas Inutilismo</h2>
+            <h2>Bem vindo(a) <span id="name_header">Lucas Inutilismo</span></h2>
         </div>
         <div class="data_header">
             <h1>Equipe</h1>
         </div>
-        <div id="div_abrir"  class="register_ref">
-            <a href="#" class="reg_btn">Cadastrar</a>
-        </div>
-        <h3>Suportes cadastrados</h3>
-        <div class="sup_list">
-            <div class="data_card">
-                <i class="icon-profile"></i>
-                <div class="card_field">
-                    <h3>Nome</h3>
-                    <span>
-                        teste suporte
-                    </span>
-                </div>
-                <div class="card_field">
-                    <h3>Email</h3>
-                    <span>
-                        teste suporte
-                    </span>
-                </div>
-                <div class="card_field">
-                    <h3>Contratante</h3>
-                    <span>
-                        teste suporte
-                    </span>
-                </div>
-                <div class="card_field">
-                    <h3>Senha</h3>
-                    <span>
-                        teste suporte
-                    </span>
-                </div>
+        <div class="buttons">
+            <div id="div_abrir" onclick="openRegister()" class="register_ref">
+                <a href="#" class="reg_btn">Cadastrar Suporte</a>
             </div>
-            
+            <div id="div_abrir" onclick="openDelete()" class="register_ref">
+                <a href="#" class="reg_btn">Deletar Suporte</a>
+            </div>
         </div>
-        
+        <form id="list_sup"></form>
+
     </div>
     <!-- Mobile -->
     <div class="mobile">
@@ -129,7 +110,7 @@
                     <span class="location">Av. Paulista, 1811 - Bela Vista, São Paulo</span>
                 </div>
             </div>
-            
+
         </div>
         <div class="mobile-menu">
             <a href="#" class="icon-menu">
@@ -149,24 +130,42 @@
     <!-- Modal de Cadastro -->
     <div id="div_background" class="background">
         <div class="modal-container">
-            <h2>Cadastrar Suporte <span onclick="fechar()">X</span></h2>
-            
+            <h2>Cadastrar Suporte <span onclick="closeRegister()">X</span></h2>
+
             <div class="modal-content">
-                <div class="modal-separator">
-                    <div class="boxes">
-                        <h3>Nome Suporte</h3>
-                        <input class="content-input" type="text" placeholder="Nome do usuário">
+                <form class="form" id="form_cadastro_suporte" method="post" onsubmit="return registerSupport()">
+                    <div class="modal-separator">
+                        <div class="boxes">
+                            <h3>Nome Suporte</h3>
+                            <input class="content-input" name="nome_supp" type="text" placeholder="Nome do usuário">
+                        </div>
+                        <div class="boxes">
+                            <h3>Senha</h3>
+                            <input class="content-input" name="pass_supp" type="password" placeholder="Password">
+                        </div>
                     </div>
                     <div class="boxes">
-                        <h3>Senha</h3>
-                        <input class="content-input" type="password" placeholder="Password">
+                        <h3>E-mail</h3>
+                        <input class="content-input" name="email_supp" type="email" placeholder="ex: usuario@cycle.com.br">
                     </div>
-                </div>
-                <div class="boxes">
-                    <h3>E-mail</h3>
-                    <input class="content-input" type="email" placeholder="ex: usuario@cycle.com.br">
-                </div>
-                <button class="btn_confirm">Confirmar</button>
+                    <button type="submit" class="btn_confirm">Confirmar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Delete -->
+    <div id="modal_delete" class="background">
+        <div class="modal-container">
+            <h2>Deletar Suporte <span onclick="closeDelete()">X</span></h2>
+            <h4>Selecione um usuário para deletá-lo.</h4>
+            <div class="modal-content">
+                <form class="form" id="form_delete_support">
+                    <div class="modal-separator">
+                            <select class="content-input" id="select_delete"></select>
+                    </div>
+                    <button id="btn_delete" type="submit" onclick="deleteSupport(select_delete.value)" class="btn_confirm">Confirmar</button>
+                </form>
             </div>
         </div>
     </div>
@@ -174,16 +173,39 @@
 </body>
 
 </html>
-
-
-<script src="../js/dash_user.js"></script>
 <script>
 
-    function fechar(){
+    function closeRegister() {
         div_background.style.display = "none";
     }
 
-    function abrir(){
+    function openRegister() {
         div_background.style.display = "flex";
+    }
+
+    function closeDelete() {
+        modal_delete.style.display = "none";
+    }
+
+    function openDelete() {
+        modal_delete.style.display = "flex";
+    }
+
+    function verificateAuth() {
+        
+        login_usuario = sessionStorage.email_user_contratante;
+        nome_usuario = sessionStorage.name_user_contratante;
+        cpf_usuario = sessionStorage.cpf_user_contratante;
+        console.log(nome_usuario)
+
+        if (login_usuario == undefined) {
+            redirecionar_login();
+        } else {
+            console.log("teste")
+
+            name_header.innerHTML = nome_usuario;
+
+            validar_sessao();
+        }
     }
 </script>

@@ -8,11 +8,13 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 public class ControllerLogin {
     private JdbcTemplate connection;
+    private LoginModel loginModel;
     
     public ControllerLogin() {
         ConnectionSqlServer databaseConfig = new ConnectionSqlServer();
         
         this.connection = new JdbcTemplate(databaseConfig.getDataSource());
+        this.loginModel = new LoginModel();
     }
    
     public List<LoginModel> consultUserData(String email, String password){
