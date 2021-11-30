@@ -3,7 +3,7 @@ package controller;
 import connection.ConnectionSqlServer;
 import java.io.IOException;
 import java.util.List;
-import logs.cycle.LogCycle;
+import loggers.Logge;
 import model.LoginModel;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;

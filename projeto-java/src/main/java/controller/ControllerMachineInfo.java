@@ -3,7 +3,7 @@ package controller;
 import connection.ConnectionSqlServer;
 import java.io.IOException;
 import java.util.List;
-import logs.cycle.LogCycle;
+import loggers.Logge;
 import model.MachineInfoModel;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -21,9 +21,6 @@ public class ControllerMachineInfo {
     public void registerInDatabaseNewMachine(MachineInfoModel newMachine, String idContratante) throws IOException {
         
         System.out.println("Iniciando cadastro da maquina");
-        // log cadastro da máquina
-        //LogCycle.guardarLog("Iniciando cadastro da maquina");
-        
         connection.update("INSERT INTO tblMaquinas"
                 + "(apelidoMaquina, tipoMaquina, sistemaOperacionalMaquina, idProcessador,"
                 + " modeloCpu, cpuFrequencia, modeloDisco1, espacoTotalDisco1,"
@@ -36,13 +33,15 @@ public class ControllerMachineInfo {
                 newMachine.getEspacoTotalDisco2(), newMachine.getEspacoTotalRam(), idContratante);
         
         System.out.println("Cadastro da maquina concluido");
-        // log cadastro da máquina concuido
-        //LogCycle.guardarLog("Cadastro da maquina concluido");
+        // logge.guardarLog("==========================================================\n"
+         //                   + "         Tentativa de Cadastro da Maquina:\n"
+           //                 + "\n"
+             //               + "Status da tentativa: Concuida\n"
+               //             + "==========================================================\n\n\n");;
     }
     
     public List<MachineInfoModel> consultMachineInfo(MachineInfoModel machineInfo){
-        // log consulta sobre a maquina
-        //LogCycle.guardarLog("Fazendo consulta sobre a maquina");
+
         System.out.println("Fazendo consulta sobre a maquina");
         List<MachineInfoModel> machineInfoSelect = 
                 connection.query("SELECT * FROM tblMaquinas WHERE idProcessador = ?",
