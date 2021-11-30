@@ -29,15 +29,26 @@ function postAlerts(alerts) {
         </div>
         `;
         alertCard.classList.add('card__content');
-        alertCard.value = i+1;
-        alertCard.setAttribute('onclick', 'teste(value)');
+        alertCard.value = alert.idAlerta;
+        alertCard.setAttribute('onclick', 'removeAlert(value)');
         noticationsContent.appendChild(alertCard);
-
     }
 }
 
-function teste(idCard) {
+function removeAlert(idCard) {
     console.log(idCard);
+    putUpdateAlertVisibility(idCard);
+}
+
+function putUpdateAlertVisibility(idCard) {
+    fetch(`/dashboardSupport/updateAlertVisibility${idCard}`, {
+        method: "PUT"
+    }).then(() => {
+        console.log('Removendo visibilidade do card');
+    }).catch(err => {
+       console.error(err)
+    });
+    return false;
 }
 
 function getAlerts(idContractorSession) {

@@ -5,13 +5,13 @@ var Machine = require('../models').Machine;
 var Alert = require('../models').Alert;
 var Register = require('../models').Register;
 
-router.get('/diaryUse:idContractorSession', function(req, res, next) {
+router.get('/diaryUse:idMaquina', function(req, res, next) {
 	console.log('Buscando consumo diario');
-	const idContractorSession = req.params.idContractorSession;
+	const idMaquina = req.params.idMaquina;
     let instrucaoSql = `SELECT AVG(cpuEmUso) AS cpuEmUso
 		,AVG(espacoLivreRam) AS espacoLivreRam
 	FROM tblRegistros
-	WHERE idMaquina = ${idContractorSession}
+	WHERE idMaquina = ${idMaquina}
 		AND CONVERT(dataHoraRegistro, DATE) >= CURRENT_DATE ()
 	ORDER BY dataHoraRegistro DESC;`;
 	sequelize.query(instrucaoSql, {
@@ -27,15 +27,15 @@ router.get('/diaryUse:idContractorSession', function(req, res, next) {
 	});
 });
 
-router.get('/realTimeUse:idContractorSession', function(req, res, next) {
+router.get('/realTimeUse:idMaquina', function(req, res, next) {
 	console.log('Buscando consumo em tempo real');
-	const idContractorSession = req.params.idContractorSession;
+	const idMaquina = req.params.idMaquina;
     let instrucaoSql = `SELECT cpuEmUso,
 		espacoLivreRam,
 		espacoLivreDisco1,
 		espacoLivreDisco2
 	FROM tblRegistros
-	WHERE idMaquina = ${idContractorSession}
+	WHERE idMaquina = ${idMaquina}
 		ORDER BY dataHoraRegistro DESC
 	LIMIT 1`;
 	sequelize.query(instrucaoSql, {
@@ -51,9 +51,26 @@ router.get('/realTimeUse:idContractorSession', function(req, res, next) {
 	});
 });
 
-router.get('/alerts:idContractorSession', function(req, res, next) {
+router.put('/updateAlertVisibility:idAlerta', function(req, res, next) {
 	console.log('Buscando alertas');
-	const idContractorSession = req.params.idContractorSession;
+	const idAlerta = req.params.idAlerta;
+    let instrucaoSql = `UPDATE tblAlertas SET alertaVisivel = 0 WHERE idAlerta = ${idAlerta};`;
+	sequelize.query(instrucaoSql, {
+		model: Alert,
+		mapToModel: true 
+	})
+	.then(resultado => {
+		console.log(`Encontrados: ${resultado.length}`);
+		res.json(resultado);
+	}).catch(erro => {
+		console.error(erro);
+		res.status(500).send(erro.message);
+	});
+});		
+
+router.get('/alerts:idUsuarioContratante', function(req, res, next) {
+	console.log('Buscando alertas');
+	const idUsuarioContratante = req.params.idUsuarioContratante;
     let instrucaoSql = `SELECT idAlerta,
 	    componenteInstavel,
 	    nivelCriticidade,
@@ -64,7 +81,8 @@ router.get('/alerts:idContractorSession', function(req, res, next) {
     FROM tblAlertas
 	INNER JOIN tblMaquinas
 		ON tblMaquinas.idMaquina = tblAlertas.idMaquina
-	WHERE tblMaquinas.idUsuarioContratante = ${idContractorSession}`;
+	WHERE tblMaquinas.idUsuarioContratante = ${idUsuarioContratante}
+		AND tblAlertas.alertaVisivel = 1`;
 	sequelize.query(instrucaoSql, {
 		model: Alert,
 		mapToModel: true 
@@ -78,9 +96,9 @@ router.get('/alerts:idContractorSession', function(req, res, next) {
 	});
 });
 
-router.get('/detailMachine:idContractorSession', function(req, res, next) {
+router.get('/detailMachine:idMaquina', function(req, res, next) {
 	console.log('Buscando configuração da maquina');
-	const idContractorSession = req.params.idContractorSession;
+	const idMaquina = req.params.idMaquina;
     let instrucaoSql = `SELECT COALESCE(modeloCpu, 'Não cadastrado') AS modeloCpu
 		,COALESCE(cpuFrequencia, 'Não cadastrado') AS cpuFrequencia
 		,COALESCE(modeloDisco1, 'Não cadastrado') AS modeloDisco1
@@ -90,7 +108,7 @@ router.get('/detailMachine:idContractorSession', function(req, res, next) {
 		,COALESCE(espacoTotalRam, 'Não cadastrado') AS espacoTotalRam
 		,COALESCE(sistemaOperacionalMaquina, 'Não cadastrado') AS sistemaOperacionalMaquina
 	FROM tblMaquinas
-	WHERE idMaquina = ${idContractorSession};`;
+	WHERE idMaquina = ${idMaquina};`;
 	sequelize.query(instrucaoSql, {
 		model: Machine,
 		mapToModel: true 
@@ -112,7 +130,8 @@ router.get('/:idContractorSession', function(req, res, next) {
     apelidoMaquina,
 	tipoMaquina
     FROM tblMaquinas
-	WHERE idUsuarioContratante = ${idContractorSession}`;
+	WHERE idUsuarioContratante = ${idContractorSession}
+	ORDER BY tipoMaquina DESC;`;
 	sequelize.query(instrucaoSql, {
 		model: Machine,
 		mapToModel: true 

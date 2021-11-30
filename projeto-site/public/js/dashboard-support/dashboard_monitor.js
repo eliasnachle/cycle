@@ -14,14 +14,16 @@ function getDiaryUse(idMachine) {
                 console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                 const dailyRamUsage = document.querySelectorAll('.value-container')[0],
                 dailyCpuUsage = document.querySelectorAll('.value-container')[1]
-                dailyRamUsageProgressBar = document.querySelectorAll('.circular-progress > svg > circle')[1],
-                dailyCpuUsageProgressBar = document.querySelectorAll('.circular-progress > svg > circle')[3];
+                dailyRamUsageProgressBar = document.querySelectorAll('.circular-progress > svg')[0],
+                dailyCpuUsageProgressBar = document.querySelectorAll('.circular-progress > svg')[1];
+
                 let porcentageDailyCpuUsage = ((resposta[0].cpuEmUso/cpuFrequency)*100).toFixed(0),
-                porcentageDailyRamsage = (((sizeRam-resposta[0].espacoLivreRam)/sizeRam)*100).toFixed(0);
-                dailyRamUsage.innerHTML = `<h2>${porcentageDailyCpuUsage}<span>%</span></h2>`;
-                dailyCpuUsage.innerHTML = `<h2>${porcentageDailyRamsage}<span>%</span></h2>`;
-                dailyCpuUsageProgressBar.style.strokeDashoffset = `calc(440 - (440 * ${porcentageDailyCpuUsage}) / 100);`;
-                dailyRamUsageProgressBar.style.strokeDashoffset = `calc(440 - (440 * ${dailyRamUsageProgressBar}) / 100);`;
+                porcentageDailyRamUsage = (((sizeRam-resposta[0].espacoLivreRam)/sizeRam)*100).toFixed(0);
+                dailyRamUsage.innerHTML = `<h2>${porcentageDailyRamUsage}<span>%</span></h2>`;
+                dailyCpuUsage.innerHTML = `<h2>${porcentageDailyCpuUsage}<span>%</span></h2>`;
+
+                dailyCpuUsageProgressBar.innerHTML += `<circle cx="70" cy="70" r="70" style="stroke-dashoffset:calc(440 - (440 *${porcentageDailyCpuUsage}) / 100);"></circle>`;
+                dailyRamUsageProgressBar.innerHTML += `<circle cx="70" cy="70" r="70" style="stroke-dashoffset:calc(440 - (440 *${porcentageDailyRamUsage}) / 100);"></circle>`;
             });
         } else {
             console.error('Nenhum dado encontrado ou erro na API');
