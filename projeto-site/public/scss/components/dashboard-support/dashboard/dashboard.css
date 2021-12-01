@@ -712,6 +712,7 @@ main .dashboard__container--row .alert-card span svg {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  gap: 1em;
   padding-bottom: .5rem;
 }
 
@@ -725,6 +726,33 @@ main .dashboard__container--row .alert-card span svg {
 
 .notifications--icon-close svg path {
   fill: #836FFF;
+}
+
+.notifications__content--not-found {
+  height: 20vh;
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-grid-columns: (auto)[2];
+      grid-template-columns: repeat(2, auto);
+}
+
+.notifications__content--not-found h1 {
+  font-size: clamp(3em, 3.75vw, 4em);
+  color: #000;
+}
+
+.notifications__content--not-found span {
+  font-size: clamp(1em, 1vw, 1.25em);
+  line-height: 1.5em;
+  letter-spacing: 0.75px;
+  color: #878787;
+}
+
+.notifications__content--not-found img {
+  width: 100%;
 }
 
 .notifications__content .card__content {

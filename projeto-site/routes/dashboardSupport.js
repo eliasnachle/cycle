@@ -78,34 +78,24 @@ router.put('/updateAlertVisibility:idAlerta', function(req, res, next) {
 	});
 });		
 
-router.get('/alerts:idUsuarioContratante', function(req, res, next) {
-	let = instrucaoSql;
+router.get('/alerts:idContractorSession', function(req, res, next) {
+	let instrucaoSql;
 	const idContractorSession = req.params.idContractorSession;
-	if(env == dev){
-		instrucaoSql = `SELECT idAlerta,
-	    	componenteInstavel,
-	    	nivelCriticidade,
-	    	descAlerta,
-	    	DATE_FORMAT(dataHoraAlerta, '%m/%d/%Y %H:%i') AS dataHoraAlerta,
-			tblAlertas.idMaquina,
-			tblMaquinas.apelidoMaquina
-    	FROM tblAlertas
-		INNER JOIN tblMaquinas
-		ON tblMaquinas.idMaquina = tblAlertas.idMaquina
-		WHERE tblMaquinas.idUsuarioContratante = ${idUsuarioContratante}
-			AND tblAlertas.alertaVisivel = 1;`;
-	} else {
+	if(env == 'dev'){
 		instrucaoSql = `SELECT idAlerta,
 			componenteInstavel,
 			nivelCriticidade,
 			descAlerta,
-			FORMAT(dataHoraAlerta, 'dd/MM/yyyy hh:mm') AS dataHoraAlerta,
+			DATE_FORMAT(dataHoraAlerta, '%m/%d/%Y %H:%i') AS dataHoraAlerta,
 			tblAlertas.idMaquina,
 			tblMaquinas.apelidoMaquina
 		FROM tblAlertas
 		INNER JOIN tblMaquinas
 			ON tblMaquinas.idMaquina = tblAlertas.idMaquina
-		WHERE tblMaquinas.idUsuarioContratante = ${idContractorSession};`;
+		WHERE tblMaquinas.idUsuarioContratante = ${idContractorSession}
+			AND tblAlertas.alertaVisivel = 1;`;
+	} else {
+		instrucaoSql = ``;
 	}
 	sequelize.query(instrucaoSql, {
 		model: Alert,

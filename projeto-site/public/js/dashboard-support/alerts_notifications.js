@@ -50,8 +50,9 @@ function putUpdateAlertVisibility(idCard) {
     return false;
 }
 
-function getAlerts(idContractorSession) {
-    const bell = document.querySelectorAll('.icon-bell')[0];
+function getAlerts() {    
+    const bell = document.querySelectorAll('.icon-bell')[0],
+    notificationsContent = document.querySelector('.notifications__content');
     var idContractorSession = localStorage.idContractorSession;
     fetch(`/dashboardSupport/alerts${idContractorSession}`)
     .then((resposta) => {
@@ -59,10 +60,17 @@ function getAlerts(idContractorSession) {
             resposta.json().then(function (resposta) {
                 postAlerts(resposta);
                 if(resposta.length >= 1) {
-                    console.log('tem notificacao');
                     bell.innerHTML += '<i class="icon-bell--actived"></i>';
                 } else{
-                    console.log('não tem notificacao');
+                    notificationsContent.innerHTML = `
+                    <div class="notifications__content--not-found">
+                        <div class="notifications__content--not-found_text">
+                            <h1>Ops!</h1>
+                            <span>Não há notificações por aqui. Estamos procurando!</span>
+                        </div>
+                            <img src="../imgs/not_found.svg" alt="Dados não encontrados">
+                        </div>
+                    </div>`;
                 }
             });
         } else {

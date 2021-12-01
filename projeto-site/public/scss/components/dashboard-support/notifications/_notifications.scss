@@ -20,6 +20,7 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+        gap: 1em;
         padding-bottom: .5rem;
         h2{
             font-size: clamp(1.5em, 1.75vw, 2em);
@@ -31,7 +32,26 @@
             }
         }
     }
-    &__content{
+    &__content{        
+        &--not-found{
+            height: 20vh;
+            display: grid;
+            align-items: center;
+            grid-template-columns: repeat(2, auto);
+            h1{
+                font-size: clamp(3em, 3.75vw, 4em);
+                color: #000;
+            }
+            span{
+                font-size: clamp(1em, 1vw, 1.25em);
+                line-height: 1.5em;
+                letter-spacing: 0.75px;
+                color: $secondaryFontColor;
+            }
+            img{
+                width: 100%;
+            }
+        }
         .card__content{
             display: grid;
             grid-template-columns: repeat(2, auto);
