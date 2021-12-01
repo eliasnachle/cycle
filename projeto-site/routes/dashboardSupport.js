@@ -45,7 +45,7 @@ router.get('/realTimeUse:idMaquina', function(req, res, next) {
 		FROM tblRegistros
 		WHERE idMaquina = ${idMaquina}
 		ORDER BY dataHoraRegistro DESC
-		LIMIT 1`;		
+		LIMIT 1;`;		
 	} else {
 		instrucaoSql = ``;
 	}
@@ -94,7 +94,7 @@ router.get('/alerts:idUsuarioContratante', function(req, res, next) {
 		INNER JOIN tblMaquinas
 		ON tblMaquinas.idMaquina = tblAlertas.idMaquina
 		WHERE tblMaquinas.idUsuarioContratante = ${idUsuarioContratante}
-			AND tblAlertas.alertaVisivel = 1`;
+			AND tblAlertas.alertaVisivel = 1;`;
 	} else {
 		instrucaoSql = `SELECT idAlerta,
 			componenteInstavel,
