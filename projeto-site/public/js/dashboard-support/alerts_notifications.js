@@ -43,10 +43,10 @@ function putUpdateAlertVisibility(idCard) {
     fetch(`/dashboardSupport/updateAlertVisibility${idCard}`, {
         method : "PUT"
     }).then(() => {
+        res.status(204).send('Visibilidade de alerta alterada!');
     }).catch(err => {
         console.error(err)
     });
-    console.log('t');
     getAlerts();
 }
 
