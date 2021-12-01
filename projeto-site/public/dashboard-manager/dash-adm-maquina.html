@@ -55,17 +55,46 @@
         <div class="data_header">
             <h1>Máquinas Cadastradas</h1>
         </div>
-        <div id="div_abrir" class="register_ref">
-            <a href="#" class="reg_btn">Deletar Máquina</a>
+        <div class="buttons">
+            <div id="div_abrir" onclick="openDelete()" class="register_ref">
+                <a href="#" class="reg_btn">Deletar Máquina</a>
+            </div>
         </div>
+        
         
         <form id="list_machine"></form>
 
+    </div>
+
+    <!-- Modal Delete -->
+    <div id="modal_delete" class="background">
+        <div class="modal-container">
+            <h2>Deletar Máquina <span onclick="closeDelete()">X</span></h2>
+            <h4>Selecione uma máquina para deletar.</h4>
+            <h4>Ao deletar uma máquina, serão deletados seus registros também.</h4>
+            <div class="modal-content">
+                <form class="form" id="form_delete_maquina">
+                    <div class="modal-separator">
+                            <select class="content-input" id="select_delete"></select>
+                    </div>
+                    <button id="btn_delete" type="submit" onclick="deleteMachine(select_delete.value)" class="btn_confirm">Confirmar</button>
+                </form>
+            </div>
+        </div>
     </div>
     
 </body>
 </html>
 <script>
+
+    function closeDelete() {
+        modal_delete.style.display = "none";
+    }
+
+    function openDelete() {
+        modal_delete.style.display = "flex";
+    }
+
     function verificateAuth() {
         
         login_usuario = sessionStorage.email_user_contratante;

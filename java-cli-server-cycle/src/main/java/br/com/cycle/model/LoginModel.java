@@ -2,69 +2,67 @@ package br.com.cycle.model;
 
 public class LoginModel {
 
-    private String idUsuarioContratante;
-    private String nomeContratante;
-    private String emailContratante;
-    private String senhaContratante;
-    private String cpfContratante;
-    private String keyContratante;
-    private String idPlano;
+    private String idAdministrator;
+    private String nomeAdministrator;
+    private String emailAdministrator;
+    private String senhaAdministrator;
+    private String cpfAdministrator;
+    private String keyAdministrator;
 
-    public String getIdUsuarioContratante() {
-        return idUsuarioContratante;
+    public LoginModel() {
+        this.idAdministrator = "";
+        this.nomeAdministrator = "";
+        this.emailAdministrator = "";
+        this.senhaAdministrator = "";
+        this.cpfAdministrator = "";
+        this.keyAdministrator = "";
     }
 
-    public void setIdUsuarioContratante(String idUsuarioContratante) {
-        this.idUsuarioContratante = idUsuarioContratante;
+    public String getIdAdministrator() {
+        return idAdministrator;
     }
 
-    public String getNomeContratante() {
-        return nomeContratante;
+    public void setIdAdministrator(String idAdministrator) {
+        this.idAdministrator = idAdministrator;
     }
 
-    public void setNomeContratante(String nomeContratante) {
-        this.nomeContratante = nomeContratante;
+    public String getNomeAdministrator() {
+        return nomeAdministrator;
     }
 
-    public String getEmailContratante() {
-        return emailContratante;
+    public void setNomeAdministrator(String nomeAdministrator) {
+        this.nomeAdministrator = nomeAdministrator;
     }
 
-    public void setEmailContratante(String emailContratante) {
-        this.emailContratante = emailContratante;
+    public String getEmailAdministrator() {
+        return emailAdministrator;
     }
 
-    public String getSenhaContratante() {
-        return senhaContratante;
+    public void setEmailAdministrator(String emailAdministrator) {
+        this.emailAdministrator = emailAdministrator;
     }
 
-    public void setSenhaContratante(String senhaContratante) {
-        this.senhaContratante = senhaContratante;
+    public String getSenhaAdministrator() {
+        return senhaAdministrator;
     }
 
-    public String getCpfContratante() {
-        return cpfContratante;
+    public void setSenhaAdministrator(String senhaAdministrator) {
+        this.senhaAdministrator = senhaAdministrator;
     }
 
-    public void setCpfContratante(String cpfContratante) {
-        this.cpfContratante = cpfContratante;
+    public String getCpfAdministrator() {
+        return cpfAdministrator;
     }
 
-    public String getKeyContratante() {
-        return keyContratante;
+    public void setCpfAdministrator(String cpfAdministrator) {
+        this.cpfAdministrator = cpfAdministrator;
     }
 
-    public void setKeyContratante(String keyContratante) {
-        this.keyContratante = keyContratante;
+    public String getKeyAdministrator() {
+        return keyAdministrator;
     }
 
-    public String getIdPlano() {
-        return idPlano;
+    public void setKeyAdministrator(String keyAdministrator) {
+        this.keyAdministrator = keyAdministrator;
     }
-
-    public void setIdPlano(String idPlano) {
-        this.idPlano = idPlano;
-    }
-
-
 }
