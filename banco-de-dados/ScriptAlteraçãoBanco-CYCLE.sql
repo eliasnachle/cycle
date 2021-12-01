@@ -11,4 +11,4 @@ ALTER TABLE tblMaquinas ADD FOREIGN KEY (idUsuarioContratante) REFERENCES tblUsu
 ALTER TABLE tblRegistros ADD FOREIGN KEY (idMaquina) REFERENCES tblMaquinas(idMaquina);
 
 -- Configurando foreign key da tabela alerta
-ALTER TABLE tblAlertas ADD FOREIGN KEY (idRegistro) REFERENCES tblRegistros(idRegistro);
+ALTER TABLE tblAlertas ADD FOREIGN KEY (idMaquina) REFERENCES tblMaquinas(idMaquina);
