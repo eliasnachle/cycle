@@ -53,7 +53,7 @@ function postDetailMachine(detailMachines){
       <span>Capacidade: <b>${detailMachines[0].espacoTotalDisco2}</b></span>
     </div>
     <div class="dashboard__container--config--memory">          
-      <span>Memoria: <b>${detailMachines[0].espacoTotalRam}</b></span>
+      <span>Memoria: <b>${detailMachines[0].espacoTotalRam} GB</b></span>
     </div>
     <div class="dashboard__container--config--os">          
       <span>Sistema Operacional: <b>${detailMachines[0].sistemaOperacionalMaquina}</b></span>
@@ -168,9 +168,10 @@ function getRealTimeUse(idMachine) {
 
 function getDetailsDashboardMonitor(){
     machineName.innerHTML = sessionStorage.getItem('nameMachine');
-    getDetailMachine();
+    getDetailMachine();    
     getRealTimeUse();
     getDiaryUse();
 }
 
 window.addEventListener('load', getDetailsDashboardMonitor);
+setInterval(getRealTimeUse, 5000);
