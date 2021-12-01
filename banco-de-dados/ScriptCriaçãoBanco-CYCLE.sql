@@ -59,7 +59,6 @@ CREATE TABLE tblAlertas (
     nivelCriticidade VARCHAR(10),
     descAlerta VARCHAR(255),
     dataHoraAlerta DATETIME,
-<<<<<<< HEAD
     idMaquina INT
 );
 
@@ -95,8 +94,6 @@ CREATE TABLE tblRegistrosServidor (
     espacoLivreRam DOUBLE,
     dataHoraRegistro DATETIME,
     idServidor INT
-=======
-    idRegistro INT
 );
 
 CREATE TABLE tblRegistrosServidor (
@@ -111,5 +108,4 @@ CREATE TABLE tblRegistrosServidor (
     espacoTotalRam DOUBLE, 
     espacoLivreRam DOUBLE,
     dataHoraRegistro DATETIME
->>>>>>> origin
 );

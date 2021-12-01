@@ -19,7 +19,7 @@ public class ControllerLogin {
         this.loginModel = new LoginModel();
     }
    
-    public List<LoginModel> consultUserData(String email, String password) throws IOException{
+    public List<LoginModel> consultUserData(String email, String password){
         
             String select = String.format("SELECT * FROM tblUsuariosContratante WHERE "
                 + "emailContratante = '%s' and senhaContratante = '%s'", 
