@@ -55,7 +55,7 @@ public class ControllerRegistry {
         }
         if(looca.getProcessador().getUso() > 92.0) {
             LocalDateTime horarioPC = LocalDateTime.now(ZoneId.of("America/Sao_Paulo"));
-
+            
             monitoration.enviarMensagem(String.format("A CPU está sobrecarregando \n" +
                     "Uso atual é de: %.2f", looca.getProcessador().getUso()));
             connection.update("INSERT INTO tblAlertas(componenteInstavel" +

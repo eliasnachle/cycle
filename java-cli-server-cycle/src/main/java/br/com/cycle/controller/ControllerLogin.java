@@ -2,35 +2,53 @@ package br.com.cycle.controller;
 
 import br.com.cycle.connection.ConnectionMySql;
 import br.com.cycle.connection.ConnectionSqlServer;
+
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import br.com.cycle.model.LoginModel;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 public class ControllerLogin {
-    private JdbcTemplate connection;
+    private JdbcTemplate connectionSqlServer;
+    private JdbcTemplate connectionMySQl;
 
     public ControllerLogin() {
-        ConnectionMySql databaseConfig = new ConnectionMySql();
+        ConnectionSqlServer databaseSqlServerConfig = new ConnectionSqlServer();
+        ConnectionMySql databaseMySqlConfig = new ConnectionMySql();
 
-        this.connection = new JdbcTemplate(databaseConfig.getDataSource());
+        this.connectionSqlServer = new JdbcTemplate(databaseSqlServerConfig.getDataSource());
+        this.connectionMySQl = new JdbcTemplate(databaseMySqlConfig.getDataSource());
+
     }
 
-    private List<LoginModel> consultUserInDataBase(String email, String password){
+    public List<LoginModel> consultUserInDataBase(String email, String password) throws IOException {
 
-        String select = String.format("SELECT * FROM tblUsuariosContratante WHERE "
-                        + "emailContratante = '%s' and senhaContratante = '%s'",
+        String select = String.format("SELECT * FROM tblAdministrator WHERE "
+                        + "emailAdministrator = '%s' and senhaAdministrator = '%s'",
                 email,
                 password
         );
-        System.out.println("Fazendo select");
-        List<LoginModel> user = connection.query(select, new BeanPropertyRowMapper(LoginModel.class));
+        System.out.println("Verificando administrador no SQL Server");
+        List<LoginModel> userSqlServer = connectionSqlServer.query(select, new BeanPropertyRowMapper(LoginModel.class));
 
-        return user;
+        System.out.println("Verificando administrador no MySql");
+        List<LoginModel> userMysql= connectionMySQl.query(select, new BeanPropertyRowMapper(LoginModel.class));
+
+        if (userSqlServer.isEmpty() && userMysql.isEmpty()){
+            System.out.println("ERRO DE CONEXÃO");
+        }else if(userSqlServer.size() >= 1){
+            return userSqlServer;
+        }else if(userSqlServer.size() >= 1){
+            return userMysql;
+        }
+
+        return new ArrayList<>();
     }
 
-    public Boolean login(String email, String password) {
-        if (consultUserInDataBase(email, password).isEmpty()) {
+    public Boolean login(String email, String password) throws IOException {
+        if (consultUserInDataBase(email,password) == null || consultUserInDataBase(email, password).isEmpty()) {
             System.out.println("Erro: Usuario não encontrado");
             return true;
         }else {

@@ -16,6 +16,11 @@
         font-size: $textFontSize;
         margin-bottom: 1em;
     }
+
+    .buttons{
+        display: flex;
+        justify-content: flex-end;
+    }
     
     .register_ref{
         display: grid;

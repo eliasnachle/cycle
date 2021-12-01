@@ -31,7 +31,7 @@ CREATE TABLE tblMaquinas (
 	idMaquina INT PRIMARY KEY AUTO_INCREMENT,
 	apelidoMaquina VARCHAR(30),
     tipoMaquina VARCHAR(10),
-	sistemaOperacionalMaquina VARCHAR(15),
+	sistemaOperacionalMaquina VARCHAR(50),
     idProcessador VARCHAR(20),
 	modeloCpu VARCHAR(80),
     cpuFrequencia DOUBLE,
@@ -59,7 +59,7 @@ CREATE TABLE tblAlertas (
     nivelCriticidade VARCHAR(10),
     descAlerta VARCHAR(255),
     dataHoraAlerta DATETIME,
-    idRegistro INT
+    idMaquina INT
 );
 
 -- ------------------------------------------------------------------------------------------------

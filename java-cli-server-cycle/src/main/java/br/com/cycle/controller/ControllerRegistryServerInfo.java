@@ -2,31 +2,80 @@ package br.com.cycle.controller;
 
 import br.com.cycle.connection.ConnectionMySql;
 import br.com.cycle.connection.ConnectionSqlServer;
-import br.com.cycle.model.ModelServerInfo;
+import br.com.cycle.model.ServerModel;
+import br.com.cycle.model.ServerRegistryModel;
+import br.com.cycle.slack.Monitoration;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+import java.io.IOException;
+import java.time.LocalDateTime;
+import java.util.List;
+
 public class ControllerRegistryServerInfo {
-    private JdbcTemplate connection;
+    private JdbcTemplate connectionSqlServer;
+    private JdbcTemplate connectionMySQl;
+
+    private Monitoration monitoration;
+
 
     public ControllerRegistryServerInfo() {
-        ConnectionMySql databaseConfig = new ConnectionMySql();
+        ConnectionSqlServer databaseSqlServerConfig = new ConnectionSqlServer();
+        ConnectionMySql databaseMySqlConfig = new ConnectionMySql();
 
-        this.connection = new JdbcTemplate(databaseConfig.getDataSource());
+        this.connectionSqlServer = new JdbcTemplate(databaseSqlServerConfig.getDataSource());
+        this.connectionMySQl = new JdbcTemplate(databaseMySqlConfig.getDataSource());
+        this.monitoration = new Monitoration();
     }
 
-    public void insertNewRegistry(ModelServerInfo modelServerInfo){
+    public void insertNewRegistry(ServerModel serverModel, ServerRegistryModel serverRegistryModel) throws IOException{
 
-            System.out.println("Registrando informações da maquina");
+        List<ServerModel> sqlServerConsult = connectionSqlServer.query("SELECT * FROM "
+                        + "tblServidor WHERE idProcessador = ?", new BeanPropertyRowMapper<>(ServerModel.class),
+                serverModel.getIdProcessador());
 
-            this.connection.update("INSERT INTO tblRegistrosServidor" +
-                    "(sistemaOperacionalMaquina, modeloCpu, cpuEmUso, " +
-                    "espacoTotalDisco1, espacoTotalDisco2, " +
-                    "espacoLivreDisco1, espacoLivreDisco2," +
-                    "espacoTotalRam, espacoLivreRam, dataHoraRegistro)" +
-                    "values (?,?,TRUNCATE(?,2),TRUNCATE(?,2),TRUNCATE(?,2),TRUNCATE(?,2),TRUNCATE(?,2),TRUNCATE(?,2),TRUNCATE(?,2),CURRENT_TIMESTAMP)", modelServerInfo.getSistemaOperacionalMaquina(), modelServerInfo.getModeloCpu(),
-                    modelServerInfo.getCpuEmUso(), modelServerInfo.getEspacoTotalDisco1(),modelServerInfo.getEspacoTotalDisco2(),
-                    modelServerInfo.getEspacoTotalDisco1(), modelServerInfo.getEspacoTotalDisco2(),
-                    modelServerInfo.getEspacoTotalRam(),modelServerInfo.getEspacoLivreRam());
+        List<ServerModel> mySqlConsult = connectionMySQl.query("SELECT * FROM "
+                        + "tblServidor WHERE idProcessador = ?", new BeanPropertyRowMapper<>(ServerModel.class),
+                serverModel.getIdProcessador());
 
+        if (sqlServerConsult.get(0).getModeloDisco2().equals("Sem segundo disco")) {
+            connectionSqlServer.update("INSERT INTO tblRegistrosServidor(cpuEmUso, espacoLivreDisco1, espacoLivreDisco2, espacoLivreRam, dataHoraRegistro, idServidor) "
+                            + "VALUES(ROUND(?, 2, 1), ROUND(?, 2, 1), ?, ROUND(?, 2, 1), ?, ?)",
+                    serverRegistryModel.getCpuEmUso(),
+                    serverRegistryModel.getEspacoLivreDisco1(),
+                    0.0,
+                    serverRegistryModel.getEspacoLivreRam(),
+                    LocalDateTime.now(),
+                    sqlServerConsult.get(0).getIdServidor());
+        } else {
+            connectionSqlServer.update("INSERT INTO tblRegistrosServidor(cpuEmUso, espacoLivreDisco1, espacoLivreDisco2, espacoLivreRam, dataHoraRegistro, idServidor) "
+                            + "VALUES(ROUND(?, 2, 1), TRUNCATE(?,2), ROUND(?, 2, 1), ROUND(?, 2, 1), ?, ?)",
+                    serverRegistryModel.getCpuEmUso(),
+                    serverRegistryModel.getEspacoLivreDisco1(),
+                    serverRegistryModel.getEspacoLivreDisco1(),
+                    serverRegistryModel.getEspacoLivreRam(),
+                    LocalDateTime.now(),
+                    sqlServerConsult.get(0).getIdServidor());
+        }
+
+        if (mySqlConsult.get(0).getModeloDisco2().equals("Sem segundo disco")) {
+            connectionMySQl.update("INSERT INTO tblRegistrosServidor(cpuEmUso, espacoLivreDisco1, espacoLivreDisco2, espacoLivreRam, dataHoraRegistro, idServidor) "
+                            + "VALUES(TRUNCATE(?,2), TRUNCATE(?,2), ?, TRUNCATE(?,2), ?, ?)",
+                    serverRegistryModel.getCpuEmUso(),
+                    serverRegistryModel.getEspacoLivreDisco1(),
+                    0.0,
+                    serverRegistryModel.getEspacoLivreRam(),
+                    LocalDateTime.now(),
+                    mySqlConsult.get(0).getIdServidor());
+        } else {
+            connectionMySQl.update("INSERT INTO tblRegistrosServidor(cpuEmUso, espacoLivreDisco1, espacoLivreDisco2, espacoLivreRam, dataHoraRegistro, idServidor) "
+                            + "VALUES(TRUNCATE(?,2), TRUNCATE(?,2), TRUNCATE(?,2), TRUNCATE(?,2), ?, ?)",
+                    serverRegistryModel.getCpuEmUso(),
+                    serverRegistryModel.getEspacoLivreDisco1(),
+                    serverRegistryModel.getEspacoLivreDisco1(),
+                    serverRegistryModel.getEspacoLivreRam(),
+                    LocalDateTime.now(),
+                    mySqlConsult.get(0).getIdServidor());
+        }
     }
 }

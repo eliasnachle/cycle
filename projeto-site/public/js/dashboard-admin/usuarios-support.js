@@ -17,7 +17,6 @@ function listarSuportes(usuariosSuporte) {
             <i class="icon-profile"></i>
             <div class="card_field">
                 <h3>Nome</h3>
-                <h1 style="display: none;">${suporte.idUsuarioSuporte}</h1>
                 <span>
                     ${suporte.nomeSuporte}
                 </span>
@@ -45,6 +44,51 @@ function listarSuportes(usuariosSuporte) {
     `;
     supCard.className = "list_sup";
     supList.appendChild(supCard);
+    }
+}
+
+function listSuppToDelete(usuariosSuporte){
+    var supList = document.getElementById("select_delete");
+    supList.innerHTML = "";
+
+    if(usuariosSuporte.length == 0){
+        var button = document.getElementById('btn_delete');
+        button.setAttribute("disabled", true);
+        supList.innerHTML += `
+        <option value="">Nenhum suporte cadastrado.</option>
+        `;
+    } else {
+        for (let i = 0; i < usuariosSuporte.length; i++) {
+            var suporte = usuariosSuporte[i];
+            console.log(suporte.idUsuarioSuporte)
+    
+            supList.innerHTML += `
+            <option value="${suporte.idUsuarioSuporte}">${suporte.nomeSuporte}</option>
+            `
+        }
+    }
+}
+
+function listMachineToDelete(machines){
+    var supList = document.getElementById("select_delete");
+    supList.innerHTML = "";
+
+    if(machines.length == 0){
+        var button = document.getElementById('btn_delete');
+        button.setAttribute("disabled", true);
+        supList.innerHTML += `
+        <option value="">Nenhuma máquina cadastrada.</option>
+        `;
+    } else {
+        for (let i = 0; i < machines.length; i++) {
+            var maquinas = machines[i];
+            console.log(maquinas.idMaquina);
+            let idMachine = Number(maquinas.idMaquina)
+    
+            supList.innerHTML += `
+            <option value="${idMachine}">${maquinas.apelidoMaquina}</option>
+            `
+        }
     }
 }
 
@@ -100,6 +144,7 @@ function getAllSupportsByContratant(){
                 resposta.json().then(function (resposta) {
                     console.log(`Dados Recebidos : ${JSON.stringify(resposta)}`)
                     listarSuportes(resposta);
+                    listSuppToDelete(resposta);
                 });
             } else {
                 console.error("Alguma coisa deu errado");
@@ -119,6 +164,7 @@ function getAllMachinesByContratant(){
                 resposta.json().then(function (resposta) {
                     console.log(JSON.stringify(resposta))
                     getAllMachines(resposta);
+                    listMachineToDelete(resposta);
                 });
             } else {
                 console.error("Fetch went wrong");
@@ -139,41 +185,72 @@ function registerSupport() {
     fetch(`/usuarios/register-suporte/${idContratante}`, {
         method: "POST",
         body: formRegisterSupp
-    }).then(function (response) {
-        if(response.ok) {
-            console.log("CADASTRADO!")
-        } else {
-            response.text().then(function (errorMessage) {
-                console.log(errorMessage);
-            });
-        }
-    })
-    document.location.reload(true);
+    }).then(() => {
+        console.log('Cadastrado');
+        document.location.reload(true);
+     }).catch(err => {
+       console.error(err)
+     });
     return false;
 }
 
-function deleteSupport(obj, idSupport){
+function deleteSupport(idSupport){
 
-    var item = obj.id;
-
-    console.log(item)
-
-    var idSupport = document.querySelector(`#${item} > .card_field > h1`).textContent;
 
     console.log(idSupport);
     
     fetch(`/usuarios/delete-suporte/${idSupport}`, {
         method: "DELETE"
-    }).then(function (response) {
-        if(response.ok) {
-            console.log("usuário deletado");
-        } else {
-            response.text().then(function (errorMessage) {
-                console.log(errorMessage);
-            });
-        }
-    })
+    }).then(() => {
+        document.location.reload(true);
+     }).catch(err => {
+       console.error(err)
+     });
     alert("deletado")
-    document.location.reload(true)
+    return false;
+}
+
+async function deleteMachine(idMaquina){
+
+    console.log(idMaquina);
+    deleteData(idMaquina);
+    
+    fetch(`/leituras/delete-machine/${idMaquina}`, {
+        method: "DELETE"
+    }).then(() => {
+        console.log('deletando maquinas');
+        document.location.reload(true);
+    }).catch(err => {
+       console.error(err)
+    });
+    return false;
+}
+
+async function deleteData(idMaquina){
+
+    console.log(idMaquina);
+    deleteAlerts(idMaquina);
+    
+    fetch(`/leituras/delete-data/${idMaquina}`, {
+        method: "DELETE"
+    }).then(() => {
+        console.log('deletando registros');
+     }).catch(err => {
+       console.error(err)
+     });
+    return false;
+}
+
+async function deleteAlerts(idMaquina){
+
+    console.log(idMaquina);
+    
+    fetch(`/leituras/delete-register/${idMaquina}`, {
+        method: "DELETE"
+    }).then(() => {
+        console.log('deletando alertas');
+     }).catch(err => {
+       console.error(err)
+     });
     return false;
 }

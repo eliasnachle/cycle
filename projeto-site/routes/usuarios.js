@@ -166,7 +166,7 @@ router.post('/register-suporte/:idContratante', function (req, res, next) {
 /* Deletando usuario suporte pelo seu id */
 router.delete('/delete-suporte/:idUsuarioSuporte', function (req, res, next) {
 
-	var instrucaoSql = `DELETE tblUsuariosSuporte WHERE idUsuarioSuporte = ${req.params.idUsuarioSuporte}`
+	var instrucaoSql = `DELETE FROM tblUsuariosSuporte WHERE idUsuarioSuporte = ${req.params.idUsuarioSuporte}`
 
 	sequelize.query(instrucaoSql, {
 		model: UsuariosSuporte
