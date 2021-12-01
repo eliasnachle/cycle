@@ -1,6 +1,8 @@
+let typeModal;
 const linkColor = document.querySelectorAll('.sidebar-settings__content--link'),
 containerSettings = document.querySelector('.dashboard__container--settings'),
-mainSettings = document.querySelector('.main-settings');
+mainSettings = document.querySelector('.main-settings'),
+UsernameReg = /^[A-z]{3,15}$/;
 
 function colorLink(){
     linkColor.forEach(i => i.classList.remove('sidebar-settings__content--actived'));
@@ -117,6 +119,7 @@ function returnSettingsSidebar(){
 }
 
 function modalEditUsername(labelValue){
+    typeModal = labelValue;
     let title,
     placeholder,
     icon;
@@ -146,11 +149,28 @@ function modalEditUsername(labelValue){
           <h3>${title}</h3>
           <div class="overlay__modal--modal--content--ipt">
             <i class="icon-${icon}"></i>
-            <input type="text" id="ipt_search_restaurant" placeholder="${placeholder}">
+            <input type="text" id="ipt_edit_value" placeholder="${placeholder}">
           </div>      
-          <button onclick="confirmEditUsername()">Confirmar</button>
+          <button onclick="confirmUpdateValue(this.${typeModal})">Confirmar</button>
           <span id="msg_validate_search_restaurant"></span>
         </div>
       </div>`;
     body.appendChild(modalEdit);
+}
+
+function confirmUpdateValue(){
+    const valueIptEditValue = document.getElementById('ipt_edit_value').value;
+    console.log(valueIptEditValue);
+    console.log(typeModal);
+    
+    /*
+    queryUsername
+    update tblUsuariosSuporte set nomeSuporte = '${valueIpt}' where idUsuarioSuporte =`${idContractorSession}`
+    */
+
+        /*
+    queryPasswrod
+    update tblUsuariosSuporte set senhaSuporte = '${valueIpt}' where idUsuarioSuporte =`${idContractorSession}`
+    */
+    
 }

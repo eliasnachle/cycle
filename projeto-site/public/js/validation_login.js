@@ -2,7 +2,7 @@ const togglePassword = document.querySelector('.section-login__content__form--in
 login = document.querySelector('#ipt_login'),
 password = document.querySelector('#ipt_password'),
 loginReg = /^([À-úA-z0-9._-]+@[a-z0-9._-]+\.[A-z0-9_-]+)$/,
-passwordReg = /^(?=.*[0-9]{1})(?=.*[\W]{1})(?=.*[a-z]{1})[a-zA-Z0-9\W]{6,30}$/;
+passwordReg = /^[0-9]$/;
 
 login.addEventListener('keyup', () => {    
     const iptLoginValue = login.value;
