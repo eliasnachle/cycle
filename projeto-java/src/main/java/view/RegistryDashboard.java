@@ -23,16 +23,13 @@ public class RegistryDashboard extends javax.swing.JFrame {
     private ControllerMachineInfo controllerMachineInfo;
     private MachineInfoModel machineInfoModel;
     private ControllerRegistry controllerRegistry;
-    private MachineRegistryModel machineRegistryModel;
     private String dataLog;
     Logge logg = new Logge();
     
     public RegistryDashboard(ControllerMachineInfo controllerMachineInfo, MachineInfoModel machineInfoModel) {
-        initComponents();
         this.controllerMachineInfo = controllerMachineInfo;
         this.machineInfoModel = machineInfoModel;
         this.controllerRegistry = new ControllerRegistry();
-        this.machineRegistryModel = new MachineRegistryModel();
         this.dataLog = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").format(LocalDateTime.now());
         insertInInputMachineInfo();
         
@@ -42,7 +39,8 @@ public class RegistryDashboard extends javax.swing.JFrame {
         timer.scheduleAtFixedRate(new TimerTask() {
             public void run() {
                 try {
-                    insertResgistryInDatabase();
+                    MachineRegistryModel machineRegistryModel = new MachineRegistryModel();
+                    insertResgistryInDatabase(machineRegistryModel);
                 } catch (IOException e) {
                     e.printStackTrace();
                 } catch (InterruptedException e) {
@@ -51,6 +49,8 @@ public class RegistryDashboard extends javax.swing.JFrame {
                 insertInInputRegistryInfo();
             }
         }, delay, interval);
+
+        initComponents();
     }
 
     /**
@@ -643,7 +643,7 @@ public class RegistryDashboard extends javax.swing.JFrame {
     private void insertInInputRegistryInfo() {
         System.out.println("Inserindo dados nos inputs");
         
-        List<MachineRegistryModel> selectResultRegistry = this.controllerRegistry.consultMachineRegister();
+        List<MachineRegistryModel> selectResultRegistry = this.controllerRegistry.consultMachineRegister(this.machineInfoModel);
         
         List<MachineInfoModel> selectResultMachineInfo = this.controllerMachineInfo.consultMachineInfo(this.machineInfoModel);
         
@@ -657,8 +657,8 @@ public class RegistryDashboard extends javax.swing.JFrame {
         DiscoDisponivel2.setText(String.format("%.2f GB",selectResultRegistry.get(0).getEspacoLivreDisco2() ));
     }
     
-    private void insertResgistryInDatabase() throws IOException, InterruptedException {
-        this.controllerRegistry.registerInDatabaseNewRegistry(this.machineInfoModel, this.machineRegistryModel);
+    private void insertResgistryInDatabase(MachineRegistryModel machineRegistryModel) throws IOException, InterruptedException {
+        this.controllerRegistry.registerInDatabaseNewRegistry(this.machineInfoModel, machineRegistryModel, this.controllerMachineInfo);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

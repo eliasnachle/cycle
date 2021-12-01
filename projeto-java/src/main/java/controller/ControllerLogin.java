@@ -27,9 +27,7 @@ public class ControllerLogin {
                 password
             );
             System.out.println("Fazendo select");
-            
-            //log Login
-            //LogCycle.guardarLog("Fazendo Select - login");
+
             List<LoginModel> user = connection.query(select, new BeanPropertyRowMapper(LoginModel.class));
             
             System.out.println("Fim do select");
