@@ -14,6 +14,7 @@ public class ConnectionSqlServer {
         this.dataSource.setUrl("jdbc:sqlserver://cycle-project.database.windows.net:1433;database=database_cycle;"
                 + "encrypt=true;"
                 + "trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=3000;");
+
         this.dataSource.setUsername("grupo4_2adsb");
         this.dataSource.setPassword("group4_cycle");
     }

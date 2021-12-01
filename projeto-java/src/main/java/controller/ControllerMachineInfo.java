@@ -1,7 +1,9 @@
 package controller;
 
 import connection.ConnectionSqlServer;
+import java.io.IOException;
 import java.util.List;
+import loggers.Logge;
 import model.MachineInfoModel;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -16,10 +18,9 @@ public class ControllerMachineInfo {
         this.connection = new JdbcTemplate(databaseConfig.getDataSource());
     }
     
-    public void registerInDatabaseNewMachine(MachineInfoModel newMachine, String idContratante) {
+    public void registerInDatabaseNewMachine(MachineInfoModel newMachine, String idContratante) throws IOException {
         
         System.out.println("Iniciando cadastro da maquina");
-
         connection.update("INSERT INTO tblMaquinas"
                 + "(apelidoMaquina, tipoMaquina, sistemaOperacionalMaquina, idProcessador,"
                 + " modeloCpu, cpuFrequencia, modeloDisco1, espacoTotalDisco1,"
@@ -32,10 +33,15 @@ public class ControllerMachineInfo {
                 newMachine.getEspacoTotalDisco2(), newMachine.getEspacoTotalRam(), idContratante);
         
         System.out.println("Cadastro da maquina concluido");
+        // logge.guardarLog("==========================================================\n"
+         //                   + "         Tentativa de Cadastro da Maquina:\n"
+           //                 + "\n"
+             //               + "Status da tentativa: Concuida\n"
+               //             + "==========================================================\n\n\n");;
     }
     
     public List<MachineInfoModel> consultMachineInfo(MachineInfoModel machineInfo){
-        
+
         System.out.println("Fazendo consulta sobre a maquina");
         List<MachineInfoModel> machineInfoSelect = 
                 connection.query("SELECT * FROM tblMaquinas WHERE idProcessador = ?",

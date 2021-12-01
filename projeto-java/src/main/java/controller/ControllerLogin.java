@@ -1,7 +1,9 @@
 package controller;
 
 import connection.ConnectionSqlServer;
+import java.io.IOException;
 import java.util.List;
+import loggers.Logge;
 import model.LoginModel;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -25,6 +27,7 @@ public class ControllerLogin {
                 password
             );
             System.out.println("Fazendo select");
+
             List<LoginModel> user = connection.query(select, new BeanPropertyRowMapper(LoginModel.class));
             
             System.out.println("Fim do select");

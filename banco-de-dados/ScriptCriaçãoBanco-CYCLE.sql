@@ -46,7 +46,6 @@ CREATE TABLE tblMaquinas (
 CREATE TABLE tblRegistros (
 	idRegistro INT PRIMARY KEY AUTO_INCREMENT,
     cpuEmUso DOUBLE,
-    temperaturaCpu DOUBLE,
     espacoLivreDisco1 DOUBLE,
     espacoLivreDisco2 DOUBLE,
     espacoLivreRam DOUBLE,
@@ -61,4 +60,52 @@ CREATE TABLE tblAlertas (
     descAlerta VARCHAR(255),
     dataHoraAlerta DATETIME,
     idMaquina INT
+);
+
+-- ------------------------------------------------------------------------------------------------
+
+CREATE TABLE tblAdministrator(
+	idAdministrator INT PRIMARY KEY AUTO_INCREMENT,
+	nomeAdministrator VARCHAR(80),
+	emailAdministrator VARCHAR(80),
+	senhaAdministrator VARCHAR(20)
+);
+
+CREATE TABLE tblServidor (
+	idServidor INT PRIMARY KEY AUTO_INCREMENT,
+	apelidoServidor VARCHAR(30),
+	sistemaOperacionalServidor VARCHAR(15),
+    idProcessador VARCHAR(20),
+	modeloCpu VARCHAR(80),
+    cpuFrequencia DOUBLE,
+    modeloDisco1 VARCHAR(80),
+    modeloDisco2 VARCHAR(80),
+    espacoTotalDisco1 DOUBLE,
+    espacoTotalDisco2 DOUBLE,
+    espacoTotalRam DOUBLE,
+	idAdministrator INT
+);
+
+CREATE TABLE tblRegistrosServidor (
+	idRegistro INT PRIMARY KEY AUTO_INCREMENT,
+    cpuEmUso DOUBLE,
+    espacoLivreDisco1 DOUBLE,
+    espacoLivreDisco2 DOUBLE,
+    espacoLivreRam DOUBLE,
+    dataHoraRegistro DATETIME,
+    idServidor INT
+);
+
+CREATE TABLE tblRegistrosServidor (
+	idRegistroServidor INT PRIMARY KEY AUTO_INCREMENT,
+    sistemaOperacionalMaquina VARCHAR(15), 
+    modeloCpu VARCHAR(80), 
+    cpuEmUso DOUBLE,
+	espacoTotalDisco1 DOUBLE, 
+    espacoTotalDisco2 DOUBLE,
+	espacoLivreDisco1 DOUBLE,
+    espacoLivreDisco2 DOUBLE,
+    espacoTotalRam DOUBLE, 
+    espacoLivreRam DOUBLE,
+    dataHoraRegistro DATETIME
 );
