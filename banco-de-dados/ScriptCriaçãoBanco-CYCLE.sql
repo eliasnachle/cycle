@@ -46,7 +46,6 @@ CREATE TABLE tblMaquinas (
 CREATE TABLE tblRegistros (
 	idRegistro INT PRIMARY KEY AUTO_INCREMENT,
     cpuEmUso DOUBLE,
-    temperaturaCpu DOUBLE,
     espacoLivreDisco1 DOUBLE,
     espacoLivreDisco2 DOUBLE,
     espacoLivreRam DOUBLE,
@@ -62,6 +61,8 @@ CREATE TABLE tblAlertas (
     dataHoraAlerta DATETIME,
     idRegistro INT
 );
+
+-- ------------------------------------------------------------------------------------------------
 
 CREATE TABLE tblAdministrator(
 	idAdministrator INT PRIMARY KEY AUTO_INCREMENT,
@@ -88,19 +89,9 @@ CREATE TABLE tblServidor (
 CREATE TABLE tblRegistrosServidor (
 	idRegistro INT PRIMARY KEY AUTO_INCREMENT,
     cpuEmUso DOUBLE,
-    temperaturaCpu DOUBLE,
     espacoLivreDisco1 DOUBLE,
     espacoLivreDisco2 DOUBLE,
     espacoLivreRam DOUBLE,
     dataHoraRegistro DATETIME,
     idServidor INT
-);
-
-CREATE TABLE tblAlertasServidor (
-	idAlerta INT PRIMARY KEY AUTO_INCREMENT,
-    componenteInstavel VARCHAR(10),
-    nivelCriticidade VARCHAR(10),
-    descAlerta VARCHAR(255),
-    dataHoraAlerta DATETIME,
-    idRegistro INT
 );

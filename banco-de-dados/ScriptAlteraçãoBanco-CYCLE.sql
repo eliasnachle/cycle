@@ -12,6 +12,7 @@ ALTER TABLE tblRegistros ADD FOREIGN KEY (idMaquina) REFERENCES tblMaquinas(idMa
 
 -- Configurando foreign key da tabela alerta
 ALTER TABLE tblAlertas ADD FOREIGN KEY (idRegistro) REFERENCES tblRegistros(idRegistro);
+
 -- -----------------------------------------------------------------------------------------------------------
 
 -- Configurando foreign key da tabela servidor
