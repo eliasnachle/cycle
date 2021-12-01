@@ -1,27 +1,40 @@
 package view;
 
+import com.mysql.cj.log.Log;
 import controller.ControllerLogin;
 import controller.ControllerMachineInfo;
 
 import java.awt.*;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.*;
 import javax.swing.border.Border;
 
+import loggers.Logge;
 import model.LoginModel;
 import model.MachineInfoModel;
+import org.codehaus.plexus.util.xml.pull.XmlPullParserException;
 
 public class Login extends javax.swing.JFrame {
+
     private ControllerLogin controllerLogin;
     private ControllerMachineInfo controllerMachineInfo;
     private MachineInfoModel machineInfoModel;
-    
+    private String dataLog;
+    Logge logg = new Logge();
+
     public Login() {
-        initComponents();
-        
+        this.dataLog = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").format(LocalDateTime.now());
         this.controllerLogin = new ControllerLogin();
         this.controllerMachineInfo = new ControllerMachineInfo();
         this.machineInfoModel = new MachineInfoModel();
+        
+        initComponents();
     }
 
     @SuppressWarnings("unchecked")
@@ -182,64 +195,94 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
-    private void acessar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acessar
+    private void acessar(java.awt.event.ActionEvent evt) {
 
+        try {
+            LoginValidation();
+        } catch (IOException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+    }
+
+    public static void main(String args[]) throws FileNotFoundException, IOException, XmlPullParserException {
+        java.awt.EventQueue.invokeLater(() -> {
+            new Login().setVisible(true);
+        });
+        Logge logCycle = new Logge();
+        logCycle.iniciandoApp();
+    }
+
+    class RoundBtn implements Border {
+
+        private int r;
+
+        RoundBtn(int r) {
+            this.r = r;
+        }
+
+        public Insets getBorderInsets(Component c) {
+            return new Insets(this.r + 1, this.r + 1, this.r + 2, this.r);
+        }
+
+        public boolean isBorderOpaque() {
+            return true;
+        }
+
+        public void paintBorder(Component c, Graphics g, int x, int y,
+                int width, int height) {
+            g.drawRoundRect(x, y, width - 1, height - 1, r, r);
+        }
+
+    }
+
+    private void LoginValidation() throws IOException {
         jButton1.setEnabled(false);
-        
+
         String login = jTextField1.getText();
         String password = jTextField2.getText();
-        
+
         List<LoginModel> selectLogin = this.controllerLogin.consultUserData(login, password);
-        
+
         if (selectLogin.isEmpty()) {
 
-            JOptionPane.showMessageDialog(rootPane, "Usuário não encontrados ou Login e senha inválidos");
+            JOptionPane.showMessageDialog(rootPane, "UsuÃ¡rio nÃ£o encontrados ou Login e senha invÃ¡lidos");
             jButton1.setEnabled(true);
 
+            logg.guardarLog("==========================================================================\n"
+                    + "                   Tentativa de Login: " + dataLog + "\n"
+                    + "\n"
+                    + "Status da tentativa: Falha;\n"
+                    + "Código do erro: 403.\n"
+                    + "==========================================================================\n\n\n");
         } else {
 
-            if (controllerMachineInfo.consultMachineInfo(machineInfoModel).isEmpty()){
+            if (controllerMachineInfo.consultMachineInfo(machineInfoModel).isEmpty()) {
                 RegisterNewMachine frame2 = new RegisterNewMachine(selectLogin.get(0).getIdUsuarioContratante(), this.controllerMachineInfo, this.machineInfoModel);
                 setVisible(false);
                 frame2.setVisible(true);
+                logg.guardarLog("==========================================================================\n"
+                        + "                Tentativa de Login: " + dataLog + "\n"
+                        + "\n"
+                        + "Status da tentativa: Concluida com sucesso;\n"
+                        + "==========================================================================\n\n\n");
             } else {
                 RegistryDashboard frame3 = new RegistryDashboard(this.controllerMachineInfo, this.machineInfoModel);
                 setVisible(false);
                 frame3.setVisible(true);
+                logg.guardarLog("==========================================================================\n"
+                                + "        Tentativa de Login: " + dataLog + "\n"
+                                + "\n"
+                                + "Status da tentativa: Concluida com sucesso;\n"
+                                + "==========================================================================\n\n\n");
             }
 
         }
-        
-    }//GEN-LAST:event_acessar
-
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
-
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(() -> {
-            new Login().setVisible(true);
-        });
     }
-
-    class RoundBtn implements Border
-    {
-        private int r;
-        RoundBtn(int r) {
-            this.r = r;
-        }
-        public Insets getBorderInsets(Component c) {
-            return new Insets(this.r+1, this.r+1, this.r+2, this.r);
-        }
-        public boolean isBorderOpaque() {
-            return true;
-        }
-        public void paintBorder(Component c, Graphics g, int x, int y,
-                                int width, int height) {
-            g.drawRoundRect(x, y, width-1, height-1, r, r);
-        }
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;

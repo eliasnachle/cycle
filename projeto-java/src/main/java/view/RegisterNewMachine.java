@@ -1,7 +1,11 @@
 package view;
 
 import controller.ControllerMachineInfo;
+import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
+import loggers.Logge;
 import model.MachineInfoModel;
 
 public class RegisterNewMachine extends javax.swing.JFrame {
@@ -9,13 +13,16 @@ public class RegisterNewMachine extends javax.swing.JFrame {
     private ControllerMachineInfo controllerMachineInfo;
     private MachineInfoModel machineInfoModel;
     private String idContratante;
+    private String dataLog;
+    Logge logg = new Logge();
     
     public RegisterNewMachine(String idContratante, ControllerMachineInfo controllerMachineInfo, MachineInfoModel machineInfoModel) {
-        initComponents();
-        InsertInInputValues();
         this.idContratante = idContratante;
         this.controllerMachineInfo = controllerMachineInfo;
         this.machineInfoModel = machineInfoModel;
+        this.dataLog = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").format(LocalDateTime.now());
+        initComponents();
+        InsertInInputValues();
     }
 
     @SuppressWarnings("unchecked")
@@ -504,7 +511,7 @@ public class RegisterNewMachine extends javax.swing.JFrame {
         InpTotalRam.setText(String.format("%.2f GB", this.machineInfoModel.getEspacoTotalRam() ));
     }
     
-    private void InsertInDatabaseNewMachine() {
+    private void InsertInDatabaseNewMachine(){
         
         if(InpApelidoMaquina.getText().equals("")) {
                JOptionPane.showMessageDialog(rootPane, "Por favor coloque um apelido para a maquina");
@@ -518,9 +525,23 @@ public class RegisterNewMachine extends javax.swing.JFrame {
                 setVisible(false);
                 RegistryDashboard frame3 = new RegistryDashboard(this.controllerMachineInfo, this.machineInfoModel);
                 frame3.setVisible(true);
+                
+               logg.guardarLog("==========================================================================\n"
+                            + "           Tentativa de Cadastro de Máquina: "+dataLog+"\n"
+                            + "\n"
+                            + "Status da tentativa: Concluida;\n"
+                            + "Código: 201.\n"
+                            + "==========================================================================\n\n\n");
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(rootPane, "Algum erro inesperado aconteceu, por favor tente novamente mais tarde");
                 RegisterButton.setEnabled(true);
+                
+            logg.guardarLog("==========================================================================\n"
+                            + "           Tentativa de Cadastro de Máquina: "+dataLog+"\n"
+                            + "\n"
+                            + "Status da tentativa: Falha;\n"
+                            + "Código do erro: 400.\n"
+                            + "==========================================================================\n\n\n");
             }
             
         }

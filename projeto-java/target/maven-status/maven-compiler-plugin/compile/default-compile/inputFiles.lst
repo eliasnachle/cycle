@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 C:\Users\Tais\Downloads\cycle\projeto-java\src\main\java\connection\ConnectionSqlServer.java
 C:\Users\Tais\Downloads\cycle\projeto-java\src\main\java\controller\ControllerLogin.java
 C:\Users\Tais\Downloads\cycle\projeto-java\src\main\java\controller\ControllerRegistry.java
@@ -10,3 +11,21 @@ C:\Users\Tais\Downloads\cycle\projeto-java\src\main\java\model\MachineRegistryMo
 C:\Users\Tais\Downloads\cycle\projeto-java\src\main\java\view\Login.java
 C:\Users\Tais\Downloads\cycle\projeto-java\src\main\java\controller\ControllerMachineInfo.java
 C:\Users\Tais\Downloads\cycle\projeto-java\src\main\java\view\RegisterNewMachine.java
+=======
+E:\cycle\projeto-java\src\main\java\connection\ConnectionMySQL.java
+E:\cycle\projeto-java\src\main\java\view\Login.java
+E:\cycle\projeto-java\src\main\java\view\RegisterNewMachine.java
+E:\cycle\projeto-java\src\main\java\connection\ConnectionSqlServer.java
+E:\cycle\projeto-java\src\main\java\controller\ControllerLogin.java
+E:\cycle\projeto-java\src\main\java\slack\Monitoration.java
+E:\cycle\projeto-java\src\main\java\loggers\Logge.java
+E:\cycle\projeto-java\src\main\java\model\MachineRegistryModel.java
+E:\cycle\projeto-java\src\main\java\slack\OpenRequest.java
+E:\cycle\projeto-java\src\main\java\view\RegistryDashboard.java
+E:\cycle\projeto-java\src\main\java\model\MachineInfoModel.java
+E:\cycle\projeto-java\src\main\java\controller\ControllerRegistry.java
+E:\cycle\projeto-java\src\main\java\loggers\ReadeVersion.java
+E:\cycle\projeto-java\src\main\java\controller\ControllerMachineInfo.java
+E:\cycle\projeto-java\src\main\java\model\LoginModel.java
+E:\cycle\projeto-java\src\main\java\slack\TesteSlack.java
+>>>>>>> b529d4b42cf42328172ed765427d29cc5074cc54
