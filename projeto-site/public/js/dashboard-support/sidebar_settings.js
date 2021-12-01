@@ -2,7 +2,8 @@ let typeModal;
 const linkColor = document.querySelectorAll('.sidebar-settings__content--link'),
 containerSettings = document.querySelector('.dashboard__container--settings'),
 mainSettings = document.querySelector('.main-settings'),
-UsernameReg = /^[A-z]{3,15}$/;
+usernameReg = /^[A-z]{3,15}$/,
+passwordReg = /^(?=.*[0-9]{1})(?=.*[\W]{1})(?=.*[a-z]{1})[a-zA-Z0-9\W]{6,30}$/;
 
 function colorLink(){
     linkColor.forEach(i => i.classList.remove('sidebar-settings__content--actived'));
@@ -146,7 +147,7 @@ function modalEditUsername(labelValue){
             <input type="text" id="ipt_edit_value" placeholder="${placeholder}">
           </div>      
           <button onclick="confirmUpdateValue(this.${typeModal})">Confirmar</button>
-          <span id="msg_validate_search_restaurant"></span>
+          <span id="msg_validate_modal_edit_value"></span>
         </div>
       </div>`;
     body.appendChild(modalEdit);
@@ -156,15 +157,49 @@ function confirmUpdateValue(){
     const valueIptEditValue = document.getElementById('ipt_edit_value').value;
     console.log(valueIptEditValue);
     console.log(typeModal);
-    
+    switch(typeModal){
+        case 'username':     
+            updateUsername(valueIptEditValue);
+            break;
+        case 'password':
+            updatePassword(valueIptEditValue);
+            break;
+    }
     /*
     queryUsername
     update tblUsuariosSuporte set nomeSuporte = '${valueIpt}' where idUsuarioSuporte =`${idContractorSession}`
-    */
-
-        /*
     queryPasswrod
     update tblUsuariosSuporte set senhaSuporte = '${valueIpt}' where idUsuarioSuporte =`${idContractorSession}`
     */
     
+}
+
+function updateUsername(valueIptEditValue){
+    msgValidate = document.getElementById('msg_validate_modal_edit_value');
+    if(valueIptEditValue.match(usernameReg)){
+        putUpdateUsername(valueIptEditValue);
+        closeModal();
+    } else{
+       msgValidate.innerHTML = 'Ops! esse usuário é inválido!' 
+    }
+}
+
+function putUpdateUsername(valueIptEditValue) {
+    var idContractorSession = localStorage.idContractorSession;
+    fetch(`/dashboardSupport/updateUsernameSupport${idContractorSession}${valueIptEditValue}`, {
+        method : "PUT"
+    }).then(() => {
+        res.status(204).send('Nome de usuario alterado com sucesso!');
+    }).catch(err => {
+        console.error(err)
+    });
+}
+
+function updatePassword(valueIptEditValue){
+    msgValidate = document.getElementById('msg_validate_modal_edit_value');
+    if(valueIptEditValue.match(passwordReg)){
+        
+    } else{
+        msgValidate.innerHTML = 'Ops! essa senha é inválida!';
+    }
 }

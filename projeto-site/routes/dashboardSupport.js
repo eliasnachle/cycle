@@ -4,6 +4,7 @@ var sequelize = require('../models').sequelize;
 var Machine = require('../models').Machine;
 var Alert = require('../models').Alert;
 var Register = require('../models').Register;
+var UsuariosSuporte = require('../models').UsuariosSuporte;
 var env = process.env.NODE_ENV || 'development';
 
 router.get('/diaryUse:idMaquina', function(req, res, next) {
@@ -60,6 +61,40 @@ router.get('/realTimeUse:idMaquina', function(req, res, next) {
 		console.error(erro);
 	});
 });
+
+// router.put('/updatePasswordSupport:idContractorSession', function(req, res, next) {
+// 	console.log('Alterando senha do usuario');
+// 	const idAlerta = req.params.idAlerta;
+//     let instrucaoSql = `UPDATE tblAlertas SET alertaVisivel = 0 WHERE idAlerta = ${idAlerta};`;
+// 	// UPDATE tblUsuariosSuporte SET nomeSuporte = '${valueIpt}' WHERE idUsuarioSuporte =`${idContractorSession}
+// 	sequelize.query(instrucaoSql, {
+// 		model: Alert
+// 	})
+// 	.then(resultado => {
+// 		console.log(`Encontrados: ${resultado.length}`);
+// 		res.status(204).send('Visibilidade de alerta alterada!');
+// 	}).catch(erro => {
+// 		console.error(erro);
+// 	});
+// });	
+
+router.put('/updateUsernameSupport:idContractorSession:valueIpt', function(req, res, next) {
+	console.log('Alterando username do usuario');
+	const idContractorSession = req.params.idContractorSession,
+	valueIpt = req.params.valueIpt;
+	console.log(idContractorSession);
+	console.log(valueIpt);
+    let instrucaoSql = `UPDATE tblUsuariosSuporte SET nomeSuporte = '${valueIpt}' WHERE idUsuarioSuporte = ${idContractorSession};`;
+	sequelize.query(instrucaoSql, {
+		model: UsuariosSuporte
+	})
+	.then(resultado => {
+		console.log(`Encontrados: ${resultado.length}`);
+		res.status(204).send('Visibilidade de alerta alterada!');
+	}).catch(erro => {
+		console.error(erro);
+	});
+});	
 
 router.put('/updateAlertVisibility:idAlerta', function(req, res, next) {
 	console.log('Alterando visibilidade do alerta');
