@@ -45,8 +45,7 @@ function profileSection(){
     <div class="dashboard__container--settings--item">
         <h2>E-mail</h2>
         <span>jessica@request.com.br</span>
-    </div>
-    `;
+    </div>`;
     sectionsCloseOption();
 }
 
@@ -62,8 +61,7 @@ function secutirySection(){
         <h2>Senha</h2>
         <span>******</span>
         <button value="password" onclick="modalEditUsername(this.value)">Editar</button>
-    </div>
-    `;
+    </div>`;
     sectionsCloseOption();
 }
 
@@ -79,8 +77,7 @@ function themeSection(){
         <h2>Tema Escuro</h2>
         <input type="checkbox" id="switch"/>
         <label for="switch">Toggle</label>
-    </div>
-    `;
+    </div>`;
     sectionsCloseOption();
 }
 
@@ -101,17 +98,14 @@ function accessSection(){
             <li>Mc Donalds Cachoeirinha</li>
             <li>Mc Donalds Pirituba</li>
         </ul>
-    </div>
-    `;
+    </div>`;
     sectionsCloseOption();
 }
 
 function sectionsCloseOption(){
     if(window.innerWidth <= 768 ){
         const containerSettingsTitle = document.querySelector('.dashboard__container--settings--title');
-        containerSettingsTitle.insertAdjacentHTML('afterbegin' ,`
-            <button onclick="returnSettingsSidebar()"><i class="icon-return"></i></button>
-        `);
+        containerSettingsTitle.insertAdjacentHTML('afterbegin' ,`<button onclick="returnSettingsSidebar()"><i class="icon-return"></i></button>`);
     }
 }
 function returnSettingsSidebar(){
