@@ -1,1 +1,0 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"br.com.cycle.application"},{"l":"br.com.cycle.connection"},{"l":"br.com.cycle.controller"},{"l":"br.com.cycle.model"},{"l":"br.com.cycle.slack"}];updateSearchResults();
