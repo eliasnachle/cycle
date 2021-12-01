@@ -41,13 +41,13 @@ function removeAlert(idCard) {
 
 function putUpdateAlertVisibility(idCard) {
     fetch(`/dashboardSupport/updateAlertVisibility${idCard}`, {
-        method: "PUT"
+        method : "PUT"
     }).then(() => {
-        console.log('Removendo visibilidade do card');
     }).catch(err => {
-       console.error(err)
+        console.error(err)
     });
-    return false;
+    console.log('t');
+    getAlerts();
 }
 
 function getAlerts() {    

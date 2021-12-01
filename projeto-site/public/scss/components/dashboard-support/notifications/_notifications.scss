@@ -40,7 +40,7 @@
             grid-template-columns: repeat(2, auto);
             h1{
                 font-size: clamp(3em, 3.75vw, 4em);
-                color: #000;
+                color: $black;
             }
             span{
                 font-size: clamp(1em, 1vw, 1.25em);

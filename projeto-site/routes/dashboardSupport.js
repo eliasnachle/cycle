@@ -58,12 +58,11 @@ router.get('/realTimeUse:idMaquina', function(req, res, next) {
 		res.json(resultado);
 	}).catch(erro => {
 		console.error(erro);
-		res.status(500).send(erro.message);
 	});
 });
 
 router.put('/updateAlertVisibility:idAlerta', function(req, res, next) {
-	console.log('Buscando alertas');
+	console.log('Alterando visibilidade do alerta');
 	const idAlerta = req.params.idAlerta;
     let instrucaoSql = `UPDATE tblAlertas SET alertaVisivel = 0 WHERE idAlerta = ${idAlerta};`;
 	sequelize.query(instrucaoSql, {
@@ -71,10 +70,9 @@ router.put('/updateAlertVisibility:idAlerta', function(req, res, next) {
 	})
 	.then(resultado => {
 		console.log(`Encontrados: ${resultado.length}`);
-		res.status(204).send('Card removido com sucesso!');
+		res.status(204).send('Visibilidade de alerta alterada!');
 	}).catch(erro => {
 		console.error(erro);
-		res.status(500).send(erro.message);
 	});
 });		
 
