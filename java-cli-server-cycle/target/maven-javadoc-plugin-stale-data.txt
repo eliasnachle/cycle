@@ -1,0 +1,81 @@
+@options
+@packages
+@argfile
+-classpath
+'C:/Users/Henrique.Lima/.m2/repository/com/github/britooo/looca-api/1.0.1/looca-api-1.0.1.jar;C:/Users/Henrique.Lima/.m2/repository/com/github/oshi/oshi-core/5.3.6/oshi-core-5.3.6.jar;C:/Users/Henrique.Lima/.m2/repository/net/java/dev/jna/jna/5.6.0/jna-5.6.0.jar;C:/Users/Henrique.Lima/.m2/repository/net/java/dev/jna/jna-platform/5.6.0/jna-platform-5.6.0.jar;C:/Users/Henrique.Lima/.m2/repository/org/slf4j/slf4j-api/1.7.30/slf4j-api-1.7.30.jar;C:/Users/Henrique.Lima/.m2/repository/org/slf4j/slf4j-simple/1.7.30/slf4j-simple-1.7.30.jar;C:/Users/Henrique.Lima/.m2/repository/org/springframework/spring-jdbc/5.3.5/spring-jdbc-5.3.5.jar;C:/Users/Henrique.Lima/.m2/repository/org/springframework/spring-beans/5.3.5/spring-beans-5.3.5.jar;C:/Users/Henrique.Lima/.m2/repository/org/springframework/spring-core/5.3.5/spring-core-5.3.5.jar;C:/Users/Henrique.Lima/.m2/repository/org/springframework/spring-jcl/5.3.5/spring-jcl-5.3.5.jar;C:/Users/Henrique.Lima/.m2/repository/org/springframework/spring-tx/5.3.5/spring-tx-5.3.5.jar;C:/Users/Henrique.Lima/.m2/repository/org/apache/commons/commons-dbcp2/2.8.0/commons-dbcp2-2.8.0.jar;C:/Users/Henrique.Lima/.m2/repository/org/apache/commons/commons-pool2/2.8.1/commons-pool2-2.8.1.jar;C:/Users/Henrique.Lima/.m2/repository/commons-logging/commons-logging/1.2/commons-logging-1.2.jar;C:/Users/Henrique.Lima/.m2/repository/com/microsoft/sqlserver/mssql-jdbc/8.4.1.jre8/mssql-jdbc-8.4.1.jre8.jar;C:/Users/Henrique.Lima/.m2/repository/mysql/mysql-connector-java/8.0.16/mysql-connector-java-8.0.16.jar;C:/Users/Henrique.Lima/.m2/repository/com/google/protobuf/protobuf-java/3.6.1/protobuf-java-3.6.1.jar;C:/Users/Henrique.Lima/.m2/repository/org/json/json/20201115/json-20201115.jar'
+-encoding
+'Cp1252'
+-protected
+-source
+'11'
+-sourcepath
+'C:/Users/Henrique.Lima/Desktop/Repositorys/cycy/java-cli-server-cycle/src/main/java'
+-author
+-bottom
+'Copyright &#169; 2021. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'C:/Users/Henrique.Lima/Desktop/Repositorys/cycy/java-cli-server-cycle/target/site/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'java-cli-server-cycle 1.0-SNAPSHOT API'
+-linkoffline
+'https://docs.oracle.com/en/java/javase/11/docs/api' 'C:/Users/Henrique.Lima/Desktop/Repositorys/cycy/java-cli-server-cycle/target/javadoc-bundle-options'
+-use
+-version
+-windowtitle
+'java-cli-server-cycle 1.0-SNAPSHOT API'
+br.com.cycle.application
+br.com.cycle.connection
+br.com.cycle.controller
+br.com.cycle.model
+br.com.cycle.slack
+'C:/Users/Henrique.Lima/Desktop/Repositorys/cycy/java-cli-server-cycle/src/main/java/br/com/cycle/application/Main.java'
+'C:/Users/Henrique.Lima/Desktop/Repositorys/cycy/java-cli-server-cycle/src/main/java/br/com/cycle/connection/ConnectionMySql.java'
+'C:/Users/Henrique.Lima/Desktop/Repositorys/cycy/java-cli-server-cycle/src/main/java/br/com/cycle/connection/ConnectionSqlServer.java'
+'C:/Users/Henrique.Lima/Desktop/Repositorys/cycy/java-cli-server-cycle/src/main/java/br/com/cycle/controller/ControllerLogin.java'
+'C:/Users/Henrique.Lima/Desktop/Repositorys/cycy/java-cli-server-cycle/src/main/java/br/com/cycle/controller/ControllerRegistryMachineServer.java'
+'C:/Users/Henrique.Lima/Desktop/Repositorys/cycy/java-cli-server-cycle/src/main/java/br/com/cycle/controller/ControllerRegistryServerInfo.java'
+'C:/Users/Henrique.Lima/Desktop/Repositorys/cycy/java-cli-server-cycle/src/main/java/br/com/cycle/model/LoginModel.java'
+'C:/Users/Henrique.Lima/Desktop/Repositorys/cycy/java-cli-server-cycle/src/main/java/br/com/cycle/model/ModelServerInfo.java'
+'C:/Users/Henrique.Lima/Desktop/Repositorys/cycy/java-cli-server-cycle/src/main/java/br/com/cycle/model/ServerModel.java'
+'C:/Users/Henrique.Lima/Desktop/Repositorys/cycy/java-cli-server-cycle/src/main/java/br/com/cycle/model/ServerRegistryModel.java'
+'C:/Users/Henrique.Lima/Desktop/Repositorys/cycy/java-cli-server-cycle/src/main/java/br/com/cycle/slack/Monitoration.java'
+C:\Users\Henrique.Lima\.m2\repository\com\github\britooo\looca-api\1.0.1\looca-api-1.0.1.jar = 1632359175279
+C:\Users\Henrique.Lima\.m2\repository\com\github\oshi\oshi-core\5.3.6\oshi-core-5.3.6.jar = 1632359177214
+C:\Users\Henrique.Lima\.m2\repository\net\java\dev\jna\jna\5.6.0\jna-5.6.0.jar = 1632359176700
+C:\Users\Henrique.Lima\.m2\repository\net\java\dev\jna\jna-platform\5.6.0\jna-platform-5.6.0.jar = 1632359178117
+C:\Users\Henrique.Lima\.m2\repository\org\slf4j\slf4j-api\1.7.30\slf4j-api-1.7.30.jar = 1632359175306
+C:\Users\Henrique.Lima\.m2\repository\org\slf4j\slf4j-simple\1.7.30\slf4j-simple-1.7.30.jar = 1632359175668
+C:\Users\Henrique.Lima\.m2\repository\org\springframework\spring-jdbc\5.3.5\spring-jdbc-5.3.5.jar = 1634402217696
+C:\Users\Henrique.Lima\.m2\repository\org\springframework\spring-beans\5.3.5\spring-beans-5.3.5.jar = 1634402218354
+C:\Users\Henrique.Lima\.m2\repository\org\springframework\spring-core\5.3.5\spring-core-5.3.5.jar = 1634402218606
+C:\Users\Henrique.Lima\.m2\repository\org\springframework\spring-jcl\5.3.5\spring-jcl-5.3.5.jar = 1634402217708
+C:\Users\Henrique.Lima\.m2\repository\org\springframework\spring-tx\5.3.5\spring-tx-5.3.5.jar = 1634402218559
+C:\Users\Henrique.Lima\.m2\repository\org\apache\commons\commons-dbcp2\2.8.0\commons-dbcp2-2.8.0.jar = 1634402218832
+C:\Users\Henrique.Lima\.m2\repository\org\apache\commons\commons-pool2\2.8.1\commons-pool2-2.8.1.jar = 1634402219122
+C:\Users\Henrique.Lima\.m2\repository\commons-logging\commons-logging\1.2\commons-logging-1.2.jar = 1634399857693
+C:\Users\Henrique.Lima\.m2\repository\com\microsoft\sqlserver\mssql-jdbc\8.4.1.jre8\mssql-jdbc-8.4.1.jre8.jar = 1634402219522
+C:\Users\Henrique.Lima\.m2\repository\mysql\mysql-connector-java\8.0.16\mysql-connector-java-8.0.16.jar = 1634486796656
+C:\Users\Henrique.Lima\.m2\repository\com\google\protobuf\protobuf-java\3.6.1\protobuf-java-3.6.1.jar = 1634486796453
+C:\Users\Henrique.Lima\.m2\repository\org\json\json\20201115\json-20201115.jar = 1634402219187
+C:\Users\Henrique.Lima\Desktop\Repositorys\cycy\java-cli-server-cycle\src\main\java = 1638135290465
+C:\Users\Henrique.Lima\Desktop\Repositorys\cycy\java-cli-server-cycle\target\site\apidocs\allclasses-index.html = 1638388958800
+C:\Users\Henrique.Lima\Desktop\Repositorys\cycy\java-cli-server-cycle\target\site\apidocs\allpackages-index.html = 1638388958805
+C:\Users\Henrique.Lima\Desktop\Repositorys\cycy\java-cli-server-cycle\target\site\apidocs\element-list = 1638388958490
+C:\Users\Henrique.Lima\Desktop\Repositorys\cycy\java-cli-server-cycle\target\site\apidocs\help-doc.html = 1638388958861
+C:\Users\Henrique.Lima\Desktop\Repositorys\cycy\java-cli-server-cycle\target\site\apidocs\index-all.html = 1638388958851
+C:\Users\Henrique.Lima\Desktop\Repositorys\cycy\java-cli-server-cycle\target\site\apidocs\index.html = 1638388958767
+C:\Users\Henrique.Lima\Desktop\Repositorys\cycy\java-cli-server-cycle\target\site\apidocs\jquery-ui.overrides.css = 1638388959023
+C:\Users\Henrique.Lima\Desktop\Repositorys\cycy\java-cli-server-cycle\target\site\apidocs\member-search-index.js = 1638388958816
+C:\Users\Henrique.Lima\Desktop\Repositorys\cycy\java-cli-server-cycle\target\site\apidocs\module-search-index.js = 1638388958808
+C:\Users\Henrique.Lima\Desktop\Repositorys\cycy\java-cli-server-cycle\target\site\apidocs\overview-summary.html = 1638388958855
+C:\Users\Henrique.Lima\Desktop\Repositorys\cycy\java-cli-server-cycle\target\site\apidocs\overview-tree.html = 1638388958759
+C:\Users\Henrique.Lima\Desktop\Repositorys\cycy\java-cli-server-cycle\target\site\apidocs\package-search-index.js = 1638388958811
+C:\Users\Henrique.Lima\Desktop\Repositorys\cycy\java-cli-server-cycle\target\site\apidocs\script.js = 1638388958870
+C:\Users\Henrique.Lima\Desktop\Repositorys\cycy\java-cli-server-cycle\target\site\apidocs\search.js = 1638388958915
+C:\Users\Henrique.Lima\Desktop\Repositorys\cycy\java-cli-server-cycle\target\site\apidocs\stylesheet.css = 1638388958867
+C:\Users\Henrique.Lima\Desktop\Repositorys\cycy\java-cli-server-cycle\target\site\apidocs\tag-search-index.js = 1638388958819
+C:\Users\Henrique.Lima\Desktop\Repositorys\cycy\java-cli-server-cycle\target\site\apidocs\type-search-index.js = 1638388958813

@@ -143,10 +143,4 @@ import com.github.britooo.looca.api.core.Looca;
         this.idUnidade = idUnidade;
     }
 
-    @Override
-    public String toString() {
-        return "MachineInfoModel{" + "idMaquina=" + idMaquina + ", apelidoMaquina=" + apelidoMaquina + ", tipoMaquina=" + tipoMaquina + ", sistemaOperacionalMaquina=" + sistemaOperacionalMaquina + ", idProcessador=" + idProcessador + ", modeloCpu=" + modeloCpu + ", cpuFrequencia=" + cpuFrequencia + ", modeloDisco1=" + modeloDisco1 + ", espacoTotalDisco1=" + espacoTotalDisco1 + ", modeloDisco2=" + modeloDisco2 + ", espacoTotalDisco2=" + espacoTotalDisco2 + ", espacoTotalRam=" + espacoTotalRam + ", idUnidade=" + idUnidade + '}';
-    }
-
-    
 }

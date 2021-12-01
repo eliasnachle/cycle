@@ -106,8 +106,6 @@ public class ControllerRegistry {
                     "CPU", "extrema", "CPU está no limite ou muito proxima", horarioPC, idMaquina);
 
         }
-<<<<<<< HEAD
-
         if(ramTotal % 100 * ramDisponivel > 92.0) {
 
             try {
@@ -117,13 +115,6 @@ public class ControllerRegistry {
                 System.out.println(e);;
             }
 
-=======
-        if(looca.getProcessador().getUso() > 92.0) {
-            LocalDateTime horarioPC = LocalDateTime.now(ZoneId.of("America/Sao_Paulo"));
-            
-            monitoration.enviarMensagem(String.format("A CPU está sobrecarregando \n" +
-                    "Uso atual é de: %.2f", looca.getProcessador().getUso()));
->>>>>>> b617bda1d7bc2b33d30fed347bb978a37be61199
             connection.update("INSERT INTO tblAlertas(componenteInstavel" +
                             ", nivelCriticidade" +
                             ", descAlerta" +
