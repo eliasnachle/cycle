@@ -9,8 +9,8 @@ var env = process.env.NODE_ENV || 'development';
 router.get('/diaryUse:idMaquina', function(req, res, next) {
 	console.log('Buscando consumo diario');
 	let instrucaoSql;
-	const idContractorSession = req.params.idContractorSession;
-	if(env == dev){
+	const idMaquina = req.params.idMaquina;
+	if(env == 'dev'){
 		instrucaoSql = `SELECT AVG(cpuEmUso) AS cpuEmUso
 			,AVG(espacoLivreRam) AS espacoLivreRam
 		FROM tblRegistros
@@ -35,9 +35,9 @@ router.get('/diaryUse:idMaquina', function(req, res, next) {
 
 router.get('/realTimeUse:idMaquina', function(req, res, next) {
 	console.log('Buscando consumo em tempo real');
-	const idContractorSession = req.params.idContractorSession;
+	const idMaquina = req.params.idMaquina;
     let instrucaoSql;
-	if(env == dev){
+	if(env == 'dev'){
 		instrucaoSql = `SELECT cpuEmUso,
 			espacoLivreRam,
 			espacoLivreDisco1,
