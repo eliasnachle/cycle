@@ -55,8 +55,20 @@
             display: flex;
             align-items: center;
             gap: 0.5em;
-            i::before{
-                font-size: 1.5em;
+            i{
+                display: flex;
+                .icon-bell--actived{
+                    height: 10px;
+                    width: 10px;
+                    border-radius: 5px;
+                    border: 2px solid $background;
+                    background: $primary;
+                    position: absolute;
+                    right: 6.5em;
+                }
+                &:before{
+                    font-size: 1.5em;
+                }
             }
             img{
                 width: 65px;

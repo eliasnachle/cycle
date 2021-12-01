@@ -538,7 +538,23 @@ main .dashboard__container--row .alert-card span svg {
   gap: 0.5em;
 }
 
-.header--profile-content--icon i::before {
+.header--profile-content--icon i {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.header--profile-content--icon i .icon-bell--actived {
+  height: 10px;
+  width: 10px;
+  border-radius: 5px;
+  border: 2px solid #FFFFFF;
+  background: #836FFF;
+  position: absolute;
+  right: 6.5em;
+}
+
+.header--profile-content--icon i:before {
   font-size: 1.5em;
 }
 

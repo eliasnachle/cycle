@@ -56,12 +56,11 @@ router.put('/updateAlertVisibility:idAlerta', function(req, res, next) {
 	const idAlerta = req.params.idAlerta;
     let instrucaoSql = `UPDATE tblAlertas SET alertaVisivel = 0 WHERE idAlerta = ${idAlerta};`;
 	sequelize.query(instrucaoSql, {
-		model: Alert,
-		mapToModel: true 
+		model: Alert
 	})
 	.then(resultado => {
 		console.log(`Encontrados: ${resultado.length}`);
-		res.json(resultado);
+		res.status(204).send('Card removido com sucesso!');
 	}).catch(erro => {
 		console.error(erro);
 		res.status(500).send(erro.message);

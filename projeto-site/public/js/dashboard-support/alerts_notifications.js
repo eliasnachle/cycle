@@ -36,7 +36,6 @@ function postAlerts(alerts) {
 }
 
 function removeAlert(idCard) {
-    console.log(idCard);
     putUpdateAlertVisibility(idCard);
 }
 
@@ -52,12 +51,19 @@ function putUpdateAlertVisibility(idCard) {
 }
 
 function getAlerts(idContractorSession) {
+    const bell = document.querySelectorAll('.icon-bell')[0];
     var idContractorSession = localStorage.idContractorSession;
     fetch(`/dashboardSupport/alerts${idContractorSession}`)
     .then((resposta) => {
         if (resposta.ok) {
             resposta.json().then(function (resposta) {
                 postAlerts(resposta);
+                if(resposta.length >= 1) {
+                    console.log('tem notificacao');
+                    bell.innerHTML += '<i class="icon-bell--actived"></i>';
+                } else{
+                    console.log('não tem notificacao');
+                }
             });
         } else {
             console.error('Nenhum dado encontrado ou erro na API');
