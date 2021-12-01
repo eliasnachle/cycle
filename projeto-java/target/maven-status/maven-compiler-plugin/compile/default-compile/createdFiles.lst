@@ -22,8 +22,6 @@ view\Login$1.class
 controller\ControllerRegistry.class
 view\RegisterNewMachine$2.class
 connection\ConnectionSqlServer.class
-slack\TesteSlack.class
-slack\OpenRequest.class
 connection\ConnectionMySQL.class
 view\Login.class
 view\RegisterNewMachine$5.class
