@@ -21,6 +21,7 @@ import model.MachineInfoModel;
 import org.codehaus.plexus.util.xml.pull.XmlPullParserException;
 
 public class Login extends javax.swing.JFrame {
+<<<<<<< HEAD
 
     private ControllerLogin controllerLogin;
     private ControllerMachineInfo controllerMachineInfo;
@@ -28,6 +29,12 @@ public class Login extends javax.swing.JFrame {
     private String dataLog;
     Logge logg = new Logge();
 
+=======
+    private ControllerLogin controllerLogin;
+    private ControllerMachineInfo controllerMachineInfo;
+    private MachineInfoModel machineInfoModel;
+    
+>>>>>>> origin
     public Login() {
         this.dataLog = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").format(LocalDateTime.now());
         this.controllerLogin = new ControllerLogin();
@@ -197,13 +204,46 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
+<<<<<<< HEAD
     private void acessar(java.awt.event.ActionEvent evt) {
+=======
+    private void acessar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acessar
+
+        jButton1.setEnabled(false);
+        
+        String login = jTextField1.getText();
+        String password = jTextField2.getText();
+        
+        List<LoginModel> selectLogin = this.controllerLogin.consultUserData(login, password);
+        
+        if (selectLogin.isEmpty()) {
+
+            JOptionPane.showMessageDialog(rootPane, "Usuário não encontrados ou Login e senha inválidos");
+            jButton1.setEnabled(true);
+
+        } else {
+
+            if (controllerMachineInfo.consultMachineInfo(machineInfoModel).isEmpty()){
+                RegisterNewMachine frame2 = new RegisterNewMachine(selectLogin.get(0).getIdUsuarioContratante(), this.controllerMachineInfo, this.machineInfoModel);
+                setVisible(false);
+                frame2.setVisible(true);
+            } else {
+                RegistryDashboard frame3 = new RegistryDashboard(this.controllerMachineInfo, this.machineInfoModel);
+                setVisible(false);
+                frame3.setVisible(true);
+            }
+>>>>>>> origin
 
         try {
             LoginValidation();
         } catch (IOException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
+<<<<<<< HEAD
+=======
+        
+    }//GEN-LAST:event_acessar
+>>>>>>> origin
 
     }
 

@@ -13,7 +13,11 @@ public class ConnectionSqlServer {
         this.dataSource.setDriverClassName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
         this.dataSource.setUrl("jdbc:sqlserver://cycle-project.database.windows.net:1433;database=database_cycle;"
                 + "encrypt=true;"
+<<<<<<< HEAD
                 + "trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=3000;");
+=======
+                + "trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;");
+>>>>>>> origin
         this.dataSource.setUsername("grupo4_2adsb");
         this.dataSource.setPassword("group4_cycle");
     }

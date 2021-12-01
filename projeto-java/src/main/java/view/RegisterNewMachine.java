@@ -17,6 +17,11 @@ public class RegisterNewMachine extends javax.swing.JFrame {
     Logge logg = new Logge();
     
     public RegisterNewMachine(String idContratante, ControllerMachineInfo controllerMachineInfo, MachineInfoModel machineInfoModel) {
+<<<<<<< HEAD:projeto-java/src/main/java/view/RegisterNewMachine.java
+=======
+        initComponents();
+        InsertInInputValues();
+>>>>>>> origin:projeto-java/src/main/java/view/CadastroMaquina.java
         this.idContratante = idContratante;
         this.controllerMachineInfo = controllerMachineInfo;
         this.machineInfoModel = machineInfoModel;
