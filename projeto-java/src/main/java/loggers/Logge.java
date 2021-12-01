@@ -66,7 +66,7 @@ public class Logge {
             ));
             System.out.println(vApp.getVersion());
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(e);;
         }
     }
 

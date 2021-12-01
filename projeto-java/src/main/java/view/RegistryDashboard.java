@@ -36,37 +36,22 @@ public class RegistryDashboard extends javax.swing.JFrame {
         Timer timer = new Timer();
         int delay = 50;
         int interval = 1000;
-<<<<<<< HEAD
+
         timer.scheduleAtFixedRate(new TimerTask() {
             public void run() {
                 try {
                     MachineRegistryModel machineRegistryModel = new MachineRegistryModel();
                     insertResgistryInDatabase(machineRegistryModel);
 
-                } catch (IOException e) {
-                    e.printStackTrace();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+                } catch (Exception e) {
+                    System.out.println(e);;
                 }
                 insertInInputRegistryInfo();
             }
         }, delay, interval);
 
         initComponents();
-=======
-        //timer.scheduleAtFixedRate(new TimerTask() {
-            //public void run() {
-             //   try {
-              //      insertResgistryInDatabase();
-              //  } catch (IOException e) {
-                   // e.printStackTrace();
-               // } catch (InterruptedException e) {
-                 //   e.printStackTrace();
-               // }
-             //   insertInInputRegistryInfo();
-            //}
-       // }, delay, interval);
->>>>>>> 2b04ca8b1f0ea1093e162991ca39bcb743cc029d
+
     }
 
     /**
@@ -802,37 +787,28 @@ public class RegistryDashboard extends javax.swing.JFrame {
         InpModeloDisco1.setText(selectMachineInfo.get(0).getModeloDisco1());
         InpModeloDisco2.setText(selectMachineInfo.get(0).getModeloDisco2());
         InpTipoMaquina.setText(selectMachineInfo.get(0).getTipoMaquina());
+
     }
     
     private void insertInInputRegistryInfo() {
         System.out.println("Inserindo dados nos inputs");
-        
-<<<<<<< HEAD
+
         List<MachineRegistryModel> selectResultRegistry = this.controllerRegistry.consultMachineRegister(this.machineInfoModel);
-=======
-        //List<MachineRegistryModel> selectResultRegistry = this.controllerRegistry.consultMachineRegister(this.machineInfoModel);
->>>>>>> 2b04ca8b1f0ea1093e162991ca39bcb743cc029d
         
         List<MachineInfoModel> selectResultMachineInfo = this.controllerMachineInfo.consultMachineInfo(this.machineInfoModel);
         
-        // Inserindo valores nos inputs
-        //UsoCpu.setText(String.format("%.2f %%", selectResultRegistry.get(0).getCpuEmUso() ));
-        //UsoRam.setText(String.format("%.2f GB",selectResultMachineInfo.get(0).getEspacoTotalRam() - selectResultRegistry.get(0).getEspacoLivreRam() ));
-        //RamDisponivel.setText(String.format("%.2f GB", selectResultRegistry.get(0).getEspacoLivreRam() ));
-        //DiscoUsado1.setText(String.format("%.2f GB", selectResultMachineInfo.get(0).getEspacoTotalDisco1() - selectResultRegistry.get(0).getEspacoLivreDisco1() ));
-        //DiscoUsado2.setText(String.format("%.2f GB", selectResultMachineInfo.get(0).getEspacoTotalDisco2() - selectResultRegistry.get(0).getEspacoLivreDisco2() ));
-        //DiscoDisponivel1.setText(String.format("%.2f GB",selectResultRegistry.get(0).getEspacoLivreDisco1() ));
-        //DiscoDisponivel2.setText(String.format("%.2f GB",selectResultRegistry.get(0).getEspacoLivreDisco2() ));
+
+        UsoCpu.setText(String.format("%.2f %%", selectResultRegistry.get(0).getCpuEmUso() ));
+        UsoRam.setText(String.format("%.2f GB",selectResultMachineInfo.get(0).getEspacoTotalRam() - selectResultRegistry.get(0).getEspacoLivreRam() ));
+        RamDisponivel.setText(String.format("%.2f GB", selectResultRegistry.get(0).getEspacoLivreRam() ));
+        DiscoUsado1.setText(String.format("%.2f GB", selectResultMachineInfo.get(0).getEspacoTotalDisco1() - selectResultRegistry.get(0).getEspacoLivreDisco1() ));
+        DiscoUsado2.setText(String.format("%.2f GB", selectResultMachineInfo.get(0).getEspacoTotalDisco2() - selectResultRegistry.get(0).getEspacoLivreDisco2() ));
+        DiscoDisponivel1.setText(String.format("%.2f GB",selectResultRegistry.get(0).getEspacoLivreDisco1() ));
+        DiscoDisponivel2.setText(String.format("%.2f GB",selectResultRegistry.get(0).getEspacoLivreDisco2() ));
     }
-<<<<<<< HEAD
 
     private void insertResgistryInDatabase(MachineRegistryModel machineRegistryModel) throws IOException, InterruptedException {
         this.controllerRegistry.registerInDatabaseNewRegistry(this.machineInfoModel, machineRegistryModel, this.controllerMachineInfo);
-=======
-    
-    private void insertResgistryInDatabase(MachineRegistryModel machineRegistryModel) throws IOException, InterruptedException {
-      //  this.controllerRegistry.registerInDatabaseNewRegistry(this.machineInfoModel, machineRegistryModel, this.controllerMachineInfo);
->>>>>>> 2b04ca8b1f0ea1093e162991ca39bcb743cc029d
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

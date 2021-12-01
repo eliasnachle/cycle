@@ -527,7 +527,7 @@ public class RegisterNewMachine extends javax.swing.JFrame {
                 frame3.setVisible(true);
                 
                logg.guardarLog("==========================================================================\n"
-                            + "           Tentativa de Cadastro de Máquina: "+dataLog+"\n"
+                            + "           Tentativa de Cadastro de Máquina: "+ dataLog +"\n"
                             + "\n"
                             + "Status da tentativa: Concluida;\n"
                             + "Código: 201.\n"
@@ -537,7 +537,7 @@ public class RegisterNewMachine extends javax.swing.JFrame {
                 RegisterButton.setEnabled(true);
                 
             logg.guardarLog("==========================================================================\n"
-                            + "           Tentativa de Cadastro de Máquina: "+dataLog+"\n"
+                            + "           Tentativa de Cadastro de Máquina: "+ dataLog +"\n"
                             + "\n"
                             + "Status da tentativa: Falha;\n"
                             + "Código do erro: 400.\n"

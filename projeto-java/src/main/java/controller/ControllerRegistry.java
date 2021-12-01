@@ -80,7 +80,7 @@ public class ControllerRegistry {
                 monitoration.enviarMensagem(String.format("A CPU está com auto uso \n" +
                         "Uso atual é de: %.2f", machineRegistryModel.getCpuEmUso()));
             } catch (Exception e) {
-                System.out.println(e);;
+                System.out.println(e);
             }
 
             connection.update("INSERT INTO tblAlertas(componenteInstavel" +

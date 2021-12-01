@@ -1,6 +1,5 @@
 package view;
 
-import com.mysql.cj.log.Log;
 import controller.ControllerLogin;
 import controller.ControllerMachineInfo;
 
