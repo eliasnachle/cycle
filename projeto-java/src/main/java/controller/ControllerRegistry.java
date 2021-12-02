@@ -1,12 +1,13 @@
 package controller;
 
-import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
 import connection.ConnectionSqlServer;
+import loggers.Logge;
 import model.MachineInfoModel;
 import model.MachineRegistryModel;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -16,26 +17,46 @@ import slack.Monitoration;
 public class ControllerRegistry {
 
     private final JdbcTemplate connection;
-    private final Monitoration monitoration = new Monitoration();
+    private final Monitoration monitoration;
+    private Logge logge;
 
     public ControllerRegistry() {
         ConnectionSqlServer databaseConfig = new ConnectionSqlServer();
 
         this.connection = new JdbcTemplate(databaseConfig.getDataSource());
+        this.monitoration = new Monitoration();
+        this.logge = new Logge();
     }
 
-    public void registerInDatabaseNewRegistry(MachineInfoModel machineInfoModel, MachineRegistryModel machineRegistryModel, ControllerMachineInfo controllerMachineInfo) throws IOException, InterruptedException {
+    public void registerInDatabaseNewRegistry(MachineInfoModel machineInfoModel, MachineRegistryModel machineRegistryModel, ControllerMachineInfo controllerMachineInfo) {
 
         List<MachineInfoModel> machineInfoSelect = new ArrayList<>();
 
+        String dataLog = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").format(LocalDateTime.now());
+
         try {
             machineInfoSelect = controllerMachineInfo.consultMachineInfo(machineInfoModel);
+
+            logge.guardarLog(
+                    String.format("-----------------Consultando banco Azure---------------------\n\n" +
+                            "Data e hora da consulta: %s \n" +
+                            "Consultando informações da maquina com o id processador:  %s\n" +
+                            "Consulta efetuada com sucesso \n\n" +
+                            "---------------------###############################-----------------", dataLog, machineInfoModel.getIdProcessador()));
         }catch (Exception e){
-            System.out.println(e);
+            logge.guardarLog(
+                    String.format("-----------------Consultando banco Azure---------------------\n\n" +
+                            "Data e hora da consulta: %s \n" +
+                            "Consultando informações da maquina com o id processador:  %s\n" +
+                            "** Erro na consulta ** \n\n" +
+                            "Exception: %s \n\n" +
+                            "---------------------###############################-----------------", dataLog, machineInfoModel.getIdProcessador(),e));
+
         }
 
         try {
             if (machineInfoSelect.get(0).getModeloDisco2().equals("Sem segundo disco")) {
+
                 connection.update("INSERT INTO tblRegistros(cpuEmUso, espacoLivreDisco1, espacoLivreDisco2, espacoLivreRam, dataHoraRegistro, idMaquina) "
                                 + "VALUES(ROUND(?, 2, 1), ROUND(?, 2, 1), ?, ROUND(?, 2, 1), CURRENT_TIMESTAMP, ?)",
                         machineRegistryModel.getCpuEmUso(),
@@ -43,6 +64,7 @@ public class ControllerRegistry {
                         0.0,
                         machineRegistryModel.getEspacoLivreRam(),
                         machineInfoSelect.get(0).getIdMaquina());
+
             } else {
                 connection.update("INSERT INTO tblRegistros(cpuEmUso, espacoLivreDisco1, espacoLivreDisco2, espacoLivreRam, dataHoraRegistro, idMaquina) "
                                 + "VALUES(ROUND(?, 2, 1), ROUND(?, 2, 1), ?, ROUND(?, 2, 1), CURRENT_TIMESTAMP, ?)",
@@ -51,11 +73,30 @@ public class ControllerRegistry {
                         machineRegistryModel.getEspacoLivreDisco2(),
                         machineRegistryModel.getEspacoLivreRam(),
                         machineInfoSelect.get(0).getIdMaquina());
-            }
-        } catch (Exception e) {
-            System.out.println(e);
-        }
 
+            }
+            logge.guardarLog(
+                    String.format("-----------------Consultando banco Azure---------------------\n\n" +
+                            "Data e hora do insert: %s \n" +
+                            "Inserindo dados da maquina... \n\n\n" +
+                            "Dado inserindo com sucesso \n\n " +
+                            "Apelido da maquina: %s \n\n" +
+                            "Tipo da maquina: %s \n\n" +
+                            "Id Processador: %s\n\n" +
+                            "---------------------###############################-----------------", dataLog, machineInfoModel.getApelidoMaquina(), machineInfoModel.getIdProcessador()));
+
+        } catch (Exception e) {
+            logge.guardarLog(
+                    String.format("-----------------Consultando banco Azure---------------------\n\n" +
+                            "Data e hora do insert: %s \n" +
+                            "Inserindo dados da maquina... \n\n\n" +
+                            "** Erro ao inserir o dado ** \n\n " +
+                            "Apelido da maquina: %s \n\n" +
+                            "Tipo da maquina: %s \n\n" +
+                            "Id Processador: %s\n\n" +
+                            "---------------------###############################-----------------", dataLog, machineInfoModel.getApelidoMaquina(), machineInfoModel.getIdProcessador(), e));
+
+        }
 
         verifyAlert(machineInfoModel, machineRegistryModel, machineInfoSelect.get(0).getIdMaquina());
     }
@@ -73,38 +114,111 @@ public class ControllerRegistry {
         Double ramTotal = machineInfoModel.getEspacoTotalRam();
         Double ramDisponivel = machineRegistryModel.getEspacoLivreRam();
 
+        String dataLog = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").format(LocalDateTime.now());
 
         if(machineRegistryModel.getCpuEmUso() > 92.0) {
 
             try {
-                monitoration.enviarMensagem(String.format("A CPU está com auto uso \n" +
+                monitoration.enviarMensagem(String.format("A CPU está com alto uso \n" +
                         "Uso atual é de: %.2f", machineRegistryModel.getCpuEmUso()));
+
+                logge.guardarLog(
+                        String.format("-----------------Consultando banco Azure---------------------\n\n" +
+                                "Data e hora do insert: %s \n" +
+                                "Enviando alerta para o slack \n\n" +
+                                "A CPU está com alto uso \n" +
+                                "Uso atual é de: %.2f \n" +
+                                "---------------------###############################-----------------", dataLog, machineRegistryModel.getCpuEmUso()));
+
+
             } catch (Exception e) {
-                System.out.println(e);
+                logge.guardarLog(
+                        String.format("-----------------Consultando banco Azure---------------------\n\n" +
+                                "Data e hora do insert: %s \n" +
+                                "Enviando alerta para o sclack \n\n\n" +
+                                "** Erro ao enviar a menssagem ** \n\n " +
+                                "Exception: %s \n" +
+                                "---------------------###############################-----------------", dataLog, e));
             }
 
-            connection.update("INSERT INTO tblAlertas(componenteInstavel" +
-                            ", nivelCriticidade" +
-                            ", descAlerta" +
-                            ", dataHoraAlerta" +
-                            ", idMaquina) VALUES (?,?,?,?,?)",
-                    "CPU", "alta", "CPU está com alto uso", horarioPC, idMaquina);
+            try {
+                connection.update("INSERT INTO tblAlertas(componenteInstavel" +
+                                ", nivelCriticidade" +
+                                ", descAlerta" +
+                                ", dataHoraAlerta" +
+                                ", idMaquina) VALUES (?,?,?,?,?)",
+                        "CPU", "alta", "CPU está com alto uso", horarioPC, idMaquina);
+
+                logge.guardarLog(
+                        String.format("-----------------Consultando banco Azure---------------------\n\n" +
+                                "Data e hora do insert: %s \n" +
+                                "Enviando alerta para o banco de dados \n\n" +
+                                "A CPU está proxima do limite \n" +
+                                "Uso atual é de: %.2f \n" +
+                                "---------------------###############################-----------------", dataLog, machineRegistryModel.getCpuEmUso()));
+
+
+            } catch (Exception e){
+                logge.guardarLog(
+                        String.format("-----------------Consultando banco Azure---------------------\n\n" +
+                                "Data e hora do insert: %s \n" +
+                                "Inserindo dados da maquina... \n\n\n" +
+                                "** Erro ao inserir o dado ** \n\n " +
+                                "Apelido da maquina: %s \n\n" +
+                                "Tipo da maquina: %s \n\n" +
+                                "Id Processador: %s\n\n" +
+                                "---------------------###############################-----------------", dataLog, machineInfoModel.getApelidoMaquina(), machineInfoModel.getIdProcessador(), e));
+            }
+
 
         } else if (machineRegistryModel.getCpuEmUso() > 98.0) {
 
             try {
                 this.monitoration.enviarMensagem(String.format("A CPU está proxima do limite \n" +
                         "Uso atual é de: %.2f", machineRegistryModel.getCpuEmUso()));
+                logge.guardarLog(
+                        String.format("-----------------Consultando banco Azure---------------------\n\n" +
+                                "Data e hora do insert: %s \n" +
+                                "Enviando alerta para o slack \n\n" +
+                                "A CPU está proxima do limite \n" +
+                                "Uso atual é de: %.2f \n" +
+                                "---------------------###############################-----------------", dataLog, machineRegistryModel.getCpuEmUso()));
+
             } catch (Exception e) {
-                System.out.println(e);
+                logge.guardarLog(
+                        String.format("-----------------Consultando banco Azure---------------------\n\n" +
+                                "Data e hora do insert: %s \n" +
+                                "Enviando alerta para o sclack \n\n\n" +
+                                "** Erro ao enviar a menssagem ** \n\n " +
+                                "Exception: %s \n" +
+                                "---------------------###############################-----------------", dataLog, e));
             }
 
-            connection.update("INSERT INTO tblAlertas(componenteInstavel" +
-                            ", nivelCriticidade" +
-                            ", descAlerta" +
-                            ", dataHoraAlerta" +
-                            ", idMaquina) VALUES (?,?,?,?,?)",
-                    "CPU", "extrema", "CPU está no limite ou muito proxima", horarioPC, idMaquina);
+            try {
+                connection.update("INSERT INTO tblAlertas(componenteInstavel" +
+                                ", nivelCriticidade" +
+                                ", descAlerta" +
+                                ", dataHoraAlerta" +
+                                ", idMaquina) VALUES (?,?,?,?,?)",
+                        "CPU", "extrema", "CPU está no limite ou muito proxima", horarioPC, idMaquina);
+                logge.guardarLog(
+                        String.format("-----------------Consultando banco Azure---------------------\n\n" +
+                                "Data e hora do insert: %s \n" +
+                                "Enviando alerta para o banco de dados \n\n" +
+                                "A CPU está proxima do limite \n" +
+                                "Uso atual é de: %.2f \n" +
+                                "---------------------###############################-----------------", dataLog, machineRegistryModel.getCpuEmUso()));
+
+
+            } catch (Exception e){
+                logge.guardarLog(
+                        String.format("-----------------Consultando banco Azure---------------------\n\n" +
+                                "Data e hora do insert: %s \n" +
+                                "Erro ao inserir o registro \n\n\n" +
+                                "Exception: %s \n" +
+                                "---------------------###############################-----------------", dataLog, e));
+            }
+
 
         }
 
@@ -112,113 +226,351 @@ public class ControllerRegistry {
 
             try {
                 monitoration.enviarMensagem(String.format("A RAM está sobrecarregando \n" +
-                        "Uso atual é de: %.2f", machineRegistryModel.getEspacoLivreRam()));
+                        "Uso atual é de: %.2f", ramTotal - ramDisponivel));
+
+                logge.guardarLog(
+                        String.format("-----------------Consultando banco Azure---------------------\n\n" +
+                                "Data e hora do insert: %s \n" +
+                                "Enviando alerta para o slack \n\n" +
+                                "A RAM está sobrecarregando \n" +
+                                "Uso atual é de: %.2f \n" +
+                                "---------------------###############################-----------------", dataLog, ramTotal - ramDisponivel));
+
+
             } catch (Exception e) {
-                System.out.println(e);;
+                logge.guardarLog(
+                        String.format("-----------------Consultando banco Azure---------------------\n\n" +
+                                "Data e hora do insert: %s \n" +
+                                "Enviando alerta para o sclack \n\n\n" +
+                                "** Erro ao enviar a menssagem ** \n\n " +
+                                "Exception: %s \n" +
+                                "---------------------###############################-----------------", dataLog, e));
             }
 
-            connection.update("INSERT INTO tblAlertas(componenteInstavel" +
-                            ", nivelCriticidade" +
-                            ", descAlerta" +
-                            ", dataHoraAlerta" +
-                            ", idMaquina) VALUES (?,?,?,?,?)",
-                    "RAM", "alta", "RAM está com alto uso", horarioPC, idMaquina);
+            try {
+                connection.update("INSERT INTO tblAlertas(componenteInstavel" +
+                                ", nivelCriticidade" +
+                                ", descAlerta" +
+                                ", dataHoraAlerta" +
+                                ", idMaquina) VALUES (?,?,?,?,?)",
+                        "RAM", "alta", "RAM está com alto uso", horarioPC, idMaquina);
+                logge.guardarLog(
+                        String.format("-----------------Consultando banco Azure---------------------\n\n" +
+                                "Data e hora do insert: %s \n" +
+                                "Enviando alerta para o banco de dados \n\n" +
+                                "A RAM está sobrecarregando \n" +
+                                "Uso atual é de: %.2f \n" +
+                                "---------------------###############################-----------------", dataLog, ramTotal - ramDisponivel));
+            } catch (Exception e){
+                logge.guardarLog(
+                        String.format("-----------------Consultando banco Azure---------------------\n\n" +
+                                "Data e hora do insert: %s \n" +
+                                "Erro ao inserir o registro \n\n\n" +
+                                "Exception: %s \n" +
+                                "---------------------###############################-----------------", dataLog, e));
+            }
+
 
         } else if (ramTotal % 100 * ramDisponivel > 98.0) {
 
             try {
                 monitoration.enviarMensagem(String.format("A RAM está sobrecarregando \n" +
                         "Uso atual é de: %.2f", ramTotal - ramDisponivel));
+
+                logge.guardarLog(
+                        String.format("-----------------Consultando banco Azure---------------------\n\n" +
+                                "Data e hora do insert: %s \n" +
+                                "Enviando alerta para o slack \n\n" +
+                                "A RAM está sobrecarregando \n" +
+                                "Uso atual é de: %.2f \n" +
+                                "---------------------###############################-----------------", dataLog, ramTotal - ramDisponivel));
+
+
             } catch (Exception e) {
-                System.out.println(e);;
+                logge.guardarLog(
+                        String.format("-----------------Consultando banco Azure---------------------\n\n" +
+                                "Data e hora do insert: %s \n" +
+                                "Enviando alerta para o sclack \n\n\n" +
+                                "** Erro ao enviar a menssagem ** \n\n " +
+                                "Exception: %s \n" +
+                                "---------------------###############################-----------------", dataLog, e));
             }
 
-            connection.update("INSERT INTO tblAlertas(componenteInstavel" +
-                            ", nivelCriticidade" +
-                            ", descAlerta" +
-                            ", dataHoraAlerta" +
-                            ", idMaquina) VALUES (?,?,?,?,?)",
-                    "RAM", "extrema", "RAM está no limite ou muito proxima", horarioPC, idMaquina);
+            try {
+                connection.update("INSERT INTO tblAlertas(componenteInstavel" +
+                                ", nivelCriticidade" +
+                                ", descAlerta" +
+                                ", dataHoraAlerta" +
+                                ", idMaquina) VALUES (?,?,?,?,?)",
+                        "RAM", "extrema", "RAM está no limite ou muito proxima", horarioPC, idMaquina);
+                logge.guardarLog(
+                        String.format("-----------------Consultando banco Azure---------------------\n\n" +
+                                "Data e hora do insert: %s \n" +
+                                "Enviando alerta para o banco de dados \n\n" +
+                                "A RAM está sobrecarregando \n" +
+                                "Uso atual é de: %.2f \n" +
+                                "---------------------###############################-----------------", dataLog, ramTotal - ramDisponivel));
+
+            } catch (Exception e){
+                logge.guardarLog(
+                        String.format("-----------------Consultando banco Azure---------------------\n\n" +
+                                "Data e hora do insert: %s \n" +
+                                "Erro ao inserir o registro \n\n\n" +
+                                "Exception: %s \n" +
+                                "---------------------###############################-----------------", dataLog, e));
+            }
+
 
         }
 
         if(disco1Total % 100 * disco1Disponivel < 90.0 ) {
 
             try {
-                monitoration.enviarMensagem(String.format("A Disco está sobrecarregando \n" +
+                monitoration.enviarMensagem(String.format("O Disco 1 está sobrecarregando \n" +
                         "Uso atual é de: %.2f", disco1Total - disco1Disponivel ));
+
+                logge.guardarLog(
+                        String.format("-----------------Consultando banco Azure---------------------\n\n" +
+                                "Data e hora do insert: %s \n" +
+                                "Enviando alerta para o slack \n\n" +
+                                "O Disco 1 está sobrecarregando \n" +
+                                "Uso atual é de: %.2f \n" +
+                                "---------------------###############################-----------------", dataLog, disco1Total - disco1Disponivel));
+
             } catch (Exception e) {
-                System.out.println(e);;
+                logge.guardarLog(
+                        String.format("-----------------Consultando banco Azure---------------------\n\n" +
+                                "Data e hora do insert: %s \n" +
+                                "Enviando alerta para o sclack \n\n\n" +
+                                "** Erro ao enviar a menssagem ** \n\n " +
+                                "Exception: %s \n" +
+                                "---------------------###############################-----------------", dataLog, e));
             }
 
-            connection.update("INSERT INTO tblAlertas(componenteInstavel" +
-                            ", nivelCriticidade" +
-                            ", descAlerta" +
-                            ", dataHoraAlerta" +
-                            ", idMaquina) VALUES (?,?,?,?,?)",
-                    "Disco 1: " + machineInfoModel.getModeloDisco1(), "alta", "Disco acima do limite", horarioPC, idMaquina);
+            try {
+                connection.update("INSERT INTO tblAlertas(componenteInstavel" +
+                                ", nivelCriticidade" +
+                                ", descAlerta" +
+                                ", dataHoraAlerta" +
+                                ", idMaquina) VALUES (?,?,?,?,?)",
+                        "Disco 1: " + machineInfoModel.getModeloDisco1(), "alta", "Disco acima do limite", horarioPC, idMaquina);
+                logge.guardarLog(
+                        String.format("-----------------Consultando banco Azure---------------------\n\n" +
+                                "Data e hora do insert: %s \n" +
+                                "Enviando alerta para o banco dados \n\n" +
+                                "O Disco 1 está sobrecarregando \n" +
+                                "Uso atual é de: %.2f \n" +
+                                "---------------------###############################-----------------", dataLog, disco1Total - disco1Disponivel));
+
+            } catch (Exception e) {
+                logge.guardarLog(
+                        String.format("-----------------Consultando banco Azure---------------------\n\n" +
+                                "Data e hora do insert: %s \n" +
+                                "Erro ao inserir o registro \n\n\n" +
+                                "Exception: %s \n" +
+                                "---------------------###############################-----------------", dataLog, e));
+            }
 
         } else if(disco1Total % 100 * disco1Disponivel < 98.0 ) {
 
             try {
-                monitoration.enviarMensagem(String.format("A Disco está sobrecarregando \n" +
+                monitoration.enviarMensagem(String.format("O Disco 1 está sobrecarregando \n" +
                         "Uso atual é de: %.2f", disco1Total - disco1Disponivel ));
+
+                logge.guardarLog(
+                        String.format("-----------------Consultando banco Azure---------------------\n\n" +
+                                "Data e hora do insert: %s \n" +
+                                "Enviando alerta para o slack \n\n" +
+                                "O Disco 1 está sobrecarregando \n" +
+                                "Uso atual é de: %.2f \n" +
+                                "---------------------###############################-----------------", dataLog, disco1Total - disco1Disponivel));
+
             } catch (Exception e) {
-                System.out.println(e);;
+                logge.guardarLog(
+                        String.format("-----------------Consultando banco Azure---------------------\n\n" +
+                                "Data e hora do insert: %s \n" +
+                                "Enviando alerta para o sclack \n\n\n" +
+                                "** Erro ao enviar a menssagem ** \n\n " +
+                                "Exception: %s \n" +
+                                "---------------------###############################-----------------", dataLog, e));
             }
 
-            connection.update("INSERT INTO tblAlertas(componenteInstavel" +
-                            ", nivelCriticidade" +
-                            ", descAlerta" +
-                            ", dataHoraAlerta" +
-                            ", idMaquina) VALUES (?,?,?,?,?)",
-                    "Disco 1: " + machineInfoModel.getModeloDisco1(), "extrema", "Disco acima do limite", horarioPC, idMaquina);
+            try {
+                connection.update("INSERT INTO tblAlertas(componenteInstavel" +
+                                ", nivelCriticidade" +
+                                ", descAlerta" +
+                                ", dataHoraAlerta" +
+                                ", idMaquina) VALUES (?,?,?,?,?)",
+                        "Disco 1: " + machineInfoModel.getModeloDisco1(), "extrema", "Disco acima do limite", horarioPC, idMaquina);
+                logge.guardarLog(
+                        String.format("-----------------Consultando banco Azure---------------------\n\n" +
+                                "Data e hora do insert: %s \n" +
+                                "Enviando alerta para o banco dados \n\n" +
+                                "O Disco 1 está sobrecarregando \n" +
+                                "Uso atual é de: %.2f \n" +
+                                "---------------------###############################-----------------", dataLog, disco1Total - disco1Disponivel));
+
+            } catch (Exception e) {
+                logge.guardarLog(
+                        String.format("-----------------Consultando banco Azure---------------------\n\n" +
+                                "Data e hora do insert: %s \n" +
+                                "Erro ao inserir o registro \n\n\n" +
+                                "Exception: %s \n" +
+                                "---------------------###############################-----------------", dataLog, e));
+            }
+
         }
 
         if(disco2Total % 100 * disco2Disponivel < 90.0 ) {
 
             try {
-                monitoration.enviarMensagem(String.format("A Disco está sobrecarregando \n" +
+                monitoration.enviarMensagem(String.format("O Disco 2 está sobrecarregando \n" +
                         "Uso atual é de: %.2f", disco2Total - disco2Disponivel ));
+
+                logge.guardarLog(
+                        String.format("-----------------Consultando banco Azure---------------------\n\n" +
+                                "Data e hora do insert: %s \n" +
+                                "Enviando alerta para o slack \n\n" +
+                                "O Disco 2 está sobrecarregando \n" +
+                                "Uso atual é de: %.2f \n" +
+                                "---------------------###############################-----------------", dataLog, disco2Total - disco2Disponivel));
+
             } catch (Exception e) {
-                System.out.println(e);
+                logge.guardarLog(
+                        String.format("-----------------Consultando banco Azure---------------------\n\n" +
+                                "Data e hora do insert: %s \n" +
+                                "Enviando alerta para o sclack \n\n\n" +
+                                "** Erro ao enviar a menssagem ** \n\n " +
+                                "Exception: %s \n" +
+                                "---------------------###############################-----------------", dataLog, e));
             }
 
-            connection.update("INSERT INTO tblAlertas(componenteInstavel" +
-                            ", nivelCriticidade" +
-                            ", descAlerta" +
-                            ", dataHoraAlerta" +
-                            ", idMaquina) VALUES (?,?,?,?,?)",
-                    "Disco 2: " + machineInfoModel.getModeloDisco2(), "alta", "Disco acima do limite", horarioPC, idMaquina);
+            try {
+                connection.update("INSERT INTO tblAlertas(componenteInstavel" +
+                                ", nivelCriticidade" +
+                                ", descAlerta" +
+                                ", dataHoraAlerta" +
+                                ", idMaquina) VALUES (?,?,?,?,?)",
+                        "Disco 2: " + machineInfoModel.getModeloDisco2(), "alta", "Disco acima do limite", horarioPC, idMaquina);
+                logge.guardarLog(
+                String.format("-----------------Consultando banco Azure---------------------\n\n" +
+                        "Data e hora do insert: %s \n" +
+                        "Enviando alerta para o banco de dados \n\n" +
+                        "O Disco 2 está sobrecarregando \n" +
+                        "Uso atual é de: %.2f \n" +
+                        "---------------------###############################-----------------", dataLog, disco2Total - disco2Disponivel));
+
+            } catch (Exception e){
+                logge.guardarLog(
+                        String.format("-----------------Consultando banco Azure---------------------\n\n" +
+                                "Data e hora do insert: %s \n" +
+                                "Erro ao inserir o registro \n\n\n" +
+                                "Exception: %s \n" +
+                                "---------------------###############################-----------------", dataLog, e));
+            }
 
         } else if(disco2Total % 100 * disco2Disponivel < 98.0 ) {
 
             try {
-                monitoration.enviarMensagem(String.format("A Disco está sobrecarregando \n" +
+                monitoration.enviarMensagem(String.format("O Disco 2 está sobrecarregando \n" +
                         "Uso atual é de: %.2f", disco2Total - disco2Disponivel ));
+
+                logge.guardarLog(
+                        String.format("-----------------Consultando banco Azure---------------------\n\n" +
+                                "Data e hora do insert: %s \n" +
+                                "Enviando alerta para o slack \n\n" +
+                                "O Disco 2 está sobrecarregando \n" +
+                                "Uso atual é de: %.2f \n" +
+                                "---------------------###############################-----------------", dataLog, disco2Total - disco2Disponivel));
+
             } catch (Exception e) {
-                System.out.println(e);;
+                logge.guardarLog(
+                        String.format("-----------------Consultando banco Azure---------------------\n\n" +
+                                "Data e hora do insert: %s \n" +
+                                "Enviando alerta para o sclack \n\n\n" +
+                                "** Erro ao enviar a menssagem ** \n\n " +
+                                "Exception: %s \n" +
+                                "---------------------###############################-----------------", dataLog, e));
             }
 
-            connection.update("INSERT INTO tblAlertas(componenteInstavel" +
-                            ", nivelCriticidade" +
-                            ", descAlerta" +
-                            ", dataHoraAlerta" +
-                            ", idMaquina) VALUES (?,?,?,?,?)",
-                    "Disco 2: " + machineInfoModel.getModeloDisco2(), "extrema", "Disco acima do limite", horarioPC, idMaquina);
+            try {
+                connection.update("INSERT INTO tblAlertas(componenteInstavel" +
+                                ", nivelCriticidade" +
+                                ", descAlerta" +
+                                ", dataHoraAlerta" +
+                                ", idMaquina) VALUES (?,?,?,?,?)",
+                        "Disco 2: " + machineInfoModel.getModeloDisco2(), "extrema", "Disco acima do limite", horarioPC, idMaquina);
+                logge.guardarLog(
+                String.format("-----------------Consultando banco Azure---------------------\n\n" +
+                        "Data e hora do insert: %s \n" +
+                        "Enviando alerta para o banco de dados \n\n" +
+                        "O Disco 2 está sobrecarregando \n" +
+                        "Uso atual é de: %.2f \n" +
+                        "---------------------###############################-----------------", dataLog, disco2Total - disco2Disponivel));
+
+            }catch (Exception e){
+                logge.guardarLog(
+                        String.format("-----------------Consultando banco Azure---------------------\n\n" +
+                                "Data e hora do insert: %s \n" +
+                                "Erro ao inserir o registro \n\n\n" +
+                                "Exception: %s \n" +
+                                "---------------------###############################-----------------", dataLog, e));
+
+            }
+
         }
 
     }
 
-    public List<MachineRegistryModel> consultMachineRegister(MachineInfoModel machineInfoModel) {
+    public List<MachineRegistryModel> consultMachineRegister(MachineInfoModel machineInfoModel, ControllerMachineInfo controllerMachineInfo) {
 
-        List<MachineInfoModel> machineInfoSelect = connection.query("SELECT * FROM "
-                        + "tblMaquinas WHERE idProcessador = ?", new BeanPropertyRowMapper(MachineInfoModel.class),
-                machineInfoModel.getIdProcessador());
+        List<MachineInfoModel> machineInfoSelect = new ArrayList<>();
+        List<MachineRegistryModel> registrySelect =  new ArrayList<>();
 
-        List<MachineRegistryModel> registrySelect = connection.query("SELECT TOP 1 * FROM tblRegistros WHERE idMaquina = ? ORDER BY idRegistro DESC;",
-                new BeanPropertyRowMapper(MachineRegistryModel.class),
-                machineInfoSelect.get(0).getIdMaquina());
+        String dataLog = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").format(LocalDateTime.now());
+
+        try {
+            machineInfoSelect = controllerMachineInfo.consultMachineInfo(machineInfoModel);
+
+            logge.guardarLog(
+                    String.format("-----------------Consultando banco Azure---------------------\n\n" +
+                            "Data e hora da consulta: %s \n" +
+                            "Consultando informações da maquina com o id processador:  %s\n" +
+                            "Consulta efetuada com sucesso \n\n" +
+                            "---------------------###############################-----------------", dataLog, machineInfoModel.getIdProcessador()));
+        }catch (Exception e){
+            logge.guardarLog(
+                    String.format("-----------------Consultando banco Azure---------------------\n\n" +
+                            "Data e hora da consulta: %s \n" +
+                            "Consultando informações da maquina com o id processador:  %s\n" +
+                            "** Erro na consulta ** \n\n" +
+                            "Exception: %s \n\n" +
+                            "---------------------###############################-----------------", dataLog, machineInfoModel.getIdProcessador(),e));
+
+        }
+
+        try {
+            registrySelect = connection.query("SELECT TOP 1 * FROM tblRegistros WHERE idMaquina = ? ORDER BY idRegistro DESC;",
+                    new BeanPropertyRowMapper(MachineRegistryModel.class),
+                    machineInfoSelect.get(0).getIdMaquina());
+
+            logge.guardarLog(
+            String.format("-----------------Consultando banco Azure---------------------\n\n" +
+                    "Data e hora da consulta: %s \n" +
+                    "Consultando registro da maquina %s\n" +
+                    "Consulta efetuada com sucesso \n\n" +
+                    "---------------------###############################-----------------", dataLog, machineInfoSelect.get(0).getApelidoMaquina()));
+
+        } catch (Exception e){
+            logge.guardarLog(
+                    String.format("-----------------Consultando banco Azure---------------------\n\n" +
+                            "Data e hora da consulta: %s \n" +
+                            "Consultando registro da maquina %s\n" +
+                            "** Erro na consulta ** \n\n" +
+                            "Exception: %s \n\n" +
+                            "---------------------###############################-----------------", dataLog, machineInfoSelect.get(0).getApelidoMaquina(),e));
+
+        }
 
         return registrySelect;
     }
