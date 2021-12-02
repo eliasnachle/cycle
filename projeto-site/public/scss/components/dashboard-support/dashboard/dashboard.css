@@ -67,6 +67,16 @@ Resources
   color: #fff;
 }
 
+.ovarley-apply-changes {
+  background: #000;
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 100;
+}
+
 /*---------------
 Search Restaurant
 ----------------*/
@@ -741,7 +751,7 @@ main .dashboard__container--row .alert-card span svg {
 
 .notifications__content--not-found h1 {
   font-size: clamp(3em, 3.75vw, 4em);
-  color: #000;
+  color: #161616;
 }
 
 .notifications__content--not-found span {

@@ -34,6 +34,24 @@ function getDiaryUse(idMachine) {
     });
 }
 
+function getDetailMachine(idMachine) {
+    var idMachine = sessionStorage.idMachine;
+    fetch(`/dashboardSupport/detailMachine${idMachine}`)
+    .then((resposta) => {
+        if (resposta.ok) {
+            resposta.json().then(function (resposta) {
+                console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                postDetailMachine(resposta);
+            });
+        } else {
+            console.error('Nenhum dado encontrado ou erro na API');
+        }
+    })
+    .catch(function (error) {
+        console.error(`Erro na obtenção das publicações: ${error.message}`);
+    });
+}
+
 function postDetailMachine(detailMachines){
     cpuFrequency = detailMachines[0].cpuFrequencia;
     sizePrimaryDisk = detailMachines[0].espacoTotalDisco1;
@@ -59,23 +77,6 @@ function postDetailMachine(detailMachines){
       <span>Sistema Operacional: <b>${detailMachines[0].sistemaOperacionalMaquina}</b></span>
     </div>
     `;
-}
-
-function getDetailMachine(idMachine) {
-    var idMachine = sessionStorage.idMachine;
-    fetch(`/dashboardSupport/detailMachine${idMachine}`)
-    .then((resposta) => {
-        if (resposta.ok) {
-            resposta.json().then(function (resposta) {
-                postDetailMachine(resposta);
-            });
-        } else {
-            console.error('Nenhum dado encontrado ou erro na API');
-        }
-    })
-    .catch(function (error) {
-        console.error(`Erro na obtenção das publicações: ${error.message}`);
-    });
 }
 
 function postRealTimeUse(idMachine){

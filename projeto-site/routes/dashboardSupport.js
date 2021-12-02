@@ -62,6 +62,54 @@ router.get('/realTimeUse:idMaquina', function(req, res, next) {
 	});
 });
 
+router.get('/realChartTimeUse:idMaquina:component', function(req, res, next) {
+	const idMaquina = req.params.idMaquina,
+	component = req.params.component;
+	console.log('Buscando consumo de CPU em tempo real');
+    let instrucaoSql;
+	if(env == 'dev'){
+		switch(component){
+			case 'cpu':
+				instrucaoSql = `SELECT cpuEmUso AS componenteEmUso
+				FROM tblRegistros
+				WHERE idMaquina = ${idMaquina}
+				ORDER BY dataHoraRegistro DESC
+				LIMIT 5;`;
+				break;
+			case 'memory':
+				instrucaoSql = `SELECT (espacoTotalRam - espacoLivreRam) AS componenteEmUso
+				FROM tblRegistros
+				INNER JOIN tblMaquinas
+					ON tblRegistros.idMaquina = tblMaquinas.idMaquina
+				WHERE tblRegistros.idMaquina = ${idMaquina}
+				ORDER BY dataHoraRegistro DESC
+				LIMIT 5;`;
+				break;
+			case 'disk':
+				instrucaoSql = `SELECT (espacoTotalDisco1 - espacoLivreDisco1) AS componenteEmUso  
+				FROM tblRegistros
+				INNER JOIN tblMaquinas
+					ON tblRegistros.idMaquina = tblMaquinas.idMaquina
+				WHERE tblRegistros.idMaquina = ${idMaquina}
+				ORDER BY dataHoraRegistro DESC
+				LIMIT 5;`;
+				break;					
+		}
+	} else {
+		instrucaoSql = ``;
+	}
+	sequelize.query(instrucaoSql, {
+		model: Register,
+		mapToModel: true 
+	})
+	.then(resultado => {
+		console.log(`Encontrados: ${resultado.length}`);
+		res.json(resultado);
+	}).catch(erro => {
+		console.error(erro);
+	});
+});
+
 router.put('/updateUsernameSupport:idSupportUser:valueIpt', function(req, res, next) {
 	console.log('Alterando username do usuario');
 	const idSupportUser = req.params.idSupportUser,
@@ -77,6 +125,7 @@ router.put('/updateUsernameSupport:idSupportUser:valueIpt', function(req, res, n
 		console.error(erro);
 	});
 });	
+
 
 router.put('/updatePasswordSupport:idSupportUser:valueIpt', function(req, res, next) {
 	console.log('Alterando senha do usuario');
