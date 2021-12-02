@@ -62,6 +62,7 @@ function authenticateLogin() {
                     localStorage.hasSupportSession = true;
                     localStorage.idSupportUser = json.idUsuarioSuporte;
                     localStorage.nameUserSupport = json.nomeSuporte;
+                    sessionStorage.idSupportUser = json.idUsuarioSuporte;
                     window.location.href = "dashboard-support/dashboard.html";
                 });
             } else {
