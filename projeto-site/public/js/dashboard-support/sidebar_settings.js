@@ -12,8 +12,8 @@ function getUserDetails() {
         if (resposta.ok) {
             resposta.json().then(function (resposta) {
                 console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);                
-                const validateMobile = window.innerWidth <= 768 ? mainSettings.classList.add('main-settings-mobile-actived-aside') : '';    
                 function colorLink(){
+                    var validateMobile = window.innerWidth <= 768 ? mainSettings.classList.add('main-settings-mobile-actived-aside') : '';    
                     linkColor.forEach(i => i.classList.remove('sidebar-settings__content--actived'));    
                     this.classList.add('sidebar-settings__content--actived');
                     switch(this.id) {
@@ -36,7 +36,6 @@ function getUserDetails() {
                     }
                 }
                 typeModal = 'username';
-                validateMobile;
                 profileSection(resposta);
                 linkColor.forEach(i => i.addEventListener('click', colorLink));                   
             });

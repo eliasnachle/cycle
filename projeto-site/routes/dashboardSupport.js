@@ -62,6 +62,31 @@ router.get('/realTimeUse:idMaquina', function(req, res, next) {
 	});
 });
 
+router.get('/realChartTimeUse:idMaquina', function(req, res, next) {
+	console.log('Buscando consumo de CPU em tempo real');
+	const idMaquina = req.params.idMaquina;
+    let instrucaoSql;
+	if(env == 'dev'){
+		instrucaoSql = `SELECT cpuEmUso
+		FROM tblRegistros
+		WHERE idMaquina = ${idMaquina}
+		ORDER BY dataHoraRegistro DESC
+		LIMIT 5;`;
+	} else {
+		instrucaoSql = ``;
+	}
+	sequelize.query(instrucaoSql, {
+		model: Register,
+		mapToModel: true 
+	})
+	.then(resultado => {
+		console.log(`Encontrados: ${resultado.length}`);
+		res.json(resultado);
+	}).catch(erro => {
+		console.error(erro);
+	});
+});
+
 router.put('/updateUsernameSupport:idSupportUser:valueIpt', function(req, res, next) {
 	console.log('Alterando username do usuario');
 	const idSupportUser = req.params.idSupportUser,
@@ -77,6 +102,7 @@ router.put('/updateUsernameSupport:idSupportUser:valueIpt', function(req, res, n
 		console.error(erro);
 	});
 });	
+
 
 router.put('/updatePasswordSupport:idSupportUser:valueIpt', function(req, res, next) {
 	console.log('Alterando senha do usuario');
