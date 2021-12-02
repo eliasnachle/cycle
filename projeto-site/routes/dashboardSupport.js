@@ -62,16 +62,42 @@ router.get('/realTimeUse:idMaquina', function(req, res, next) {
 	});
 });
 
-router.get('/realChartTimeUse:idMaquina', function(req, res, next) {
+router.get('/realChartTimeUse:idMaquina:component', function(req, res, next) {
+	console.log('idMaquina ', idMaquina);
+	console.log('component ', component);
+
 	console.log('Buscando consumo de CPU em tempo real');
 	const idMaquina = req.params.idMaquina;
+	const component = req.params.component;
     let instrucaoSql;
 	if(env == 'dev'){
-		instrucaoSql = `SELECT cpuEmUso
-		FROM tblRegistros
-		WHERE idMaquina = ${idMaquina}
-		ORDER BY dataHoraRegistro DESC
-		LIMIT 5;`;
+		switch(component){
+			case 'cpu':
+				instrucaoSql = `SELECT cpuEmUso
+				FROM tblRegistros
+				WHERE idMaquina = ${idMaquina}
+				ORDER BY dataHoraRegistro DESC
+				LIMIT 5;`;
+				break;
+			case 'memory':
+				instrucaoSql = `SELECT (espacoTotalRam - espacoLivreRam)    
+				FROM tblRegistros
+				INNER JOIN tblMaquinas
+					ON tblRegistros.idMaquina = tblMaquinas.idMaquina
+				WHERE tblRegistros.idMaquina = 1
+				ORDER BY dataHoraRegistro DESC
+				LIMIT 5;`;
+				break;
+			case 'disk':
+				instrucaoSql = `SELECT (espacoTotalDisco1 - espacoLivreDisco1)    
+				FROM tblRegistros
+				INNER JOIN tblMaquinas
+					ON tblRegistros.idMaquina = tblMaquinas.idMaquina
+				WHERE tblRegistros.idMaquina = ${idMaquina}
+				ORDER BY dataHoraRegistro DESC
+				LIMIT 5;`;
+				break;					
+		}
 	} else {
 		instrucaoSql = ``;
 	}

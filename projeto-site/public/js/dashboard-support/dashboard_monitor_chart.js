@@ -1,6 +1,28 @@
-function getRealChartTimeUse(idMachine) {
+function getSelectComponent(){
+    const selectComponent =  document.getElementById('select-component').value;
+    switch(selectComponent){
+        case 'cpu':
+            getRealChartTimeUse(selectComponent);
+            console.log(selectComponent);
+            break;
+        case 'memory':
+            getRealChartTimeUse(selectComponent);
+            console.log(selectComponent);
+            break;
+        case 'disk':
+            getRealChartTimeUse(selectComponent);
+            console.log(selectComponent);
+            break;
+        default:
+            getRealChartTimeUse(selectComponent);
+            console.log(selectComponent);
+    }
+}
+
+function getRealChartTimeUse(component) {
+    console.log('getRealChartTimeUse: ', component);
     var idMachine = sessionStorage.idMachine;
-    fetch(`/dashboardSupport/realChartTimeUse${idMachine}`)
+    fetch(`/dashboardSupport/realChartTimeUse${idMachine}${component}`)
     .then((resposta) => {
         if (resposta.ok) {
             resposta.json().then(function (resposta) {
@@ -68,5 +90,9 @@ this.lastIndexTemp = 0;
 this.time = 0;
 }
 
-window.addEventListener('load', getRealChartTimeUse);
-setInterval(getRealChartTimeUse, 5000);
+// function callMethodsChart(){
+//     getSelectComponent();
+// }
+
+window.addEventListener('load', getSelectComponent);
+// setInterval(getRealChartTimeUse, 5000);  

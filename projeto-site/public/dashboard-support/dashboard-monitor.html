@@ -126,10 +126,10 @@
         </div>
         <!-- Gráfico -->
         <div class="dashboard__container--charts">
-          <select>
-            <option value="valor1">CPU</option>
-            <option value="valor1">Memoria</option>
-            <option value="valor1">Disco</option>
+          <select id="select-component" onchange="getSelectComponent()">
+            <option value="cpu">CPU</option>
+            <option value="memory">Memoria</option>
+            <option value="disk">Disco</option>
           </select>
           <canvas id="chart" height="80"></canvas>   
         </div>
