@@ -11,10 +11,11 @@
     <link rel="stylesheet" href="../scss/fonts/fonts.css">
     <link rel="icon" type="image/png" sizes="32x32" href="../favicon/cycle/favicon-32x32.png">
     <script src="https://kit.fontawesome.com/5621e23e17.js" crossorigin="anonymous"></script>
+    <script src="../js/dashboard-admin/config-adm.js"></script>
     <script src="../js/index.js"></script>
 </head>
 
-<body onload="verificateAuth()">
+<body onload="listDataAdmin()">
 
     <div class="navbar-vertical">
         <div class="navbar-logo">
@@ -56,8 +57,8 @@
             <h2>Bem vindo(a) <span id="name_header">Lucas Inutilismo</span></h2>
         </div>
         <h1>Configurações</h1>
-        <div class="data_box">
-            <div class="data_config">
+        <div id="data_card" class="data_box">
+            <!-- <div class="data_config">
                 <div class="data_line">
                     <h3>Nome</h3>
                     <span>
@@ -88,11 +89,13 @@
                         <i class="icon-settings"></i>
                     </span>
                 </div>
-            </div>
+            </div> -->
         </div>
-        <div>
+    </div>
 
-        </div>
+    <!-- Modal Change Data -->
+    <div id="modal_data" class="background">
+        
     </div>
     <!-- Mobile -->
     <div class="mobile">
