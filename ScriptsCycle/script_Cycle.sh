@@ -132,6 +132,12 @@ inciandoDockers() {
 
 	echo ""
 
+	echo "$( tput setaf 10 )[API Installer]:$( tput setaf 7 ) criando container mysql"
+	
+	docker build -t cycle/mysql .
+
+	echo ""
+
 	sudo docker run --network=link-containers --name mysql-cycle -e MYSQL_ROOT_PASSWORD=Bandtec@123 -d mysql --default-authentication-plugin=mysql_native_password -P 3306 -h localhost
 
 	sleep 3
@@ -140,56 +146,112 @@ inciandoDockers() {
 
 	echo ""
 
-	echo "$( tput setaf 10 )[API Installer]:$( tput setaf 7 ) Baixando script de tabelas"
+	#echo "$( tput setaf 10 )[API Installer]:$( tput setaf 7 ) Baixando script de tabelas"
 
-	if [ "$( ls -l | grep 'ScriptCriaçãoBanco-CYCLE.sql' | wc -l )" = '0' ]; then
+	#if [ "$( ls -l | grep 'ScriptCriaçãoBanco-CYCLE.sql' | wc -l )" = '0' ]; then
 
-		echo "$( tput setaf 10 )[API Installer]:$( tput setaf 7 ) Script baixado"
+		#echo "$( tput setaf 10 )[API Installer]:$( tput setaf 7 ) Script baixado"
 
-		sleep 3
+		#sleep 3
 		
-		wget https://transfer.sh/91XMNk/ScriptCria%C3%A7%C3%A3oBanco-CYCLE.sql
+		#wget https://transfer.sh/91XMNk/ScriptCria%C3%A7%C3%A3oBanco-CYCLE.sql
 
-		echo ""
+		#echo ""
 
-	else
+	#else
 
-		echo ""
+		#echo ""
 
-		echo "$( tput setaf 10 )[API Installer]:$( tput setaf 7 ) Script já instalado"
+		#echo "$( tput setaf 10 )[API Installer]:$( tput setaf 7 ) Script já instalado"
 
-	fi
+	#fi
 
-	if [ "$( ls -l | grep 'run-dockers.sh' | wc -l )" = '0' ]; then
+	#if [ "$( ls -l | grep 'run-dockers.sh' | wc -l )" = '0' ]; then
 
-		echo "$( tput setaf 10 )[API Installer]:$( tput setaf 7 ) Script baixado"
+		#echo "$( tput setaf 10 )[API Installer]:$( tput setaf 7 ) Script baixado"
 
-		sleep 3
+		#sleep 3
 		
-		wget https://transfer.sh/3CE8Bl/run-dockers.sh
+		#wget https://transfer.sh/3CE8Bl/run-dockers.sh
 
-		echo ""
+		#echo ""
 
-	else
+	#else
 
-		echo ""
+		#echo ""
 
-		echo "$( tput setaf 10 )[API Installer]:$( tput setaf 7 ) Script já instalado"
+		#echo "$( tput setaf 10 )[API Installer]:$( tput setaf 7 ) Script já instalado"
 
-	fi
+	#fi
 
-	echo "$( tput setaf 10 )[API Installer]:$( tput setaf 7 ) Dando permissão para criar tabelas no segundo script"
+	#echo "$( tput setaf 10 )[API Installer]:$( tput setaf 7 ) Dando permissão para criar tabelas no segundo script"
 
-	sleep 3
+	#sleep 3
 
-	sed -i -e 's/\r$//' run-dockers.sh
+	#sed -i -e 's/\r$//' run-dockers.sh
 
-	chmod 777 run-dockers.sh
+	#chmod 777 run-dockers.sh
 
-	echo ""
-	sleep 3
+	#echo ""
+	#sleep 3
 
-	echo "$( tput setaf 10 )[API Installer]:$( tput setaf 7 ) Antes de executar o 'run-dockers.sh' crie as tabelas no seu dockerMySql "
+	#echo "$( tput setaf 10 )[API Installer]:$( tput setaf 7 ) Antes de executar o 'run-dockers.sh' crie as tabelas no seu dockerMySql "
+
+	executar
+}
+
+executar() {
+
+    if [ "$( ls -l | grep 'DockerFile' | wc -l )" = '0' ]; then
+
+        echo ""
+
+        echo "$( tput setaf 10 )[API Installer]:$( tput setaf 7 ) Baixando DockerFile"
+
+        sleep 3
+
+        wget https://transfer.sh/60ubcC/Dockerfile
+        
+
+    else
+
+        echo ""
+
+        echo "$(  tput setaf 10  )[API Installer]:$(  tput setaf 7 ) DockerFile já existente"
+
+        sleep 3
+
+    fi
+
+    echo ""
+
+    echo "$( tput setaf 10 )[API Installer]:$( tput setaf 7 ) buildando java container"
+
+    docker build -t cycle/java .
+
+    echo ""
+
+    echo "$( tput setaf 10 )[API Installer]:$( tput setaf 7 ) Executando container java"
+
+    docker run --network=link-containers --name java-cycle -i cycle/java
+
+    echo ""
+
+    echo "$( tput setaf 10 )[API Installer]:$( tput setaf 7 ) Verificando o Container"
+
+    sleep 3
+
+    sudo docker ps -a
+
+    echo "$( tput setaf 10 )[API Installer]:$( tput setaf 7 ) Carregando aguarde..."
+
+    sleep 3
+
+}
+
+updateFunc() {
+
+    sudo apt update && sudo apt upgrade -y 1>/dev/null 2>/dev/stdout
 
 }
 
