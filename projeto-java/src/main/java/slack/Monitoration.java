@@ -10,7 +10,7 @@ import org.json.JSONObject;
 public class Monitoration {
     private static HttpClient client = HttpClient.newHttpClient();
     // é aqui que você coloca a URL do webhook
-    private static final String URL = "https://hooks.slack.com/services/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";
+    private static final String URL = "https://hooks.slack.com/services/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";
 
     public static void sendMessage(JSONObject content) throws IOException, InterruptedException {
         HttpRequest request = HttpRequest.newBuilder(

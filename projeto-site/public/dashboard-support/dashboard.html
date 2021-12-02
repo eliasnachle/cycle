@@ -24,91 +24,13 @@
       <path clip-rule="evenodd" d="M18.5578 18.5579C17.9682 19.1474 17.0124 19.1474 16.4228 18.5579L0.442158 2.57712C-0.147386 1.98757 -0.147386 1.03171 0.442158 0.442157C1.03171 -0.147388 1.98756 -0.147388 2.57711 0.442171L18.5578 16.4229C19.1474 17.0125 19.1474 17.9683 18.5578 18.5579Z" fill="white" fill-rule="evenodd"></path><path clip-rule="evenodd" d="M0.442158 18.5579C-0.147386 17.9683 -0.147386 17.0125 0.442158 16.4229L16.4228 0.442169C17.0124 -0.14739 17.9682 -0.14739 18.5578 0.442169C19.1474 1.03171 19.1474 1.98757 18.5578 2.57711L2.57711 18.5579C1.98756 19.1474 1.03171 19.1474 0.442158 18.5579Z" fill="white" fill-rule="evenodd"></path>
     </svg>
   </div>
-  <notifications class="notifications__content">
-    <div class="card__content">
-      <figure>
-        <i class="icon-cpu"></i>
-      </figure>
-      <div class="card__content--description">
-        <div class="card-notifications-title">
-          <h3>CPU</h3>        
-          <span>15:45</span>
-        </div>
-        <span>Temperatura alta,
-        verifique o computador 1</span>
-      </div>
-    </div>
-    <div class="card__content">
-      <figure>
-        <i class="icon-memory"></i>
-      </figure>
-      <div class="card__content--description">
-        <div class="card-notifications-title">
-          <h3>Memoria</h3>        
-          <span>15:45</span>
-        </div>
-        <span>Alto consumo de disco,
-        verifique o totem 3</span>
-      </div>
-    </div>
-    <div class="card__content">
-      <figure>
-        <i class="icon-storage"></i>
-      </figure>
-      <div class="card__content--description">
-        <div class="card-notifications-title">
-          <h3>Disco</h3>        
-          <span>14:27</span>
-        </div>
-        <span>Alto consumo de disco,
-        verifique o totem 1</span>
-      </div>
-    </div>
-    <div class="card__content">
-      <figure>
-        <i class="icon-memory"></i>
-      </figure>
-      <div class="card__content--description">
-        <div class="card-notifications-title">
-          <h3>Memoria</h3>        
-          <span>11:07</span>
-        </div>
-        <span>Alto consumo de memória,
-        verifique o computador 3</span>
-      </div>
-    </div>
-    <div class="card__content">
-      <figure>
-        <i class="icon-cpu"></i>
-      </figure>
-      <div class="card__content--description">
-        <div class="card-notifications-title">
-          <h3>CPU</h3>        
-          <span>15:45</span>
-        </div>
-        <span>Alto consumo de processador,
-        verifique o totem 1</span>
-      </div>
-    </div>
-    <div class="card__content">
-      <figure>
-        <i class="icon-memory"></i>
-      </figure>
-      <div class="card__content--description">
-        <div class="card-notifications-title">
-          <h3>Memoria</h3>        
-          <span>16:20</span>
-        </div>
-        <span>Alto consumo de memória,
-        verifique o totem 6</span>
-      </div>
-    </div>
-  </notifications>
+  <div class="notifications__content">
+  </div>
 </section>
 <!-- Header -->
 <header class="header">
   <div class="header--message">    
-    <span>Olá, Jéssica</span>
+    <span id="header_username"></span>
     <h2>Bem-Vindo(a)</h2>
   </div>
   <div class="header--profile-content">
@@ -138,10 +60,10 @@
           <i class="icon-register"></i>
           <span>Registros</span>
         </a>
-        <!-- <a href="d">
+        <a href="dashboard-settings.html">
           <i class="icon-settings"></i>
           <span>Configurações</span>
-        </a> -->
+        </a>
       </ul>
     </div>
   </div>
@@ -157,7 +79,7 @@
       <i class="icon-bell"></i>
       <span>Notificações</span>
     </a>
-    <a href="#">
+    <a id="logoutMobile" href="#">
       <i class="icon-logout"></i>
       <span>Encerrar</span>
     </a>
@@ -171,7 +93,7 @@
     <a href="dashboard-registros.html">
       <i class="icon-register"></i>
     </a>
-    <a href="#">
+    <a href="dashboard-settings.html">
       <i class="icon-settings"></i>
     </a>
     <button>
@@ -184,125 +106,15 @@
 </section>
 <!-- Conteúdo -->
 <main>
-  <section class="dashboard__container">
-    <article>
-      <h3>12 máquinas encontradas.</h3>
-    </article>
+  <section class="dashboard__container" id="dashboard_container">
     <div class="dashboard__container--row">
-      <a href="dashboard-monitor.html">
-        <div class="card__content alert-card">
-          <div class="card__content--title">
-            <figure class="figure-icon">
-              <i class="icon-totem"></i>
-            </figure>
-            <span>Totem 1</span>
-          </div>
-        </div>
-      </a>
-      <a href="dashboard-monitor.html">
-        <div class="card__content warning-card">
-          <div class="card__content--title">
-            <figure class="figure-icon">
-              <i class="icon-totem"></i>
-            </figure>
-            <span>Totem 2</span>
-          </div>
-        </div>
-      </a>
-      <a href="dashboard-monitor.html">
-        <div class="card__content exclent-card">
-          <div class="card__content--title">
-            <figure class="figure-icon">
-              <i class="icon-totem"></i>
-            </figure>
-            <span>Totem 3</span>
-          </div>
-        </div>
-      </a>
-      <a href="dashboard-monitor.html">
-        <div class="card__content exclent-card">
-          <div class="card__content--title">
-            <figure class="figure-icon">
-              <i class="icon-totem"></i>
-            </figure>
-            <span>Totem 4</span>
-          </div>
-        </div>
-      </a>
-      <a href="dashboard-monitor.html">
-        <div class="card__content exclent-card">
-          <div class="card__content--title">
-            <figure class="figure-icon">
-              <i class="icon-computer"></i>
-            </figure>
-            <span>Computador 1</span>
-          </div>
-        </div>
-      </a>
-      <a href="dashboard-monitor.html">
-        <div class="card__content exclent-card">
-          <div class="card__content--title">
-            <figure class="figure-icon">
-              <i class="icon-computer"></i>
-            </figure>
-            <span>Computador 2</span>
-          </div>
-        </div>
-      </a>
-      <a href="dashboard-monitor.html">
-        <div class="card__content exclent-card">
-          <div class="card__content--title">
-            <figure class="figure-icon">
-              <i class="icon-computer"></i>
-            </figure>
-            <span>Computador 3</span>
-          </div>
-        </div>
-      </a>
-      <a href="dashboard-monitor.html">
-        <div class="card__content exclent-card">
-          <div class="card__content--title">
-            <figure class="figure-icon">
-              <i class="icon-computer"></i>
-            </figure>
-            <span>Computador 4</span>
-          </div>
-        </div>
-      </a>
-      <a href="dashboard-monitor.html">
-        <div class="card__content exclent-card">
-          <div class="card__content--title">
-            <figure class="figure-icon">
-              <i class="icon-computer"></i>
-            </figure>
-            <span>Computador 5</span>
-          </div>
-        </div>
-      </a>
-      <a href="dashboard-monitor.html">
-        <div class="card__content exclent-card">
-          <div class="card__content--title">
-            <figure class="figure-icon">
-              <i class="icon-computer"></i>
-            </figure>
-            <span>Computador 6</span>
-          </div>
-        </div>
-      </a>
-      <a href="dashboard-monitor.html">
-        <div class="card__content exclent-card">
-          <div class="card__content--title">
-            <figure class="figure-icon">
-              <i class="icon-computer"></i>
-            </figure>
-            <span>Computador 7</span>
-          </div>
-        </div>
-      </a>
     </div>
   </section>
 </main>
 </body>
 </html>
+<script src="../js/dashboard-support/alerts_notifications.js"></script>
 <script src="../js/dashboard-support/menu.js"></script>
 <script src="../js/dashboard-support/search_restaurant.js"></script>
+<script src="../js/dashboard-support/dashboard_machines.js"></script>
+<script src="../js/dashboard-support/validate_session.js"></script>

@@ -1,0 +1,113 @@
+// Import
+@import '../../../root/dashboard-support/root-dashboard-support.scss';
+
+.main-settings{
+    padding: 2em 2em 2em calc(2em + 295px + 300px);
+    @media screen and (max-width: 1366px){ padding: 2em 2em 2em calc(2em + 80px + 300px); }
+    @media screen and (max-width: 768px){
+        padding: 2em 2em 2em 2em;
+        position: fixed;
+        right: -1000%;
+    }
+    .dashboard__container--settings{
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+        &--title{
+            display: flex;
+            gap: 1.5em;            
+            padding-bottom: 0.5em;
+            button{
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+                background: none;                    
+                i:before{
+                    font-size: 1.75em;
+                    color: #836FFF;
+                }
+            }
+            &--content{
+                h3{
+                    font-size: 2em;
+                    color: #222222;
+                }
+                span{
+                    color: #878787;
+                }
+            }
+        }
+        &--item{
+            h2{
+                font-size: 1.25em;
+                letter-spacing: 0.25px;
+                color: #222222;
+            }
+            span{
+                font-size: 1em;
+                font-weight: 700;
+                color: #878787;
+                margin-right: 1.5em;
+            }
+            button{
+                cursor: pointer;
+                padding: 0.5em 1em;
+                border-radius: 10px;
+                font-weight: 700;
+                color: $primary;
+                background: #EBE8FF;
+                border: none;
+            }
+            ul{
+                font-weight: 700;
+                color: #878787;
+                padding: 0.5em 1em;
+                li{
+                    padding: .20rem;
+                }
+            }
+            input[type=checkbox]{
+                height: 0;
+                width: 0;
+                visibility: hidden;
+            }            
+            label {
+                cursor: pointer;
+                text-indent: -9999px;
+                width: 50px;
+                height: 25px;
+                background: #CACACA;
+                display: block;
+                border-radius: 100px;
+                position: relative;
+                &:after {
+                    content: '';
+                    position: absolute;
+                    top: 5px;
+                    left: 5px;
+                    width: 15px;
+                    height: 15px;
+                    background: #fff;
+                    border-radius: 90px;
+                    transition: 0.3s;
+                }                
+            }
+            input:checked + label {
+                background: $primary;
+                &:after{
+                    left: calc(100% - 5px);
+                    transform: translateX(-100%);                    
+                }
+            }
+        }
+    }
+}
+.main-settings-mobile-actived-aside{
+    height: 100%;
+    width: 100%;
+    transition: all 300ms ease-in;
+    right: 0;
+    padding: 2em 2em 2em 2em;
+    z-index: 0;
+    background: $background;
+}

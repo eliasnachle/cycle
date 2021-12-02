@@ -45,6 +45,15 @@ Resources
       color: #fff;
   }
 }
+.ovarley-apply-changes{
+  background: #000;
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 100;
+}
 /*---------------
 Search Restaurant
 ----------------*/
@@ -82,12 +91,6 @@ Search Restaurant
       img{
         max-width: 12em;
       }
-      &--text{
-        padding: 1em 0;
-        span{
-          color: $secondaryFontColor !important;
-        }
-      }
       &--ipt{
         width: 100%;
         i::before{
@@ -112,10 +115,6 @@ Search Restaurant
             color: $border;
           }
         }
-      }
-      span{
-        color: $statusColorAttention;
-        font-size: 16px;
       }
     }
   }
@@ -148,5 +147,7 @@ Components
 @import '../header/header';
 @import '../mobile-menu/mobile-menu';
 @import '../notifications/notifications';
+@import '../settings/settings';
+@import '../settings-sidebar/settings-sidebar';
 @import 'dashboard-monitor';
 @import 'dashboard-registros';
