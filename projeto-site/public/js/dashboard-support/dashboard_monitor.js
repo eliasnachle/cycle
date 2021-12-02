@@ -17,12 +17,11 @@ function getDiaryUse(idMachine) {
                 dailyRamUsageProgressBar = document.querySelectorAll('.circular-progress > svg')[0],
                 dailyCpuUsageProgressBar = document.querySelectorAll('.circular-progress > svg')[1];
 
-                let porcentageDailyCpuUsage = ((resposta[0].cpuEmUso/cpuFrequency)*100).toFixed(0),
-                porcentageDailyRamUsage = (((sizeRam-resposta[0].espacoLivreRam)/sizeRam)*100).toFixed(0);
+                let porcentageDailyRamUsage = (((sizeRam-resposta[0].espacoLivreRam)/sizeRam)*100).toFixed(0);
                 dailyRamUsage.innerHTML = `<h2>${porcentageDailyRamUsage}<span>%</span></h2>`;
-                dailyCpuUsage.innerHTML = `<h2>${porcentageDailyCpuUsage}<span>%</span></h2>`;
+                dailyCpuUsage.innerHTML = `<h2>${(resposta[0].cpuEmUso).toFixed(0)}<span>%</span></h2>`;
 
-                dailyCpuUsageProgressBar.innerHTML += `<circle cx="70" cy="70" r="70" style="stroke-dashoffset:calc(440 - (440 *${porcentageDailyCpuUsage}) / 100);"></circle>`;
+                dailyCpuUsageProgressBar.innerHTML += `<circle cx="70" cy="70" r="70" style="stroke-dashoffset:calc(440 - (440 *${resposta[0].cpuEmUso}) / 100);"></circle>`;
                 dailyRamUsageProgressBar.innerHTML += `<circle cx="70" cy="70" r="70" style="stroke-dashoffset:calc(440 - (440 *${porcentageDailyRamUsage}) / 100);"></circle>`;
             });
         } else {
@@ -80,8 +79,7 @@ function postDetailMachine(detailMachines){
 }
 
 function postRealTimeUse(idMachine){
-    let cpuUsePorcentage = ((idMachine[0].cpuEmUso/cpuFrequency)*100).toFixed(0),
-    ramUsePorcentage = (((sizeRam-idMachine[0].espacoLivreRam)/sizeRam)*100).toFixed(0),
+    let ramUsePorcentage = (((sizeRam-idMachine[0].espacoLivreRam)/sizeRam)*100).toFixed(0),
     primaryDiskUsePorcentage = (((sizePrimaryDisk-idMachine[0].espacoLivreDisco1)/sizePrimaryDisk)*100).toFixed(0),
     secondaryDiskUsePorcentage = (((sizeSecondaryDisk-idMachine[0].espacoLivreDisco2)/sizeSecondaryDisk)*100).toFixed(0);
     dashboardContainerComponents.innerHTML = `
@@ -90,11 +88,11 @@ function postRealTimeUse(idMachine){
         <h3>CPU</h3>
         <span>Excelente perfomance</span>
         <div class="progressbar">
-            <div class="progressbar__use" style="width:${cpuUsePorcentage}%;"></div>
+            <div class="progressbar__use" style="width:${idMachine[0].cpuEmUso}%;"></div>
         </div>
         <div class="components__card--use">
-            <span>${cpuUsePorcentage}%</span>
-            <span>${idMachine[0].cpuEmUso}/${cpuFrequency}GHz</span>
+            <span>${idMachine[0].cpuEmUso}%</span>
+            <span>${cpuFrequency}GHz</span>
         </div>
     </div>
 
@@ -123,31 +121,18 @@ function postRealTimeUse(idMachine){
             <span>${idMachine[0].espacoLivreDisco1}GB/${sizePrimaryDisk}GB</span>
         </div>
     </div>
-  `;
-  if(idMachine[0].espacoLivreDisco2 != null){
-      dashboardContainerComponents.innerHTML += `
-      <div class="components__card">
-        <i class="icon-storage"></i>
-        <h3>Disco 2</h3>
-        <span>Excelente perfomance</span>
-        <div class="progressbar">
-            <div class="progressbar__use" style="width:${secondaryDiskUsePorcentage};"></div>
-        </div>
-        <div class="components__card--use">
-            <span>${secondaryDiskUsePorcentage}%</span>
-            <span>${idMachine[0].espacoLivreDisco2}GB/${sizeSecondaryDisk}GB</span>
-        </div>
-      </div>    
-    `;
-  } else{
-      dashboardContainerComponents.innerHTML +=`
-        <div class="components__card">
-            <i class="icon-storage"></i>
-            <h3>Disco 2</h3>
-            <span>Há espaço disponível para um novo disco!</span>
-        </div>
-        `;
-  }
+
+    <div class="components__card">
+      <i class="icon-storage"></i>
+      <h3>Disco 2</h3>
+      <span>Excelente perfomance</span>
+      <div class="progressbar">
+          <div class="progressbar__use" style="width:${secondaryDiskUsePorcentage};"></div>
+      </div>
+      <div class="components__card--use">
+      <span>Há espaço disponível para um novo disco!</span>
+      </div>
+    </div>`;
 }
 
 function getRealTimeUse(idMachine) {
