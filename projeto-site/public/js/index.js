@@ -16,9 +16,9 @@ function verificateAuth(){
         console.log("teste")
 
         name_header.innerHTML = nome_usuario;
-        name_user.innerHTML = nome_usuario;
-        email_usuario.innerHTML = login_usuario;
-        cpf_user.innerHTML = cpf_usuario;
+        // name_user.innerHTML = nome_usuario;
+        // email_usuario.innerHTML = login_usuario;
+        // cpf_user.innerHTML = cpf_usuario;
 
         validar_sessao();
     }

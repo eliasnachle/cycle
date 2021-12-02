@@ -45,6 +45,7 @@ function authenticateLogin() {
                     sessionStorage.email_user_contratante = json.emailContratante;
                     sessionStorage.cpf_user_contratante = json.cpfContratante;
                     sessionStorage.idPlano_user_contratante = json.idPlano;
+                    sessionStorage.pass_user_contratante = json.senhaContratante;
 
                     submit_button.disabled = false
                     window.location.href = "dashboard-manager/config-admin.html";
