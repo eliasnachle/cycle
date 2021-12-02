@@ -11,8 +11,34 @@ function getUserDetails() {
     .then((resposta) => {
         if (resposta.ok) {
             resposta.json().then(function (resposta) {
-                console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-                profileSection(resposta);                
+                console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);                
+                const validateMobile = window.innerWidth <= 768 ? mainSettings.classList.add('main-settings-mobile-actived-aside') : '';    
+                function colorLink(){
+                    linkColor.forEach(i => i.classList.remove('sidebar-settings__content--actived'));    
+                    this.classList.add('sidebar-settings__content--actived');
+                    switch(this.id) {
+                        case 'sidebar-profile': 
+                            typeModal = 'username';
+                            validateMobile;
+                            profileSection(resposta);
+                            break;
+                        case 'sidebar-security':
+                            typeModal = 'password';
+                            validateMobile;   
+                            secutirySection(resposta);
+                            break;
+                            
+                        case 'sidebar-theme':
+                            typeModal = 'theme';
+                            validateMobile;
+                            themeSection(resposta);
+                            break;
+                    }
+                }
+                typeModal = 'username';
+                validateMobile;
+                profileSection(resposta);
+                linkColor.forEach(i => i.addEventListener('click', colorLink));                   
             });
         } else {
             console.error('Nenhum dado encontrado ou erro na API');
@@ -23,52 +49,27 @@ function getUserDetails() {
     });
 }
 
-function colorLink(userDetails){
-    linkColor.forEach(i => i.classList.remove('sidebar-settings__content--actived'));
-    this.classList.add('sidebar-settings__content--actived');
-    const validateMobile = window.innerWidth <= 768 ? mainSettings.classList.add('main-settings-mobile-actived-aside') : '';    
-    switch(this.id) {
-        case 'sidebar-profile': 
-            validateMobile
-            profileSection(userDetails);
-            break;
-        case 'sidebar-security':
-            validateMobile    
-            secutirySection(userDetails);
-            break;
-        case 'sidebar-theme':
-            validateMobile
-            themeSection(userDetails);
-            break;
-        case 'sidebar-access': 
-            validateMobile
-            accessSection(userDetails);
-            break;
-    }
-}
-linkColor.forEach(i => i.addEventListener('click', colorLink));
-
-function profileSection(userDetails){
+function profileSection(userDetails){    
     containerSettings.innerHTML = `
     <div class="dashboard__container--settings--title">
-        <div class="dashboard__container--settings--title--content">
-            <h3>Preferências de Conta</h3>
-            <span>Configurações gerais da conta.</span>
-        </div>        
+    <div class="dashboard__container--settings--title--content">
+    <h3>Preferências de Conta</h3>
+    <span>Configurações gerais da conta.</span>
+    </div>        
     </div>
     <div class="dashboard__container--settings--item">
-        <h2>Nome de usuário</h2>
-        <span>${userDetails[0].nomeSuporte}</span>
-        <button value="username" onclick="modalEditUsername(this.value)">Editar</button>
+    <h2>Nome de usuário</h2>
+        <span>${userDetails[0].nomeSuporte}</span>    
+    <button value="username" onclick="modalEditUsername(this.value)">Editar</button>
     </div>
     <div class="dashboard__container--settings--item">
-        <h2>E-mail</h2>
-        <span>${userDetails[0].emailSuporte}</span>
+    <h2>E-mail</h2>
+        <span>${userDetails[0].emailSuporte}</span> 
     </div>`;
     sectionsCloseOption();
 }
 
-function secutirySection(userDetails){
+function secutirySection(userDetails){   
     containerSettings.innerHTML = `
     <div class="dashboard__container--settings--title">
         <div class="dashboard__container--settings--title--content">
@@ -100,27 +101,6 @@ function themeSection(){
     sectionsCloseOption();
 }
 
-function accessSection(){
-    containerSettings.innerHTML = `
-    <div class="dashboard__container--settings--title">
-        <div class="dashboard__container--settings--title--content">
-            <h3>Informações de Acesso</h3>
-            <span>Unidades de acesso.</span>
-        </div>
-    </div>
-    <div class="dashboard__container--settings--item">
-        <h2>Unidades</h2>
-        <ul>
-            <li>Méqui 1000</li>
-            <li>Mc Donalds Pompeia</li>
-            <li>Mc Donalds Itaquera</li>
-            <li>Mc Donalds Cachoeirinha</li>
-            <li>Mc Donalds Pirituba</li>
-        </ul>
-    </div>`;
-    sectionsCloseOption();
-}
-
 function sectionsCloseOption(){
     if(window.innerWidth <= 768 ){
         const containerSettingsTitle = document.querySelector('.dashboard__container--settings--title');
@@ -146,7 +126,7 @@ function modalEditUsername(labelValue){
             title = 'Editar campo de senha';
             placeholder = 'Nova senha';
             icon = 'lock';
-            break;            
+            break;
     }
     const modalEdit = document.createElement("section");
     modalEdit.classList.add('overlay__modal');
@@ -176,12 +156,12 @@ function confirmUpdateValue(){
     switch(typeModal){
         case 'username':                 
             updateUsername(valueIptEditValue);
-            localStorage.setItem('nameUserSupport', valueIptEditValue)
-            headerUsername.innerHTML = `Olá, ${valueIptEditValue}`;
-            getUserDetails();
+            localStorage.setItem('nameUserSupport', valueIptEditValue);
+            location.reload();
             break;
         case 'password':            
             updatePassword(valueIptEditValue);
+            location.reload();
             break;
     }
 }
@@ -219,7 +199,7 @@ function updatePassword(valueIptEditValue){
 
 function putUpdatePassword(valueIptEditValue) {
     var idSupportUser = localStorage.idSupportUser;
-    fetch(`/dashboardSupport/updateUsernameSupport${idSupportUser}${valueIptEditValue}`, {
+    fetch(`/dashboardSupport/updatePasswordSupport${idSupportUser}${valueIptEditValue}`, {
         method : "PUT"
     }).then(() => {
         res.status(204).send('Nome de usuário alterado com sucesso!');
