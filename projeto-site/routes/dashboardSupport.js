@@ -19,7 +19,11 @@ router.get('/diaryUse:idMaquina', function(req, res, next) {
 			AND CONVERT(dataHoraRegistro, DATE) >= CURRENT_DATE ()
 		ORDER BY dataHoraRegistro DESC;`;
 	} else {
-		instrucaoSql = ``;
+		instrucaoSql = `SELECT TOP 1 cpuEmUso,
+			espacoLivreRam
+		FROM tblRegistros
+		WHERE idMaquina = ${idMaquina}
+ 		ORDER BY dataHoraRegistro DESC`;
 	}
 	sequelize.query(instrucaoSql, {
 		model: Register,
@@ -48,7 +52,13 @@ router.get('/realTimeUse:idMaquina', function(req, res, next) {
 		ORDER BY dataHoraRegistro DESC
 		LIMIT 1;`;		
 	} else {
-		instrucaoSql = ``;
+		instrucaoSql = `SELECT TOP 1 cpuEmUso,
+			espacoLivreRam,
+			espacoLivreDisco1,
+			espacoLivreDisco2
+		FROM tblRegistros
+		WHERE idMaquina = ${idMaquina}
+ 		ORDER BY dataHoraRegistro DESC`;
 	}
 	sequelize.query(instrucaoSql, {
 		model: Register,
@@ -96,7 +106,30 @@ router.get('/realChartTimeUse:idMaquina:component', function(req, res, next) {
 				break;					
 		}
 	} else {
-		instrucaoSql = ``;
+		switch(component){
+			case 'cpu':
+				instrucaoSql = `SELECT TOP 3 cpuEmUso AS componenteEmUso
+				FROM tblRegistros
+				WHERE idMaquina = ${idMaquina}
+				ORDER BY dataHoraRegistro DESC`;
+				break;
+			case 'memory':
+				instrucaoSql = `SELECT TOP 3 (espacoTotalRam - espacoLivreRam) AS componenteEmUso
+				FROM tblRegistros
+				INNER JOIN tblMaquinas
+					ON tblRegistros.idMaquina = tblMaquinas.idMaquina
+				WHERE tblRegistros.idMaquina = ${idMaquina}
+				ORDER BY dataHoraRegistro DESC`;
+				break;
+			case 'disk':
+				instrucaoSql = `SELECT TOP 3 (espacoTotalDisco1 - espacoLivreDisco1) AS componenteEmUso  
+				FROM tblRegistros
+				INNER JOIN tblMaquinas
+					ON tblRegistros.idMaquina = tblMaquinas.idMaquina
+				WHERE tblRegistros.idMaquina = ${idMaquina}
+				ORDER BY dataHoraRegistro DESC`;
+				break;					
+		}		
 	}
 	sequelize.query(instrucaoSql, {
 		model: Register,
@@ -174,7 +207,15 @@ router.get('/criticalRegisters', function(req, res, next) {
 			AND tblM.idMaquina = tblA.idMaquina
 		WHERE nivelCriticidade > 2;`;
 	} else {
-		instrucaoSql = ``;
+		instrucaoSql = `SELECT componenteInstavel,
+	    	nivelCriticidade,
+	    	descAlerta,
+	    	convert(varchar(18), GETDATE() ,13),
+		tbm.apelidoMaquina
+    	FROM tblAlertas tba
+		INNER JOIN tblMaquinas tbm on
+	 		tbm.idMaquina = tba.idMaquina
+		WHERE nivelCriticidade = 'Crítico'`;
 	}
 	sequelize.query(instrucaoSql, {
 		model:  Alert,
@@ -190,17 +231,12 @@ router.get('/criticalRegisters', function(req, res, next) {
 });
 
 router.get('/userDetails:idSupportUser', function(req, res, next) {
-	let instrucaoSql;
 	const idSupportUser = req.params.idSupportUser;
-	if(env == 'dev'){
-		instrucaoSql = `SELECT nomeSuporte,
-			emailSuporte,
-			senhaSuporte 
-		FROM tblusuariossuporte
-		WHERE idUsuarioSuporte = ${idSupportUser};`;
-	} else {
-		instrucaoSql = ``;
-	}
+	let instrucaoSql = `SELECT nomeSuporte,
+		emailSuporte,
+		senhaSuporte 
+	FROM tblusuariossuporte
+	WHERE idUsuarioSuporte = ${idSupportUser};`;
 	sequelize.query(instrucaoSql, {
 		model: UsuariosSuporte,
 		mapToModel: true 
@@ -231,7 +267,17 @@ router.get('/alerts:idContractorSession', function(req, res, next) {
 		WHERE tblMaquinas.idUsuarioContratante = ${idContractorSession}
 			AND tblAlertas.alertaVisivel = 1;`;
 	} else {
-		instrucaoSql = ``;
+		instrucaoSql = `SELECT idAlerta,
+	    componenteInstavel,
+	    nivelCriticidade,
+	    descAlerta,
+	    convert(varchar(18), GETDATE() ,13),
+		tbm.idMaquina,
+		tbm.apelidoMaquina
+    FROM tblAlertas tba
+	INNER JOIN tblMaquinas tbm on
+	 tbm.idMaquina = tba.idMaquina
+	WHERE tbm.idUsuarioContratante = ${idContractorSession}`;
 	}
 	sequelize.query(instrucaoSql, {
 		model: Alert,
