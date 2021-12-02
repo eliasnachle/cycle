@@ -37,6 +37,7 @@ function postAlerts(alerts) {
 
 function removeAlert(idCard) {
     putUpdateAlertVisibility(idCard);
+    getAlerts();
 }
 
 function putUpdateAlertVisibility(idCard) {
@@ -58,10 +59,13 @@ function getAlerts() {
     .then((resposta) => {
         if (resposta.ok) {
             resposta.json().then(function (resposta) {
+                console.log(resposta.length);
                 postAlerts(resposta);
                 if(resposta.length >= 1) {
                     bell.innerHTML += '<i class="icon-bell--actived"></i>';
                 } else{
+                    bell.innerHTML = '';
+
                     notificationsContent.innerHTML = `
                     <div class="notifications__content--not-found">
                         <div class="notifications__content--not-found_text">
