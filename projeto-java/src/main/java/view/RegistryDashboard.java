@@ -31,12 +31,15 @@ public class RegistryDashboard extends javax.swing.JFrame {
         this.machineInfoModel = machineInfoModel;
         this.controllerRegistry = new ControllerRegistry();
         this.dataLog = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").format(LocalDateTime.now());
+
+        initComponents();
+
         insertInInputMachineInfo();
         
         Timer timer = new Timer();
         int delay = 50;
         int interval = 1000;
-
+        
         timer.scheduleAtFixedRate(new TimerTask() {
             public void run() {
                 try {
@@ -44,13 +47,11 @@ public class RegistryDashboard extends javax.swing.JFrame {
                     insertResgistryInDatabase(machineRegistryModel);
 
                 } catch (Exception e) {
-                    System.out.println(e);;
+                    System.out.println(e);
                 }
                 insertInInputRegistryInfo();
             }
         }, delay, interval);
-
-        initComponents();
 
     }
 
@@ -211,7 +212,7 @@ public class RegistryDashboard extends javax.swing.JFrame {
 
         jLabel23.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel23.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/Frame 7.png"))); // NOI18N
+        jLabel23.setIcon(new javax.swing.ImageIcon("C:\\Users\\Henrique.Lima\\Desktop\\Repositorys\\cycy\\projeto-java\\src\\main\\java\\imgs\\Frame 7.png")); // NOI18N
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -765,8 +766,7 @@ public class RegistryDashboard extends javax.swing.JFrame {
 
    
     private void insertInInputMachineInfo() {
-        System.out.println("Inserindo dados no banco");
-         
+        
         logg.guardarLog("==========================================================================\n"
                         + "  Tentativa de Inserção de dados no banco de dados: "+dataLog+"\n"
                             + "\n"

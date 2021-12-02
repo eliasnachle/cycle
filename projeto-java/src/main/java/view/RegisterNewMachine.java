@@ -526,10 +526,11 @@ public class RegisterNewMachine extends javax.swing.JFrame {
                             + "Status da tentativa: Concluida;\n"
                             + "Código: 201.\n"
                             + "==========================================================================\n\n\n");
+
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(rootPane, "Algum erro inesperado aconteceu, por favor tente novamente mais tarde");
                 RegisterButton.setEnabled(true);
-                
+                System.out.println(e);
             logg.guardarLog("==========================================================================\n"
                             + "           Tentativa de Cadastro de Máquina: "+ dataLog +"\n"
                             + "\n"

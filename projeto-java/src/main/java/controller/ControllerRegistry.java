@@ -146,8 +146,8 @@ public class ControllerRegistry {
                                 ", nivelCriticidade" +
                                 ", descAlerta" +
                                 ", dataHoraAlerta" +
-                                ", idMaquina) VALUES (?,?,?,?,?)",
-                        "CPU", "alta", "CPU está com alto uso", horarioPC, idMaquina);
+                                ", idMaquina, alertaVisivel) VALUES (?,?,?,?,?,?)",
+                        "CPU", "alta", "CPU está com alto uso", horarioPC, idMaquina, 1);
 
                 logge.guardarLog(
                         String.format("-----------------Consultando banco Azure---------------------\n\n" +
@@ -199,8 +199,8 @@ public class ControllerRegistry {
                                 ", nivelCriticidade" +
                                 ", descAlerta" +
                                 ", dataHoraAlerta" +
-                                ", idMaquina) VALUES (?,?,?,?,?)",
-                        "CPU", "extrema", "CPU está no limite ou muito proxima", horarioPC, idMaquina);
+                                ", idMaquina, alertaVisivel) VALUES (?,?,?,?,?,?)",
+                        "CPU", "extrema", "CPU está no limite ou muito proxima", horarioPC, idMaquina, 1);
                 logge.guardarLog(
                         String.format("-----------------Consultando banco Azure---------------------\n\n" +
                                 "Data e hora do insert: %s \n" +
@@ -252,8 +252,8 @@ public class ControllerRegistry {
                                 ", nivelCriticidade" +
                                 ", descAlerta" +
                                 ", dataHoraAlerta" +
-                                ", idMaquina) VALUES (?,?,?,?,?)",
-                        "RAM", "alta", "RAM está com alto uso", horarioPC, idMaquina);
+                                ", idMaquina, alertaVisivel) VALUES (?,?,?,?,?,?)",
+                        "RAM", "alta", "RAM está com alto uso", horarioPC, idMaquina, 1);
                 logge.guardarLog(
                         String.format("-----------------Consultando banco Azure---------------------\n\n" +
                                 "Data e hora do insert: %s \n" +
@@ -301,8 +301,8 @@ public class ControllerRegistry {
                                 ", nivelCriticidade" +
                                 ", descAlerta" +
                                 ", dataHoraAlerta" +
-                                ", idMaquina) VALUES (?,?,?,?,?)",
-                        "RAM", "extrema", "RAM está no limite ou muito proxima", horarioPC, idMaquina);
+                                ", idMaquina, alertaVisivel) VALUES (?,?,?,?,?,?)",
+                        "RAM", "extrema", "RAM está no limite ou muito proxima", horarioPC, idMaquina, 1);
                 logge.guardarLog(
                         String.format("-----------------Consultando banco Azure---------------------\n\n" +
                                 "Data e hora do insert: %s \n" +
@@ -352,8 +352,8 @@ public class ControllerRegistry {
                                 ", nivelCriticidade" +
                                 ", descAlerta" +
                                 ", dataHoraAlerta" +
-                                ", idMaquina) VALUES (?,?,?,?,?)",
-                        "Disco 1: " + machineInfoModel.getModeloDisco1(), "alta", "Disco acima do limite", horarioPC, idMaquina);
+                                ", idMaquina, alertaVisivel) VALUES (?,?,?,?,?,?)",
+                        "Disco 1: " + machineInfoModel.getModeloDisco1(), "alta", "Disco acima do limite", horarioPC, idMaquina, 1);
                 logge.guardarLog(
                         String.format("-----------------Consultando banco Azure---------------------\n\n" +
                                 "Data e hora do insert: %s \n" +
@@ -400,8 +400,8 @@ public class ControllerRegistry {
                                 ", nivelCriticidade" +
                                 ", descAlerta" +
                                 ", dataHoraAlerta" +
-                                ", idMaquina) VALUES (?,?,?,?,?)",
-                        "Disco 1: " + machineInfoModel.getModeloDisco1(), "extrema", "Disco acima do limite", horarioPC, idMaquina);
+                                ", idMaquina, alertaVisivel) VALUES (?,?,?,?,?,?)",
+                        "Disco 1: " + machineInfoModel.getModeloDisco1(), "extrema", "Disco acima do limite", horarioPC, idMaquina, 1);
                 logge.guardarLog(
                         String.format("-----------------Consultando banco Azure---------------------\n\n" +
                                 "Data e hora do insert: %s \n" +
@@ -450,8 +450,8 @@ public class ControllerRegistry {
                                 ", nivelCriticidade" +
                                 ", descAlerta" +
                                 ", dataHoraAlerta" +
-                                ", idMaquina) VALUES (?,?,?,?,?)",
-                        "Disco 2: " + machineInfoModel.getModeloDisco2(), "alta", "Disco acima do limite", horarioPC, idMaquina);
+                                ", idMaquina, alertaVisivel) VALUES (?,?,?,?,?,?)",
+                        "Disco 2: " + machineInfoModel.getModeloDisco2(), "alta", "Disco acima do limite", horarioPC, idMaquina, 1);
                 logge.guardarLog(
                 String.format("-----------------Consultando banco Azure---------------------\n\n" +
                         "Data e hora do insert: %s \n" +
@@ -498,8 +498,8 @@ public class ControllerRegistry {
                                 ", nivelCriticidade" +
                                 ", descAlerta" +
                                 ", dataHoraAlerta" +
-                                ", idMaquina) VALUES (?,?,?,?,?)",
-                        "Disco 2: " + machineInfoModel.getModeloDisco2(), "extrema", "Disco acima do limite", horarioPC, idMaquina);
+                                ", idMaquina, alertaVisivel) VALUES (?,?,?,?,?,?)",
+                        "Disco 2: " + machineInfoModel.getModeloDisco2(), "extrema", "Disco acima do limite", horarioPC, idMaquina, 1);
                 logge.guardarLog(
                 String.format("-----------------Consultando banco Azure---------------------\n\n" +
                         "Data e hora do insert: %s \n" +

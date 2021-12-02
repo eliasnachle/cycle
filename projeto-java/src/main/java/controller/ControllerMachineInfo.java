@@ -46,7 +46,7 @@ public class ControllerMachineInfo {
                             "Apelido da maquina: %s \n\n" +
                             "Tipo da maquina: %s \n\n" +
                             "Id Processador: %s\n\n" +
-                            "---------------------###############################-----------------", dataLog, newMachine.getApelidoMaquina(), newMachine.getIdProcessador()));
+                            "---------------------###############################-----------------", dataLog, newMachine.getApelidoMaquina(), newMachine.getTipoMaquina(), newMachine.getIdProcessador()));
 
         } catch (Exception e){
             logge.guardarLog(
@@ -58,7 +58,7 @@ public class ControllerMachineInfo {
                             "Tipo da maquina: %s \n\n" +
                             "Id Processador: %s\n\n" +
                             "Exception: %s \n" +
-                            "---------------------###############################-----------------", dataLog, newMachine.getApelidoMaquina(), newMachine.getIdProcessador(), e ));
+                            "---------------------###############################-----------------", dataLog, newMachine.getApelidoMaquina(), newMachine.getIdProcessador(), newMachine.getTipoMaquina(), e ));
         }
     }
     
@@ -79,7 +79,6 @@ public class ControllerMachineInfo {
                     "Data e hora da consulta: %s \n" +
                     "Procurando maquina pelo id do processador '%s' \n" +
                     "maquina encontrada \n\n" +
-                    "Login efetuado com sucesso \n\n" +
                     "---------------------###############################-----------------", dataLog, machineInfo.getIdProcessador() ));
 
         }catch (Exception e){

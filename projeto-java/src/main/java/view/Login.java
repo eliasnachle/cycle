@@ -24,15 +24,15 @@ public class Login extends javax.swing.JFrame {
     private ControllerLogin controllerLogin;
     private ControllerMachineInfo controllerMachineInfo;
     private MachineInfoModel machineInfoModel;
-    private javax.swing.JPasswordField password;
     private String dataLog;
-    Logge logg = new Logge();
+    private Logge logg;
 
     public Login() {
         this.dataLog = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").format(LocalDateTime.now());
         this.controllerLogin = new ControllerLogin();
         this.controllerMachineInfo = new ControllerMachineInfo();
         this.machineInfoModel = new MachineInfoModel();
+        this.logg = new Logge();
         
         initComponents();
     }
@@ -100,13 +100,11 @@ public class Login extends javax.swing.JFrame {
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Acessar");
         jButton1.setBorder(null);
-
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                login(evt);
             }
         });
-
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -130,7 +128,7 @@ public class Login extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(105, Short.MAX_VALUE)
+                .addContainerGap(104, Short.MAX_VALUE)
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -197,13 +195,16 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void login(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_login
+        String login = jTextField1.getText();
+        String password = jTextField2.getText();
+        
         try {
-            LoginValidation();
-        } catch (Exception ex) {
+            LoginValidation(login, password);
+        } catch (IOException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_login
 
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {
@@ -214,8 +215,6 @@ public class Login extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(() -> {
             new Login().setVisible(true);
         });
-        Logge logCycle = new Logge();
-        logCycle.iniciandoApp();
     }
 
     class RoundBtn implements Border {
@@ -241,17 +240,14 @@ public class Login extends javax.swing.JFrame {
 
     }
 
-    private void LoginValidation() throws IOException {
+    private void LoginValidation( String login, String password) throws IOException {
         jButton1.setEnabled(false);
-
-        String login = jTextField1.getText();
-        String password = jTextField2.getText();
 
         List<LoginModel> selectLogin = this.controllerLogin.consultUserData(login, password);
 
         if (selectLogin.isEmpty()) {
 
-            JOptionPane.showMessageDialog(rootPane, "UsuÃ¡rio nÃ£o encontrados ou Login e senha invÃ¡lidos");
+            JOptionPane.showMessageDialog(rootPane, "Usuario não encontrados ou Login e senha invalidos");
             jButton1.setEnabled(true);
 
             logg.guardarLog("==========================================================================\n"
