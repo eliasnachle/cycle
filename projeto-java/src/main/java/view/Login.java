@@ -4,24 +4,37 @@ import controller.ControllerLogin;
 import controller.ControllerMachineInfo;
 
 import java.awt.*;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.*;
 import javax.swing.border.Border;
 
+import loggers.Logge;
 import model.LoginModel;
 import model.MachineInfoModel;
+import org.codehaus.plexus.util.xml.pull.XmlPullParserException;
 
 public class Login extends javax.swing.JFrame {
+
     private ControllerLogin controllerLogin;
     private ControllerMachineInfo controllerMachineInfo;
     private MachineInfoModel machineInfoModel;
-    
+    private javax.swing.JPasswordField password;
+    private String dataLog;
+    Logge logg = new Logge();
+
     public Login() {
-        initComponents();
-        
+        this.dataLog = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").format(LocalDateTime.now());
         this.controllerLogin = new ControllerLogin();
         this.controllerMachineInfo = new ControllerMachineInfo();
         this.machineInfoModel = new MachineInfoModel();
+        
+        initComponents();
     }
 
     @SuppressWarnings("unchecked")
@@ -50,7 +63,6 @@ public class Login extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(420, 430));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Acesse sua conta");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -60,7 +72,6 @@ public class Login extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         jLabel4.setText("Senha:");
 
-        jTextField2.setBackground(new java.awt.Color(255, 255, 255));
         jTextField2.setForeground(new java.awt.Color(97, 97, 97));
         jTextField2.setBorder(null);
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
@@ -73,7 +84,6 @@ public class Login extends javax.swing.JFrame {
 
         jSeparator2.setBackground(new java.awt.Color(37, 169, 238));
 
-        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
         jTextField1.setForeground(new java.awt.Color(97, 97, 97));
         jTextField1.setBorder(null);
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
@@ -86,12 +96,13 @@ public class Login extends javax.swing.JFrame {
         jLabel3.setText("E-mail:");
 
         jButton1.setBackground(new java.awt.Color(37, 169, 238));
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Acessar");
         jButton1.setBorder(null);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                acessar(evt);
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -104,20 +115,20 @@ public class Login extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 352, Short.MAX_VALUE)))
+                        .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 352, Short.MAX_VALUE))
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(39, 39, 39))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(53, Short.MAX_VALUE)
+                .addContainerGap(105, Short.MAX_VALUE)
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -143,9 +154,9 @@ public class Login extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(204, 204, 204)
+                .addContainerGap(66, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 456, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addComponent(jLabel6)
@@ -155,7 +166,7 @@ public class Login extends javax.swing.JFrame {
                             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addContainerGap(59, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -164,16 +175,16 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 125, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 130, Short.MAX_VALUE)
                         .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 131, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 134, Short.MAX_VALUE)
                         .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 125, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 130, Short.MAX_VALUE)
                         .addComponent(jLabel6)
-                        .addContainerGap(127, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(132, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 463, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
@@ -184,64 +195,94 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
-    private void acessar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acessar
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try {
+            LoginValidation();
+        } catch (Exception ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
+    
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+    }
+
+    public static void main(String args[]) throws FileNotFoundException, IOException, XmlPullParserException {
+        java.awt.EventQueue.invokeLater(() -> {
+            new Login().setVisible(true);
+        });
+        Logge logCycle = new Logge();
+        logCycle.iniciandoApp();
+    }
+
+    class RoundBtn implements Border {
+
+        private int r;
+
+        RoundBtn(int r) {
+            this.r = r;
+        }
+
+        public Insets getBorderInsets(Component c) {
+            return new Insets(this.r + 1, this.r + 1, this.r + 2, this.r);
+        }
+
+        public boolean isBorderOpaque() {
+            return true;
+        }
+
+        public void paintBorder(Component c, Graphics g, int x, int y,
+                int width, int height) {
+            g.drawRoundRect(x, y, width - 1, height - 1, r, r);
+        }
+
+    }
+
+    private void LoginValidation() throws IOException {
         jButton1.setEnabled(false);
-        
+
         String login = jTextField1.getText();
         String password = jTextField2.getText();
-        
+
         List<LoginModel> selectLogin = this.controllerLogin.consultUserData(login, password);
-        
+
         if (selectLogin.isEmpty()) {
 
-            JOptionPane.showMessageDialog(rootPane, "Usuário não encontrados ou Login e senha inválidos");
+            JOptionPane.showMessageDialog(rootPane, "UsuÃ¡rio nÃ£o encontrados ou Login e senha invÃ¡lidos");
             jButton1.setEnabled(true);
 
+            logg.guardarLog("==========================================================================\n"
+                    + "                   Tentativa de Login: " + dataLog + "\n"
+                    + "\n"
+                    + "Status da tentativa: Falha;\n"
+                    + "Código do erro: 403.\n"
+                    + "==========================================================================\n\n\n");
         } else {
 
-            if (controllerMachineInfo.consultMachineInfo(machineInfoModel).isEmpty()){
+            if (controllerMachineInfo.consultMachineInfo(machineInfoModel).isEmpty()) {
                 RegisterNewMachine frame2 = new RegisterNewMachine(selectLogin.get(0).getIdUsuarioContratante(), this.controllerMachineInfo, this.machineInfoModel);
                 setVisible(false);
                 frame2.setVisible(true);
+                logg.guardarLog("==========================================================================\n"
+                        + "                Tentativa de Login: " + dataLog + "\n"
+                        + "\n"
+                        + "Status da tentativa: Concluida com sucesso;\n"
+                        + "==========================================================================\n\n\n");
             } else {
                 RegistryDashboard frame3 = new RegistryDashboard(this.controllerMachineInfo, this.machineInfoModel);
                 setVisible(false);
                 frame3.setVisible(true);
+                logg.guardarLog("==========================================================================\n"
+                                + "        Tentativa de Login: " + dataLog + "\n"
+                                + "\n"
+                                + "Status da tentativa: Concluida com sucesso;\n"
+                                + "==========================================================================\n\n\n");
             }
 
         }
-        
-    }//GEN-LAST:event_acessar
-
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
-
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(() -> {
-            new Login().setVisible(true);
-        });
     }
-
-    class RoundBtn implements Border
-    {
-        private int r;
-        RoundBtn(int r) {
-            this.r = r;
-        }
-        public Insets getBorderInsets(Component c) {
-            return new Insets(this.r+1, this.r+1, this.r+2, this.r);
-        }
-        public boolean isBorderOpaque() {
-            return true;
-        }
-        public void paintBorder(Component c, Graphics g, int x, int y,
-                                int width, int height) {
-            g.drawRoundRect(x, y, width-1, height-1, r, r);
-        }
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
