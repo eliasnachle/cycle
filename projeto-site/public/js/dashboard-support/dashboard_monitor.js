@@ -11,7 +11,7 @@ function getDiaryUse(idMachine) {
     .then((resposta) => {
         if (resposta.ok) {
             resposta.json().then(function (resposta) {
-                console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                // console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                 const dailyRamUsage = document.querySelectorAll('.value-container')[0],
                 dailyCpuUsage = document.querySelectorAll('.value-container')[1]
                 dailyRamUsageProgressBar = document.querySelectorAll('.circular-progress > svg')[0],
@@ -153,8 +153,9 @@ function getRealTimeUse(idMachine) {
     var idMachine = sessionStorage.idMachine;
     fetch(`/dashboardSupport/realTimeUse${idMachine}`)
     .then((resposta) => {
-        if (resposta.ok) {
+        if (resposta.ok) {            
             resposta.json().then(function (resposta) {
+                console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                 postRealTimeUse(resposta);
             });
         } else {

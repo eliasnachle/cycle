@@ -35,7 +35,7 @@ function authenticateLogin() {
         }).then(resposta => {
             if (resposta.ok) {
                 resposta.json().then(json => {
-                    localStorage.hasManagerSession = true;
+                    localStorage.hasManagerSession = true;                    
                     sessionStorage.name_user_contratante = json.nomeContratante;
                     sessionStorage.email_user_contratante = json.emailContratante;
                     sessionStorage.idPlano_user_contratante = json.idPlano;
@@ -60,6 +60,7 @@ function authenticateLogin() {
             if (resposta.ok) {
                 resposta.json().then(json => {
                     localStorage.hasSupportSession = true;
+                    localStorage.idSupportUser = json.idUsuarioSuporte;
                     localStorage.nameUserSupport = json.nomeSuporte;
                     window.location.href = "dashboard-support/dashboard.html";
                 });
