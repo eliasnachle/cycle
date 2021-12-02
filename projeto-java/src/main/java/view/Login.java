@@ -25,14 +25,12 @@ public class Login extends javax.swing.JFrame {
     private ControllerMachineInfo controllerMachineInfo;
     private MachineInfoModel machineInfoModel;
     private String dataLog;
-    private Logge logg;
 
     public Login() {
         this.dataLog = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").format(LocalDateTime.now());
         this.controllerLogin = new ControllerLogin();
         this.controllerMachineInfo = new ControllerMachineInfo();
         this.machineInfoModel = new MachineInfoModel();
-        this.logg = new Logge();
         
         initComponents();
     }
@@ -213,6 +211,12 @@ public class Login extends javax.swing.JFrame {
 
     public static void main(String args[]) throws FileNotFoundException, IOException, XmlPullParserException {
         java.awt.EventQueue.invokeLater(() -> {
+            Logge logge = new Logge();
+            try {
+                logge.startApp();
+            } catch (Exception e){
+                logge.guardarLog("Erro ao iniciar logs......");
+            }
             new Login().setVisible(true);
         });
     }
@@ -249,33 +253,16 @@ public class Login extends javax.swing.JFrame {
 
             JOptionPane.showMessageDialog(rootPane, "Usuario não encontrados ou Login e senha invalidos");
             jButton1.setEnabled(true);
-
-            logg.guardarLog("==========================================================================\n"
-                    + "                   Tentativa de Login: " + dataLog + "\n"
-                    + "\n"
-                    + "Status da tentativa: Falha;\n"
-                    + "Código do erro: 403.\n"
-                    + "==========================================================================\n\n\n");
         } else {
 
             if (controllerMachineInfo.consultMachineInfo(machineInfoModel).isEmpty()) {
                 RegisterNewMachine frame2 = new RegisterNewMachine(selectLogin.get(0).getIdUsuarioContratante(), this.controllerMachineInfo, this.machineInfoModel);
                 setVisible(false);
                 frame2.setVisible(true);
-                logg.guardarLog("==========================================================================\n"
-                        + "                Tentativa de Login: " + dataLog + "\n"
-                        + "\n"
-                        + "Status da tentativa: Concluida com sucesso;\n"
-                        + "==========================================================================\n\n\n");
             } else {
                 RegistryDashboard frame3 = new RegistryDashboard(this.controllerMachineInfo, this.machineInfoModel);
                 setVisible(false);
                 frame3.setVisible(true);
-                logg.guardarLog("==========================================================================\n"
-                                + "        Tentativa de Login: " + dataLog + "\n"
-                                + "\n"
-                                + "Status da tentativa: Concluida com sucesso;\n"
-                                + "==========================================================================\n\n\n");
             }
 
         }

@@ -44,9 +44,8 @@ public class Logge {
 
     }
 
-    public void iniciandoApp() throws FileNotFoundException, IOException, XmlPullParserException {
+    public void startApp() throws FileNotFoundException, IOException, XmlPullParserException {
         String dataLog = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").format(LocalDateTime.now());
-        ReadeVersion vApp = new ReadeVersion();
 
         Looca looca = new Looca();
 
@@ -64,9 +63,36 @@ public class Logge {
                     + "Versão da aplicação:\n"
                     + "==========================================================================\n\n\n", dataLog, looca.getSistema().getSistemaOperacional(), looca.getSistema().getArquitetura(), looca.getSistema().getPermissao()
             ));
-            System.out.println(vApp.getVersion());
         } catch (Exception e) {
             System.out.println(e);;
+        }
+    }
+
+    public void closeApp() {
+
+        String dataLog = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").format(LocalDateTime.now());
+
+        Looca looca = new Looca();
+
+        String textoLog = String.format(
+                "==========================================================================\n"
+                        + "             Aplicação REQUEST finalizada as: %s\n"
+                        + "\n"
+                        + "Sistema operacional: %s\n"
+                        + "Bits do sistema: %s bits\n"
+                        + "Permissões: %s\n"
+                        + "Versão da aplicação: 2.0\n"
+                        + "Modelo CPU: %s \n"
+                        + "Total Ram: %s \n"
+                        + "==========================================================================\n\n\n", dataLog, looca.getSistema().getSistemaOperacional(), looca.getSistema().getArquitetura(), looca.getSistema().getPermissao(), looca.getProcessador().getFabricante(), looca.getMemoria().getTotal());
+        try (
+                FileWriter criadorDeArquivos = new FileWriter(arquivo, true);
+                BufferedWriter escrever = new BufferedWriter(criadorDeArquivos);
+                PrintWriter escritorDeArquivos = new PrintWriter(escrever);) {
+            escritorDeArquivos.append(textoLog);
+
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

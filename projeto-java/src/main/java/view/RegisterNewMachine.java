@@ -470,6 +470,7 @@ public class RegisterNewMachine extends javax.swing.JFrame {
     }//GEN-LAST:event_InpTipoDisco2ActionPerformed
 
     private void CancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelButtonActionPerformed
+        logg.closeApp();
         System.exit(0);
     }//GEN-LAST:event_CancelButtonActionPerformed
 

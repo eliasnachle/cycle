@@ -189,10 +189,14 @@ public class RegistryDashboard extends javax.swing.JFrame {
         jLabel26.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel26.setForeground(new java.awt.Color(255, 255, 255));
         jLabel26.setText("Sair");
+        jLabel26.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                sair(evt);
+            }
+        });
 
         jLabel23.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel23.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel23.setIcon(new javax.swing.ImageIcon("C:\\Users\\Tais\\Downloads\\Navbar.png")); // NOI18N
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -734,6 +738,11 @@ public class RegistryDashboard extends javax.swing.JFrame {
     private void InpApelidoMaquinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InpApelidoMaquinaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_InpApelidoMaquinaActionPerformed
+
+    private void sair(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sair
+        logg.closeApp();
+        System.exit(0);
+    }//GEN-LAST:event_sair
                                                                                                          
 
    
