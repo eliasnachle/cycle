@@ -28,12 +28,6 @@ function listarSuportes(usuariosSuporte) {
                 </span>
             </div>
             <div class="card_field">
-                <h3>Senha</h3>
-                <span>
-                    ${suporte.senhaSuporte}
-                </span>
-            </div>
-            <div class="card_field">
                 <h3>Contratante</h3>
                 <span>
                     ${suporte.nomeContratante}
