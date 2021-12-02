@@ -3,24 +3,19 @@ function getSelectComponent(){
     switch(selectComponent){
         case 'cpu':
             getRealChartTimeUse(selectComponent);
-            console.log(selectComponent);
             break;
         case 'memory':
             getRealChartTimeUse(selectComponent);
-            console.log(selectComponent);
             break;
         case 'disk':
             getRealChartTimeUse(selectComponent);
-            console.log(selectComponent);
             break;
         default:
             getRealChartTimeUse(selectComponent);
-            console.log(selectComponent);
     }
 }
 
 function getRealChartTimeUse(component) {
-    console.log('getRealChartTimeUse: ', component);
     var idMachine = sessionStorage.idMachine;
     fetch(`/dashboardSupport/realChartTimeUse${idMachine}${component}`)
     .then((resposta) => {
@@ -57,11 +52,11 @@ var configuration = {
     {
       label: "Consumo",
       data: [
-            useDetail[0].cpuEmUso,
-            useDetail[1].cpuEmUso,
-            useDetail[2].cpuEmUso,
-            useDetail[3].cpuEmUso,
-            useDetail[4].cpuEmUso
+            useDetail[0].componenteEmUso,
+            useDetail[1].componenteEmUso,
+            useDetail[2].componenteEmUso,
+            useDetail[3].componenteEmUso,
+            useDetail[4].componenteEmUso
       ],
       type: 'line',
       borderColor: '#836FFF',
@@ -90,9 +85,5 @@ this.lastIndexTemp = 0;
 this.time = 0;
 }
 
-// function callMethodsChart(){
-//     getSelectComponent();
-// }
-
 window.addEventListener('load', getSelectComponent);
-// setInterval(getRealChartTimeUse, 5000);  
+setInterval(getRealChartTimeUse, 5000);  

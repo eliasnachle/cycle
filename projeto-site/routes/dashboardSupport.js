@@ -63,33 +63,30 @@ router.get('/realTimeUse:idMaquina', function(req, res, next) {
 });
 
 router.get('/realChartTimeUse:idMaquina:component', function(req, res, next) {
-	console.log('idMaquina ', idMaquina);
-	console.log('component ', component);
-
+	const idMaquina = req.params.idMaquina,
+	component = req.params.component;
 	console.log('Buscando consumo de CPU em tempo real');
-	const idMaquina = req.params.idMaquina;
-	const component = req.params.component;
     let instrucaoSql;
 	if(env == 'dev'){
 		switch(component){
 			case 'cpu':
-				instrucaoSql = `SELECT cpuEmUso
+				instrucaoSql = `SELECT cpuEmUso AS componenteEmUso
 				FROM tblRegistros
 				WHERE idMaquina = ${idMaquina}
 				ORDER BY dataHoraRegistro DESC
 				LIMIT 5;`;
 				break;
 			case 'memory':
-				instrucaoSql = `SELECT (espacoTotalRam - espacoLivreRam)    
+				instrucaoSql = `SELECT (espacoTotalRam - espacoLivreRam) AS componenteEmUso
 				FROM tblRegistros
 				INNER JOIN tblMaquinas
 					ON tblRegistros.idMaquina = tblMaquinas.idMaquina
-				WHERE tblRegistros.idMaquina = 1
+				WHERE tblRegistros.idMaquina = ${idMaquina}
 				ORDER BY dataHoraRegistro DESC
 				LIMIT 5;`;
 				break;
 			case 'disk':
-				instrucaoSql = `SELECT (espacoTotalDisco1 - espacoLivreDisco1)    
+				instrucaoSql = `SELECT (espacoTotalDisco1 - espacoLivreDisco1) AS componenteEmUso  
 				FROM tblRegistros
 				INNER JOIN tblMaquinas
 					ON tblRegistros.idMaquina = tblMaquinas.idMaquina
