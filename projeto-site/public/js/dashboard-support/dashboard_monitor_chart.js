@@ -54,9 +54,7 @@ var configuration = {
       data: [
             useDetail[0].componenteEmUso,
             useDetail[1].componenteEmUso,
-            useDetail[2].componenteEmUso,
-            useDetail[3].componenteEmUso,
-            useDetail[4].componenteEmUso
+            useDetail[2].componenteEmUso
       ],
       type: 'line',
       borderColor: '#836FFF',

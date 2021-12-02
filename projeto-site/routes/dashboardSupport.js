@@ -74,7 +74,7 @@ router.get('/realChartTimeUse:idMaquina:component', function(req, res, next) {
 				FROM tblRegistros
 				WHERE idMaquina = ${idMaquina}
 				ORDER BY dataHoraRegistro DESC
-				LIMIT 5;`;
+				LIMIT 3;`;
 				break;
 			case 'memory':
 				instrucaoSql = `SELECT (espacoTotalRam - espacoLivreRam) AS componenteEmUso
@@ -83,7 +83,7 @@ router.get('/realChartTimeUse:idMaquina:component', function(req, res, next) {
 					ON tblRegistros.idMaquina = tblMaquinas.idMaquina
 				WHERE tblRegistros.idMaquina = ${idMaquina}
 				ORDER BY dataHoraRegistro DESC
-				LIMIT 5;`;
+				LIMIT 3;`;
 				break;
 			case 'disk':
 				instrucaoSql = `SELECT (espacoTotalDisco1 - espacoLivreDisco1) AS componenteEmUso  
@@ -92,7 +92,7 @@ router.get('/realChartTimeUse:idMaquina:component', function(req, res, next) {
 					ON tblRegistros.idMaquina = tblMaquinas.idMaquina
 				WHERE tblRegistros.idMaquina = ${idMaquina}
 				ORDER BY dataHoraRegistro DESC
-				LIMIT 5;`;
+				LIMIT 3;`;
 				break;					
 		}
 	} else {
@@ -156,7 +156,38 @@ router.put('/updateAlertVisibility:idAlerta', function(req, res, next) {
 	}).catch(erro => {
 		console.error(erro);
 	});
-});		
+});	
+
+router.get('/criticalRegisters', function(req, res, next) {
+	let instrucaoSql;
+	if(env == 'dev'){
+		instrucaoSql = `SELECT componenteInstavel,
+			nivelCriticidade,
+			descAlerta,
+			DATE_FORMAT(dataHoraAlerta, '%m/%d/%Y %H:%i') AS dataHoraAlerta,
+			apelidoMaquina
+		FROM tblRegistros tblR
+		INNER JOIN tblMaquinas tblM 
+			ON tblM.idMaquina = tblR.idMaquina
+		INNER JOIN tblAlertas tblA 
+			ON tblR.idMaquina = tblA.idMaquina
+			AND tblM.idMaquina = tblA.idMaquina
+		WHERE nivelCriticidade > 2;`;
+	} else {
+		instrucaoSql = ``;
+	}
+	sequelize.query(instrucaoSql, {
+		model:  Alert,
+		mapToModel: true 
+	})
+	.then(resultado => {
+		console.log(`Encontrados: ${resultado.length}`);
+		res.json(resultado);
+	}).catch(erro => {
+		console.error(erro);
+		res.status(500).send(erro.message);
+	});
+});
 
 router.get('/userDetails:idSupportUser', function(req, res, next) {
 	let instrucaoSql;
