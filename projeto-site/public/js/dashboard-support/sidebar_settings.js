@@ -27,12 +27,6 @@ function getUserDetails() {
                             validateMobile;   
                             secutirySection(resposta);
                             break;
-                            
-                        case 'sidebar-theme':
-                            typeModal = 'theme';
-                            validateMobile;
-                            themeSection(resposta);
-                            break;
                     }
                 }
                 typeModal = 'username';
@@ -80,22 +74,6 @@ function secutirySection(userDetails){
         <h2>Senha</h2>
         <span>${userDetails[0].senhaSuporte}</span>
         <button value="password" onclick="modalEditUsername(this.value)">Editar</button>
-    </div>`;
-    sectionsCloseOption();
-}
-
-function themeSection(){
-    containerSettings.innerHTML = `
-    <div class="dashboard__container--settings--title">
-        <div class="dashboard__container--settings--title--content">
-            <h3>Aparência</h3>
-            <span>Aplicar tema escuro.</span>
-        </div>
-    </div>
-    <div class="dashboard__container--settings--item">
-        <h2>Tema Escuro</h2>
-        <input type="checkbox" id="switch"/>
-        <label for="switch">Toggle</label>
     </div>`;
     sectionsCloseOption();
 }
