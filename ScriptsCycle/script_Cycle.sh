@@ -134,7 +134,7 @@ inciandoDockers() {
 
 	echo "$( tput setaf 10 )[API Installer]:$( tput setaf 7 ) criando container mysql"
 	
-	docker build -t cycle/mysql .
+	sudo docker build -t cycle/mysql .
 
 	echo ""
 
@@ -227,13 +227,13 @@ executar() {
 
     echo "$( tput setaf 10 )[API Installer]:$( tput setaf 7 ) buildando java container"
 
-    docker build -t cycle/java .
+    sudo docker build -t cycle/java .
 
     echo ""
 
     echo "$( tput setaf 10 )[API Installer]:$( tput setaf 7 ) Executando container java"
 
-    docker run --network=link-containers --name java-cycle -i cycle/java
+    sudo docker run --network=link-containers --name java-cycle -i cycle/java
 
     echo ""
 
