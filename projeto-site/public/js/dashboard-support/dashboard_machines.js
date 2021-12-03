@@ -8,7 +8,7 @@ function postMachines(machines) {
         <div class="card__content">
           <div class="card__content--title">
             <figure class="figure-icon">
-              <i class="icon-${(machine.tipoMaquina).toLowerCase()}"></i>
+              <i class="icon-${((machine.tipoMaquina).toLowerCase()) != "totem"? "computer" : (machine.tipoMaquina).toLowerCase()}"></i>
             </figure>
             <span>${machine.apelidoMaquina}</span>
           </div>
