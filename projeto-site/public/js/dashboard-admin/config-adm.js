@@ -85,23 +85,23 @@ function closeUpdateField(){
     
 // }
 
-// function updatePassword(field){
+function updatePassword(field){
 
-//     var updateField = new URLSearchParams(new FormData(form_update));
+    var updateField = new URLSearchParams(new FormData(form_update));
 
-//     //update na senha
-//     fetch(`/usuarios/update-senha/${idContratant},${field}`, {
-//         method: "PUT",
-//         body: updateField
-//     }).then(() => {
-//         console.log('Senha atualizada com sucesso');
-//         //document.location.reload(true);
-//     }).catch(err => {
-//         console.error(err)
-//     });
+    //update na senha
+    fetch(`/usuarios/update-senha/${idContratant},${field}`, {
+        method: "PUT",
+        body: updateField
+    }).then(() => {
+        console.log('Senha atualizada com sucesso');
+        //document.location.reload(true);
+    }).catch(err => {
+        console.error(err)
+    });
 
-//     return false;
-// }
+    return false;
+}
 
 // function updateEmail(){
     

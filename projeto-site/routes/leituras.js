@@ -127,9 +127,7 @@ router.delete('/delete-data/:idMaquina', function (req, res, next) {
 router.delete('/delete-register/:idMaquina', function (req, res, next) {
 
 	var instrucaoSql = `
-	DELETE FROM tblAlertas WHERE idRegistro IN (
-		SELECT idRegistro FROM tblRegistros WHERE idMaquina = ${req.params.idMaquina}
-	);
+	DELETE FROM tblAlertas WHERE idMaquina = ${req.params.idMaquina}
 	`;
 
 	sequelize.query(instrucaoSql, {
