@@ -2,11 +2,11 @@ let typeModal;
 const linkColor = document.querySelectorAll('.sidebar-settings__content--link'),
 containerSettings = document.querySelector('.dashboard__container--settings'),
 mainSettings = document.querySelector('.main-settings'),
-usernameReg = /^[A-z]{3,15}$/,
+usernameReg = /^[A-z ]{3,15}$/,
 passwordReg = /^(?=.*[0-9]{1})(?=.*[\W]{1})(?=.*[a-z]{1})[a-zA-Z0-9\W]{6,30}$/;
 
 function getUserDetails() {
-    var idSupportUser = localStorage.idSupportUser;
+    var idSupportUser = sessionStorage.idSupportUser;
     fetch(`/dashboardSupport/userDetails${idSupportUser}`)
     .then((resposta) => {
         if (resposta.ok) {
@@ -138,7 +138,7 @@ function confirmUpdateValue(){
             break;
         case 'password':            
             updatePassword(valueIptEditValue);
-            location.reload();
+            // location.reload();
             break;
     }
 }
@@ -154,8 +154,8 @@ function updateUsername(valueIptEditValue){
 }
 
 function putUpdateUsername(valueIptEditValue) {
-    const idSupportUser = localStorage.idSupportUser;
-    fetch(`/dashboardSupport/updateUsernameSupport${idSupportUser}/${valueIptEditValue}`, {
+    var idSupportUser = sessionStorage.idSupportUser;
+    fetch(`/dashboardSupport/updateUsernameSupport/${idSupportUser}/${valueIptEditValue}`, {
         method : "PUT"
     }).then(() => {
         res.status(204).send('Nome de usuário alterado com sucesso!');
@@ -175,8 +175,8 @@ function updatePassword(valueIptEditValue){
 }
 
 function putUpdatePassword(valueIptEditValue) {
-    var idSupportUser = localStorage.idSupportUser;
-    fetch(`/dashboardSupport/updatePasswordSupport${idSupportUser}${valueIptEditValue}`, {
+    var idSupportUser = sessionStorage.idSupportUser;
+    fetch(`/dashboardSupport/updatePasswordSupport/${idSupportUser}/${valueIptEditValue}`, {
         method : "PUT"
     }).then(() => {
         res.status(204).send('Nome de usuário alterado com sucesso!');

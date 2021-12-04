@@ -61,7 +61,7 @@ Modal Restaurante
 //     `);
 //   }
 // }
-// Validacao pesquisa resturante
+// // Validacao pesquisa resturante
 // function searchResraurant(){
 //     const iptSearchRestaurant = document.querySelector('#ipt_search_restaurant'),
 //     iptSearchRestaurantValue = iptSearchRestaurant.value,
