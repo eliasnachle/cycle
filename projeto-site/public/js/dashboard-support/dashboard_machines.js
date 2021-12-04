@@ -26,12 +26,13 @@ function getIdMachine(idMachine, value) {
     sessionStorage.setItem('nameMachine', idMachine.textContent);
 }
 
-function getMachines(idContractorSession) {
-    var idContractorSession = localStorage.idContractorSession;
+function getMachines() {
+    var idContractorSession = sessionStorage.idSupportUser;
     fetch(`/dashboardSupport/${idContractorSession}`)
     .then((resposta) => {
         if (resposta.ok) {
             resposta.json().then(function (resposta) {
+                console.log(resposta)
                 postMachines(resposta);   
             });
         } else {

@@ -54,11 +54,12 @@ function putUpdateAlertVisibility(idCard) {
 function getAlerts() {    
     const bell = document.querySelectorAll('.icon-bell')[0],
     notificationsContent = document.querySelector('.notifications__content');
-    var idContractorSession = localStorage.idContractorSession;
+    var idContractorSession = sessionStorage.idSupportUser;
     fetch(`/dashboardSupport/alerts${idContractorSession}`)
     .then((resposta) => {
         if (resposta.ok) {
             resposta.json().then(function (resposta) {
+                console.log(resposta)
                 postAlerts(resposta);
                 if(resposta.length >= 1) {
                     bell.innerHTML += '<i class="icon-bell--actived"></i>';

@@ -143,7 +143,7 @@ router.get('/realChartTimeUse:idMaquina:component', function(req, res, next) {
 	});
 });
 
-router.put('/updateUsernameSupport:idSupportUser:valueIpt', function(req, res, next) {
+router.put('/updateUsernameSupport/:idSupportUser/:valueIpt', function(req, res, next) {
 	console.log('Alterando username do usuario');
 	const idSupportUser = req.params.idSupportUser,
 	valueIpt = req.params.valueIpt;
@@ -160,7 +160,7 @@ router.put('/updateUsernameSupport:idSupportUser:valueIpt', function(req, res, n
 });	
 
 
-router.put('/updatePasswordSupport:idSupportUser:valueIpt', function(req, res, next) {
+router.put('/updatePasswordSupport/:idSupportUser/:valueIpt', function(req, res, next) {
 	console.log('Alterando senha do usuario');
 	const idSupportUser = req.params.idSupportUser,
 	valueIpt = req.params.valueIpt;
@@ -277,7 +277,11 @@ router.get('/alerts:idContractorSession', function(req, res, next) {
     FROM tblAlertas tba
 	INNER JOIN tblMaquinas tbm on
 	 tbm.idMaquina = tba.idMaquina
-	WHERE tbm.idUsuarioContratante = ${idContractorSession}`;
+	WHERE tbm.idUsuarioContratante in (
+		select tuc.idUsuarioContratante from tblUsuariosSuporte tus inner join 
+		tblUsuariosContratante tuc on tus.idUsuarioContratante = tuc.idUsuarioContratante
+		where idUsuarioSuporte = ${idContractorSession}
+		)`;
 	}
 	sequelize.query(instrucaoSql, {
 		model: Alert,
@@ -326,13 +330,15 @@ router.get('/:idContractorSession', function(req, res, next) {
     let instrucaoSql = `SELECT idMaquina,
     apelidoMaquina,
 	tipoMaquina
-    FROM tblMaquinas
-	WHERE idUsuarioContratante = ${idContractorSession}
-	ORDER BY tipoMaquina DESC;`;
-	sequelize.query(instrucaoSql, {
-		model: Machine,
-		mapToModel: true 
-	})
+    from tblMaquinas tbm 
+	inner join tblUsuariosContratante tus on 
+	tus.idUsuarioContratante = tbm.idUsuarioContratante 
+		where tus.idUsuarioContratante in (
+			select tuc.idUsuarioContratante from tblUsuariosSuporte tus 
+			inner join tblUsuariosContratante tuc on tus.idUsuarioContratante = tuc.idUsuarioContratante
+		where idUsuarioSuporte = 56
+	)`;
+	sequelize.query(instrucaoSql, { type: sequelize.QueryTypes.SELECT })
 	.then(resultado => {
 		console.log(`Encontrados: ${resultado.length}`);
 		res.json(resultado);
