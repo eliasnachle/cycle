@@ -64,7 +64,7 @@ function authenticateLogin() {
             if (resposta.ok) {
                 resposta.json().then(json => {
                     localStorage.hasSupportSession = true;
-                    sessionStorage.idSupportUser = json.idUsuarioSuporte;
+                    localStorage.idSupportUser = json.idUsuarioSuporte;
                     localStorage.nameUserSupport = json.nomeSuporte;
                     localStorage.idContractorSession = json.idUsuarioContratante;
                     window.location.href = "dashboard-support/dashboard.html";
