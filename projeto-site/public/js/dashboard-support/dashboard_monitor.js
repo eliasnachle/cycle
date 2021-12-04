@@ -126,9 +126,6 @@ function postRealTimeUse(idMachine){
       <i class="icon-storage"></i>
       <h3>Disco 2</h3>
       <span>Excelente perfomance</span>
-      <div class="progressbar">
-          <div class="progressbar__use" style="width:${secondaryDiskUsePorcentage};"></div>
-      </div>
       <div class="components__card--use">
       <span>Há espaço disponível para um novo disco!</span>
       </div>

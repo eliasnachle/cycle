@@ -597,8 +597,8 @@ main .dashboard__container--row .alert-card span svg {
 .mobile-menu__content {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (auto)[5];
-      grid-template-columns: repeat(5, auto);
+  -ms-grid-columns: (auto)[4];
+      grid-template-columns: repeat(4, auto);
   place-items: center;
   -webkit-box-align: center;
       -ms-flex-align: center;

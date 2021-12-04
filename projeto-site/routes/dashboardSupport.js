@@ -143,7 +143,7 @@ router.get('/realChartTimeUse:idMaquina:component', function(req, res, next) {
 	});
 });
 
-router.put('/updateUsernameSupport:idSupportUser:valueIpt', function(req, res, next) {
+router.put('/updateUsernameSupport:idSupportUser/:valueIpt', function(req, res, next) {
 	console.log('Alterando username do usuario');
 	const idSupportUser = req.params.idSupportUser,
 	valueIpt = req.params.valueIpt;

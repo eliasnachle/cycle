@@ -154,8 +154,8 @@ function updateUsername(valueIptEditValue){
 }
 
 function putUpdateUsername(valueIptEditValue) {
-    var idSupportUser = localStorage.idSupportUser;
-    fetch(`/dashboardSupport/updateUsernameSupport${idSupportUser}${valueIptEditValue}`, {
+    const idSupportUser = localStorage.idSupportUser;
+    fetch(`/dashboardSupport/updateUsernameSupport${idSupportUser}/${valueIptEditValue}`, {
         method : "PUT"
     }).then(() => {
         res.status(204).send('Nome de usuário alterado com sucesso!');
