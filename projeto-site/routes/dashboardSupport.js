@@ -143,7 +143,7 @@ router.get('/realChartTimeUse:idMaquina:component', function(req, res, next) {
 	});
 });
 
-router.put('/updateUsernameSupport:idSupportUser/:valueIpt', function(req, res, next) {
+router.put('/updateUsernameSupport/:idSupportUser/:valueIpt', function(req, res, next) {
 	console.log('Alterando username do usuario');
 	const idSupportUser = req.params.idSupportUser,
 	valueIpt = req.params.valueIpt;
@@ -160,7 +160,7 @@ router.put('/updateUsernameSupport:idSupportUser/:valueIpt', function(req, res, 
 });	
 
 
-router.put('/updatePasswordSupport:idSupportUser:valueIpt', function(req, res, next) {
+router.put('/updatePasswordSupport/:idSupportUser/:valueIpt', function(req, res, next) {
 	console.log('Alterando senha do usuario');
 	const idSupportUser = req.params.idSupportUser,
 	valueIpt = req.params.valueIpt;
@@ -191,7 +191,7 @@ router.put('/updateAlertVisibility:idAlerta', function(req, res, next) {
 	});
 });	
 
-router.get('/criticalRegisters', function(req, res, next) {
+router.get('/criticalRegisters/:idSuporte', function(req, res, next) {
 	let instrucaoSql;
 	if(env == 'dev'){
 		instrucaoSql = `SELECT componenteInstavel,
@@ -207,20 +207,24 @@ router.get('/criticalRegisters', function(req, res, next) {
 			AND tblM.idMaquina = tblA.idMaquina
 		WHERE nivelCriticidade > 2;`;
 	} else {
-		instrucaoSql = `SELECT componenteInstavel,
-	    	nivelCriticidade,
-	    	descAlerta,
-	    	CONVERT(VARCHAR(10), dataHoraAlerta, 103) + ' ' + CONVERT(CHAR(5), dataHoraAlerta, 108) AS dataHoraAlerta,
-		tbm.apelidoMaquina
-    	FROM tblAlertas tba
-		INNER JOIN tblMaquinas tbm on
-	 		tbm.idMaquina = tba.idMaquina
-		WHERE nivelCriticidade = 'Crítico'`;
+		instrucaoSql = `
+		select top 10
+			tbm.apelidoMaquina,
+			tba.componenteInstavel,
+			tba.nivelCriticidade,
+			tba.descAlerta,
+			CONVERT(VARCHAR(10), dataHoraAlerta, 103) + ' ' + CONVERT(CHAR(5), dataHoraAlerta, 108) AS dataHoraAlerta
+		from tblAlertas as tba
+			inner join tblMaquinas as tbm
+			on tba.idMaquina = tbm.idMaquina
+		where tbm.idMaquina in (
+			select idMaquina from tblMaquinas as tbm 
+			inner join tblUsuariosContratante as tuc on tuc.idUsuarioContratante = tbm.idUsuarioContratante
+			inner join tblUsuariosSuporte as tus on tus.idUsuarioContratante = tbm.idUsuarioContratante
+			where tus.idUsuarioSuporte = ${req.params.idSuporte}
+		)`;
 	}
-	sequelize.query(instrucaoSql, {
-		model:  Alert,
-		mapToModel: true 
-	})
+	sequelize.query(instrucaoSql, { type: sequelize.QueryTypes.SELECT })
 	.then(resultado => {
 		console.log(`Encontrados: ${resultado.length}`);
 		res.json(resultado);
@@ -267,20 +271,21 @@ router.get('/alerts:idContractorSession', function(req, res, next) {
 		WHERE tblMaquinas.idUsuarioContratante = ${idContractorSession}
 			AND tblAlertas.alertaVisivel = 1;`;
 	} else {
-		instrucaoSql = `SELECT idAlerta
-		,componenteInstavel
-		,nivelCriticidade
-		,descAlerta
-		,CONVERT(VARCHAR(10), dataHoraAlerta, 103) + ' ' + CONVERT(CHAR(5), dataHoraAlerta, 108) AS dataHoraAlerta
-		,tbm.idMaquina
-		,tbm.apelidoMaquina
-	FROM tblAlertas tba
-	INNER JOIN tblMaquinas tbm ON tbm.idMaquina = tba.idMaquina
-	WHERE tbm.idUsuarioContratante IN (
-			SELECT tuc.idUsuarioContratante
-			FROM tblUsuariosSuporte tus
-			INNER JOIN tblUsuariosContratante tuc ON tus.idUsuarioContratante = tuc.idUsuarioContratante
-			WHERE tuc.idUsuarioContratante = ${idContractorSession})`;
+		instrucaoSql = `SELECT idAlerta,
+	    componenteInstavel,
+	    nivelCriticidade,
+	    descAlerta,
+	    convert(varchar(18), GETDATE() ,13),
+		tbm.idMaquina,
+		tbm.apelidoMaquina
+    FROM tblAlertas tba
+	INNER JOIN tblMaquinas tbm on
+	 tbm.idMaquina = tba.idMaquina
+	WHERE tbm.idUsuarioContratante in (
+		select tuc.idUsuarioContratante from tblUsuariosSuporte tus inner join 
+		tblUsuariosContratante tuc on tus.idUsuarioContratante = tuc.idUsuarioContratante
+		where idUsuarioSuporte = ${idContractorSession}
+		)`;
 	}
 	sequelize.query(instrucaoSql, {
 		model: Alert,
@@ -329,13 +334,15 @@ router.get('/:idContractorSession', function(req, res, next) {
     let instrucaoSql = `SELECT idMaquina,
     apelidoMaquina,
 	tipoMaquina
-    FROM tblMaquinas
-	WHERE idUsuarioContratante = ${idContractorSession}
-	ORDER BY tipoMaquina DESC;`;
-	sequelize.query(instrucaoSql, {
-		model: Machine,
-		mapToModel: true 
-	})
+    from tblMaquinas tbm 
+	inner join tblUsuariosContratante tus on 
+	tus.idUsuarioContratante = tbm.idUsuarioContratante 
+		where tus.idUsuarioContratante in (
+			select tuc.idUsuarioContratante from tblUsuariosSuporte tus 
+			inner join tblUsuariosContratante tuc on tus.idUsuarioContratante = tuc.idUsuarioContratante
+		where idUsuarioSuporte = ${idContractorSession}
+	)`;
+	sequelize.query(instrucaoSql, { type: sequelize.QueryTypes.SELECT })
 	.then(resultado => {
 		console.log(`Encontrados: ${resultado.length}`);
 		res.json(resultado);

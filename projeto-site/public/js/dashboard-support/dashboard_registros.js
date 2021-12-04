@@ -1,5 +1,5 @@
 function getCriticalRegisters() {
-  fetch(`/dashboardSupport/criticalRegisters`)
+  fetch(`/dashboardSupport/criticalRegisters/${sessionStorage.idSupportUser}`)
     .then((resposta) => {
       if (resposta.ok) {
         resposta.json().then(function (resposta) {
