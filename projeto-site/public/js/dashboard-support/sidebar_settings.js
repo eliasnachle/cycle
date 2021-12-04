@@ -138,7 +138,7 @@ function confirmUpdateValue(){
             break;
         case 'password':            
             updatePassword(valueIptEditValue);
-            location.reload();
+            // location.reload();
             break;
     }
 }
@@ -175,8 +175,8 @@ function updatePassword(valueIptEditValue){
 }
 
 function putUpdatePassword(valueIptEditValue) {
-    var idSupportUser = localStorage.idSupportUser;
-    fetch(`/dashboardSupport/updatePasswordSupport${idSupportUser}${valueIptEditValue}`, {
+    var idSupportUser = sessionStorage.idSupportUser;
+    fetch(`/dashboardSupport/updatePasswordSupport/${idSupportUser}/${valueIptEditValue}`, {
         method : "PUT"
     }).then(() => {
         res.status(204).send('Nome de usuário alterado com sucesso!');
