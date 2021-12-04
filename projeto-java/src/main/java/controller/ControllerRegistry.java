@@ -221,7 +221,7 @@ public class ControllerRegistry {
 
         }
 
-        if(ramTotal / 100 * ramDisponivel >= 90.0) {
+        if(ramTotal / 100 * (ramTotal - ramDisponivel) >= 90.0) {
 
             try {
                 monitoration.enviarMensagem(String.format("[Maquina %s]\n" +
@@ -271,7 +271,7 @@ public class ControllerRegistry {
             }
 
 
-        } else if (ramTotal / 100 * ramDisponivel >= 98.0) {
+        } else if (ramTotal / 100 * (ramTotal - ramDisponivel) >= 98.0) {
 
             try {
                 monitoration.enviarMensagem(String.format("[Maquina %s] \n" +
@@ -324,7 +324,7 @@ public class ControllerRegistry {
 
         }
 
-        if(disco1Total / 100 * disco1Disponivel > 88.0 ) {
+        if(disco1Total / 100 * (disco1Total - disco1Disponivel) > 88.0 ) {
 
             try {
                 monitoration.enviarMensagem(String.format("[Maquina %s] \n" +
@@ -373,7 +373,7 @@ public class ControllerRegistry {
                                 "---------------------###############################-----------------", dataLog, e));
             }
 
-        } else if(disco1Total / 100 * disco1Disponivel > 95.0 ) {
+        } else if(disco1Total / 100 * (disco1Total - disco1Disponivel) > 95.0 ) {
 
             try {
                 monitoration.enviarMensagem(String.format("[Maquina %s] \n" +
@@ -424,7 +424,7 @@ public class ControllerRegistry {
 
         }
 
-        if(disco2Total / 100 * disco2Disponivel > 88.0 ) {
+        if(disco2Total / 100 * (disco2Total - disco2Disponivel) > 88.0 ) {
 
             try {
                 monitoration.enviarMensagem(String.format("[Maquina %s]" +
@@ -473,7 +473,7 @@ public class ControllerRegistry {
                                 "---------------------###############################-----------------", dataLog, e));
             }
 
-        } else if(disco2Total / 100 * disco2Disponivel > 95.0 ) {
+        } else if(disco2Total / 100 * (disco2Total - disco2Disponivel) > 95.0 ) {
 
             try {
                 monitoration.enviarMensagem(String.format("[Maquina %s]" +

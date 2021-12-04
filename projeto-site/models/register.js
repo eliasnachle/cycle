@@ -2,7 +2,7 @@
 
 module.exports = (sequelize, DataTypes) => {
     let Register = sequelize.define('Register',{	
-		idMaqidRegistrouina: {
+		idRegistro: {
 			field: 'idRegistro',
 			type: DataTypes.INTEGER,
 			primaryKey: true,

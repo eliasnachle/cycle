@@ -72,11 +72,16 @@ router.get('/realTimeUse:idMaquina', function(req, res, next) {
 	});
 });
 
-router.get('/realChartTimeUse:idMaquina:component', function(req, res, next) {
+router.get('/realChartTimeUse/:idMaquina/:component', function(req, res, next) {
 	const idMaquina = req.params.idMaquina,
 	component = req.params.component;
+
+	console.log(idMaquina)
+	console.log(component)
+
 	console.log('Buscando consumo de CPU em tempo real');
     let instrucaoSql;
+
 	if(env == 'dev'){
 		switch(component){
 			case 'cpu':
@@ -131,6 +136,7 @@ router.get('/realChartTimeUse:idMaquina:component', function(req, res, next) {
 				break;					
 		}		
 	}
+	console.log(instrucaoSql)
 	sequelize.query(instrucaoSql, {
 		model: Register,
 		mapToModel: true 

@@ -1,5 +1,6 @@
 function getSelectComponent(){
-    const selectComponent =  document.getElementById('select-component').value;
+    let selectComponent = document.getElementById('select-component').value;
+
     switch(selectComponent){
         case 'cpu':
             getRealChartTimeUse(selectComponent);
@@ -17,7 +18,7 @@ function getSelectComponent(){
 
 function getRealChartTimeUse(component) {
     var idMachine = sessionStorage.idMachine;
-    fetch(`/dashboardSupport/realChartTimeUse${idMachine}${component}`)
+    fetch(`/dashboardSupport/realChartTimeUse/${idMachine}/${component}`)
     .then((resposta) => {
         if (resposta.ok) {
             resposta.json().then(function (resposta) {
@@ -36,7 +37,6 @@ function getRealChartTimeUse(component) {
 // Gráfico Charts JS
 function chartJS(useDetail){
 // Dimensões Gráfico
-var context = document.querySelector("#chart");
 
 var ctx = document.getElementById("chart").getContext("2d");
 var gradient = ctx.createLinearGradient(0, 0, 0, 300);
@@ -78,10 +78,10 @@ var configuration = {
     }
   }
 };
-var chart = new Chart(context, configuration);
+var chart = new Chart(ctx, configuration);
 this.lastIndexTemp = 0;
 this.time = 0;
 }
 
 window.addEventListener('load', getSelectComponent);
-setInterval(getRealChartTimeUse, 5000);  
+setInterval(getSelectComponent(), 5000);  
