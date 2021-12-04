@@ -210,7 +210,7 @@ router.get('/criticalRegisters', function(req, res, next) {
 		instrucaoSql = `SELECT componenteInstavel,
 	    	nivelCriticidade,
 	    	descAlerta,
-	    	convert(varchar(18), GETDATE() ,13),
+	    	CONVERT(VARCHAR(10), dataHoraAlerta, 103) + ' ' + CONVERT(CHAR(5), dataHoraAlerta, 108) AS dataHoraAlerta,
 		tbm.apelidoMaquina
     	FROM tblAlertas tba
 		INNER JOIN tblMaquinas tbm on
@@ -267,17 +267,20 @@ router.get('/alerts:idContractorSession', function(req, res, next) {
 		WHERE tblMaquinas.idUsuarioContratante = ${idContractorSession}
 			AND tblAlertas.alertaVisivel = 1;`;
 	} else {
-		instrucaoSql = `SELECT idAlerta,
-	    componenteInstavel,
-	    nivelCriticidade,
-	    descAlerta,
-	    convert(varchar(18), GETDATE() ,13),
-		tbm.idMaquina,
-		tbm.apelidoMaquina
-    FROM tblAlertas tba
-	INNER JOIN tblMaquinas tbm on
-	 tbm.idMaquina = tba.idMaquina
-	WHERE tbm.idUsuarioContratante = ${idContractorSession}`;
+		instrucaoSql = `SELECT idAlerta
+		,componenteInstavel
+		,nivelCriticidade
+		,descAlerta
+		,CONVERT(VARCHAR(10), dataHoraAlerta, 103) + ' ' + CONVERT(CHAR(5), dataHoraAlerta, 108) AS dataHoraAlerta
+		,tbm.idMaquina
+		,tbm.apelidoMaquina
+	FROM tblAlertas tba
+	INNER JOIN tblMaquinas tbm ON tbm.idMaquina = tba.idMaquina
+	WHERE tbm.idUsuarioContratante IN (
+			SELECT tuc.idUsuarioContratante
+			FROM tblUsuariosSuporte tus
+			INNER JOIN tblUsuariosContratante tuc ON tus.idUsuarioContratante = tuc.idUsuarioContratante
+			WHERE tuc.idUsuarioContratante = ${idContractorSession})`;
 	}
 	sequelize.query(instrucaoSql, {
 		model: Alert,
