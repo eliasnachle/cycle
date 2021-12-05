@@ -58,7 +58,7 @@ router.post('/login-suporte', function (req, res, next) {
 		console.log(`Conteudo completo: ${resultado}`)
 
 		if (resultado.length == 1) {
-			sessoes.push(resultado[0].dataValues.nomeSuporte);
+			sessoes.push(resultado[0].dataValues.idUsuarioSuporte);
 			console.log('sessoes: ', sessoes);
 			res.json(resultado[0]);
 		} else if (resultado.length == 0) {
@@ -221,20 +221,20 @@ router.put('/update-senha/:idContratante,:newEmail', function (req, res, next) {
 });
 
 /* Verificação de usuário */
-router.get('/sessao/:login', function (req, res, next) {
-	let login = req.params.login;
-	console.log(`Verificando se o usuário ${login} tem sessão`);
+router.get('/sessao/:idUser', function (req, res, next) {
+	let idUser = req.params.idUser;
+	console.log(`Verificando se o usuário ${idUser} tem sessão`);
 
 	let tem_sessao = false;
 	for (let u = 0; u < sessoes.length; u++) {
-		if (sessoes[u] == login) {
+		if (sessoes[u] == idUser) {
 			tem_sessao = true;
 			break;
 		}
 	}
 
 	if (tem_sessao) {
-		let mensagem = `Usuário ${login} possui sessão ativa!`;
+		let mensagem = `Usuário ${idUser} possui sessão ativa!`;
 		console.log(mensagem);
 		res.send(mensagem);
 	} else {

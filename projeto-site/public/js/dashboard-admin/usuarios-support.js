@@ -13,7 +13,7 @@ function listarSuportes(usuariosSuporte) {
 
         supCard.innerHTML += `
         <div class="sup_list">
-        <div id="teste" onclick="deleteSupport(this)" class="data_card">
+        <div id="teste" class="data_card">
             <i class="icon-profile"></i>
             <div class="card_field">
                 <h3>Nome</h3>
