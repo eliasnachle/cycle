@@ -16,7 +16,7 @@ function listDataAdmin(){
                     <h3 id="email">E-mail</h3>
                     <span>
                         <b id="email_usuario">${sessionStorage.email_user_contratante}</b>
-                        <i onclick="showUpdateField(email)" class="icon-settings"></i>
+                        <i class="icon-settings"></i>
                     </span>
                 </div>
                 <div class="data_line">
@@ -32,7 +32,7 @@ function listDataAdmin(){
                     </h3>
                     <span>
                         <b id="pass_user">*********</b>
-                        <i onclick="showUpdateField(password)" class="icon-settings"></i>
+                        <i  class="icon-settings"></i>
                     </span>
                 </div>
             </div>
@@ -48,61 +48,3 @@ function setVisible(){
         boolean = false;
     }
 }
-
-function showUpdateField(updateField){
-    var id = updateField.id;
-    var field = document.querySelector(`#${id}`).textContent;
-    console.log(field)
-    var background = document.getElementById("modal_data");
-    background.style.display = "flex";
-    background.innerHTML = `
-        <div class="modal-container">
-            <h2>Alterar ${field} <span onclick="closeUpdateField()">X</span></h2>
-            <div class="modal-content">
-                <form class="form" id="form_update">
-                    <div class="modal-separator">
-                        <input class="content-input" id="input_update"></input>
-                    </div>
-                    <button id="btn_delete" type="submit" onclick="updateField(${sessionStorage.id_user_contratant}, ${field.toLowerCase})" class="btn_confirm">Confirmar</button>
-                </form>
-            </div>
-        </div>
-    `;''
-}
-
-function closeUpdateField(){
-    var background = document.getElementById("modal_data");
-    background.style.display = "none";
-}
-
-// function updateField(idContratant, field){
-
-//     if(field == "senha"){
-//         updatePassword(idContratant,field);
-//     } else {
-
-//     }
-    
-// }
-
-function updatePassword(field){
-
-    var updateField = new URLSearchParams(new FormData(form_update));
-
-    //update na senha
-    fetch(`/usuarios/update-senha/${idContratant},${field}`, {
-        method: "PUT",
-        body: updateField
-    }).then(() => {
-        console.log('Senha atualizada com sucesso');
-        //document.location.reload(true);
-    }).catch(err => {
-        console.error(err)
-    });
-
-    return false;
-}
-
-// function updateEmail(){
-    
-// }
