@@ -54,7 +54,7 @@ function putUpdateAlertVisibility(idCard) {
 function getAlerts() {    
     const bell = document.querySelectorAll('.icon-bell')[0],
     notificationsContent = document.querySelector('.notifications__content');
-    var idContractorSession = sessionStorage.idSupportUser;
+    var idContractorSession = localStorage.idContractorSession;
     fetch(`/dashboardSupport/alerts${idContractorSession}`)
     .then((resposta) => {
         if (resposta.ok) {

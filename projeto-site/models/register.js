@@ -13,11 +13,6 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.DOUBLE,
             allowNull: true
         },
-        temperaturaCpu: {
-            field: 'temperaturaCpu',
-            type: DataTypes.DOUBLE,
-            allowNull: true
-        },
         espacoLivreDisco1: {
             field: 'espacoLivreDisco1',
             type: DataTypes.STRING,

@@ -17,7 +17,7 @@
   <link rel="mask-icon" href="../favicon/request/safari-pinned-tab.svg" color="#836fff">
 </head>
 
-<body>
+<body onload="generateFirstConfigChart('cpu')">
   <!-- Notificações -->
   <section class="notifications">
     <div class="notifications--icon-close">
@@ -125,7 +125,7 @@
         <!-- Components Cards -->
         <div class="dashboard__container--components">
         </div>
-        <select id="select-component">
+        <select id="select-component" onchange="generateFirstConfigChart(this.value)">
           <option value="cpu">CPU</option>
           <option value="memory">RAM</option>
         </select>

@@ -113,13 +113,13 @@ router.get('/realChartTimeUse/:idMaquina/:component', function(req, res, next) {
 	} else {
 		switch(component){
 			case 'cpu':
-				instrucaoSql = `SELECT TOP 3 cpuEmUso AS componenteEmUso
+				instrucaoSql = `SELECT TOP 1 cpuEmUso AS componenteEmUso
 				FROM tblRegistros
 				WHERE idMaquina = ${idMaquina}
 				ORDER BY dataHoraRegistro DESC`;
 				break;
 			case 'memory':
-				instrucaoSql = `SELECT TOP 3 (espacoTotalRam - espacoLivreRam) AS componenteEmUso
+				instrucaoSql = `SELECT TOP 1 (espacoTotalRam - espacoLivreRam) AS componenteEmUso
 				FROM tblRegistros
 				INNER JOIN tblMaquinas
 					ON tblRegistros.idMaquina = tblMaquinas.idMaquina
@@ -127,7 +127,84 @@ router.get('/realChartTimeUse/:idMaquina/:component', function(req, res, next) {
 				ORDER BY dataHoraRegistro DESC`;
 				break;
 			case 'disk':
-				instrucaoSql = `SELECT TOP 3 (espacoTotalDisco1 - espacoLivreDisco1) AS componenteEmUso  
+				instrucaoSql = `SELECT TOP 1 (espacoTotalDisco1 - espacoLivreDisco1) AS componenteEmUso  
+				FROM tblRegistros
+				INNER JOIN tblMaquinas
+					ON tblRegistros.idMaquina = tblMaquinas.idMaquina
+				WHERE tblRegistros.idMaquina = ${idMaquina}
+				ORDER BY dataHoraRegistro DESC`;
+				break;					
+		}		
+	}
+	console.log(instrucaoSql)
+	sequelize.query(instrucaoSql, {
+		model: Register,
+		mapToModel: true 
+	})
+	.then(resultado => {
+		console.log(`Encontrados: ${resultado.length}`);
+		res.json(resultado);
+	}).catch(erro => {
+		console.error(erro);
+	});
+});
+
+router.get('/generateChart/:idMaquina/:component', function(req, res, next) {
+	const idMaquina = req.params.idMaquina,
+	component = req.params.component;
+
+	console.log(idMaquina)
+	console.log(component)
+
+	console.log('Buscando consumo de CPU em tempo real');
+    let instrucaoSql;
+
+	if(env == 'dev'){
+		switch(component){
+			case 'cpu':
+				instrucaoSql = `SELECT cpuEmUso AS componenteEmUso
+				FROM tblRegistros
+				WHERE idMaquina = ${idMaquina}
+				ORDER BY dataHoraRegistro DESC
+				LIMIT 3;`;
+				break;
+			case 'memory':
+				instrucaoSql = `SELECT (espacoTotalRam - espacoLivreRam) AS componenteEmUso
+				FROM tblRegistros
+				INNER JOIN tblMaquinas
+					ON tblRegistros.idMaquina = tblMaquinas.idMaquina
+				WHERE tblRegistros.idMaquina = ${idMaquina}
+				ORDER BY dataHoraRegistro DESC
+				LIMIT 3;`;
+				break;
+			case 'disk':
+				instrucaoSql = `SELECT (espacoTotalDisco1 - espacoLivreDisco1) AS componenteEmUso  
+				FROM tblRegistros
+				INNER JOIN tblMaquinas
+					ON tblRegistros.idMaquina = tblMaquinas.idMaquina
+				WHERE tblRegistros.idMaquina = ${idMaquina}
+				ORDER BY dataHoraRegistro DESC
+				LIMIT 3;`;
+				break;					
+		}
+	} else {
+		switch(component){
+			case 'cpu':
+				instrucaoSql = `SELECT TOP 10 cpuEmUso AS componenteEmUso
+				FROM tblRegistros
+				WHERE idMaquina = ${idMaquina}
+				ORDER BY dataHoraRegistro DESC`;
+				break;
+			case 'memory':
+				instrucaoSql = `SELECT TOP 10 (espacoTotalRam - espacoLivreRam) AS componenteEmUso
+				FROM tblRegistros
+				INNER JOIN tblMaquinas
+					ON tblRegistros.idMaquina = tblMaquinas.idMaquina
+				WHERE tblRegistros.idMaquina = ${idMaquina}
+				ORDER BY dataHoraRegistro DESC`;
+				break;
+			case 'disk':
+				instrucaoSql = `SELECT TOP 10 (espacoTotalDisco1 - espacoLivreDisco1) AS componenteEmUso  
 				FROM tblRegistros
 				INNER JOIN tblMaquinas
 					ON tblRegistros.idMaquina = tblMaquinas.idMaquina
@@ -277,21 +354,20 @@ router.get('/alerts:idContractorSession', function(req, res, next) {
 		WHERE tblMaquinas.idUsuarioContratante = ${idContractorSession}
 			AND tblAlertas.alertaVisivel = 1;`;
 	} else {
-		instrucaoSql = `SELECT idAlerta,
-	    componenteInstavel,
-	    nivelCriticidade,
-	    descAlerta,
-	    convert(varchar(18), GETDATE() ,13),
-		tbm.idMaquina,
-		tbm.apelidoMaquina
+		instrucaoSql = `SELECT idAlerta
+        ,componenteInstavel
+        ,nivelCriticidade
+        ,descAlerta
+        ,CONVERT(VARCHAR(10), dataHoraAlerta, 103) + ' ' + CONVERT(CHAR(5), dataHoraAlerta, 108) AS dataHoraAlerta
+        ,tbm.idMaquina
+        ,tbm.apelidoMaquina
     FROM tblAlertas tba
-	INNER JOIN tblMaquinas tbm on
-	 tbm.idMaquina = tba.idMaquina
-	WHERE tbm.idUsuarioContratante in (
-		select tuc.idUsuarioContratante from tblUsuariosSuporte tus inner join 
-		tblUsuariosContratante tuc on tus.idUsuarioContratante = tuc.idUsuarioContratante
-		where idUsuarioSuporte = ${idContractorSession}
-		)`;
+    INNER JOIN tblMaquinas tbm ON tbm.idMaquina = tba.idMaquina
+    WHERE tbm.idUsuarioContratante IN (
+            SELECT tuc.idUsuarioContratante
+            FROM tblUsuariosSuporte tus
+            INNER JOIN tblUsuariosContratante tuc ON tus.idUsuarioContratante = tuc.idUsuarioContratante
+            WHERE tuc.idUsuarioContratante = ${idContractorSession})`;
 	}
 	sequelize.query(instrucaoSql, {
 		model: Alert,
