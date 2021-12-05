@@ -83,7 +83,7 @@ public class ControllerRegistry {
                             "Apelido da maquina: %s \n\n" +
                             "Tipo da maquina: %s \n\n" +
                             "Id Processador: %s\n\n" +
-                            "---------------------###############################-----------------\n", dataLog, machineInfoModel.getApelidoMaquina(), machineInfoModel.getIdProcessador()));
+                            "---------------------###############################-----------------\n", dataLog, machineInfoModel.getApelidoMaquina(), machineInfoModel.getTipoMaquina(), machineInfoModel.getIdProcessador()));
 
         } catch (Exception e) {
             logge.guardarLog(
@@ -93,15 +93,16 @@ public class ControllerRegistry {
                             "** Erro ao inserir o dado ** \n\n " +
                             "Apelido da maquina: %s \n\n" +
                             "Tipo da maquina: %s \n\n" +
-                            "Id Processador: %s\n\n" +
-                            "---------------------###############################-----------------\n", dataLog, machineInfoModel.getApelidoMaquina(), machineInfoModel.getIdProcessador(), e));
+                            "Id Processador: %s\n\n\n" +
+                            "Exception: %s" +
+                            "---------------------###############################-----------------\n", dataLog, machineInfoModel.getApelidoMaquina(), machineInfoModel.getTipoMaquina(), machineInfoModel.getIdProcessador(), e));
 
         }
 
-        verifyAlert(machineInfoModel, machineRegistryModel, machineInfoSelect.get(0).getIdMaquina());
+        verifyAlert(machineInfoModel, machineRegistryModel, machineInfoSelect.get(0).getIdMaquina(), machineInfoSelect.get(0).getApelidoMaquina());
     }
 
-    public void verifyAlert(MachineInfoModel machineInfoModel, MachineRegistryModel machineRegistryModel, String idMaquina) {
+    public void verifyAlert(MachineInfoModel machineInfoModel, MachineRegistryModel machineRegistryModel, String idMaquina, String nomeMaquina) {
 
         LocalDateTime horarioPC = LocalDateTime.now(ZoneId.of("America/Sao_Paulo"));
 
@@ -118,8 +119,9 @@ public class ControllerRegistry {
 
         if(machineRegistryModel.getCpuEmUso() >= 94.0) {
             try {
-                monitoration.enviarMensagem(String.format("A CPU está com alto uso \n" +
-                        "Uso atual é de: %.2f", machineRegistryModel.getCpuEmUso()));
+                monitoration.enviarMensagem(String.format("[%s]\n" +
+                        "A CPU está com alto uso \n" +
+                        "Uso atual é de: %.2f", nomeMaquina, machineRegistryModel.getCpuEmUso()));
 
                 logge.guardarLog(
                         String.format("-----------------Consultando banco Azure---------------------\n\n" +
@@ -173,8 +175,10 @@ public class ControllerRegistry {
         } else if (machineRegistryModel.getCpuEmUso() > 98.0) {
 
             try {
-                this.monitoration.enviarMensagem(String.format("A CPU está proxima do limite \n" +
-                        "Uso atual é de: %.2f", machineRegistryModel.getCpuEmUso()));
+                this.monitoration.enviarMensagem(String.format("[%s]\n" +
+                        "A CPU está proxima do limite \n" +
+                        "Uso atual é de: %.2f", nomeMaquina, machineRegistryModel.getCpuEmUso()));
+
                 logge.guardarLog(
                         String.format("-----------------Consultando banco Azure---------------------\n\n" +
                                 "Data e hora do insert: %s \n" +
@@ -224,9 +228,9 @@ public class ControllerRegistry {
         if((ramTotal - ramDisponivel) * 100 / ramTotal >= 90.0) {
 
             try {
-                monitoration.enviarMensagem(String.format("[Maquina %s]\n" +
+                monitoration.enviarMensagem(String.format("[%s]\n" +
                         "A RAM está sobrecarregando \n" +
-                        "Uso atual é de: %.2f", idMaquina, ramTotal - ramDisponivel));
+                        "Uso atual é de: %.2f", nomeMaquina, ramTotal - ramDisponivel));
 
                 logge.guardarLog(
                         String.format("-----------------Consultando Slack---------------------\n\n" +
@@ -244,7 +248,7 @@ public class ControllerRegistry {
                                 "Enviando alerta para o sclack \n\n\n" +
                                 "** Erro ao enviar a menssagem ** \n\n " +
                                 "Exception: %s \n" +
-                                "---------------------###############################-----------------", dataLog, e));
+                                "---------------------###############################-----------------\n", dataLog, e));
             }
 
             try {
@@ -254,29 +258,30 @@ public class ControllerRegistry {
                                 ", dataHoraAlerta" +
                                 ", idMaquina, alertaVisivel) VALUES (?,?,?,?,?,?)",
                         "RAM", "alta", "RAM está com alto uso", horarioPC, idMaquina, 1);
+
                 logge.guardarLog(
                         String.format("-----------------Consultando banco Azure---------------------\n\n" +
                                 "Data e hora do insert: %s \n" +
                                 "Enviando alerta para o banco de dados \n\n" +
                                 "A RAM está sobrecarregando \n" +
                                 "Uso atual é de: %.2f \n" +
-                                "---------------------###############################-----------------", dataLog, ramTotal - ramDisponivel));
+                                "---------------------###############################-----------------\n", dataLog, ramTotal - ramDisponivel));
             } catch (Exception e){
                 logge.guardarLog(
                         String.format("-----------------Consultando banco Azure---------------------\n\n" +
                                 "Data e hora do insert: %s \n" +
                                 "Erro ao inserir o registro \n\n\n" +
                                 "Exception: %s \n" +
-                                "---------------------###############################-----------------", dataLog, e));
+                                "---------------------###############################-----------------\n", dataLog, e));
             }
 
 
         } else if ((ramTotal - ramDisponivel) * 100 / ramTotal >= 98.0) {
 
             try {
-                monitoration.enviarMensagem(String.format("[Maquina %s] \n" +
+                monitoration.enviarMensagem(String.format("[%s] \n" +
                         "A RAM está sobrecarregando \n" +
-                        "Uso atual é de: %.2f", idMaquina, ramTotal - ramDisponivel));
+                        "Uso atual é de: %.2f", nomeMaquina, ramTotal - ramDisponivel));
 
                 logge.guardarLog(
                         String.format("-----------------Consultando banco Azure---------------------\n\n" +
@@ -284,7 +289,7 @@ public class ControllerRegistry {
                                 "Enviando alerta para o slack \n\n" +
                                 "A RAM está sobrecarregando \n" +
                                 "Uso atual é de: %.2f \n" +
-                                "---------------------###############################-----------------", dataLog, ramTotal - ramDisponivel));
+                                "---------------------###############################-----------------\n", dataLog, ramTotal - ramDisponivel));
 
 
             } catch (Exception e) {
@@ -294,7 +299,7 @@ public class ControllerRegistry {
                                 "Enviando alerta para o sclack \n\n\n" +
                                 "** Erro ao enviar a menssagem ** \n\n " +
                                 "Exception: %s \n" +
-                                "---------------------###############################-----------------", dataLog, e));
+                                "---------------------###############################-----------------\n", dataLog, e));
             }
 
             try {
@@ -304,13 +309,14 @@ public class ControllerRegistry {
                                 ", dataHoraAlerta" +
                                 ", idMaquina, alertaVisivel) VALUES (?,?,?,?,?,?)",
                         "RAM", "extrema", "RAM está no limite ou muito proxima", horarioPC, idMaquina, 1);
+
                 logge.guardarLog(
                         String.format("-----------------Consultando banco Azure---------------------\n\n" +
                                 "Data e hora do insert: %s \n" +
                                 "Enviando alerta para o banco de dados \n\n" +
                                 "A RAM está sobrecarregando \n" +
                                 "Uso atual é de: %.2f \n" +
-                                "---------------------###############################-----------------", dataLog, ramTotal - ramDisponivel));
+                                "---------------------###############################-----------------\n", dataLog, ramTotal - ramDisponivel));
 
             } catch (Exception e){
                 logge.guardarLog(
@@ -318,7 +324,7 @@ public class ControllerRegistry {
                                 "Data e hora do insert: %s \n" +
                                 "Erro ao inserir o registro \n\n\n" +
                                 "Exception: %s \n" +
-                                "---------------------###############################-----------------", dataLog, e));
+                                "---------------------###############################-----------------\n", dataLog, e));
             }
 
 
@@ -327,9 +333,9 @@ public class ControllerRegistry {
         if((disco1Total - disco1Disponivel) * 100 / disco1Total > 88.0 ) {
 
             try {
-                monitoration.enviarMensagem(String.format("[Maquina %s] \n" +
+                monitoration.enviarMensagem(String.format("[%s]\n" +
                         "O Disco 1 está sobrecarregando \n" +
-                        "Uso atual é de: %.2f", idMaquina, disco1Total - disco1Disponivel ));
+                        "Uso atual é de: %.2f", nomeMaquina, disco1Total - disco1Disponivel ));
 
                 logge.guardarLog(
                         String.format("-----------------Consultando Slack---------------------\n\n" +
@@ -337,7 +343,7 @@ public class ControllerRegistry {
                                 "Enviando alerta para o slack \n\n" +
                                 "O Disco 1 está sobrecarregando \n" +
                                 "Uso atual é de: %.2f \n" +
-                                "---------------------###############################-----------------", dataLog, disco1Total - disco1Disponivel));
+                                "---------------------###############################-----------------\n", dataLog, disco1Total - disco1Disponivel));
 
             } catch (Exception e) {
                 logge.guardarLog(
@@ -346,7 +352,7 @@ public class ControllerRegistry {
                                 "Enviando alerta para o sclack \n\n\n" +
                                 "** Erro ao enviar a menssagem ** \n\n " +
                                 "Exception: %s \n" +
-                                "---------------------###############################-----------------", dataLog, e));
+                                "---------------------###############################-----------------\n", dataLog, e));
             }
 
             try {
@@ -362,7 +368,7 @@ public class ControllerRegistry {
                                 "Enviando alerta para o banco dados \n\n" +
                                 "O Disco 1 está sobrecarregando \n" +
                                 "Uso atual é de: %.2f \n" +
-                                "---------------------###############################-----------------", dataLog, disco1Total - disco1Disponivel));
+                                "---------------------###############################-----------------\n", dataLog, disco1Total - disco1Disponivel));
 
             } catch (Exception e) {
                 logge.guardarLog(
@@ -370,15 +376,15 @@ public class ControllerRegistry {
                                 "Data e hora do insert: %s \n" +
                                 "Erro ao inserir o registro \n\n\n" +
                                 "Exception: %s \n" +
-                                "---------------------###############################-----------------", dataLog, e));
+                                "---------------------###############################-----------------\n", dataLog, e));
             }
 
         } else if((disco1Total - disco1Disponivel) * 100 / disco1Total > 95.0 ) {
 
             try {
-                monitoration.enviarMensagem(String.format("[Maquina %s] \n" +
+                monitoration.enviarMensagem(String.format("[%s]\n" +
                         "O Disco 1 está sobrecarregando \n" +
-                        "Uso atual é de: %.2f", idMaquina, disco1Total - disco1Disponivel ));
+                        "Uso atual é de: %.2f", nomeMaquina, disco1Total - disco1Disponivel ));
 
                 logge.guardarLog(
                         String.format("-----------------Consultando banco Azure---------------------\n\n" +
@@ -386,7 +392,7 @@ public class ControllerRegistry {
                                 "Enviando alerta para o slack \n\n" +
                                 "O Disco 1 está sobrecarregando \n" +
                                 "Uso atual é de: %.2f \n" +
-                                "---------------------###############################-----------------", dataLog, disco1Total - disco1Disponivel));
+                                "---------------------###############################-----------------\n", dataLog, disco1Total - disco1Disponivel));
 
             } catch (Exception e) {
                 logge.guardarLog(
@@ -395,7 +401,7 @@ public class ControllerRegistry {
                                 "Enviando alerta para o sclack \n\n\n" +
                                 "** Erro ao enviar a menssagem ** \n\n " +
                                 "Exception: %s \n" +
-                                "---------------------###############################-----------------", dataLog, e));
+                                "---------------------###############################-----------------\n", dataLog, e));
             }
 
             try {
@@ -411,7 +417,7 @@ public class ControllerRegistry {
                                 "Enviando alerta para o banco dados \n\n" +
                                 "O Disco 1 está sobrecarregando \n" +
                                 "Uso atual é de: %.2f \n" +
-                                "---------------------###############################-----------------", dataLog, disco1Total - disco1Disponivel));
+                                "---------------------###############################-----------------\n", dataLog, disco1Total - disco1Disponivel));
 
             } catch (Exception e) {
                 logge.guardarLog(
@@ -419,7 +425,7 @@ public class ControllerRegistry {
                                 "Data e hora do insert: %s \n" +
                                 "Erro ao inserir o registro \n\n\n" +
                                 "Exception: %s \n" +
-                                "---------------------###############################-----------------", dataLog, e));
+                                "---------------------###############################-----------------\n", dataLog, e));
             }
 
         }
@@ -427,9 +433,9 @@ public class ControllerRegistry {
         if((disco2Total - disco2Disponivel) * 100 / disco2Total > 88.0 ) {
 
             try {
-                monitoration.enviarMensagem(String.format("[Maquina %s]" +
+                monitoration.enviarMensagem(String.format("[%s]\n" +
                         "O Disco 2 está sobrecarregando \n" +
-                        "Uso atual é de: %.2f", idMaquina, disco2Total - disco2Disponivel ));
+                        "Uso atual é de: %.2f", nomeMaquina, disco2Total - disco2Disponivel ));
 
                 logge.guardarLog(
                         String.format("-----------------Consultando banco Azure---------------------\n\n" +
@@ -437,7 +443,7 @@ public class ControllerRegistry {
                                 "Enviando alerta para o slack \n\n" +
                                 "O Disco 2 está sobrecarregando \n" +
                                 "Uso atual é de: %.2f \n" +
-                                "---------------------###############################-----------------", dataLog, disco2Total - disco2Disponivel));
+                                "---------------------###############################-----------------\n", dataLog, disco2Total - disco2Disponivel));
 
             } catch (Exception e) {
                 logge.guardarLog(
@@ -446,7 +452,7 @@ public class ControllerRegistry {
                                 "Enviando alerta para o sclack \n\n\n" +
                                 "** Erro ao enviar a menssagem ** \n\n " +
                                 "Exception: %s \n" +
-                                "---------------------###############################-----------------", dataLog, e));
+                                "---------------------###############################-----------------\n", dataLog, e));
             }
 
             try {
@@ -462,7 +468,7 @@ public class ControllerRegistry {
                         "Enviando alerta para o banco de dados \n\n" +
                         "O Disco 2 está sobrecarregando \n" +
                         "Uso atual é de: %.2f \n" +
-                        "---------------------###############################-----------------", dataLog, disco2Total - disco2Disponivel));
+                        "---------------------###############################-----------------\n", dataLog, disco2Total - disco2Disponivel));
 
             } catch (Exception e){
                 logge.guardarLog(
@@ -470,15 +476,15 @@ public class ControllerRegistry {
                                 "Data e hora do insert: %s \n" +
                                 "Erro ao inserir o registro \n\n\n" +
                                 "Exception: %s \n" +
-                                "---------------------###############################-----------------", dataLog, e));
+                                "---------------------###############################-----------------\n", dataLog, e));
             }
 
         } else if((disco2Total - disco2Disponivel) * 100 / disco2Total > 95.0 ) {
 
             try {
-                monitoration.enviarMensagem(String.format("[Maquina %s]" +
+                monitoration.enviarMensagem(String.format("[%s]\n" +
                         "O Disco 2 está sobrecarregando \n" +
-                        "Uso atual é de: %.2f", idMaquina, disco2Total - disco2Disponivel ));
+                        "Uso atual é de: %.2f", nomeMaquina, disco2Total - disco2Disponivel ));
 
                 logge.guardarLog(
                         String.format("-----------------Consultando banco Azure---------------------\n\n" +
@@ -486,7 +492,7 @@ public class ControllerRegistry {
                                 "Enviando alerta para o slack \n\n" +
                                 "O Disco 2 está sobrecarregando \n" +
                                 "Uso atual é de: %.2f \n" +
-                                "---------------------###############################-----------------", dataLog, disco2Total - disco2Disponivel));
+                                "---------------------###############################-----------------\n", dataLog, disco2Total - disco2Disponivel));
 
             } catch (Exception e) {
                 logge.guardarLog(
@@ -495,7 +501,7 @@ public class ControllerRegistry {
                                 "Enviando alerta para o sclack \n\n\n" +
                                 "** Erro ao enviar a menssagem ** \n\n " +
                                 "Exception: %s \n" +
-                                "---------------------###############################-----------------", dataLog, e));
+                                "---------------------###############################-----------------\n", dataLog, e));
             }
 
             try {
@@ -511,7 +517,7 @@ public class ControllerRegistry {
                         "Enviando alerta para o banco de dados \n\n" +
                         "O Disco 2 está sobrecarregando \n" +
                         "Uso atual é de: %.2f \n" +
-                        "---------------------###############################-----------------", dataLog, disco2Total - disco2Disponivel));
+                        "---------------------###############################-----------------\n", dataLog, disco2Total - disco2Disponivel));
 
             }catch (Exception e){
                 logge.guardarLog(
@@ -519,7 +525,7 @@ public class ControllerRegistry {
                                 "Data e hora do insert: %s \n" +
                                 "Erro ao inserir o registro \n\n\n" +
                                 "Exception: %s \n" +
-                                "---------------------###############################-----------------", dataLog, e));
+                                "---------------------###############################-----------------\n", dataLog, e));
 
             }
 
@@ -542,7 +548,7 @@ public class ControllerRegistry {
                             "Data e hora da consulta: %s \n" +
                             "Consultando informações da maquina com o id processador:  %s\n" +
                             "Consulta efetuada com sucesso \n\n" +
-                            "---------------------###############################-----------------", dataLog, machineInfoModel.getIdProcessador()));
+                            "---------------------###############################-----------------\n", dataLog, machineInfoModel.getIdProcessador()));
         }catch (Exception e){
             logge.guardarLog(
                     String.format("-----------------Consultando banco Azure---------------------\n\n" +
@@ -550,7 +556,7 @@ public class ControllerRegistry {
                             "Consultando informações da maquina com o id processador:  %s\n" +
                             "** Erro na consulta ** \n\n" +
                             "Exception: %s \n\n" +
-                            "---------------------###############################-----------------", dataLog, machineInfoModel.getIdProcessador(),e));
+                            "---------------------###############################-----------------\n", dataLog, machineInfoModel.getIdProcessador(),e));
 
         }
 
@@ -564,7 +570,7 @@ public class ControllerRegistry {
                     "Data e hora da consulta: %s \n" +
                     "Consultando registro da maquina %s\n" +
                     "Consulta efetuada com sucesso \n\n" +
-                    "---------------------###############################-----------------", dataLog, machineInfoSelect.get(0).getApelidoMaquina()));
+                    "---------------------###############################-----------------\n", dataLog, machineInfoSelect.get(0).getApelidoMaquina()));
 
         } catch (Exception e){
             logge.guardarLog(
@@ -573,7 +579,7 @@ public class ControllerRegistry {
                             "Consultando registro da maquina %s\n" +
                             "** Erro na consulta ** \n\n" +
                             "Exception: %s \n\n" +
-                            "---------------------###############################-----------------", dataLog, machineInfoSelect.get(0).getApelidoMaquina(),e));
+                            "---------------------###############################-----------------\n", dataLog, machineInfoSelect.get(0).getApelidoMaquina(),e));
 
         }
 
