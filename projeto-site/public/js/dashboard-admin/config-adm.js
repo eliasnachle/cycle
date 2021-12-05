@@ -70,8 +70,8 @@ function listDataAdminMobile(){
                         <i class="fa fa-eye-slash toggle-passwrd" onclick="setVisible()"></i>
                     </h3>
                     <span>
-                        <b id="pass_user">*********</b>
-                        <i onclick="showUpdateField(password)" class="icon-settings"></i>
+                        <b id="pass_mobile">*********</b>
+                        <i class="icon-settings"></i>
                     </span>
                 </div>
             </div>
@@ -81,9 +81,11 @@ function listDataAdminMobile(){
 function setVisible(){
     if(!boolean){
         pass_user.innerHTML = `${sessionStorage.pass_user_contratante}`;
+        pass_mobile.innerHTML = `${sessionStorage.pass_user_contratante}`;
         boolean = true;
     } else {
         pass_user.innerHTML = `*********`;
+        pass_mobile.innerHTML = `*********`;
         boolean = false;
     }
 }

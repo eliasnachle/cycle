@@ -135,9 +135,9 @@ function getAllMachines(machineRegistered) {
                     <th>RAM Total</th>
                 </tr>
                 <tr>
-                    <td data-th="Nome Máquina">$${machine.apelidoMaquina}</td>
-                    <td data-th="Modelo de CPU">$${machine.modeloCpu}</td>
-                    <td data-th="RAM Total">$${machine.espacoTotalRam}</td>           
+                    <td data-th="Nome Máquina">${machine.apelidoMaquina}</td>
+                    <td data-th="Modelo de CPU">${machine.modeloCpu}</td>
+                    <td data-th="RAM Total">${machine.espacoTotalRam}</td>           
                 </tr>
             </table>
         `;
@@ -150,9 +150,9 @@ function getAllMachines(machineRegistered) {
             <th>RAM Total</th>
         </tr>
         <tr>
-            <td data-th="Nome Máquina">$${machine.apelidoMaquina}</td>
-            <td data-th="Modelo de CPU">$${machine.modeloCpu}</td>
-            <td data-th="RAM Total">$${machine.espacoTotalRam}</td>           
+            <td data-th="Nome Máquina">${machine.apelidoMaquina}</td>
+            <td data-th="Modelo de CPU">${machine.modeloCpu}</td>
+            <td data-th="RAM Total">${machine.espacoTotalRam}</td>           
         </tr>
     </table>
         `;
