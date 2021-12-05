@@ -12,29 +12,18 @@ function listarSuportes(usuariosSuporte) {
         var supCard = document.createElement("div");
 
         supCard.innerHTML += `
-        <div class="sup_list">
-        <div id="teste" class="data_card">
-            <i class="icon-profile"></i>
-            <div class="card_field">
-                <h3>Nome</h3>
-                <span>
-                    ${suporte.nomeSuporte}
-                </span>
-            </div>
-            <div class="card_field">
-                <h3>Email</h3>
-                <span>
-                    ${suporte.emailSuporte}
-                </span>
-            </div>
-            <div class="card_field">
-                <h3>Contratante</h3>
-                <span>
-                    ${suporte.nomeContratante}
-                </span>
-            </div>
-        </div>
-    </div>
+        <table class="rwd-table">
+            <tr>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Contratante</th>
+            </tr>
+            <tr>
+                <td data-th="Nome">${suporte.nomeSuporte}</td>
+                <td data-th="Email">${suporte.emailSuporte}</td>
+                <td data-th="Contratante">${suporte.nomeContratante}</td>           
+            </tr>
+        </table>
     `;
     supCard.className = "list_sup";
     supList.appendChild(supCard);
@@ -100,29 +89,18 @@ function getAllMachines(machineRegistered) {
         var machineCard = document.createElement("div");
 
         machineCard.innerHTML += `
-        <div class="sup_list">
-        <div class="data_card">
-            <i class="icon-computer"></i>
-            <div class="card_field">
-                <h3>Nome Máquina</h3>
-                <span>
-                    ${machine.apelidoMaquina}
-                </span>
-            </div>
-            <div class="card_field">
-                <h3>Modelo de CPU</h3>
-                <span>
-                    ${machine.modeloCpu}
-                </span>
-            </div>
-            <div class="card_field">
-                <h3>RAM Total</h3>
-                <span>
-                    ${machine.espacoTotalRam}
-                </span>
-            </div>
-        </div>
-    </div>
+        <table class="rwd-table">
+        <tr>
+            <th>Nome Máquina</th>
+            <th>Modelo de CPU</th>
+            <th>RAM Total</th>
+        </tr>
+        <tr>
+            <td data-th="Nome Máquina">$${machine.apelidoMaquina}</td>
+            <td data-th="Modelo de CPU">$${machine.modeloCpu}</td>
+            <td data-th="RAM Total">$${machine.espacoTotalRam}</td>           
+        </tr>
+    </table>
     `;
     machineCard.className = "list_machine";
     machineList.appendChild(machineCard);

@@ -26,21 +26,20 @@
         <nav class="nav-vertical">
             <!-- Links -->
             <ul>
-                <!-- Unidades -->
-                <!-- Configurações -->
-                <a href="#" class="nav-link active">
-                    <i class="icon-settings"></i>
-                    <span>Configurações</span>
+                <!-- Máquinas -->
+                <a href="dash-adm-maquina.html" class="nav-link">
+                    <i class="icon-computer"></i>
+                    <span>Máquinas</span>
                 </a>
                 <!-- Equipe -->
                 <a href="dash-adm-equipe.html" class="nav-link">
                     <i class="icon-profile"></i>
                     <span>Equipe</span>
                 </a>
-                <!-- Máquinas -->
-                <a href="dash-adm-maquina.html" class="nav-link">
-                    <i class="icon-computer"></i>
-                    <span>Máquinas</span>
+                <!-- Configurações -->
+                <a href="#" class="nav-link active">
+                    <i class="icon-settings"></i>
+                    <span>Configurações</span>
                 </a>
             </ul>
             <!-- Encerrar -->
@@ -54,7 +53,7 @@
     <!-- conteudo site -->
     <div class="data_content">
         <div class="welcome">
-            <h2>Bem vindo(a) <span id="name_header">Lucas Inutilismo</span></h2>
+            <h2 style="display: none;">Bem vindo(a) <span id="name_header">Lucas Inutilismo</span></h2>
         </div>
         <h1>Configurações</h1>
         <div id="data_card" class="data_box">
@@ -100,59 +99,54 @@
     <!-- Mobile -->
     <div class="mobile">
         <div class="mobile-content">
-            <div class="mobile-card-open">
-                <div class="icon">
-                    <i class="icon-restaurant"></i>
-                </div>
-                <div class="header">
-                    <span class="title">Méqui 1000</span>
-                    <span class="location">Av. Paulista, 1811 - Bela Vista, São Paulo</span>
-                </div>
-                <div class="card-content">
-                    <div class="left-content">
-                        <span class="title">CNPJ</span>
-                        <span>51.656.465/0001-36</span>
-                        <span class="title">Plano</span>
-                        <span>Plano Prata</span>
-                    </div>
-                    <div class="right-content">
-                        <span class="title">Usuários</span>
-                        <span>10</span>
-                    </div>
-                </div>
+            <div class="data_header">
+                <h1>Máquinas</h1>
             </div>
             <div class="mobile-card">
-                <div class="icon">
-                    <i class="icon-restaurant"></i>
+                    <div class="data_line">
+                        <h3>Nome</h3>
+                        <span>
+                            <b id="name_user">lucao.teste@gmail.com</b>
+                            <i class="icon-settings"></i>
+                        </span>
+                    </div>
+                    <div class="data_line">
+                        <h3>E-mail</h3>
+                        <span>
+                            <b id="email_usuario">lucao.teste@gmail.com</b>
+                            <i class="icon-settings"></i>
+                        </span>
+                    </div>
+                    <div class="data_line">
+                        <h3>CPF</h3>
+                        <span>
+                            <b id="cpf_user">Plano Gold</b>
+                            <i class="icon-settings"></i>
+                        </span>
+                    </div>
+                    <div class="data_line">
+                        <h3>Senha
+                            <i class="fa fa-eye-slash toggle-passwrd"></i>
+                        </h3>
+                        <span>
+                            Password
+                            <i class="icon-settings"></i>
+                        </span>
+                    </div>
                 </div>
-                <div class="header">
-                    <span class="title">Méqui 1000</span>
-                    <span class="location">Av. Paulista, 1811 - Bela Vista, São Paulo</span>
-                </div>
-            </div>
-            <div class="mobile-card">
-                <div class="icon">
-                    <i class="icon-restaurant"></i>
-                </div>
-                <div class="header">
-                    <span class="title">Méqui 1000</span>
-                    <span class="location">Av. Paulista, 1811 - Bela Vista, São Paulo</span>
-                </div>
-            </div>
-
         </div>
         <div class="mobile-menu">
-            <a href="#" class="icon-menu">
+            <a href="#" onclick="logoff()" class="icon-menu">
                 <i class="icon-logout"></i>
             </a>
-            <a href="./dash_user_equipe.html" class="icon-menu">
+            <a href="dash-adm-equipe.html" class="icon-menu">
                 <i class="icon-profile"></i>
             </a>
-            <a href="#" class="icon-menu">
+            <a href="config-admin.html" class="icon-menu  active">
                 <i class="icon-settings"></i>
             </a>
-            <a href="#" class="icon-menu active">
-                <i class="icon-restaurant"></i>
+            <a href="dash-adm-maquina.html" class="icon-menu">
+                <i class="icon-computer"></i>
             </a>
         </div>
     </div>
