@@ -1,34 +1,64 @@
 function listarSuportes(usuariosSuporte) {
     console.log("caiu aqui")
     var supList = document.getElementById("list_sup");
+    var supListMobile = document.getElementById("list_sup_mobile");
+
     supList.innerHTML = "";
+    supListMobile.innerHTML = "";
 
     list_sup.innerHTML += `
         <h3>Suportes cadastrados - ${usuariosSuporte.length} </h3>
     `;
+
+    list_sup_mobile.innerHTML += `
+        <h3>Suportes cadastrados - ${usuariosSuporte.length} </h3>
+    `;
+
     for (let i = 0; i < usuariosSuporte.length; i++) {
         var suporte = usuariosSuporte[i];
 
         var supCard = document.createElement("div");
 
+        var supCardMobile = document.createElement("div")
+
         supCard.innerHTML += `
         <table class="rwd-table">
-            <tr>
-                <th>Nome</th>
-                <th>Email</th>
-                <th>Contratante</th>
-            </tr>
-            <tr>
-                <td data-th="Nome">${suporte.nomeSuporte}</td>
-                <td data-th="Email">${suporte.emailSuporte}</td>
-                <td data-th="Contratante">${suporte.nomeContratante}</td>           
-            </tr>
-        </table>
-    `;
-    supCard.className = "list_sup";
-    supList.appendChild(supCard);
+                <tr>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>Contratante</th>
+                </tr>
+                <tr>
+                    <td data-th="Nome">${suporte.nomeSuporte}</td>
+                    <td data-th="Email">${suporte.emailSuporte}</td>
+                    <td data-th="Contratante">${suporte.nomeContratante}</td>           
+                </tr>
+            </table>
+        `;
+
+        supCardMobile.innerHTML += `
+        <table class="rwd-table">
+                <tr>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>Contratante</th>
+                </tr>
+                <tr>
+                    <td data-th="Nome">${suporte.nomeSuporte}</td>
+                    <td data-th="Email">${suporte.emailSuporte}</td>
+                    <td data-th="Contratante">${suporte.nomeContratante}</td>           
+                </tr>
+            </table>
+        `;
+
+        supCard.className = "list_sup";
+        supCardMobile.className = "list_sup_mobile";
+        supList.appendChild(supCard);
+        supListMobile.appendChild(supCardMobile);
     }
 }
+
+
 
 function listSuppToDelete(usuariosSuporte){
     var supList = document.getElementById("select_delete");
@@ -77,18 +107,42 @@ function listMachineToDelete(machines){
 
 function getAllMachines(machineRegistered) {
     console.log("caiu aqui")
-    var machineList = document.getElementById("list_machine");
+    var machineList = document.querySelector(".list_machine");
+    var machineListMobile = document.querySelector(".list_machine_mobile");
+
+    console.log(machineList)
+    
     machineList.innerHTML = "";
 
     machineList.innerHTML += `
         <h3>Maquinas Cadastradas - ${machineRegistered.length} </h3>
+
     `;
+
+
     for (let i = 0; i < machineRegistered.length; i++) {
         var machine = machineRegistered[i];
 
         var machineCard = document.createElement("div");
 
+        var machineCardMobile = document.createElement("div");
+
         machineCard.innerHTML += `
+            <table class="rwd-table">
+                <tr>
+                    <th>Nome Máquina</th>
+                    <th>Modelo de CPU</th>
+                    <th>RAM Total</th>
+                </tr>
+                <tr>
+                    <td data-th="Nome Máquina">$${machine.apelidoMaquina}</td>
+                    <td data-th="Modelo de CPU">$${machine.modeloCpu}</td>
+                    <td data-th="RAM Total">$${machine.espacoTotalRam}</td>           
+                </tr>
+            </table>
+        `;
+
+        machineCardMobile.innerHTML += `
         <table class="rwd-table">
         <tr>
             <th>Nome Máquina</th>
@@ -101,11 +155,15 @@ function getAllMachines(machineRegistered) {
             <td data-th="RAM Total">$${machine.espacoTotalRam}</td>           
         </tr>
     </table>
-    `;
-    machineCard.className = "list_machine";
-    machineList.appendChild(machineCard);
+        `;
+
+        machineCard.className = "list_machine";
+
+        machineList.appendChild(machineCard);
+        machineListMobile.appendChild(machineCardMobile);
     }
 }
+
 
 function getAllSupportsByContratant(){
     verificateAuth();

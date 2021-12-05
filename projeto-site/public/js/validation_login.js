@@ -43,7 +43,7 @@ function authenticateLogin() {
                     sessionStorage.idPlano_user_contratante = json.idPlano;
                     sessionStorage.pass_user_contratante = json.senhaContratante;
                     submit_button.disabled = false
-                    window.location.href = "dashboard-manager/config-admin.html";
+                    window.location.href = "dashboard-manager/dash-adm-maquina.html";
 
                 });
             } else {
