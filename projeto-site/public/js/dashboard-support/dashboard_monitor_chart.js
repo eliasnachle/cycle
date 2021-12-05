@@ -9,7 +9,7 @@ var dados = {
     labels: [],
     datasets: [
         {
-            label: "Consumo",
+            label: "",
             data: [],
             type: 'line',
             borderColor: '#836FFF',
@@ -78,10 +78,8 @@ function getRealChartTimeUse(component) {
 
 function updateChart(useDetail) {
 
-    console.log(useDetail[0])
-    console.log(useDetail[0].componenteEmUso)
     dados.datasets[0].data.push(useDetail[0].componenteEmUso);
-    dados.labels.push(dados.labels.length);
+    dados.labels.push(useDetail[0].dataHoraRegistro);
 
     dados.labels.shift();
     dados.datasets[0].data.shift();
@@ -134,7 +132,7 @@ function chartJS(useDetail) {
 
     for (var i = 0; i < useDetail.length; i++) {
         var test = useDetail[i]
-        dados.labels.push(i);
+        dados.labels.push(useDetail[i].dataHoraRegistro);
         dados.datasets[0].data.push(test.componenteEmUso);
     }
 
