@@ -271,6 +271,7 @@
   height: 50%;
   margin-top: 20px;
   padding-right: 10px;
+  width: 100%;
 }
 
 .mobile-content .mobile-card-open .card-content .left-content {
@@ -311,6 +312,11 @@
   color: white;
   font-weight: 100;
 }
+
+.items-card{
+  width: 100%;
+}
+
 
 .mobile-menu {
   background-color: #161616;
