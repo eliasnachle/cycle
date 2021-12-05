@@ -114,14 +114,14 @@ router.get('/realChartTimeUse/:idMaquina/:component', function(req, res, next) {
 		switch(component){
 			case 'cpu':
 				instrucaoSql = `SELECT TOP 1 cpuEmUso AS componenteEmUso,
-				CONVERT(VARCHAR(10), dataHoraRegistro, 104) + ' ' + CONVERT(VARCHAR(8), DATEADD(HOUR,-3, dataHoraRegistro), 108) AS dataHoraRegistro
+				CONVERT(VARCHAR(8), DATEADD(HOUR,-3, dataHoraRegistro), 108) AS dataHoraRegistro
 				FROM tblRegistros
 				WHERE idMaquina = ${idMaquina}
 				ORDER BY dataHoraRegistro DESC`;
 				break;
 			case 'memory':
 				instrucaoSql = `SELECT TOP 1 (espacoTotalRam - espacoLivreRam) AS componenteEmUso,
-				CONVERT(VARCHAR(10), dataHoraRegistro, 104) + ' ' + CONVERT(VARCHAR(8), DATEADD(HOUR,-3, dataHoraRegistro), 108) AS dataHoraRegistro
+				CONVERT(VARCHAR(8), DATEADD(HOUR,-3, dataHoraRegistro), 108) AS dataHoraRegistro
 				FROM tblRegistros
 				INNER JOIN tblMaquinas
 					ON tblRegistros.idMaquina = tblMaquinas.idMaquina
@@ -130,7 +130,7 @@ router.get('/realChartTimeUse/:idMaquina/:component', function(req, res, next) {
 				break;
 			case 'disk':
 				instrucaoSql = `SELECT TOP 1 (espacoTotalDisco1 - espacoLivreDisco1) AS componenteEmUso,
-				CONVERT(VARCHAR(10), dataHoraRegistro, 104) + ' ' + CONVERT(VARCHAR(8), DATEADD(HOUR,-3, dataHoraRegistro), 108) AS dataHoraRegistro
+				CONVERT(VARCHAR(8), DATEADD(HOUR,-3, dataHoraRegistro), 108) AS dataHoraRegistro
 				FROM tblRegistros
 				INNER JOIN tblMaquinas
 					ON tblRegistros.idMaquina = tblMaquinas.idMaquina

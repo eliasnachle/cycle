@@ -125,46 +125,49 @@
         <!-- Components Cards -->
         <div class="dashboard__container--components">
         </div>
-        <select id="select-component" onchange="generateFirstConfigChart(this.value)">
-          <option value="cpu">CPU</option>
-          <option value="memory">RAM</option>
-        </select>
-        <div>
-          <canvas id="chart"></canvas>
-        </div>  
-        <div class="dashboard__container--bottom">
-          <!-- Status Máquina -->
-          <div class="dashboard__container--status">
-            <h3>Resumo Geral</h3>
-            <span>Máquina em exclente estado.</span>
-            <img src="../imgs/exclente-status.svg">
-          </div>
-          <!-- Configurações -->
-          <div class="dashboard__container--config">
-          </div>
-          <!-- Consumo Disco -->
-          <div class="dashboard__container--consume">
-            <h3>Consumo Diário RAM</h3>
-            <div class="circular-progress">
-              <svg>
-                <circle cx="70" cy="70" r="70"></circle>
-              </svg>
-              <div class="value-container">
-              </div>
-            </div>
-          </div>
-          <!-- Consumo CPU -->
-          <div class="dashboard__container--consume">
-            <h3>Consumo Diário CPU</h3>
-            <div class="circular-progress">
-              <svg>
-                <circle cx="70" cy="70" r="70"></circle>
-              </svg>
-              <div class="value-container">
-              </div>
+        <div class="dashboard__container--charts">
+          <select id="select-component" onchange="generateFirstConfigChart(this.value)">
+            <option value="cpu">CPU</option>
+            <option value="memory">RAM</option>
+          </select>
+          <div>
+            <canvas id="chart"></canvas>
+          </div>  
+        </div>
+      </div>
+      <div class="dashboard__container--bottom">
+        <!-- Status Máquina -->
+        <div class="dashboard__container--status">
+          <h3>Resumo Geral</h3>
+          <span>Máquina em exclente estado.</span>
+          <img src="../imgs/exclente-status.svg">
+        </div>
+        <!-- Configurações -->
+        <div class="dashboard__container--config">
+        </div>
+        <!-- Consumo Disco -->
+        <div class="dashboard__container--consume">
+          <h3>Consumo Diário RAM</h3>
+          <div class="circular-progress">
+            <svg>
+              <circle cx="70" cy="70" r="70"></circle>
+            </svg>
+            <div class="value-container">
             </div>
           </div>
         </div>
+        <!-- Consumo CPU -->
+        <div class="dashboard__container--consume">
+          <h3>Consumo Diário CPU</h3>
+          <div class="circular-progress">
+            <svg>
+              <circle cx="70" cy="70" r="70"></circle>
+            </svg>
+            <div class="value-container">
+            </div>
+          </div>
+        </div>
+    </div>
     </section>
   </main>
 </body>

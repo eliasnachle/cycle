@@ -120,16 +120,32 @@ function postRealTimeUse(idMachine){
             <span>${primaryDiskUsePorcentage}%</span>
             <span>${idMachine[0].espacoLivreDisco1}GB/${sizePrimaryDisk}GB</span>
         </div>
-    </div>
-
-    <div class="components__card">
-      <i class="icon-storage"></i>
-      <h3>Disco 2</h3>
-      <span>Excelente perfomance</span>
-      <div class="components__card--use">
-      <span>Há espaço disponível para um novo disco!</span>
-      </div>
     </div>`;
+    if(idMachine[0].espacoLivreDisco2 <= 0){
+        dashboardContainerComponents.innerHTML += `
+        <div class="components__card">
+            <i class="icon-storage"></i>
+            <h3>Disco 2</h3>
+            <span>Excelente perfomance</span>
+            <div class="components__card--use">
+                <span>Há espaço disponível para um novo disco!</span>
+            </div>
+        </div>`;
+    } else{
+        dashboardContainerComponents.innerHTML += `
+        <div class="components__card">
+        <i class="icon-storage"></i>
+        <h3>Disco 2</h3>
+        <span>Excelente perfomance</span>
+        <div class="progressbar">
+        <div class="progressbar__use" style="width:${secondaryDiskUsePorcentage}%;"></div>
+        </div>
+        <div class="components__card--use">
+        <span>${secondaryDiskUsePorcentage}%</span>
+        <span>${idMachine[0].espacoLivreDisco2}GB/${sizeSecondaryDisk}GB</span>
+        </div>
+        </div>`;
+    }
 }
 
 function getRealTimeUse(idMachine) {
@@ -158,4 +174,4 @@ function getDetailsDashboardMonitor(){
 }
 
 window.addEventListener('load', getDetailsDashboardMonitor);
-setInterval(getRealTimeUse, 5000);
+// setInterval(getRealTimeUse, 5000);
