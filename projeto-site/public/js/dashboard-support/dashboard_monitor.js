@@ -174,4 +174,4 @@ function getDetailsDashboardMonitor(){
 }
 
 window.addEventListener('load', getDetailsDashboardMonitor);
-// setInterval(getRealTimeUse, 5000);
+setInterval(getRealTimeUse, 5000);

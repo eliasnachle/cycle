@@ -77,7 +77,6 @@ function getRealChartTimeUse(component) {
 }
 
 function updateChart(useDetail) {
-    console.log('isso ', useDetail[0].dataHoraRegistro)
     dados.datasets[0].data.push(useDetail[0].componenteEmUso);
     dados.labels.push(useDetail[0].dataHoraRegistro);
 
