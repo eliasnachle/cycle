@@ -1,14 +1,14 @@
 process.env.NODE_ENV = 'production'; // altere para 'production' ou 'dev'
 
 var express = require('express');
-const path = require('path'),
-cookieParser = require('cookie-parser'),
-logger = require('morgan'),
-indexRouter = require('./routes/index'),
-usuariosRouter = require('./routes/usuarios'),
-leiturasRouter = require('./routes/leituras'),
-dashboardSupportRouter = require('./routes/dashboardSupport'),
-app = express();
+var path = require('path'),
+var cookieParser = require('cookie-parser'),
+var logger = require('morgan'),
+var indexRouter = require('./routes/index'),
+var usuariosRouter = require('./routes/usuarios'),
+var leiturasRouter = require('./routes/leituras'),
+var dashboardSupportRouter = require('./routes/dashboardSupport'),
+var app = express();
 
 app.use(logger('dev')); 
 app.use(express.json());
