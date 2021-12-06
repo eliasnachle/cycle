@@ -20,7 +20,8 @@ module.exports = {
       idle: 30000,
       connectTimeout: 5000
     }
-  },
+  }
+};
 
 //   // Insira aqui seus dados do banco LOCAL - MySQL Workbench
 //   dev: {
