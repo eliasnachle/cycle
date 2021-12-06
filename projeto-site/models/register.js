@@ -2,7 +2,7 @@
 
 module.exports = (sequelize, DataTypes) => {
     let Register = sequelize.define('Register',{	
-		idMaqidRegistrouina: {
+		idRegistro: {
 			field: 'idRegistro',
 			type: DataTypes.INTEGER,
 			primaryKey: true,
@@ -10,11 +10,6 @@ module.exports = (sequelize, DataTypes) => {
 		},	
         cpuEmUso: {
             field: 'cpuEmUso',
-            type: DataTypes.DOUBLE,
-            allowNull: true
-        },
-        temperaturaCpu: {
-            field: 'temperaturaCpu',
             type: DataTypes.DOUBLE,
             allowNull: true
         },

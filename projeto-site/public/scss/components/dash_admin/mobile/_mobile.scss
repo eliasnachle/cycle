@@ -26,10 +26,6 @@
             background-color: white;
             width: 90%;
             height: 100px;
-            border: 1px solid $secondaryFontColor;
-            border-radius: 5px;
-            transition: 0.5s;
-            display: flex;
             align-items: center;
 
             .icon{
@@ -102,6 +98,8 @@
                     display: flex;
                     padding: 5px;
                     flex-direction: column;  
+
+                    
                 }
 
                 .card-content{
@@ -122,6 +120,23 @@
                         display: flex;
                         flex-direction: column;
                     }
+
+                                .reg_btn{
+                text-decoration: none;
+                padding: 0 2em;
+                border-radius: 5px;
+                height: 40px;
+                display: -webkit-box;
+                display: -ms-flexbox;
+                display: flex;
+                -webkit-box-align: center;
+                -ms-flex-align: center;
+                align-items: center;
+                background-color: #25A9EE;
+                color: white;
+                font-weight: 100;
+            }
+
                 }
             }
             
@@ -167,4 +182,32 @@
         }
     }
 
+    .mobile-content{
+        padding: 10px;
+    }
+
+    .buttons{
+        width: 100%;
+    }
+    .reg_btn{
+        text-decoration: none;
+        text-align: center;
+        padding: 20px;
+        border-radius: 5px;
+        height: 60px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        background-color: #25A9EE;
+        color: white;
+        font-weight: 100;
+        @media screen and(max-width: 710px){
+            width: 100%;
+            margin-bottom: 10px;
+    }
+    }
 }
+

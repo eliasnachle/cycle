@@ -22,21 +22,20 @@
         <nav class="nav-vertical">
             <!-- Links -->
             <ul>
-
-                <!-- Unidades -->
-                <a href="./config-admin.html" class="nav-link">
-                    <i class="icon-settings"></i>
-                    <span>Configurações</span>
+                <!-- Máquinas -->
+                <a href="dash-adm-maquina.html" class="nav-link active">
+                    <i class="icon-computer"></i>
+                    <span>Máquinas</span>
                 </a>
                 <!-- Equipe -->
                 <a href="dash-adm-equipe.html" class="nav-link">
                     <i class="icon-profile"></i>
                     <span>Equipe</span>
                 </a>
-                <!-- Máquinas -->
-                <a href="#" class="nav-link active">
-                    <i class="icon-computer"></i>
-                    <span>Máquinas</span>
+                <!-- Configurações -->
+                <a href="config-admin.html" class="nav-link">
+                    <i class="icon-settings"></i>
+                    <span>Configurações</span>
                 </a>
             </ul>
             <!-- Encerrar -->
@@ -50,21 +49,55 @@
     <!-- conteudo site -->
     <div class="data_content">
         <div class="welcome">
-            <h2>Bem vindo(a) <span id="name_header">Lucas Inutilismo</span></h2>
+            <h2>Bem vindo(a) <span id="name_header">Lucas Inutilismo</span>!</h2>
         </div>
         <div class="data_header">
             <h1>Máquinas Cadastradas</h1>
         </div>
+        </table>
         <div class="buttons">
             <div id="div_abrir" onclick="openDelete()" class="register_ref">
                 <a href="#" class="reg_btn">Deletar Máquina</a>
             </div>
         </div>
         
-        
-        <form id="list_machine"></form>
-
+        <form class="list_machine"></form>
     </div>
+
+
+    <div class="mobile">
+        <div style="overflow: auto;" class="mobile-content">
+                <div class="card-content">
+                    <div class="data_header">
+                        <h1>Máquinas</h1>
+                    </div>
+                    <!-- <div class="data_content"> -->
+                        <form class="list_machine_mobile"></form>
+                    <!-- </div> -->
+            </div>
+            <div class="buttons">
+                <div id="div_abrir" onclick="openDelete()" class="register_ref">
+                    <a href="#" class="reg_btn">Deletar Máquina</a>
+                </div>
+                
+            </div>
+        </div>
+        <div class="mobile-menu">
+            <a href="#" onclick="logoff()" class="icon-menu">
+                <i class="icon-logout"></i>
+            </a>
+            <a href="dash-adm-equipe.html" class="icon-menu">
+                <i class="icon-profile"></i>
+            </a>
+            <a href="config-admin.html" class="icon-menu">
+                <i class="icon-settings"></i>
+            </a>
+            <a href="dash-adm-maquina.html" class="icon-menu active">
+                <i class="icon-computer"></i>
+            </a>
+        </div>
+    </div>
+
 
     <!-- Modal Delete -->
     <div id="modal_delete" class="background">

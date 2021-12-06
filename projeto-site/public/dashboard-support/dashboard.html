@@ -15,7 +15,7 @@
     <link rel="manifest" href="../favicon/request/site.webmanifest">
     <link rel="mask-icon" href="../favicon/request/safari-pinned-tab.svg" color="#836fff">
 </head>
-<body>
+<body onload="getMachines()">
 <!-- Notificações -->
 <section class="notifications">
   <div class="notifications--icon-close">
@@ -34,10 +34,6 @@
     <h2>Bem-Vindo(a)</h2>
   </div>
   <div class="header--profile-content">
-    <button class="btnSearchRestaurant">
-      <i class="icon-restaurant"></i>
-      <span>Méqui 1000</span>
-    </button>
     <div class="header--profile-content--icon">
       <i class="icon-bell"></i>      
       <img src="../imgs/support.jpg" alt="Suporte">
@@ -96,9 +92,6 @@
     <a href="dashboard-settings.html">
       <i class="icon-settings"></i>
     </a>
-    <button>
-      <i class="icon-restaurant"></i>
-    </button>
     <button>
       <img id="profileMenu" src="../imgs/support.jpg" alt="Suporte">
     </button>

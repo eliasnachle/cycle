@@ -24,21 +24,20 @@
         <nav class="nav-vertical">
             <!-- Links -->
             <ul>
-
-                <!-- Unidades -->
-                <a href="./config-admin.html" class="nav-link">
-                    <i class="icon-settings"></i>
-                    <span>Configurações</span>
-                </a>
-                <!-- Equipe -->
-                <a href="#" class="nav-link active">
-                    <i class="icon-profile"></i>
-                    <span>Equipe</span>
-                </a>
                 <!-- Máquinas -->
                 <a href="dash-adm-maquina.html" class="nav-link">
                     <i class="icon-computer"></i>
                     <span>Máquinas</span>
+                </a>
+                <!-- Equipe -->
+                <a href="dash-adm-equipe.html" class="nav-link active">
+                    <i class="icon-profile"></i>
+                    <span>Equipe</span>
+                </a>
+                <!-- Configurações -->
+                <a href="config-admin.html" class="nav-link">
+                    <i class="icon-settings"></i>
+                    <span>Configurações</span>
                 </a>
             </ul>
             <!-- Encerrar -->
@@ -52,7 +51,7 @@
     <!-- conteudo site -->
     <div class="data_content">
         <div class="welcome">
-            <h2>Bem vindo(a) <span id="name_header">Lucas Inutilismo</span></h2>
+            <h2 style="display: none;">Bem vindo(a) <span id="name_header">Lucas Inutilismo</span></h2>
         </div>
         <div class="data_header">
             <h1>Equipe</h1>
@@ -70,60 +69,37 @@
     </div>
     <!-- Mobile -->
     <div class="mobile">
-        <div class="mobile-content">
-            <div class="mobile-card-open">
-                <div class="icon">
-                    <i class="icon-restaurant"></i>
-                </div>
-                <div class="header">
-                    <span class="title">Méqui 1000</span>
-                    <span class="location">Av. Paulista, 1811 - Bela Vista, São Paulo</span>
-                </div>
-                <div class="card-content">
-                    <div class="left-content">
-                        <span class="title">CNPJ</span>
-                        <span>51.656.465/0001-36</span>
-                        <span class="title">Plano</span>
-                        <span>Plano Prata</span>
+        <div style="overflow: auto;" class="mobile-content">
+                <div class="card-content items-card">
+                    <div class="data_header">
+                        <h1>Equipe</h1>
                     </div>
-                    <div class="right-content">
-                        <span class="title">Usuários</span>
-                        <span>10</span>
+                    <form id="list_sup_mobile"></form>
+            </div>
+            <div class="buttons">
+                    <div id="div_abrir" onclick="openRegister()" class="register_ref">
+                        <a href="#" class="reg_btn">Cadastrar Suporte</a>
                     </div>
-                </div>
             </div>
-            <div class="mobile-card">
-                <div class="icon">
-                    <i class="icon-restaurant"></i>
-                </div>
-                <div class="header">
-                    <span class="title">Méqui 1000</span>
-                    <span class="location">Av. Paulista, 1811 - Bela Vista, São Paulo</span>
-                </div>
-            </div>
-            <div class="mobile-card">
-                <div class="icon">
-                    <i class="icon-restaurant"></i>
-                </div>
-                <div class="header">
-                    <span class="title">Méqui 1000</span>
-                    <span class="location">Av. Paulista, 1811 - Bela Vista, São Paulo</span>
+            <div class="buttons">
+                <div id="div_abrir" onclick="openDelete()" class="register_ref">
+                    <a href="#" class="reg_btn">Deletar Suporte</a>
                 </div>
             </div>
 
         </div>
         <div class="mobile-menu">
-            <a href="#" class="icon-menu">
+            <a href="#" onclick="logoff()" class="icon-menu">
                 <i class="icon-logout"></i>
             </a>
-            <a href="#" class="icon-menu active">
+            <a href="dash-adm-equipe.html" class="icon-menu active">
                 <i class="icon-profile"></i>
             </a>
-            <a href="#" class="icon-menu">
+            <a href="config-admin.html" class="icon-menu">
                 <i class="icon-settings"></i>
             </a>
-            <a href="./dash_user_unidades.html" class="icon-menu">
-                <i class="icon-restaurant"></i>
+            <a href="dash-adm-maquina.html" class="icon-menu">
+                <i class="icon-computer"></i>
             </a>
         </div>
     </div>
@@ -134,20 +110,19 @@
 
             <div class="modal-content">
                 <form class="form" id="form_cadastro_suporte" method="post" onsubmit="return registerSupport()">
-                    <div class="modal-separator">
                         <div class="boxes">
-                            <h3>Nome Suporte</h3>
+                            <label>Nome Suporte</label>
                             <input class="content-input" name="nome_supp" type="text" placeholder="Nome do usuário">
                         </div>
                         <div class="boxes">
-                            <h3>Senha</h3>
+                            <label>E-mail</label>
+                            <input class="content-input" name="email_supp" type="email" placeholder="ex: usuario@cycle.com.br">
+                        </div>
+                        <div class="boxes">
+                            <label>Senha</label>
                             <input class="content-input" name="pass_supp" type="password" placeholder="Password">
                         </div>
-                    </div>
-                    <div class="boxes">
-                        <h3>E-mail</h3>
-                        <input class="content-input" name="email_supp" type="email" placeholder="ex: usuario@cycle.com.br">
-                    </div>
+
                     <button type="submit" class="btn_confirm">Confirmar</button>
                 </form>
             </div>

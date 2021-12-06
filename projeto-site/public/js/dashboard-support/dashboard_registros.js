@@ -1,5 +1,5 @@
 function getCriticalRegisters() {
-  fetch(`/dashboardSupport/criticalRegisters`)
+  fetch(`/dashboardSupport/criticalRegisters/${sessionStorage.idSupportUser}`)
     .then((resposta) => {
       if (resposta.ok) {
         resposta.json().then(function (resposta) {
@@ -63,7 +63,7 @@ function putCriticalRegister(registers) {
             <td data-th="Componente">${register.componenteInstavel}</td>
             <td data-th="Descrição">${register.descAlerta}</td>
             <td data-th="Data">${register.dataHoraAlerta}</td>
-            <td data-th="Impacto" class="desc_red">${register.nivelCriticidade}</td>
+            <td data-th="Impacto" class="desc_red">${(register.nivelCriticidade).toUpperCase()}</td>
             `;
       tableWeb.appendChild(registerCard);
     }

@@ -597,8 +597,8 @@ main .dashboard__container--row .alert-card span svg {
 .mobile-menu__content {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (auto)[5];
-      grid-template-columns: repeat(5, auto);
+  -ms-grid-columns: (auto)[4];
+      grid-template-columns: repeat(4, auto);
   place-items: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
@@ -1116,18 +1116,19 @@ main .dashboard__container--row .alert-card span svg {
 }
 
 .dashboard__container--top {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  gap: 1em;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto 1fr;
+      grid-template-columns: auto 1fr;
   width: 100%;
+  gap: 1em;
 }
 
 @media screen and (max-width: 1366px) {
   .dashboard__container--top {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
@@ -1329,16 +1330,25 @@ main .dashboard__container--row .alert-card span svg {
 .dashboard__container--charts {
   display: -ms-grid;
   display: grid;
-  place-items: center;
   border: 2px solid #CACACA;
   border-radius: 5px;
   padding: .75rem 1.25em;
   width: 100%;
 }
 
+.dashboard__container--charts select {
+  max-width: 15em;
+}
+
 @media screen and (max-width: 768px) {
   .dashboard__container--charts {
-    display: none;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
   }
 }
 
@@ -1438,6 +1448,10 @@ main .dashboard__container--row .alert-card span svg {
 .dashboard__container--components .components__card--use span:nth-child(2) {
   font-size: 16px;
   color: #5C5C5C;
+}
+
+#chart {
+  max-width: 100%;
 }
 
 /*Palette Color*/

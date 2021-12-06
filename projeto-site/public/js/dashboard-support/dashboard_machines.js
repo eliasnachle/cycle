@@ -8,7 +8,7 @@ function postMachines(machines) {
         <div class="card__content">
           <div class="card__content--title">
             <figure class="figure-icon">
-              <i class="icon-${(machine.tipoMaquina).toLowerCase()}"></i>
+              <i class="icon-${((machine.tipoMaquina).toLowerCase()) != "totem"? "computer" : (machine.tipoMaquina).toLowerCase()}"></i>
             </figure>
             <span>${machine.apelidoMaquina}</span>
           </div>
@@ -26,8 +26,8 @@ function getIdMachine(idMachine, value) {
     sessionStorage.setItem('nameMachine', idMachine.textContent);
 }
 
-function getMachines(idContractorSession) {
-    var idContractorSession = localStorage.idContractorSession;
+function getMachines() {
+    var idContractorSession = sessionStorage.idSupportUser;
     fetch(`/dashboardSupport/${idContractorSession}`)
     .then((resposta) => {
         if (resposta.ok) {
@@ -42,3 +42,5 @@ function getMachines(idContractorSession) {
         console.error(`Erro na obtenção das publicações: ${error.message}`);
     });
 }
+
+window.addEventListener('load', getMachines)

@@ -15,9 +15,8 @@
     <link rel="manifest" href="../favicon/request/site.webmanifest">
     <link rel="mask-icon" href="../favicon/request/safari-pinned-tab.svg" color="#836fff">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
-    <script src="../js/dashboard-support/registers.js"></script>
 </head>
-<body onload="getAllRegisters()">
+<body>
 <!-- Notificações -->
 <section class="notifications">
   <div class="notifications--icon-close">
@@ -35,11 +34,7 @@
     <span id="header_username"></span>
     <h2>Bem-Vindo(a)</h2>
   </div>
-  <div class="header--profile-content">
-    <button class="btnSearchRestaurant" onclick="headerBtnSearchRestaurant()">
-      <i class="icon-restaurant"></i>
-      <span>Méqui 1000</span>
-    </button>
+  <div class="header--profile-content">    
     <div class="header--profile-content--icon">
       <i id="notificationHeader" class="icon-bell"></i>      
       <img src="../imgs/support.jpg" alt="Suporte">
@@ -98,9 +93,6 @@
     <a href="dashboard-settings.html">
       <i class="icon-settings"></i>
     </a>
-    <button onclick="headerBtnSearchRestaurant()">
-      <i class="icon-restaurant"></i>
-    </button>
     <button>
       <img id="profileMenu" src="../imgs/support.jpg" alt="Suporte">
     </button>

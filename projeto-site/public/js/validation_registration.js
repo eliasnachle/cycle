@@ -61,6 +61,15 @@ nome.addEventListener('keyup', () => {
 });
 
 //Validação CPF
+function cpfMask(){
+  var iptCpf = document.getElementById('ipt_cpf');
+  console.log(iptCpf.value)
+  if(iptCpf.value.length == 3 || iptCpf.value.length == 7){
+    iptCpf.value +='.';
+  } else if(iptCpf.value.length == 11){
+    iptCpf.value +='-';
+  }
+}
 cpf.addEventListener('keyup', () => {    
   const iptCpfValue = cpf.value;
   if(iptCpfValue.match(cpfReg)){

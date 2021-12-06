@@ -1,6 +1,47 @@
-function getSelectComponent(){
-    const selectComponent =  document.getElementById('select-component').value;
-    switch(selectComponent){
+var ctx = document.getElementById("chart").getContext("2d");
+var gradient = ctx.createLinearGradient(0, 0, 0, 300);
+gradient.addColorStop(1, 'rgba(131,111,255,0.025)');
+gradient.addColorStop(0, 'rgba(131,111,255)');
+
+let proximaAtualizacao;
+
+var dados = {
+    labels: [],
+    datasets: [
+        {
+            label: "",
+            data: [],
+            type: 'line',
+            borderColor: '#836FFF',
+            backgroundColor: gradient,
+            borderWidth: 3,
+            //Ponto
+            pointRadius: 8,
+            pointBackgroundColor: '#836FFF',
+            pointBorderWidth: 3,
+            // Ponto Hover
+            pointHoverRadius: 8,
+            pointHoverBackgroundColor: '#836FFF',
+            pointHoverBorderColor: '#836FFF'
+        }
+    ]
+}
+
+var configuration = {
+    type: 'line',
+    options: {
+        responsive: true,
+        tooltips: {
+            intersect: true,
+            node: "index",
+        }
+    }
+};
+
+function getSelectComponent() {
+    let selectComponent = document.getElementById('select-component').value;
+
+    switch (selectComponent) {
         case 'cpu':
             getRealChartTimeUse(selectComponent);
             break;
@@ -12,76 +53,92 @@ function getSelectComponent(){
             break;
         default:
             getRealChartTimeUse(selectComponent);
+            break;
     }
+
 }
 
 function getRealChartTimeUse(component) {
     var idMachine = sessionStorage.idMachine;
-    fetch(`/dashboardSupport/realChartTimeUse${idMachine}${component}`)
-    .then((resposta) => {
-        if (resposta.ok) {
-            resposta.json().then(function (resposta) {
-                console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-                chartJS(resposta);
-            });
-        } else {
-            console.error('Nenhum dado encontrado ou erro na API');
-        }
-    })
-    .catch(function (error) {
-        console.error(`Erro na obtenção das publicações: ${error.message}`);
-    });
+    fetch(`/dashboardSupport/realChartTimeUse/${idMachine}/${component}`)
+        .then((resposta) => {
+            if (resposta.ok) {
+                resposta.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    updateChart(resposta)
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+        .catch(function (error) {
+            console.error(`Erro na obtenção das publicações: ${error.message}`);
+        });
+}
+
+function updateChart(useDetail) {
+    dados.datasets[0].data.push(useDetail[0].componenteEmUso);
+    dados.labels.push(useDetail[0].dataHoraRegistro);
+
+    dados.labels.shift();
+    dados.datasets[0].data.shift();
+
+    window.grafico.update();
+
+    proximaAtualizacao = setTimeout(()=> getSelectComponent(), 5000)
+}
+
+function generateFirstConfigChart(component) {
+    var idMachine = sessionStorage.idMachine;
+
+    if (proximaAtualizacao != undefined){
+        clearTimeout(proximaAtualizacao)    
+    }
+
+    dados.labels = [];
+    dados.datasets[0].data = [];
+
+
+    fetch(`/dashboardSupport/generateChart/${idMachine}/${component}`)
+        .then((resposta) => {
+            if (resposta.ok) {
+                resposta.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+                    chartJS(resposta)
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+        .catch(function (error) {
+            console.error(`Erro na obtenção das publicações: ${error.message}`);
+        });
+
 }
 
 // Gráfico Charts JS
-function chartJS(useDetail){
-// Dimensões Gráfico
-var context = document.querySelector("#chart");
+function chartJS(useDetail) {
+    // Dimensões Gráfico
+    console.log(useDetail)
 
-var ctx = document.getElementById("chart").getContext("2d");
-var gradient = ctx.createLinearGradient(0, 0, 0, 300);
-gradient.addColorStop(1, 'rgba(131,111,255,0.025)');
-gradient.addColorStop(0, 'rgba(131,111,255)');
+    window.grafico = Chart.Line(ctx, {
+        data: dados,
+        options: configuration
+    });
 
-// Configurações Charts
-var configuration = {
-  type: 'line',
-  data: {
-    labesl: ["Seg","Ter","Qua","Qui","Sex","Sab","Dom"],
-    datasets: [
-    {
-      label: "Consumo",
-      data: [
-            useDetail[0].componenteEmUso,
-            useDetail[1].componenteEmUso,
-            useDetail[2].componenteEmUso
-      ],
-      type: 'line',
-      borderColor: '#836FFF',
-      backgroundColor: gradient,
-      borderWidth: 3,
-      //Ponto
-      pointRadius: 8,
-      pointBackgroundColor:  '#836FFF',
-      pointBorderWidth: 3,
-      // Ponto Hover
-      pointHoverRadius: 8,
-      pointHoverBackgroundColor: '#836FFF',
-      pointHoverBorderColor: '#836FFF'
+    console.log(dados.datasets[0].data)
+
+    for (var i = 0; i < useDetail.length; i++) {
+        var test = useDetail[i]
+        dados.labels.push(useDetail[i].dataHoraRegistro);
+        dados.datasets[0].data.push(test.componenteEmUso);
     }
-  ]},
-  options: {
-    responsive: true,
-    tooltips: {
-      intersect: true,
-      node: "index",
-    }
-  }
-};
-var chart = new Chart(context, configuration);
-this.lastIndexTemp = 0;
-this.time = 0;
+
+    window.grafico.update();
+
+    this.lastIndexTemp = 0;
+    this.time = 0;
+
+    getSelectComponent();
 }
-
-window.addEventListener('load', getSelectComponent);
-setInterval(getRealChartTimeUse, 5000);  

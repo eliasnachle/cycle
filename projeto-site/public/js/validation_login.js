@@ -43,7 +43,7 @@ function authenticateLogin() {
                     sessionStorage.idPlano_user_contratante = json.idPlano;
                     sessionStorage.pass_user_contratante = json.senhaContratante;
                     submit_button.disabled = false
-                    window.location.href = "dashboard-manager/config-admin.html";
+                    window.location.href = "dashboard-manager/dash-adm-maquina.html";
 
                 });
             } else {
@@ -64,9 +64,9 @@ function authenticateLogin() {
             if (resposta.ok) {
                 resposta.json().then(json => {
                     localStorage.hasSupportSession = true;
-                    localStorage.idSupportUser = json.idUsuarioSuporte;
-                    localStorage.nameUserSupport = json.nomeSuporte;
                     sessionStorage.idSupportUser = json.idUsuarioSuporte;
+                    localStorage.nameUserSupport = json.nomeSuporte;
+                    localStorage.idContractorSession = json.idUsuarioContratante;
                     window.location.href = "dashboard-support/dashboard.html";
                 });
             } else {
