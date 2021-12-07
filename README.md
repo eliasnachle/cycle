@@ -7,3 +7,4 @@ Se possível utilizar o padrão de commit semântico.
 Links para maior conhecimento sobre:
 https://www.letscode.com.br/blog/o-que-sao-commits-semanticos-e-como-utilizo
 
+
